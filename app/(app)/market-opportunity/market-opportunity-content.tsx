@@ -3,11 +3,31 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Landmark, Database, ShoppingCart, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { Section, GlassCard, OrnamentDivider, EstText, DataTable } from '@/components/proposal/section';
-import { MARKETS, SEGMENTS } from '@/lib/data/markets';
+import { ArrowRight, Landmark, Database, ShoppingCart, ShieldCheck, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Section, GlassCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
+import { Tag, TagText } from '@/components/proposal/tag';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import {
+  MARKETS, SEGMENTS, SEGMENTS_NOTE, SEGMENTS_OPEN_ITEM,
+  DECISION_FRAMEWORK_INTRO, GATE_RUN_RATE_NOTE, GT13_FOOTNOTE,
+} from '@/lib/data/markets';
 import { MAP_CALLOUTS, MARKETING_DATA_PLAN, STRATEGIC_OPTIONS } from '@/lib/data/insights';
+import { GATE_SCHEDULE } from '@/lib/data/costs';
 import { TOP5_MITIGATIONS } from '@/lib/data/risks';
+
+function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
+  return (
+    <Alert className="border-amber-500/40 bg-amber-500/5">
+      <AlertTriangle className="h-4 w-4 !text-amber-400" />
+      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+        <p><span className="font-semibold text-foreground/80">What is unknown:</span> <TagText text={item?.unknown ?? ''} /></p>
+        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
+        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}{item?.ref ? ` (${item.ref})` : ''}</p>
+      </AlertDescription>
+    </Alert>
+  );
+}
 
 const Globe = dynamic(() => import('@/components/three/globe'), {
   ssr: false,
@@ -22,11 +42,26 @@ export default function MarketOpportunityContent() {
         Market <span className="text-primary">Opportunity</span>
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-        Five markets, one engine: the data acquired in this programme powers the marketing campaigns
-        that convert diaspora demand into ticket sales, revenue growth and staged international expansion.
+        This section presents the market evidence located for each of the five named markets, and the data required
+        to act on it. Australia is the only evidenced market — and even there every revenue input is unknown, no
+        primary demand study exists and zero counterparties are signed; the other four carry population-scale
+        context only, not diaspora demand.
       </p>
 
-      <Section eyebrow="Interactive" title="The Expansion Map" className="mt-10">
+      <Alert className="mt-6 max-w-3xl border-red-500/40 bg-red-500/5">
+        <AlertTriangle className="h-4 w-4 !text-red-400" />
+        <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
+        <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+          24 claims removed from this page by the adversarial audit — see register. Every monetary figure below
+          carries the provenance tag it has actually earned — <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
+          <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — and non-monetary official
+          statistics carry their source lines, untagged, per the site-wide convention. The corridor projection
+          tables, the lump-sum investment options and the segment size and CLV columns are deleted rather than
+          re-estimated. FX: RBA, 21 Aug 2026.
+        </AlertDescription>
+      </Alert>
+
+      <Section eyebrow="Key Market Indicators" title="The Expansion Map" className="mt-10">
         <GlassCard className="p-2 md:p-4">
           <Globe />
         </GlassCard>
@@ -37,7 +72,7 @@ export default function MarketOpportunityContent() {
                 <Landmark className="h-4 w-4 text-primary" />
                 <p className="font-marquee text-xs font-bold uppercase tracking-[0.16em] text-foreground">{c?.title}</p>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground"><EstText text={c?.body ?? ''} /></p>
+              <p className="text-[13px] leading-relaxed text-muted-foreground"><TagText text={c?.body ?? ''} /></p>
               <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-primary/80">Source: {c?.source}</p>
             </GlassCard>
           ))}
@@ -49,8 +84,10 @@ export default function MarketOpportunityContent() {
       {/* THE DATA BEHIND SUCCESSFUL MARKETING CAMPAIGNS */}
       <Section eyebrow="From Data to Outcome" title="The Data Behind Successful Marketing Campaigns">
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Six data pillars answer the question this proposal was commissioned to address: what data is
-          required, how it is acquired, and the marketing and business outcome each pillar delivers.
+          Six data pillars answer the question this proposal was commissioned to address: what data is required,
+          how it is acquired, and the marketing and business outcome each pillar could deliver. Every priced figure
+          below has been checked against the vendor&apos;s own published pricing page, and every outcome figure
+          against the underlying evidence.
         </p>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {(MARKETING_DATA_PLAN ?? []).map((p: any, i: number) => (
@@ -77,11 +114,11 @@ export default function MarketOpportunityContent() {
                     <p className="mb-0.5 flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/70">
                       <ShoppingCart className="h-3 w-3" /> How to acquire it
                     </p>
-                    <p className="text-muted-foreground">{p?.acquire}</p>
+                    <p className="text-muted-foreground"><TagText text={p?.acquire ?? ''} /></p>
                   </div>
                   <div className="rounded-lg border border-primary/25 bg-primary/5 p-2.5">
                     <p className="mb-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/80">Business outcome</p>
-                    <p className="text-foreground/85"><EstText text={p?.outcome ?? ''} /></p>
+                    <p className="text-foreground/85"><TagText text={p?.outcome ?? ''} /></p>
                   </div>
                 </div>
               </GlassCard>
@@ -101,9 +138,9 @@ export default function MarketOpportunityContent() {
                 <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">{m?.shortName}</span>
               </div>
               <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{m?.status}</p>
-              <p className="mt-3 text-sm font-semibold text-primary"><EstText text={m?.heroStat ?? ''} /></p>
+              <p className="mt-3 text-sm font-semibold text-primary"><TagText text={m?.heroStat ?? ''} /></p>
               <p className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">Source: {m?.heroStatSource}</p>
-              <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground line-clamp-4"><EstText text={m?.evidence ?? ''} /></p>
+              <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground line-clamp-4"><TagText text={m?.evidence ?? ''} /></p>
               <Link href={`/markets/${m?.slug}`} className="mt-4 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary hover:underline">
                 Full Market Deep-Dive <ArrowRight className="ml-1 h-3 w-3" />
               </Link>
@@ -113,19 +150,22 @@ export default function MarketOpportunityContent() {
       </Section>
 
       <Section eyebrow="Campaign Targeting" title="Customer Segments">
-        <DataTable
-          headers={['Segment', 'Estimated Size', 'Profile', 'Indicative CLV', 'Primary Channels', 'Churn Risk']}
-          rows={(SEGMENTS ?? []).map((s: any) => [s?.name ?? '', s?.size ?? '', s?.profile ?? '', s?.clv ?? '', s?.channel ?? '', s?.churn ?? ''])}
-        />
-        <p className="mt-3 text-xs text-muted-foreground">
-          Segment sizes and CLV are research estimates to be confirmed against first-party data in the discovery phase.
+        <p className="mb-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
+          <TagText text={SEGMENTS_NOTE} />
         </p>
+        <DataTable
+          headers={['Segment', 'Profile', 'Primary Channels', 'Churn Risk (Qualitative)']}
+          rows={(SEGMENTS ?? []).map((s: any) => [s?.name ?? '', s?.profile ?? '', s?.channel ?? '', s?.churn ?? ''])}
+        />
+        <div className="mt-4">
+          <OpenItemCallout item={SEGMENTS_OPEN_ITEM} />
+        </div>
       </Section>
 
       <OrnamentDivider />
 
-      {/* RISKS, OPTIONS & RECOMMENDATION */}
-      <Section eyebrow="Decision Framework" title="Risks, Options & Recommendation">
+      {/* RISKS, GATED SCHEDULE & RECOMMENDATION */}
+      <Section eyebrow="Decision Framework" title="Investment Schedule & Recommendation">
         <div className="grid gap-6 lg:grid-cols-5">
           <GlassCard className="lg:col-span-2">
             <div className="mb-4 flex items-center gap-2">
@@ -149,6 +189,7 @@ export default function MarketOpportunityContent() {
           </GlassCard>
 
           <div className="flex flex-col gap-4 lg:col-span-3">
+            <p className="text-[13px] leading-relaxed text-muted-foreground">{DECISION_FRAMEWORK_INTRO}</p>
             {(STRATEGIC_OPTIONS ?? []).map((o: any) => (
               <GlassCard
                 key={o?.key}
@@ -164,16 +205,39 @@ export default function MarketOpportunityContent() {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-1 text-xs font-semibold text-primary/90"><EstText text={o?.investment ?? ''} /></p>
+                <p className="mt-1 text-xs font-semibold text-primary/90"><TagText text={o?.investment ?? ''} /></p>
                 <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{o?.detail}</p>
-                <p className="mt-2 text-[12.5px] leading-relaxed text-foreground/75"><EstText text={o?.assessment ?? ''} /></p>
+                <p className="mt-2 text-[12.5px] leading-relaxed text-foreground/75"><TagText text={o?.assessment ?? ''} /></p>
               </GlassCard>
             ))}
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              Recommendation: Option B — staged, data-led expansion beginning with Australia, with capital
-              released only as the due-diligence &amp; terms (G0), discovery (G1) and MVP-build (G2) gates are passed.
-            </p>
           </div>
+        </div>
+
+        <div className="mt-8">
+          <p className="mb-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
+            The recommended option carries no lump sum. It carries the gated schedule below: capital is released
+            only as each gate is passed, and nothing beyond the next gate is committed.
+          </p>
+          <DataTable
+            headers={['Gate', 'What It Buys', 'Committed One-Off Cost', 'Multiple of GT-13', 'Must Be True to Pass']}
+            rows={(GATE_SCHEDULE ?? []).map((g: any) => [
+              <span key="g" className="whitespace-nowrap font-semibold text-foreground">{g?.gate}</span>,
+              <TagText key="b" text={g?.buys ?? ''} />,
+              <TagText key="c" text={g?.committed ?? ''} />,
+              <span key="m" className="whitespace-nowrap">{g?.multiple}</span>,
+              g?.mustPass ?? '',
+            ])}
+          />
+          <p className="mt-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
+            <TagText text={GATE_RUN_RATE_NOTE} />
+          </p>
+          <p className="mt-3 max-w-4xl text-xs leading-relaxed text-muted-foreground/70">
+            <TagText text={GT13_FOOTNOTE} />
+          </p>
+          <p className="mt-4 max-w-4xl text-sm leading-relaxed text-foreground/85">
+            Recommendation: Option B — staged, gated expansion beginning with Australia, with capital released only
+            as the due-diligence &amp; terms (G0), discovery (G1) and MVP-build (G2) gates above are passed.
+          </p>
         </div>
       </Section>
     </div>

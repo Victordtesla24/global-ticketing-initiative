@@ -35,6 +35,8 @@ export const GATE_SCHEDULE = [
     priced:
       'Vendor cash: none committed (quote requests are free to lodge). Fractional analyst 4.0 days [ASSUMPTION] at A$60.00/hr [ACTUAL] = A$1,920.00 [DERIVED], conditional on written rate and day-count confirmation by 2026-09-30. Legal and entity fees [UNKNOWN] until the quotes arrive.',
     multiple: '2.31x (analyst line, conditional)',
+    committed: 'A$1,920.00 [DERIVED] — 4.0 analyst-days under the unconfirmed rate [ASSUMPTION]',
+    mustPass: 'All five quotes received in writing; ownership established; term sheet executed and disclosed',
   },
   {
     gate: 'G1 — discovery',
@@ -43,6 +45,8 @@ export const GATE_SCHEDULE = [
     priced:
       'Study fee [UNKNOWN] — not priceable without a brief; brief written and quoted during G0. Per-agreement legal review [UNKNOWN] per the G0 quote. Outreach tooling A$0 [LIST] (Apollo.io free tier). Fractional analyst 6.0 days [ASSUMPTION] = A$2,880.00 [DERIVED], conditional as above.',
     multiple: '3.47x (analyst line, conditional)',
+    committed: 'A$2,880.00 [DERIVED] — 6.0 analyst-days, plus study and legal-review fees [UNKNOWN]',
+    mustPass: 'G0 passed; ≥3 signed, dated pilot-event agreements; primary demand study delivered with take-rate, ATV and repeat findings',
   },
   {
     gate: 'G2 — MVP build',
@@ -51,6 +55,9 @@ export const GATE_SCHEDULE = [
     priced:
       'One-off: floor configuration A$5,860.00 [DERIVED] (data floor A$2,500.00 [LIST] + setup 7.0 days A$3,360.00 [DERIVED], pre-U-07 maximum) or full configuration A$9,876.74 [DERIVED] (data full A$6,036.74 + setup 8.0 days A$3,840.00) — alternatives, not a range; setup labour holds only under the unconfirmed rate and day-count [ASSUMPTION]s. Run rate, monthly-cancellable and not part of the authorised gate cost: tech A$46.43/mo [DERIVED] + AI (Claude Pro, billed monthly) A$27.99/mo [DERIVED].',
     multiple: '7.06x floor / 11.90x full one-off; run rate 0.090x/month',
+    committed:
+      'Floor configuration A$5,860.00 [DERIVED] or full configuration A$9,876.74 [DERIVED] — alternatives, not a range',
+    mustPass: 'G1 passed; first-party data disclosed under NDA; consultant-rate confirmation in writing',
   },
 ];
 

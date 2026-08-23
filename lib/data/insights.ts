@@ -57,10 +57,15 @@ export const FIRST_PARTY_OPEN_ITEM = {
   action: 'Provide the database dictionary, a consent-register sample and app-console exports under NDA. Cost to obtain: nil — internal disclosure.',
 };
 
+// Key market indicators. Corrected per the audit: the England arts-engagement figure is the
+// DCMS survey's own 90.6% (its published headline rounds to 91%), the UK spend figure is
+// re-attributed from DCMS to LIVE, and the global migrant-stock tile (304 million, all
+// origins) is replaced by the India-born per-market denominators — UN DESA blocks
+// total-migrant-stock framing as a market indicator (financial_rebuild.md §A.1.1 F5).
 export const MAP_CALLOUTS = [
-  { title: 'Australian Demand', body: '64% of Australian adults attended at least one cultural venue or event in 2021–22, with 82.4% in 2017–18 as the pre-pandemic benchmark. Greater-capital-city residents attend at higher rates — the exact geographies where diaspora audiences concentrate.', source: 'ABS [18][20]' },
-  { title: 'UK Live Entertainment Scale', body: 'UK consumer spending on live music reached GBP 6.68 billion in 2024 [LIST], up 9.5% year-on-year — the figure is from LIVE (the trade body) Annual Report & Economic Highlights 2024, not a government statistic; at the RBA rate of 1.9106 the AUD equivalent is approximately 12.8 billion [DERIVED]. 91% of adults in England engaged with the arts in 2024/25 (DCMS Participation Survey).', source: 'LIVE Annual Report 2024 (trade body) / DCMS [30][104]' },
-  { title: 'Global Diaspora Context', body: '304 million international migrants were recorded globally in 2024 — the structural driver of demand for culturally specific live entertainment across all five target markets.', source: 'UN DESA [15]' },
+  { title: 'Australian Demand', body: '64% of Australian adults attended at least one cultural venue or event in 2021–22, with 82.4% in 2017–18 as the pre-pandemic benchmark. Greater-capital-city residents attended at 65% against 61% elsewhere — a modest four-point gap, not the concentration effect originally claimed.', source: 'ABS, Cultural and creative activities 2021–22' },
+  { title: 'UK Live Entertainment Scale', body: 'UK consumer spending on live music reached GBP 6.68 billion in 2024 [LIST], up 9.5% year-on-year — LIVE (the trade federation) Annual Report & Economic Highlights 2024, not a government statistic as originally cited; at the RBA rate of 1.9106 the AUD equivalent is approximately 12.8 billion [DERIVED]. 90.6% of adults in England engaged with the arts in 2024/25 — a broad measure including digital engagement, down from 91.4% in 2023/24.', source: 'LIVE Annual Report 2024 (trade body) / DCMS Participation Survey 2024/25' },
+  { title: 'India-Born Stock by Market, 2024', body: 'AU 876,074 · UK 1,044,779 · US 3,165,238 · CA 1,015,630 · Europe region 2,021,502 — the honest upper denominators. The Europe-region count is the proxy for the “EU” market: it includes the UK and non-EU states, and no EU-27 aggregate has been extracted. Total migrant stock of every origin (304 million globally) is not the addressable segment; even these counts only bound it, because country-of-birth carries no language or demand dimension — the AU Marathi-at-home count is 22,263.', source: 'UN DESA, International Migrant Stock 2024 (destination × origin)' },
 ];
 
 // What data was asked for, what is required, how to acquire it, and the marketing/business
