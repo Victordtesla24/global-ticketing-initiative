@@ -218,15 +218,15 @@ export const MARKETS: Market[] = [
     shortName: 'UK',
     status: 'Partner-Led Corridor Candidate',
     removedNote: '17 claims removed from this page by the adversarial audit — see register (markets_uk.json); a further 3 replaced with source-published figures or resolved in place, so 20 of this route’s 30 claims were defective.',
-    heroStat: 'GBP 6.68bn consumer spend on live music (2024) [LIST]; 90.6% arts engagement in England (2024/25)',
+    heroStat: 'GBP 6.68bn consumer spend on live music (2024) — Trade-body estimate; 90.6% arts engagement in England (2024/25)',
     heroStatSource: 'LIVE, Annual Report 2024 (live-music trade federation) / DCMS Participation Survey 2024/25',
     heroTilesIntro:
-      'Sourced to two distinct providers, corrected from the original page’s single mis-attributed citation to DCMS for both figures.',
+      'Sourced to two distinct providers, corrected from the original page’s single mis-attributed citation to DCMS for both figures. Every surviving monetary figure on this page carries a provenance tag, with one labelled exception: the UK live-music consumer-spend figure is a trade federation’s own commissioned estimate, which can never earn [LIST] under the trust ladder — that tag means a vendor-published price — so it carries the explicit provenance label Trade-body estimate instead. Under the same ladder a modelled estimate may not feed a headline or a funded figure, so it is carried as market context only and no longer sizes this page’s opportunity tiers (verify/uk-stats.md §2; the mechanism is the one the Investment page applies to an aggregator salary band).',
     heroTiles: [
       {
         label: 'Live music consumer spend, UK, 2024',
-        value: 'GBP 6.68bn [LIST]',
-        note: '+9.5% year-on-year. A trade-body estimate, not a government statistic.',
+        value: 'GBP 6.68bn',
+        note: 'Trade-body estimate — +9.5% year-on-year. LIVE’s own commissioned analysis, not a government statistic and not [LIST] under the trust ladder: that tag means a vendor-published price, and verify/uk-stats.md grades this source “industry-body estimate”. Market context only — it feeds no headline tier and no funded figure.',
       },
       {
         label: 'Adults who engaged with the arts, England, 2024/25',
@@ -244,7 +244,7 @@ export const MARKETS: Market[] = [
       { city: 'Birmingham', lat: 52.49, lon: -1.89 },
     ],
     evidence:
-      'UK consumer spending on live music reached GBP 6.68 billion in 2024 [LIST], up 9.5% year-on-year — LIVE’s own commissioned trade-body figure, not a DCMS or government statistic as the original source line stated. At the RBA’s rate of GBP 1 = AUD 1.9106 (21 Aug 2026) that converts to approximately AUD 12.8 billion [DERIVED]; the original page’s AUD 13.4bn used an assumed rate of 2.00, about 4.7% above the RBA rate. In England, 90.6% of adults engaged with the arts in 2024/25 — a broad engagement measure, not live-event attendance specifically. The UN estimated 11.8 million international migrants in the UK in 2024. These figures indicate strong general cultural demand; none of them quantifies Marathi or Indian-origin event buyers, and that count does not exist in any source consulted for this page.',
+      'UK consumer spending on live music reached GBP 6.68 billion in 2024, up 9.5% year-on-year — a Trade-body estimate, LIVE’s own commissioned figure, not a DCMS or government statistic as the original source line stated, and not [LIST] under the trust ladder, which reserves that tag for a vendor-published price. At the RBA’s rate of GBP 1 = AUD 1.9106 (21 Aug 2026) it converts to approximately AUD 12.8 billion [DERIVED]: 6.68bn × 1.9106, the conversion inheriting the trade-body tier of the figure it converts. This is whole-market consumer spend, carried as market context only: it is not a total addressable market for this programme, and no market page on this site publishes one; the original page’s AUD 13.4bn used an assumed rate of 2.00, about 4.7% above the RBA rate. In England, 90.6% of adults engaged with the arts in 2024/25 — a broad engagement measure, not live-event attendance specifically. The UN estimated 11.8 million international migrants in the UK in 2024. These figures indicate strong general cultural demand; none of them quantifies Marathi or Indian-origin event buyers, and that count does not exist in any source consulted for this page.',
     evidenceSources: [
       'Consumer spend: LIVE, Annual Report 2024 (live-music trade federation) — livemusic.biz',
       'Arts engagement: DCMS, Participation Survey 2024/25 — gov.uk',
@@ -259,22 +259,18 @@ export const MARKETS: Market[] = [
         'financial_rebuild.md §A.2 rows H-2 (DCMS annual comparator) and H-3 (live-entertainment spend series from 2018, ≈8 years, so rebound is separable from structural growth); DCMS 2024/25 annual publication and LIVE Annual Report 2024 (verify/uk-stats.md, accessed 2026-08-23).',
     },
     sizing: [
-      {
-        tier: 'TAM — Total addressable',
-        basis:
-          'GBP 6.68bn [LIST] / approximately AUD 12.8bn [DERIVED] at the RBA rate GBP 1 = AUD 1.9106 (21 Aug 2026), not the original 2.00 assumption. Ticketalay’s addressable niche within that figure is a fraction of one percent and has not been sized bottom-up.',
-      },
-      { tier: 'SAM — Serviceable', basis: 'Deleted — “50–150 relevant Indian-origin cultural events annually” had no source. See open item below.' },
-      { tier: 'SOM — Obtainable', basis: 'Deleted — “10–30% of SAM events contractable in first three years” had no source. See open item below.' },
+      { tier: 'TAM — Total addressable', basis: 'Not sized. See open item below.' },
+      { tier: 'SAM — Serviceable', basis: 'Not sized — “50–150 relevant Indian-origin cultural events annually” had no source and is deleted; no event inventory exists to size from. See open item below.' },
+      { tier: 'SOM — Obtainable', basis: 'Not sized — “10–30% of SAM events contractable in first three years” had no source and is deleted. See open item below.' },
     ],
     sizingOpenItems: [
       {
         ref: 'U-03',
-        title: 'Serviceable and obtainable event volume (SAM/SOM) for the UK corridor',
+        title: 'Addressable, serviceable and obtainable market (TAM/SAM/SOM) for the UK corridor',
         unknown:
-          'No bottom-up event inventory has been built for the UK; both original ranges have been deleted rather than republished.',
+          'No bottom-up event inventory has been built for the UK; both original ranges have been deleted rather than republished, and the whole-market consumer-spend figure previously shown as TAM has been withdrawn. It is a trade-body estimate, which the trust ladder bars from feeding a headline or a funded figure; a whole-national-market spend total is not a total addressable market for this programme in any case, since this page’s own reading is that Ticketalay’s addressable niche within it is a fraction of one percent, never sized bottom-up — published as a TAM it overstates the addressable market by more than two orders of magnitude. It also left the United Kingdom as the only market on this site carrying a whole-market headline, where Australia’s TAM/SAM/SOM are deleted outright, Canada is “Not sized”, the European Union is country-specific and not sized, and the United States TAM stands as an open item with SAM [UNKNOWN].',
         owner: 'Commercial lead (currently unassigned)',
-        action: 'Build an event-inventory count from named venues and promoters before any SAM/SOM figure is republished.',
+        action: 'Build an event-inventory count from named venues and promoters, and size the addressable niche from it, before any TAM, SAM or SOM figure is republished.',
       },
     ],
     entryMode:
@@ -680,7 +676,7 @@ export const GT13_FOOTNOTE =
   'GT-13 = AUD 830.00 [ACTUAL], the programme’s own receipted spend to date — the reference anchor the rebuilt financials use for evaluating every proposed spend, in place of a scale-cost analogy. Gate figures: financial_rebuild.md §E.4.';
 
 export const GATE_RUN_RATE_NOTE =
-  'G2 also leaves a cancellable run rate of approximately AUD 74/month (0.090× GT-13/month [DERIVED]) for hosting and AI subscriptions — context, not a committed cost. No cumulative three-year total is published: the rebuilt financials decline one, and ROI is not computable at any gate until the partnership terms, contracted supply and primary demand study named above exist.';
+  'G2 also leaves a cancellable run rate of approximately AUD 74/month (0.090× GT-13/month [DERIVED]) for hosting and AI subscriptions — context, not a committed cost. The IBISWorld line uses AUD $2,500 — the live AU checkout cart price, accessed 2026-08-23. The vendor’s help centre publishes AU$2,200 for the same single report, which is also the mandate’s ground-truth baseline (GT D5-[15], graded VERIFIED with caveat in verify/ibisworld-reaudit.md). Both are the vendor’s own published prices; the transactional cart price is the one used for planning (financial_rebuild.md §A.1.2 P1). At the A$2,200 baseline the same gate reads: floor A$5,560.00 [DERIVED]: 2,200 + 3,360 = 6.70× the anchor, and full A$9,576.74 [DERIVED]: 2,200 + 3,342.20 + 194.54 + 3,840 = 11.54×; the data-floor line is 2.65× [DERIVED]: 2,200 ÷ 830. No cumulative three-year total is published: the rebuilt financials decline one, and ROI is not computable at any gate until the partnership terms, contracted supply and primary demand study named above exist.';
 
 export const DECISION_FRAMEWORK_INTRO =
   'The original page offered three lump-sum options: an “accelerated” AUD 25.0m over three years, a “staged” AUD 5.0m–12.6m, and nil for deferral. Neither dollar figure had a cost build-up or source anywhere in the evidence, and the accompanying “5.87 million tickets to recover cost” was computed from the unsourced AUD 25.0m. All three have been removed. What survives is the actual gated schedule from the rebuilt financials, where every dollar is either priced or explicitly marked unknown, and no total is given across gates.';

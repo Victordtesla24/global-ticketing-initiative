@@ -99,7 +99,7 @@ export const VENDOR_PRICES = [
   {
     provider: 'Apollo.io',
     deleted: '"Professional 1,800–3,600/yr" — top ~2.4x the published annual price',
-    published: 'Professional US$79/seat/mo billed annually = US$948/yr; Free tier 900 credits/seat/yr at US$0 [LIST]',
+    published: 'Professional US$79/seat/mo billed annually = US$948/yr [LIST] = A$1,326.80 [DERIVED]: 948 ÷ 0.7145, the one FX rate used sitewide — the same treatment the Market Opportunity page gives this vendor; Free tier 900 credits/seat/yr at US$0 [LIST]',
     disposition: 'Free tier recommended (A$0 [LIST], the vendor’s published free tier) — 900 credits cover the pilot outreach universe. Step up only when free credits are demonstrably exhausted.',
   },
   {

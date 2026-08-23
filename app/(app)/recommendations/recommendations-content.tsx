@@ -8,7 +8,7 @@ import { Timeline } from '@/components/proposal/timeline';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   RECS_LEDE, RECS_AUDIT_NOTE, EXECUTION_INTRO, PRIORITY_RECOMMENDATIONS, EXECUTION_PROVENANCE,
-  NOT_YET, ROADMAP_90_DAYS, ROADMAP_NOTE, CEO_ACTIONS, CLOSING_STATEMENT, CLOSING_PROVENANCE,
+  NOT_YET, ROADMAP_90_DAYS, ROADMAP_RECONCILIATION, ROADMAP_NOTE, CEO_ACTIONS, CLOSING_STATEMENT, CLOSING_PROVENANCE,
 } from '@/lib/data/review';
 
 function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
@@ -84,7 +84,7 @@ export default function RecommendationsContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="Execution" title="The 90-Day Roadmap">
+      <Section eyebrow="Execution" title="The Gated Roadmap">
         <Timeline
           items={(ROADMAP_90_DAYS ?? []).map((m: any) => {
             const [marker, ...rest] = String(m?.milestone ?? '').split(': ');
@@ -99,6 +99,7 @@ export default function RecommendationsContent() {
             };
           })}
         />
+        <p className="mt-4 max-w-3xl text-sm text-muted-foreground">{ROADMAP_RECONCILIATION}</p>
         <p className="mt-4 max-w-3xl text-sm text-muted-foreground">{ROADMAP_NOTE}</p>
       </Section>
 
