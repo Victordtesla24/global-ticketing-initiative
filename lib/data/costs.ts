@@ -1,180 +1,224 @@
-// DELIVERABLE 5 — costing documentation. All AUD [EST].
-export const TCO_BASE = {
-  oneTime: [
-    { item: 'Corporate, IP and contract diligence', y0: 70000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Privacy and regulatory assessment', y0: 55000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Data discovery and reconciliation', y0: 90000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Cloud/security foundation', y0: 120000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Data pipelines and marts', y0: 240000, y1: 0, y2: 0, y3: 0 },
-    { item: 'BI and dashboards', y0: 80000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Product localisation', y0: 100000, y1: 0, y2: 50000, y3: 50000 },
-    { item: 'Pilot integration', y0: 130000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Penetration testing', y0: 55000, y1: 0, y2: 0, y3: 0 },
-    { item: 'Training and change management', y0: 35000, y1: 15000, y2: 15000, y3: 15000 },
-    { item: 'Contingency (12%)', y0: 117000, y1: 0, y2: 0, y3: 0 },
-  ],
-  recurring: [
-    { item: 'People (loaded)', y0: 0, y1: 1200000, y2: 1850000, y3: 2500000 },
-    { item: 'Cloud, data and technology', y0: 0, y1: 250000, y2: 450000, y3: 750000 },
-    { item: 'Data acquisition (licences and APIs)', y0: 0, y1: 42000, y2: 65000, y3: 90000 },
-    { item: 'Security, privacy and legal maintenance', y0: 0, y1: 100000, y2: 160000, y3: 240000 },
-    { item: 'Market entry and pilot operations', y0: 0, y1: 300000, y2: 650000, y3: 1000000 },
-    { item: 'Consulting and professional services', y0: 0, y1: 200000, y2: 300000, y3: 200000 },
-    { item: 'Operational contingency (10%)', y0: 0, y1: 209200, y2: 347500, y3: 478000 },
-  ],
-  annualTotals: { y0: 1092000, y1: 2316200, y2: 3887500, y3: 5323000 },
-  cumulative: { y0: 1092000, y1: 3408200, y2: 7295700, y3: 12618700 },
+// Investment & Returns — corrected per the adversarial audit.
+// Sources: workflow/register_by_route/investment.json (CL-0234–CL-0369),
+// Ground-Truth Register GT-01–GT-13, artifacts/financial_rebuild.md. Run date 2026-08-23.
+// The site-wide estimate tag is abolished on this page: every surviving monetary figure
+// carries exactly one of [ACTUAL] [LIST] [QUOTE] [DERIVED] [ASSUMPTION] [UNKNOWN].
+// FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
+
+// Receipted actuals — the affordability anchor (GT-11, GT-12, GT-13).
+export const ACTUALS = {
+  total: {
+    label: 'Total programme spend to date',
+    value: 'A$830.00 [ACTUAL]',
+    note: 'The only demonstrated, receipted capacity in evidence. Every forward figure on this page is expressed as a multiple of this anchor and must justify that multiple.',
+  },
+  ai: {
+    label: 'AI subscriptions and API credits, incurred',
+    value: 'A$350.00 [ACTUAL]',
+    note: 'Cumulative, receipted. This replaces the deleted AI cost ledger, whose invoice-ready total of A$1,384.80–4,992.49 was 1.7–6.0x the receipted actual and carried a fabricated invoice number.',
+  },
+  consultation: {
+    label: 'Consultation & feasibility study, incurred',
+    value: 'A$480.00 [ACTUAL]',
+    note: '8.0 hours at A$60.00/hr [ACTUAL] — the only labour price in evidence. The deleted "Consulting Rate Basis: AUD 150–250/hr" was 2.5–4.2x the rate actually paid on this programme.',
+  },
+  ledgerFooterRetained:
+    'The deleted ledger’s own footer conceded that no platform invoices, token measurements, cache or search records, labour timesheets or tax figures supported it, and that it was "an estimated cost framework … not a verified expenditure record". That disclosure was accurate and is retained; the ledger it disclaimed is not. The receipted record above is the verified expenditure record.',
 };
 
-export const TCO_SCENARIOS = [
-  { name: 'Lean / Conditional', y0: 462000, y1: 1200000, y2: 1500000, y3: 1838000, total: 5000000, desc: 'Australia only, contractors, limited platform, no international entity' },
-  { name: 'Base Programme', y0: 1092000, y1: 2316200, y2: 3887500, y3: 5323000, total: 12618700, desc: 'Australia depth plus one corridor and production platform' },
-  { name: 'Accelerated', y0: 2398000, y1: 4500000, y2: 7500000, y3: 10600000, total: 24998000, desc: 'Multiple countries, larger team, premium data, higher event operations' },
+// Per-gate decision schedule replacing the deleted cumulative TCO (financial_rebuild.md §E.4).
+export const GATE_SCHEDULE = [
+  {
+    gate: 'G0 — due diligence & terms',
+    buys:
+      'Ownership memorandum (code, brand, app-store accounts, .com.au domain), executed partnership term sheet, all five written professional-services quotes on file',
+    priced:
+      'Vendor cash A$0 (quote requests are free). Fractional analyst 4.0 days [ASSUMPTION] at A$60.00/hr [ACTUAL] = A$1,920.00 [DERIVED], conditional on written rate and day-count confirmation by 2026-09-30. Legal and entity fees [UNKNOWN] until the quotes arrive.',
+    multiple: '2.31x (analyst line, conditional)',
+  },
+  {
+    gate: 'G1 — discovery',
+    buys:
+      '≥3 signed, dated pilot-event agreements or LOIs; the primary demand, fee-tolerance and trust study; the evidence that converts every revenue variable from [UNKNOWN] to a fact tag',
+    priced:
+      'Study fee [UNKNOWN] — not priceable without a brief; brief written and quoted during G0. Per-agreement legal review [UNKNOWN] per the G0 quote. Outreach tooling A$0 [LIST] (Apollo.io free tier). Fractional analyst 6.0 days [ASSUMPTION] = A$2,880.00 [DERIVED], conditional as above.',
+    multiple: '3.47x (analyst line, conditional)',
+  },
+  {
+    gate: 'G2 — MVP build',
+    buys:
+      'Day-1 data bill of materials; ingest, reconciled finance mart, three certified dashboards, consent register; the day-1 AI stack',
+    priced:
+      'One-off: floor configuration A$5,860.00 [DERIVED] (data floor A$2,500.00 [LIST] + setup 7.0 days A$3,360.00 [DERIVED], pre-U-07 maximum) or full configuration A$9,876.74 [DERIVED] (data full A$6,036.74 + setup 8.0 days A$3,840.00) — alternatives, not a range; setup labour holds only under the unconfirmed rate and day-count [ASSUMPTION]s. Run rate, monthly-cancellable and not part of the authorised gate cost: tech A$46.43/mo [DERIVED] + AI (Claude Pro, billed monthly) A$27.99/mo [DERIVED].',
+    multiple: '7.06x floor / 11.90x full one-off; run rate 0.090x/month',
+  },
 ];
 
-export const STAFFING = [
-  { role: 'Chief Data Officer (CDO) — Fractional', seniority: 'Executive', engagement: 'Contract (0.2 FTE)', rate: '2,000–3,000/day', duration: '12 months (1 day/wk)', total: '104,000–156,000', source: 'Proxy: Technology Director rates [UNVERIFIED — fractional CDO market is thin]' },
-  { role: 'Data Engineering Lead / Principal', seniority: 'Senior', engagement: 'FTE or 12-mo contract', rate: '160,000–195,000/yr; 1,000–1,245/day', duration: '12 months', total: '192,000–234,000 (loaded)', source: 'Clicks; Morgan McKinley' },
-  { role: 'Senior Data Engineer (x2)', seniority: 'Senior', engagement: 'FTE', rate: '130,000–160,000/yr each', duration: '12 months', total: '312,000–384,000 (loaded, x2)', source: 'Clicks; Hays' },
-  { role: 'Data Architect', seniority: 'Senior', engagement: 'Contract 6 mo then fractional', rate: '155,000–195,000/yr; 1,000–1,200/day', duration: '6 mo full + 6 mo fractional', total: '130,000–175,000', source: 'Robert Half; second source [UNVERIFIED]' },
-  { role: 'BI Developer / Analyst (x2)', seniority: 'Mid-Senior', engagement: 'FTE', rate: '120,000–150,000/yr each', duration: '12 months', total: '288,000–360,000 (loaded, x2)', source: 'SEEK Technical BA proxy; Robert Half [UNVERIFIED]' },
-  { role: 'Data Analyst (x2)', seniority: 'Mid', engagement: 'FTE', rate: '100,000–130,000/yr each', duration: '12 months', total: '240,000–312,000 (loaded, x2)', source: 'SEEK Technical BA proxy; Robert Half [UNVERIFIED]' },
-  { role: 'Marketing Data Analyst', seniority: 'Mid', engagement: 'FTE', rate: '100,000–130,000/yr', duration: '12 months', total: '120,000–156,000 (loaded)', source: 'General analyst proxy [UNVERIFIED]' },
-  { role: 'Data Governance Analyst', seniority: 'Mid', engagement: 'FTE', rate: '100,000–130,000/yr', duration: '12 months', total: '120,000–156,000 (loaded)', source: 'General analyst proxy [UNVERIFIED]' },
-  { role: 'Cloud / DevOps Engineer', seniority: 'Senior', engagement: 'FTE', rate: '150,000–180,000/yr', duration: '12 months', total: '180,000–216,000 (loaded)', source: 'Hays; Robert Half [UNVERIFIED — direct DevOps benchmark not sourced]' },
-  { role: 'Privacy / Compliance Consultant', seniority: 'Specialist', engagement: 'Contract (2 days/wk)', rate: '1,200–2,000/day', duration: '12 months', total: '124,800–208,000', source: 'Consulting/legal rates' },
-  { role: 'Project Manager (Data & Technology)', seniority: 'Senior', engagement: 'FTE or contract', rate: '120,000–150,000/yr', duration: '12 months', total: '144,000–180,000 (loaded)', source: 'Clicks; general PM market' },
-  { role: 'UX/UI Designer (Reporting & Dashboards)', seniority: 'Mid-Senior', engagement: 'Contract 6 mo then fractional', rate: '100,000–135,000/yr; 700–1,000/day', duration: '6 mo full + 6 mo fractional', total: '70,000–105,000', source: 'SEEK; Hays' },
-];
-export const STAFFING_TOTAL = '2,024,800–2,842,000';
-
-export const STAFFING_PHASES = [
-  { stage: 'Verification / Discovery (Months 0–3)', team: 'Fractional CDO, PM, 1 Data Engineer, Privacy Consultant, Legal', cost: '350,000–650,000' },
-  { stage: 'MVP Build (Months 4–12)', team: 'PM, 2 Data Engineers, Architect (fractional), Designer (fractional), Privacy Consultant', cost: '900,000–1,500,000' },
-  { stage: 'Australia Scale (Year 2)', team: 'Add: BI Developer, 2 Data Analysts, Marketing Analyst, Operations, Growth, QA', cost: '1,600,000–2,700,000' },
-  { stage: 'Multi-Country (Year 3)', team: 'Add: Local market operations, dedicated compliance/security, governance', cost: '2,800,000–5,000,000+' },
-];
-
-export const CONSULTING = {
-  strategy: [
-    { service: 'Market entry strategy (Australia deep-dive)', provider: 'Boutique strategy consultancy', cost: '50,000–120,000', duration: '4–8 weeks' },
-    { service: 'Market entry strategy (international corridor)', provider: 'Boutique or Big 4 advisory', cost: '80,000–200,000', duration: '6–12 weeks per market' },
-    { service: 'Brand and go-to-market strategy', provider: 'Specialist marketing consultancy', cost: '40,000–100,000', duration: '4–8 weeks' },
-  ],
-  legal: [
-    { market: 'Australia', scope: 'Entity verification, consumer law, privacy, tax, ABR/ASIC', cost: '35,000–80,000' },
-    { market: 'United Kingdom', scope: 'UK GDPR, consumer law, VAT, performer visas, entity options', cost: '40,000–100,000' },
-    { market: 'United States', scope: 'FTC compliance, state laws, CCPA, tax, immigration, entity', cost: '60,000–150,000' },
-    { market: 'Canada', scope: 'PIPEDA, provincial laws, tax, immigration, entity', cost: '30,000–80,000' },
-    { market: 'European Union', scope: 'GDPR, country-specific consumer/tax law, entity options', cost: '50,000–120,000' },
-  ],
-  advisory: [
-    { service: 'Data strategy and architecture review', provider: 'Big 4 (Deloitte, PwC, KPMG, EY)', cost: '150,000–400,000', duration: '6–10 weeks' },
-    { service: 'Technology due diligence', provider: 'Specialist technology advisory', cost: '50,000–150,000', duration: '4–6 weeks' },
-    { service: 'Privacy impact assessment (multi-jurisdiction)', provider: 'Privacy specialist', cost: '60,000–150,000', duration: '6–10 weeks' },
-  ],
-  totals: { low: '645,000', base: '1,147,500', high: '1,650,000' },
+export const GATE_SCHEDULE_NOTES = {
+  intro:
+    'No cumulative programme total is published: a cumulative total would manufacture a budget for a business state that does not exist (the AU domain is parked, there is zero contracted inventory, and the partnership terms are unwritten). Each gate below is a separate board decision; money committed at one gate buys the information for the next, and nothing is committed past the next gate. Committable today in third-party vendor cash: A$0 — the five professional-services quote requests are free to lodge.',
+  noG3:
+    'There is no G3 on this schedule: a pilot-launch gate can only be drafted from G1’s outputs, and pricing it now would require the very numbers this page records as [UNKNOWN]. The deleted 15-seat team bench (A$2.0–2.8m/yr, whose own envelope failed to sum by A$200,000 against its own rows), the deleted phase cards (A$350K–650K through A$2.8m–5.0m+), the deleted consulting and legal ranges, and the deleted cloud cost bands are out of scope until the gates pass; any post-G2 proposal must be rebuilt line by line from written quotes and published prices, not carried forward from the deleted figures.',
 };
 
-export const DATA_ACQUISITION = {
-  oneTime: [
-    { item: 'IBISWorld industry reports (AU live entertainment)', cat: 'A', purpose: 'Market sizing baseline', cost: '3,000–8,000' },
-    { item: 'Statista annual access', cat: 'A', purpose: 'Cross-market statistics reference', cost: '7,750–15,500' },
-    { item: 'ABS Census custom tabulations', cat: 'B', purpose: 'Diaspora demographic profiling', cost: '0–2,000' },
-    { item: 'UK Census / ONS custom data', cat: 'B', purpose: 'UK diaspora profiling', cost: '0–1,500' },
-  ],
-  oneTimeTotal: '10,750–27,000',
-  annual: [
-    { item: 'Similarweb (Pro plan)', cat: 'C', cost: '15,500–30,000', why: 'Competitor traffic analysis across target markets' },
-    { item: 'SEMrush (Business plan)', cat: 'C', cost: '3,100–6,200', why: 'SEO/SEM intelligence for cultural entertainment keywords' },
-    { item: 'Apollo.io (Professional)', cat: 'D', cost: '1,800–3,600', why: 'B2B promoter and venue prospecting' },
-    { item: 'OpenCage (Medium plan)', cat: 'F', cost: '930–2,800', why: 'Geocoding for venue/audience analytics' },
-    { item: 'Avalara (starter tier)', cat: 'E', cost: '7,750–15,500', why: 'Multi-jurisdiction tax compliance (when scaling)' },
-  ],
-  annualTotal: '29,080–58,100',
-  apis: [
-    { item: 'Google Maps Platform', cat: 'F', cost: '775–3,100', basis: '100k–400k geocoding calls' },
-    { item: 'Census Bureau API', cat: 'B', cost: '0', basis: 'Free with registration' },
-    { item: 'BLS/BEA APIs', cat: 'B', cost: '0', basis: 'Free' },
-    { item: 'Eurostat API', cat: 'B', cost: '0', basis: 'Free' },
-    { item: 'People Data Labs (trial)', cat: 'D', cost: '1,550–4,650', basis: 'Enrichment pilot' },
-  ],
-  apiTotal: '2,325–7,750',
-};
-
-export const CLOUD = {
-  setup: [
-    { item: 'AWS account structure and IAM configuration', cost: '5,000–15,000' },
-    { item: 'Networking (VPC, subnets, security groups)', cost: '3,000–8,000' },
-    { item: 'Logging and monitoring baseline', cost: '2,000–5,000' },
-    { item: 'S3 bucket structure and encryption', cost: '1,000–3,000' },
-    { item: 'Redshift Serverless initial configuration', cost: '2,000–5,000' },
-    { item: 'CI/CD pipeline setup', cost: '3,000–8,000' },
-    { item: 'Security baseline (WAF, Secrets Manager, KMS)', cost: '5,000–12,000' },
-    { item: 'Development and test environment setup', cost: '5,000–10,000' },
-  ],
-  setupTotal: '26,000–66,000',
-  monthlyTiers: [
-    { component: 'Compute (EC2/Lambda/ECS)', t10k: '500–2,000', t100k: '3,000–10,000', t1m: '15,000–50,000' },
-    { component: 'Storage (S3, EBS)', t10k: '200–800', t100k: '1,000–4,000', t1m: '5,000–20,000' },
-    { component: 'Database (RDS/Redshift)', t10k: '500–2,500', t100k: '3,000–15,000', t1m: '15,000–60,000' },
-    { component: 'Data processing (Glue/EMR)', t10k: '300–1,500', t100k: '2,000–8,000', t1m: '10,000–40,000' },
-    { component: 'Networking (CloudFront, ALB, NAT)', t10k: '200–800', t100k: '1,000–5,000', t1m: '5,000–25,000' },
-    { component: 'Monitoring and logging', t10k: '100–500', t100k: '500–2,000', t1m: '2,000–8,000' },
-  ],
-  monthlyTotals: { t10k: '1,800–8,100', t100k: '10,500–44,000', t1m: '52,000–203,000' },
-  annualTotals: { t10k: '21,600–97,200', t100k: '126,000–528,000', t1m: '624,000–2,436,000' },
-};
-
-export const AI_LEDGER = {
-  lines: [
-    { line: 1, desc: 'AI model input tokens (prompt and context)', unit: 'Million tokens', qty: '0.15–0.25', unitCost: '15.50–46.50', total: '2.33–11.63' },
-    { line: 2, desc: 'AI model output tokens (deliverable generation)', unit: 'Million tokens', qty: '0.30–0.50', unitCost: '46.50–93.00', total: '13.95–46.50' },
-    { line: 3, desc: 'Web search and grounding queries', unit: 'Queries', qty: '50–150', unitCost: '0.08–0.31', total: '3.88–46.50' },
-    { line: 4, desc: 'Extended research sessions (deep research mode)', unit: 'Sessions', qty: '3–8', unitCost: '7.75–15.50', total: '23.25–124.00' },
-    { line: 5, desc: 'Human research direction, review and quality assurance', unit: 'Hours', qty: '8–16', unitCost: '150.00–250.00', total: '1,200.00–4,000.00' },
-    { line: 6, desc: 'Platform subscription (pro-rata allocation)', unit: 'Monthly', qty: '0.5–1.0', unitCost: '31.00–310.00', total: '15.50–310.00' },
-  ],
-  subtotal: '1,258.91–4,538.63', gst: '125.89–453.86', total: '1,384.80–4,992.49',
-  invoiceNo: 'ABE-2026-TKT-001', terms: '14 days from date of invoice',
-  limitation: 'Actual platform invoices, token measurements, cache utilisation, search charges, labour timesheets and applicable tax were not provided. This is an estimated cost framework based on publicly available AI platform pricing, not a verified expenditure record.',
-};
-
-export const ROI_MATRIX = {
-  benefits: [2000000, 5000000, 8000000, 12600000, 20000000, 30000000],
-  rows: [
-    { benefit: '2,000,000', lean: '-60%', base: '-84%', accel: '-92%' },
-    { benefit: '5,000,000', lean: '0%', base: '-60%', accel: '-80%' },
-    { benefit: '8,000,000', lean: '60%', base: '-37%', accel: '-68%' },
-    { benefit: '12,600,000', lean: '152%', base: '0%', accel: '-50%' },
-    { benefit: '20,000,000', lean: '300%', base: '59%', accel: '-20%' },
-    { benefit: '30,000,000', lean: '500%', base: '138%', accel: '20%' },
-  ],
-};
-
-export const VOLUME_HURDLES = [
-  { target: 'Recover Lean TCO (5.0m)', tickets: '1,174,000', annual: '391,000' },
-  { target: 'Recover Base TCO (12.6m)', tickets: '2,958,000', annual: '986,000' },
-  { target: 'Recover Accelerated TCO (25.0m)', tickets: '5,869,000', annual: '1,956,000' },
+// Data acquisition — vendor-published prices replacing the deleted estimates
+// (CL-0310 resolved; CL-0311, CL-0315–CL-0319, CL-0321–CL-0325).
+export const VENDOR_PRICES = [
+  {
+    provider: 'IBISWorld — "Musical & Theatre Productions in Australia", single report',
+    deleted: '"3,000–8,000" here; "15,500–46,500" on /data-ecosystem — a ~5x internal contradiction',
+    published: 'AUD $2,500 live AU checkout cart; AU$2,200 on the vendor’s help centre [LIST] — the cart price is used for planning',
+    disposition: 'Recommended G1 buy: A$2,500.00 = 3.01x anchor. The only priced source of AU live-theatre industry structure.',
+  },
+  {
+    provider: 'Statista',
+    deleted: '"annual access 7,750–15,500" — matches no published tier (deleted)',
+    published: 'Starter US$199/mo billed annually = US$2,388/yr; Personal US$649/mo = US$7,788/yr; Professional quote-only [LIST]',
+    disposition:
+      'Starter conditionally in the G2 full tranche at A$3,342.20/yr [DERIVED] — purchase order only against a written gap-list of statistics the free sources failed to supply. Aggregator: every figure must be re-cited to its primary source.',
+  },
+  {
+    provider: 'Semrush',
+    deleted: '"Business plan 3,100–6,200" — no Business plan exists in the live lineup',
+    published: 'SEO US$139 / Starter US$199 / Pro+ US$299 / Advanced US$549 per month [LIST]',
+    disposition: 'One month of SEO at the entry decision: A$194.54 [DERIVED] = 0.23x anchor. Web data decays in months — buy fresh, not backfill.',
+  },
+  {
+    provider: 'Similarweb',
+    deleted: '"Pro plan 15,500–30,000" — no plan named "Pro" exists',
+    published: 'Self-serve US$129–649/mo; Business/Enterprise quote-only [LIST]',
+    disposition: 'Deferred — panel data adds nothing to a market with zero AU operations; revisit post-launch.',
+  },
+  {
+    provider: 'Apollo.io',
+    deleted: '"Professional 1,800–3,600/yr" — top ~2.4x the published annual price',
+    published: 'Professional US$79/seat/mo billed annually = US$948/yr; Free tier 900 credits/seat/yr at US$0 [LIST]',
+    disposition: 'Free tier recommended (A$0) — 900 credits cover the pilot outreach universe. Step up only when free credits are demonstrably exhausted.',
+  },
+  {
+    provider: 'People Data Labs',
+    deleted: '"(trial) 1,550–4,650" — no paid trial band exists at any price',
+    published: 'Free tier US$0/mo (100 records); Pro US$98/mo (US$940/yr annual); then custom [LIST]',
+    disposition: 'Deferred — Apollo Free covers the outreach need.',
+  },
+  {
+    provider: 'OpenCage',
+    deleted: '"Medium plan 930–2,800" — Medium is US$500/mo; the claimed range matches no Medium price',
+    published: 'Medium US$6,000/yr; X-Small US$50/mo = US$600/yr [LIST]',
+    disposition: 'Not required — Google’s free cap covers pilot geocoding volume.',
+  },
+  {
+    provider: 'Google Maps Platform (Geocoding)',
+    deleted: '"775–3,100 for 100k–400k calls" — the floor exceeded even the single-month worst case and ignored the free cap',
+    published:
+      '10,000 requests/month free, then US$5.00/1,000: 100k calls/yr costs US$0 spread evenly, at most ~US$450 in a single-month worst case [LIST]',
+    disposition: 'A$0 at pilot volume, under the ≤10,000 requests/month volume [ASSUMPTION] (confirmer: programme sponsor, against the first month’s metered billing).',
+  },
+  {
+    provider: 'Avalara',
+    deleted: '"starter tier 7,750–15,500" — no starter tier exists; contradicted the site’s own catalogue entry',
+    published: '"Pricing starts at $699" (billing period unstated); suite quote-only [LIST]',
+    disposition: 'Deferred — overweight for a pre-revenue single-market pilot; a written quote (U-05 discipline) before any commitment.',
+  },
+  {
+    provider: 'US Census Bureau API',
+    deleted: 'Free with registration — retained',
+    published: 'A$0 [LIST] — free access demonstrated first-hand (ACS pull, free registration key)',
+    disposition: 'Kept (adjudicated VERIFIED).',
+  },
+  {
+    provider: 'Eurostat API',
+    deleted: 'Free — retained',
+    published: 'A$0 [LIST] — free access demonstrated first-hand (public dissemination API)',
+    disposition: 'Kept (adjudicated VERIFIED).',
+  },
 ];
 
-// One-analyst capacity framing (user requirement) built strictly from D5 benchmarks
-export const ANALYST_FRAMING = {
-  analystSalary: 'AUD 100,000–130,000/yr (Data Analyst, mid level — SEEK Technical BA proxy / Robert Half [UNVERIFIED])',
-  analystLoaded: 'AUD 120,000–156,000/yr loaded (20% on-cost assumption [EST])',
-  consultingRate: 'AUD 150–250/hr (Australian consulting rates, AI research ledger basis)',
-  seniorEngineerLoaded: 'AUD 156,000–192,000/yr loaded (Senior Data Engineer 130,000–160,000 base)',
-  note: 'The Base Programme TCO of AUD 12.62m over three years is equivalent to roughly 81–105 analyst-years at the loaded mid-level analyst benchmark — the correct comparison is capability: the platform substitutes repeatable, governed pipelines for manual analyst effort that a single analyst could not sustain across five markets and 60 data sources.',
+export const VENDOR_PRICES_NOTE =
+  'The deleted tab’s subtotal rows (one-time A$10,750–27,000; subscriptions A$29,080–58,100; usage APIs A$2,325–7,750) summed correctly from their own rows, but a correct sum of unsourced, misattributed and overstated components is still unsupported — all three totals are deleted. The rebuilt day-1 data spend is A$6,036.74 [DERIVED] full / A$2,500.00 [LIST] floor, per the G2 line above. The claimed free status of the BLS/BEA APIs was not demonstrated in this audit (unlike Census and Eurostat) and is deleted rather than asserted.';
+
+// People — what a salary claim survives on (CL-0275/CL-0277/CL-0285 replaced; the rest deleted).
+export const PEOPLE_CORRECTIONS = [
+  {
+    item: 'Data Analyst, base salary',
+    deleted: 'AUD 100,000–130,000/yr',
+    corrected:
+      'Aggregator benchmark — AUD 95,000–115,000/yr (SEEK, employer-disclosed job-ad salaries; not [LIST] under the trust ladder)',
+    standing:
+      'Context only, feeds no funded figure; no fact-tagged salary figure is publishable for this role. The deleted band’s top exceeded every SEEK industry average.',
+  },
+  {
+    item: 'Demonstrated labour rate',
+    deleted: '"Consulting Rate Basis: AUD 150–250/hr" (deleted — fabricated against the receipted rate)',
+    corrected: 'A$60.00/hr [ACTUAL] (A$480.00/day [DERIVED] at 8.0 h)',
+    standing:
+      'The only labour price in evidence; carrying it forward is an [ASSUMPTION] confirmed in writing by the CEO and the incumbent consultant by 2026-09-30.',
+  },
+  {
+    item: 'Day-1 headcount',
+    deleted: '15-seat bench, A$2.0–2.8m/yr (deleted)',
+    corrected: '0.0 FTE permanent; one fractional analyst line per gate (4.0 days at G0, 6.0 days at G1, per the schedule above)',
+    standing: 'Commercial lead and Research lead are named but unassigned — appointments, not numbers.',
+  },
+];
+
+export const PEOPLE_INTRO =
+  'The deleted staffing table carried twelve role bands; not one was supported by a published Australian source at the claimed level. The bands the audit could check against a published page are corrected below; every other role (fractional CDO, Data Engineering Lead, Senior Data Engineer, Data Architect, BI Developer, Marketing Data Analyst, Data Governance Analyst, Cloud/DevOps Engineer, Privacy Consultant, Project Manager, UX/UI Designer) has no published AU band for the exact title and is [UNKNOWN] — not proxied. Rates enter only via the U-05 written-quote round.';
+
+// What this page no longer claims (deletion summary, verbatim from the corrected edition).
+export const REMOVED_SUMMARY = {
+  para1:
+    'Deleted, not softened: the Base three-year TCO, which this page stated two irreconcilable ways (a A$12.62M headline against its own table’s A$12.09m cumulative — a A$529,000 unexplained gap); the Lean A$5.0M and Accelerated A$25.0M scenario envelope, unsourced at both ends; the "Year-0 commitment" of A$1.09M, which was the same A$1,092,000 the page’s own table booked in the Year-1 column; the 986K tickets/yr break-even headline, resting on a contribution chain (A$5.76 − A$1.50 = A$4.26 per ticket) that the model’s own parameters contradicted (they yield A$5.20 − A$2.00 = A$3.20); the entire revenue projection sandbox and its presets; the ROI sensitivity and scenario tables, which carried a third revenue series conflicting with both the sandbox and the market pages; the one-analyst benchmark; the staffing, consulting, legal, data-acquisition and cloud cost tabs; and an AI cost ledger fronted by an invented invoice number for an invoice that does not exist.',
+  para2:
+    'Two verified findings from the original page are retained because they explain the deletions. First, the page’s own reviewer caution — a 5x TCO range is insufficient for capital allocation; narrow to ±30% before committing — was accurate, and the corrected edition enforces it: no unpriced range wider than ±30% appears anywhere on this page. Second, the sandbox’s own slider bounds capped the maximum representable demand at 288,000 tickets/yr — below the 986,000 tickets/yr the same page said were needed each year to recover its Base TCO. The model could not display its own break-even; it has been deleted rather than repaired, because every one of its parameters was an admitted, unverified assumption.',
 };
 
-export const INVESTMENT_SUMMARY_D3 = {
-  rows: [
-    { cat: 'Verification and One-Time Implementation', y1: 1092000, y2: 250000, y3: 200000 },
-    { cat: 'People (loaded)', y1: 1200000, y2: 1850000, y3: 2500000 },
-    { cat: 'Cloud, Data and Technology', y1: 250000, y2: 450000, y3: 750000 },
-    { cat: 'Security, Privacy and Legal', y1: 100000, y2: 160000, y3: 240000 },
-    { cat: 'Market Entry and Pilot Operations', y1: 300000, y2: 650000, y3: 1000000 },
-    { cat: 'Contingency (10–15%)', y1: 294000, y2: 336000, y3: 469000 },
-  ],
-  totals: { y1: 3236000, y2: 3696000, y3: 5159000, cumulative: 12091000 },
-};
+// ROI verdict (financial_rebuild.md §E.2.1, §E.4).
+export const ROI_VERDICT =
+  'An ROI may be published only when its numerator and denominator are built entirely from fact-tagged inputs. Here the numerator inputs — take rate, ATV, event volume, tickets per event, repeat rate and the partnership share — are all [UNKNOWN], and the denominator is only partially fact-tagged (the priced gate components above; professional services [UNKNOWN] pending quotes). Verdict for Australia: ROI not computable — missing: take rate, ATV, event volume, tickets/event, repeat rate (U-03/U-04), partnership share (U-02) and professional-services costs (U-05); gates G0–G2 are the actions that produce them. For the United Kingdom, United States, Canada and the EU the verdict is the same with a harder edge: no gate on the current schedule produces their inputs, and none is scheduled. No blended five-market figure is published. The deleted ROI sensitivity table (−92% to +500%) computed correct percentages from hypothetical benefits and unsourced denominators — arithmetic is not a source.';
+
+// Open items — bordered callouts with owner roles (site_change_specification.md, /investment ADD #1–#5).
+export const INVESTMENT_OPEN_ITEMS = [
+  {
+    ref: 'U-05 / GT-08',
+    title: 'Written PSP, legal, insurance, entity and QSA quotes (U-05 / GT-08, BLOCKING)',
+    unknown:
+      'None exist on file; every professional-services figure previously on this page (for example A$35,000–80,000 due diligence, A$100,000–240,000/yr "Security, Privacy and Legal") was unquoted, and the mandate prohibits proxying legal fees from consultant day rates. What the audit’s own first-hand registry checks already establish for the G0 ownership memorandum (a lookup, not the GT-09 due diligence — which remains unperformed): ABN Lookup shows no entity named "Ticketalay" registered in Australia and no active ABN named exactly "AB Entertainment"; the ticketalay.com.au registrant is ABN 91 819 759 805 — V DESHPANDE & A KADAM, a two-person family partnership t/a A&B ENTERTAINMENTS (VIC 3030), not registered for GST; and the domain’s RDAP status is "server renew prohibited — Not Currently Eligible For Renewal" (status last changed 2026-08-16) — the proof market’s named domain may lapse, a time-critical item on the G0 critical path.',
+    owner: 'CEO / company secretary',
+    action:
+      'Request written quotes — AU law firm (entity + IP due diligence, including resolving the domain-renewal flag and naming the actual legal counterparty), Stripe AU and Adyen AU (merchant onboarding), insurance broker, QSA. Quote requests are free.',
+  },
+  {
+    ref: 'U-07',
+    title: 'Ticketalay first-party data (U-07, BLOCKING)',
+    unknown: 'Schema, ownership, consent state and export rights of the first-party database are all unverified.',
+    owner: 'Ticketalay principal',
+    action:
+      'Provide the database dictionary, a consent-register sample and app-console exports under NDA (nil cost — internal disclosure). Until then, the eighth setup day and all India-ops finance-mart content stay uncommitted.',
+  },
+  {
+    ref: 'U-02 / GT-04',
+    title: 'AB Entertainment ↔ Ticketalay partnership terms (U-02 / GT-04, BLOCKING — first on the critical path)',
+    unknown:
+      'Revenue share, cost share, capital contribution and control. No P&L for either party can be drawn until the terms exist on paper, and modelling any of them on an assumption is prohibited.',
+    owner: 'CEO, AB Entertainment, together with the Ticketalay principal',
+    action: 'Execute a written term sheet or heads of agreement naming the actual legal counterparty, and disclose it to the LT.',
+  },
+  {
+    ref: 'U-03 / GT-06',
+    title: 'Contracted promoter/venue supply (U-03 / GT-06, BLOCKING)',
+    unknown:
+      'Zero named, signed counterparties; zero LOIs. Every ticket-volume figure previously on this page derived from a modelling default, not supply.',
+    owner: 'Commercial lead (role currently unassigned — LT to appoint)',
+    action: 'Secure a minimum of three signed pilot-event agreements or dated LOIs with named promoters/venues.',
+  },
+  {
+    ref: 'U-04 / GT-07',
+    title: 'Primary diaspora demand, fee-tolerance and platform-trust evidence (U-04 / GT-07, BLOCKING)',
+    unknown:
+      'No study exists; take rate, ATV, repeat purchase and conversion are all unevidenced for the actual target audience.',
+    owner: 'Research lead (role currently unassigned)',
+    action:
+      'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (willingness-to-pay, fee tolerance, channel trust); obtain quotes — not priceable without a brief.',
+  },
+];

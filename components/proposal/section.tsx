@@ -66,8 +66,8 @@ export function StatCard({
   className,
 }: {
   label: string;
-  value: string;
-  sub?: string;
+  value: ReactNode;
+  sub?: ReactNode;
   className?: string;
 }) {
   return (

@@ -1,56 +1,75 @@
-// DELIVERABLE 3, Visualisation 1 — revenue projection calculation engine (verbatim).
-export interface ModelParams {
-  cac: number;            // AUD 5–15, step 1
-  atv: number;            // AUD 40–100, step 5
-  takeRate: number;       // 5–15 (%), step 1
-  ticketsPerEvent: number;// 200–800, step 50
-  events: [number, number, number]; // per-year events, 12–360, step 12
-}
+// The revenue model — the honest identity, publishing no output number.
+// Corrected per the adversarial audit: the interactive revenue projection sandbox, its
+// presets and every model output were deleted (CL-0250–CL-0254, CL-0256–CL-0262,
+// CL-0356–CL-0365, CL-0367); the data-confidence disclosure was retained (CL-0255,
+// VERIFIED) and is now acted on. Source: artifacts/financial_rebuild.md §E.2.2, §E.3.
 
-export const NEW_BUYER_SHARE = [0.35, 0.3, 0.25];
-export const FIXED_COST = [500000, 700000, 900000];
-export const TX_RATE = 0.02;
-
-export interface YearResult {
-  year: string; gtv: number; revenue: number; txCost: number; acqCost: number; fixedCost: number; operatingResult: number; tickets: number;
-}
-
-export function computeModel(p: ModelParams): YearResult[] {
-  return [0, 1, 2].map((i) => {
-    const events = p?.events?.[i] ?? 0;
-    const tickets = events * (p?.ticketsPerEvent ?? 0);
-    const gtv = tickets * (p?.atv ?? 0);
-    const revenue = gtv * ((p?.takeRate ?? 0) / 100);
-    const txCost = gtv * TX_RATE;
-    const acqCost = tickets * (NEW_BUYER_SHARE?.[i] ?? 0) * (p?.cac ?? 0);
-    const fixedCost = FIXED_COST?.[i] ?? 0;
-    return { year: `Year ${i + 1}`, gtv, revenue, txCost, acqCost, fixedCost, operatingResult: revenue - txCost - acqCost - fixedCost, tickets };
-  });
-}
-
-// Scenario presets derived from D4 revenue projection tables (Australia)
-export const PRESETS: { name: string; params: ModelParams; note: string }[] = [
-  { name: 'Conservative', params: { cac: 10, atv: 60, takeRate: 8, ticketsPerEvent: 300, events: [24, 48, 72] }, note: 'D4 conservative: 8% take rate, ATV 60, 24→72 events' },
-  { name: 'Base', params: { cac: 8, atv: 65, takeRate: 10, ticketsPerEvent: 400, events: [48, 96, 180] }, note: 'D4 base: 10% take rate, ATV 65, 48→180 events' },
-  { name: 'Optimistic', params: { cac: 6, atv: 70, takeRate: 12, ticketsPerEvent: 500, events: [72, 180, 360] }, note: 'D4 optimistic: 12% take rate, ATV 70, 72→360 events' },
-];
-
-export const D3_CHART_SERIES = {
-  years: ['Year 1', 'Year 2', 'Year 3'],
-  conservative: [34560, 83328, 149760],
-  base: [124800, 293760, 648000],
-  optimistic: [302400, 972000, 2419200],
-  breakEven: 900000,
+export const REVENUE_IDENTITY = {
+  intro:
+    'The deleted sandbox’s own data-confidence note said it plainly: every parameter in the model was an assumption, and no take rate, CAC, ATV or repeat-purchase figure had been verified against first-party data. That disclosure was accurate (adjudicated VERIFIED) and is now acted on rather than displayed beside the outputs it disclaimed. The only publishable revenue statement for Australia is the arithmetic identity itself:',
+  formulaGross: 'Gross AU pilot revenue / yr = E × T × ATV × f',
+  formulaShare: 'Ticketalay’s share of that gross = the above × s',
+  outro:
+    'No output number is published — every right-hand variable is [UNKNOWN], so any product of them would be fabrication. When U-02, U-03 and U-04 have each delivered, every variable graduates to a fact tag and the identity becomes computable per event and per gate — never as a cumulative hero number.',
 };
 
-export const ROI_SCENARIOS = [
-  { scenario: 'Conservative', tco: '4,500,000–6,500,000', revenue: '267,648', result: '(1,510,104)', roi: 'Negative' },
-  { scenario: 'Base', tco: '10,000,000–13,000,000', revenue: '1,066,560', result: '(1,526,232)', roi: 'Negative' },
-  { scenario: 'Optimistic', tco: '18,000,000–28,000,000', revenue: '3,693,600', result: '(361,600) cumulative; Year 3 positive at 364,000', roi: 'Approaching break-even' },
+export interface IdentityVariable {
+  symbol: string;
+  meaning: string;
+  tag: string;
+  confirms: string;
+  when: string;
+}
+
+export const IDENTITY_VARIABLES: IdentityVariable[] = [
+  {
+    symbol: 'E',
+    meaning: 'Events per year',
+    tag: '[UNKNOWN]',
+    confirms:
+      'Commercial lead (role currently unassigned — LT to appoint) via U-03: ≥3 signed, dated pilot-event agreements or LOIs. E is then the contracted count, not a target. The deleted "48 events Year 1" was a slider default, not supply.',
+    when: 'Gate G1',
+  },
+  {
+    symbol: 'T',
+    meaning: 'Tickets per event (contracted capacity × evidenced sell-through)',
+    tag: '[UNKNOWN]',
+    confirms: 'Commercial lead via U-03 (capacity) + Research lead via U-04 (sell-through evidence)',
+    when: 'Gate G1',
+  },
+  {
+    symbol: 'ATV',
+    meaning: 'Average transaction value, AUD',
+    tag: '[UNKNOWN]',
+    confirms:
+      'Research lead via the U-04 willingness-to-pay study. The India INR ATV (gated by U-07) may serve only as a labelled India-only operational benchmark — never as AU demand evidence.',
+    when: 'Gate G1; U-07 disclosure due 2026-09-30',
+  },
+  {
+    symbol: 'f',
+    meaning: 'Platform take rate',
+    tag: '[UNKNOWN]',
+    confirms:
+      'Research lead via the U-04 fee-tolerance study. The 8–12% figure in the monetisation table is a stated target, not evidence. Audited ticketing-major filings are admissible only as a take-rate sanity benchmark, so labelled.',
+    when: 'Gate G1',
+  },
+  {
+    symbol: 's',
+    meaning: 'Ticketalay’s share of gross (partnership split)',
+    tag: '[UNKNOWN] — BLOCKING',
+    confirms:
+      'CEO, AB Entertainment + Ticketalay principal: executed written term sheet, disclosed to the LT. Not modelled at any value.',
+    when: 'Gate G0 — before any revenue modelling',
+  },
+  {
+    symbol: 'Repeat rate (multi-year only)',
+    meaning: 'Share of buyers purchasing again in year 2+',
+    tag: '[UNKNOWN]',
+    confirms: 'Research lead via U-04; later validated against pilot transaction data',
+    when: 'Gate G1 (study); post-pilot (actuals)',
+  },
 ];
 
-export const BREAK_EVEN = {
-  contributionPerTicket: 5.76, acquisitionBurden: 1.5, netContribution: 4.26,
-  breakEvenTickets: 211268, equivalentEvents: 423,
-  assessment: 'The base Year 3 break-even threshold (211,268 tickets) is more than twice the modelled 90,000 tickets. Break-even within three years requires either the optimistic scenario or material improvements in take rate, repeat purchasing or fixed-cost management.',
-};
+// The retained (VERIFIED) data-confidence disclosure from the deleted sandbox (CL-0255).
+export const DATA_CONFIDENCE_NOTE =
+  'Data-confidence note (retained from the deleted model, adjudicated VERIFIED): every parameter in that model was an assumption from the research package — no take rate, CAC, ATV or repeat-purchase figure has been verified against first-party data.';
