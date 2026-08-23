@@ -259,7 +259,9 @@ export default function ExecutiveSummaryContent() {
               <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground">
                 <TagText text={r.detail} />
               </p>
-              <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{r.provenance}</p>
+              <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">
+                <TagText text={r.provenance} />
+              </p>
             </GlassCard>
           ))}
         </div>
