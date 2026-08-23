@@ -56,12 +56,15 @@ export default function MarketOpportunityContent() {
           vendor- or source-published figures, resolved or restructured in place; 38 of this route’s 63 claims were
           defective). Every monetary figure below
           carries the provenance tag it has actually earned — <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
-          <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — with one labelled
-          exception: a trade federation’s own commissioned market-size estimate can never earn{' '}
-          <Tag tag="LIST" />, which means a vendor-published price, so the UK live-music spend figure carries
-          the explicit provenance label <strong>Trade-body estimate</strong> instead — market context only,
-          feeding no headline tier and no funded figure (the same mechanism the Investment page applies to an
-          aggregator salary band). Non-monetary official
+          <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — and this page declares no
+          labelled exception of its own. Until the closure pass (F-04) it declared one: the UK live-music
+          spend figure was published under the label <strong>Trade-body estimate</strong>, on the reasoning
+          that a trade federation’s own commissioned market-size estimate can never earn <Tag tag="LIST" />,
+          which means a vendor-published price. That reasoning holds; minting a label to carry the figure
+          anyway did not, since the label belongs to no sanctioned marker set. The figure is therefore
+          withdrawn rather than re-labelled, and UK live-music market size is published as{' '}
+          <Tag tag="UNKNOWN" />. Nothing downstream moves: it fed no headline tier and no funded figure.
+          Non-monetary official
           statistics carry their source lines, untagged, per the site-wide convention. The corridor projection
           tables, the lump-sum investment options and the segment size and CLV columns are deleted rather than
           re-estimated. FX: RBA, 21 Aug 2026.

@@ -93,12 +93,16 @@ export default function DataEcosystemContent() {
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
         estimate 6. Every monetary
         figure that survives carries a provenance tag — <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" />{' '}
-        <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — with one declared labelled exception: a
-        third party&apos;s audited-filing figure (Live Nation&apos;s fee-bearing GTV, below) is none of the six
-        cost-provenance categories — it is neither incurred, listed, quoted, derived, assumed nor unknown for this
-        programme — so it carries the explicit provenance label{' '}
-        <span className="font-semibold text-foreground/80">Audited filing</span> instead: benchmark only, feeding no
-        funded figure, never a cost comparator. Every unpublished price bracket has been deleted, not softened. Filter
+        <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="OFFICIAL" /> <Tag tag="UNKNOWN" /> — and this page now
+        declares no labelled exception of its own. A third party&apos;s audited-filing figure (Live Nation&apos;s
+        fee-bearing GTV, below) is none of the cost-provenance categories — it is neither incurred, listed, quoted,
+        derived nor assumed for this programme — but it is a statutory filed record, so it carries{' '}
+        <Tag tag="OFFICIAL" />: benchmark only, feeding no funded figure, never a cost comparator. Until the closure
+        pass (F-04) it carried the label <span className="font-semibold text-foreground/80">Audited filing</span>{' '}
+        instead — a marker this audit invented for itself and never had authority to mint. The marker records how a
+        figure enters this ledger and does not restate its trust tier: the source stays at{' '}
+        <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
+        official statistic. Every unpublished price bracket has been deleted, not softened. Filter
         by category, payment model, indicative cost and recommendation strength.
       </p>
 
@@ -290,7 +294,7 @@ export default function DataEcosystemContent() {
           <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file (GT-08). Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is this audit's arithmetic, not a vendor-published price). The mandate's ground-truth baseline for Statista — GT D5-[16], “Statista Personal: A$922/yr” — is NOT carried: verify/statista-reaudit.md grades it NOT FOUND, no tier at or near A$922/yr appearing on the published page in any currency, the cheapest paid tier being Starter at US$199/mo. Unlike the IBISWorld variance, the two are not competing vendor-published prices, so no dual-baseline restatement is possible — the published figure stands and the GT entry is recorded as unverifiable against its primary source." />
+          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is this audit's arithmetic, not a vendor-published price). For the Personal tier the catalogue row above carries two figures side by side: the mandate's ground-truth register records A$922/yr [LIST] for Statista Personal (GT D5-[16]), and the vendor's published page shows that same tier at US$649/mo billed annually [LIST]. Both stand as published and neither is graded here — the register is the operative baseline, its D5 source line sits in the corpus that is not on this machine, and reconciling the two is an open item under U-01, owned by the programme sponsor. Nothing funded rests on it: P2 buys Starter, not Personal. (Closure pass, F-03: this page previously recorded the GT entry as “NOT carried … unverifiable against its primary source”. No live page adjudicates a ground-truth entry.)" />
         </p>
       </Section>
 
