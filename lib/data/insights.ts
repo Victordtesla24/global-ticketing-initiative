@@ -1,85 +1,131 @@
-// DELIVERABLE 3 — insights, data ROI, map callouts, marketing data plan, strategic options.
-export const INSIGHTS = [
-  { n: 1, category: 'First-Party Transactions', insight: 'Order-to-payment reconciliation identifies settlement discrepancies', impact: 'Potential recovery of 1–3% of GTV through accurate reconciliation [EST]', basis: 'Industry benchmark for payment reconciliation accuracy' },
-  { n: 2, category: 'Customer Segmentation', insight: 'Consent-based audience segmentation enables targeted campaigns', impact: '15–25% improvement in campaign conversion rates [EST]', basis: 'Digital marketing benchmarks: segmented vs unsegmented campaigns' },
-  { n: 3, category: 'Market Intelligence', insight: 'Cultural participation data by country enables evidence-based market prioritisation', impact: 'Avoids AUD 500,000–2,000,000 in misdirected market-entry investment [EST]', basis: 'Estimated entry costs per market from research TCO model' },
-  { n: 4, category: 'Competitive Benchmarking', insight: 'Live Nation/StubHub financial data provides realistic pricing and take-rate benchmarks', impact: '1% take-rate improvement on base Year 3 GTV = AUD 64,800 additional revenue [EST]', basis: 'Calculated from base scenario: AUD 6.48m GTV × 1%' },
-  { n: 5, category: 'Regulatory Compliance', insight: 'FTC all-in pricing rule compliance prevents enforcement action', impact: 'Avoids potential FTC penalties and reputational damage in US market', basis: 'FTC rule effective 12 May 2025' },
-  { n: 6, category: 'Geospatial Analytics', insight: 'Venue-audience proximity analysis optimises event placement', impact: '10–20% improvement in sell-through rates for optimally placed events [EST]', basis: 'Event industry venue-matching benchmarks' },
+// DELIVERABLE 3 — insights, map callouts, marketing data plan, strategic options.
+// Corrected per the adversarial audit (workflow/register_by_route/data-ecosystem.json and
+// market-opportunity.json; artifacts/site_change_specification.md). The estimate tag is
+// abolished; every surviving figure carries [ACTUAL]/[LIST]/[QUOTE]/[DERIVED]/[ASSUMPTION]/
+// [UNKNOWN]. The six unsupported insight-value quantifications (settlement-recovery share of
+// GTV, campaign-conversion uplift, avoided market-entry spend, take-rate sensitivity figure,
+// sell-through uplift and the consented-audience growth path) are removed: each is now either
+// the corrected statement from the audit's rebuilt page or an open item with a named owner.
+
+// "What the data buys" — only what honestly survives (CL-0168 VERIFIED; CL-0129/CL-0130
+// audited-filing benchmarks). The original page's quantified value chart and four of its six
+// benefit quantifications were deleted: each carried the abolished estimate tag and a basis
+// line that named no identifiable source (CL-0163–CL-0166, CL-0169); the take-rate tile was
+// deleted because the programme carried two contradictory base-GTV values for one metric
+// (CL-0167, INTERNALLY-INCONSISTENT).
+export const INSIGHTS_KEPT = [
+  {
+    n: 1,
+    category: 'Regulatory Compliance — kept',
+    insight: 'FTC all-in pricing rule compliance prevents enforcement action',
+    impact: 'The FTC Rule on Unfair or Deceptive Fees, effective 12 May 2025, applies to live-event ticketing; compliance prevents enforcement action under the rule, and the regulatory materials are free. The cost of complying is a legal-advice question — unquoted (U-05).',
+    basis: 'ftc.gov — rule effective 12 May 2025 (verified first-hand 2026-08-23); adjudicated VERIFIED (CL-0168)',
+  },
+  {
+    n: 2,
+    category: 'Competitive Benchmarking — kept, qualitative only',
+    insight: 'Audited take-rate benchmarks, free',
+    impact: "Live Nation's FY2025 10-K (audited filing) reports 346 million fee-bearing tickets on US$37.1 billion of fee-bearing GTV — a sanity bound on per-ticket fee economics at gate G1. Benchmark use only: audited filings may never serve as cost comparators for an A$830 entity, and no revenue figure for this programme may be derived from them.",
+    basis: 'Live Nation 10-K FY2025, SEC EDGAR (verify/us-stats.md)',
+  },
 ];
 
-export const DATA_ROI = [
-  { category: 'First-party data (internal)', costMin: 0, costMax: 0, valueMin: 150000, valueMax: 400000, roi: 'Foundational' },
-  { category: 'Public statistics', costMin: 0, costMax: 0, valueMin: 50000, valueMax: 200000, roi: 'High' },
-  { category: 'Competitive intelligence', costMin: 15000, costMax: 45000, valueMin: 30000, valueMax: 120000, roi: 'Moderate' },
-  { category: 'B2B enrichment', costMin: 10000, costMax: 40000, valueMin: 20000, valueMax: 80000, roi: 'Moderate' },
-  { category: 'Geospatial', costMin: 2000, costMax: 10000, valueMin: 10000, valueMax: 50000, roi: 'High' },
-  { category: 'Tax/compliance', costMin: 15000, costMax: 45000, valueMin: 25000, valueMax: 100000, roi: 'High (cost avoidance)' },
+// Open items replacing the deleted benefit quantifications — bordered callouts with owners.
+export const INSIGHT_OPEN_ITEMS = [
+  {
+    ref: 'U-04',
+    title: 'Primary diaspora demand, fee-tolerance and platform-trust evidence (U-04, BLOCKING)',
+    unknown: 'No primary study of the actual target audience exists, so every campaign-conversion, segmentation-uplift and sell-through benefit previously claimed here is unevidenced.',
+    owner: 'Research lead (role currently unassigned — LT to appoint)',
+    action: 'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (willingness-to-pay, fee tolerance, channel trust); obtain quotes — not priceable without a brief (GT-08).',
+  },
+  {
+    ref: 'U-07',
+    title: 'Payment reconciliation and segmentation on first-party data (U-07, BLOCKING)',
+    unknown: "Order-to-payment reconciliation and consent-based segmentation were claimed as benefits, but the first-party database's schema, ownership, consent state and export rights have never been inspected — no recovery or uplift rate can be stated, and no benchmark for either is on file.",
+    owner: 'Ticketalay principal',
+    action: 'Complete the U-07 disclosure (database dictionary, consent-register sample, app-console exports under NDA); reconciliation and segmentation value can only be measured, not estimated, after it.',
+  },
 ];
+
+// Open item for the catalogue itself (site_change_specification.md, /data-ecosystem ADD #1).
+export const FIRST_PARTY_OPEN_ITEM = {
+  ref: 'U-07',
+  title: 'Ticketalay first-party data (U-07, BLOCKING)',
+  unknown: 'Schema, ownership, consent state and export rights of the first-party database — the stated "non-negotiable foundation" of this entire data programme — have never been inspected.',
+  owner: 'Ticketalay principal',
+  action: 'Provide the database dictionary, a consent-register sample and app-console exports under NDA. Cost to obtain: nil — internal disclosure.',
+};
 
 export const MAP_CALLOUTS = [
   { title: 'Australian Demand', body: '64% of Australian adults attended at least one cultural venue or event in 2021–22, with 82.4% in 2017–18 as the pre-pandemic benchmark. Greater-capital-city residents attend at higher rates — the exact geographies where diaspora audiences concentrate.', source: 'ABS [18][20]' },
-  { title: 'UK Live Entertainment Scale', body: 'UK consumer spending on live music reached GBP 6.7 billion in 2024 (approximately AUD 13.4 billion [EST]), up 9.5% year-on-year, with 91% of adults in England engaging with the arts in 2024/25.', source: 'UK Government / DCMS [30][104]' },
+  { title: 'UK Live Entertainment Scale', body: 'UK consumer spending on live music reached GBP 6.68 billion in 2024 [LIST], up 9.5% year-on-year — the figure is from LIVE (the trade body) Annual Report & Economic Highlights 2024, not a government statistic; at the RBA rate of 1.9106 the AUD equivalent is approximately 12.8 billion [DERIVED]. 91% of adults in England engaged with the arts in 2024/25 (DCMS Participation Survey).', source: 'LIVE Annual Report 2024 (trade body) / DCMS [30][104]' },
   { title: 'Global Diaspora Context', body: '304 million international migrants were recorded globally in 2024 — the structural driver of demand for culturally specific live entertainment across all five target markets.', source: 'UN DESA [15]' },
 ];
 
-// What data was asked for, what is required, how to acquire it, and the marketing/business outcome it drives.
-// All figures from D1 (provider catalogue), D5 (costing) and the research insight benchmarks above.
+// What data was asked for, what is required, how to acquire it, and the marketing/business
+// outcome it drives — corrected per the audit: every priced figure below has been checked
+// against the vendor's own published pricing page; every outcome figure has been checked
+// against the underlying evidence (site/routes/market-opportunity.html, corrected edition).
 export const MARKETING_DATA_PLAN = [
   {
     pillar: 'Audience & Demographic Data',
     required: 'Census ancestry and language tabulations, migration statistics and cultural participation rates for each target market and city',
-    acquire: 'ABS Census custom tabulations (AUD 0–2,000), UK ONS custom data (AUD 0–1,500), US Census Bureau and Eurostat APIs (free)',
-    outcome: 'Precise geo-targeted campaign planning by city and suburb; avoids AUD 500,000–2,000,000 in misdirected market-entry spend [EST]',
+    acquire: 'US Census Bureau and Eurostat APIs (free) [ACTUAL]. ABS custom-tabulation and UK ONS custom-data pricing could not be verified from any source on file and has been removed.',
+    outcome: 'Precise geo-targeted campaign planning by city and suburb (qualitative; not costed). The original estimate that this avoids AUD 500,000–2,000,000 in misdirected market-entry spend had no study or source and has been removed.',
   },
   {
     pillar: 'First-Party Transaction & Consent Data',
     required: 'Order-to-payment reconciliation, CRM records, marketing consent register and repeat-purchase history from the existing platform',
-    acquire: 'Internal exports secured in the first 30 days of the programme — no acquisition cost; ownership and access rights must be demonstrated',
-    outcome: 'Consented reachable audience grown from 5,000 to 40,000 [EST]; segmented campaigns lift conversion 15–25% [EST]; reconciliation recovers 1–3% of GTV [EST]',
+    acquire: 'OPEN ITEM — first-party data readiness (U-07): whether Ticketalay\'s transaction, CRM and consent data can be accessed at all — and at what quality, size and consent status — is unknown. Owner: Ticketalay principal. Action: provide a database dictionary, consent-register sample and app-console exports under NDA.',
+    outcome: 'The original claims — a consented audience grown from 5,000 to 40,000, segmented campaigns lifting conversion 15–25%, reconciliation recovering 1–3% of GTV — had no source and have been removed. Reconciliation and segmentation value can only be measured after the U-07 disclosure, not estimated.',
   },
   {
     pillar: 'Competitive & Channel Intelligence',
     required: 'Competitor web traffic, app engagement, keyword pricing and take-rate benchmarks across the five markets',
-    acquire: 'Similarweb Pro (AUD 15,500–30,000/yr) and SEMrush Business (AUD 3,100–6,200/yr), trialled before contract in days 61–90',
-    outcome: 'Evidence-based channel selection and pricing: each 1% take-rate improvement adds AUD 64,800 of Year-3 revenue [EST]',
+    acquire: 'Similarweb self-serve tiers, USD 1,548–7,788/yr [LIST]; Semrush, annual billing, USD ~1,408–5,468/yr [LIST]. The original page named vendor plans with specific AUD prices — neither plan exists on either vendor\'s current price list.',
+    outcome: 'OPEN ITEM — revenue sensitivity to take-rate or channel-pricing improvements cannot be computed (U-04): the original claim that each 1% take-rate improvement adds AUD 64,800 of Year-3 revenue conflicted with a second, different Year-3 GTV used elsewhere on this proposal, and both depend on a platform take rate the rebuilt financials mark [UNKNOWN] — no primary study of fee tolerance exists. Owner: Research lead (currently unassigned).',
   },
   {
     pillar: 'Geospatial & Venue Data',
     required: 'Geocoded venue locations, audience proximity and catchment analysis for event placement and local media buying',
-    acquire: 'Google Maps Platform (AUD 775–3,100/yr) and OpenCage geocoding (AUD 930–2,800/yr)',
-    outcome: '10–20% improvement in sell-through for optimally placed events [EST]; localised campaign targeting around confirmed venues',
+    acquire: 'Google Maps geocoding at 100,000 calls/yr: USD 0–450/yr [LIST] — within Google\'s free monthly cap, which the original AUD 775 floor ignored. OpenCage: USD 600/yr (X-Small tier) [LIST] is sufficient for this workload.',
+    outcome: 'Localised campaign targeting around venues, once venues are under contract — none are contracted at time of writing. The original claim of a 10–20% improvement in sell-through for optimally placed events had no study or source and has been removed.',
   },
   {
     pillar: 'Partner & B2B Enrichment Data',
     required: 'Verified contact and firmographic data for promoters, producers, venues and cultural associations',
-    acquire: 'Apollo.io Professional (AUD 1,800–3,600/yr) and a People Data Labs enrichment pilot (AUD 1,550–4,650)',
-    outcome: 'Qualified pipeline of 50–200 organiser targets and 20–100 venues [EST] — the inventory that every consumer campaign depends on',
+    acquire: 'Apollo.io Professional: USD 948/yr [LIST] ≈ A$1,326.80 [DERIVED] (948 ÷ 0.7145, RBA rate 21 Aug 2026); People Data Labs Pro: USD 940/yr annual [LIST]. The AUD bands the original page quoted appear on neither vendor\'s pricing page.',
+    outcome: 'OPEN ITEM — zero promoters, producers or venues are named or signed at time of writing (U-03): the original claim of a qualified pipeline of organiser targets and venues named no counterparty and has been removed. Owner: Commercial lead (currently unassigned — LT to appoint). Action: secure a minimum of three signed pilot-event agreements or dated LOIs.',
   },
   {
     pillar: 'Regulatory & Compliance Data',
     required: 'All-in pricing rules, privacy and consent obligations, and tax treatment for each jurisdiction in which campaigns run',
-    acquire: 'Free regulator and government sources initially; Avalara starter tier (AUD 7,750–15,500/yr) when scaling',
-    outcome: 'Campaigns compliant in five jurisdictions from day one; avoids FTC all-in pricing enforcement exposure in the US market',
+    acquire: 'Free regulator and government sources initially. Avalara\'s Tax Calculation and Returns Compliance Package is priced from USD 699 (billing period not stated on the vendor\'s page) [LIST]; the full compliance suite is quote-only [UNKNOWN]. The original starter-tier bracket appears on no Avalara page and contradicted a different Avalara figure elsewhere in this proposal — both resolved to the vendor\'s own published price.',
+    outcome: 'Compliance posture in each jurisdiction has not yet been assessed by counsel; the original claim of being "compliant in five jurisdictions from day one" was an unearned certainty claim and has been removed. The one confirmed regulatory fact: the FTC\'s all-in pricing rule took effect 12 May 2025.',
   },
 ];
 
 // Strategic options assessed against the risk register, with a single recommendation.
+// Corrected per CL-0083–CL-0090: the unsourced lump-sum figures and their derivatives are
+// removed; Option B carries the gated schedule from the rebuilt financials (financial_rebuild.md
+// §E.4), where every dollar is either priced or explicitly [UNKNOWN] and no cumulative total
+// is published.
 export const STRATEGIC_OPTIONS = [
   {
     key: 'A',
     name: 'Accelerated Multi-Market Launch',
-    investment: 'AUD 25.0m over three years [EST]',
+    investment: 'Figure removed — the original three-year lump sum had no cost build-up or source anywhere in the evidence (≈30,000× the receipted programme spend of AUD 830 [ACTUAL], GT-13)',
     detail: 'Simultaneous entry into all five markets with a larger team, premium data contracts and higher event operations.',
-    assessment: 'Fastest route to scale, but requires 5.87 million tickets to recover cost [EST] and multiplies entity, compliance and acquisition-cost risks across five jurisdictions at once.',
+    assessment: 'Fastest route to scale on paper, but the lump-sum figure and its tickets-to-recover-cost companion were computed from an unsourced input and have been removed; multiplies entity, compliance and acquisition-cost risks across five jurisdictions at once.',
     recommended: false,
   },
   {
     key: 'B',
     name: 'Staged, Data-Led Expansion — Australia First',
-    investment: 'AUD 5.0m–12.6m, released in gated stages [EST]',
+    investment: 'Gated stages, each priced or explicitly [UNKNOWN] — no cumulative total is published: G0 A$1,920.00 [DERIVED]; G1 A$2,880.00 [DERIVED] + study and legal fees [UNKNOWN]; G2 A$5,860.00 or A$9,876.74 [DERIVED]',
     detail: 'Prove the Australian market with contracted inventory and the marketing data programme, then extend through partner-led corridors to the UK, US, Canada and the EU as gates are passed.',
-    assessment: 'Aligns capital with evidence: each stage is funded only when the prior gate — entity, data feasibility, pilot contribution — is met. Contains the top five register risks while preserving the full five-market ambition.',
+    assessment: 'Aligns capital with evidence: each stage is funded only when the prior gate — entity, data feasibility, pilot contribution — is met. The original claim that this option "contains the top five register risks" had no demonstrated mapping to the risk register and has been removed. ROI is not computable at any gate until partnership terms (U-02), contracted supply (U-03) and the primary demand study (U-04) exist.',
     recommended: true,
   },
   {
@@ -87,7 +133,7 @@ export const STRATEGIC_OPTIONS = [
     name: 'Defer International Investment',
     investment: 'No new capital committed',
     detail: 'Maintain the existing India-focused operation and revisit expansion at a later date.',
-    assessment: 'Eliminates near-term capital risk but forfeits first-mover position in an unconsolidated niche while competitors such as DICE and Fever expand into culturally specific programming.',
+    assessment: 'Eliminates near-term capital risk. The original claim that deferral forfeits first-mover position while named competitors expand into culturally specific programming had no source located in any verification pack and has been removed.',
     recommended: false,
   },
 ];
