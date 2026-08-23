@@ -1,33 +1,18 @@
 'use client';
 
-import { useState } from 'react';
-import { Layers, Database, TrendingUp, ShieldCheck, Timer, Globe, AlertTriangle } from 'lucide-react';
+import { Database, TrendingUp, ShieldCheck, Timer, Globe, AlertTriangle } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, DataTable, StatCard } from '@/components/proposal/section';
 import { TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import ArchitectureDiagram from '@/components/proposal/architecture-diagram';
+import ArchitectureGraph from '@/components/proposal/architecture-graph';
 import {
   ARCH_LEDE, ARCH_RECONCILIATION,
-  ARCH_LAYERS, DATA_MARTS, SCALABILITY, SCALABILITY_OPEN_ITEM,
+  DATA_MARTS, SCALABILITY, SCALABILITY_OPEN_ITEM,
   TECH_COMPARISON, TECH_COMPARISON_NOTE, APPROVAL_GATES, APPROVAL_GATES_NOTE,
-  RETENTION, TRANSFER_ROUTES, TRANSFER_ROUTES_NOTE, type ArchLayer,
+  RETENTION, TRANSFER_ROUTES, TRANSFER_ROUTES_NOTE,
 } from '@/lib/data/architecture';
 
-const LAYER_TINTS: Record<string, string> = {
-  sources: 'border-border/70',
-  ingestion: 'border-primary/40',
-  landing: 'border-slate-400/40',
-  bronze: 'border-orange-700/50',
-  silver: 'border-slate-300/40',
-  gold: 'border-primary/70',
-  marts: 'border-primary/40',
-  consumption: 'border-emerald-500/40',
-};
-
 export default function ArchitectureContent() {
-  const [selected, setSelected] = useState<string>('gold');
-  const layer: ArchLayer | undefined = (ARCH_LAYERS ?? []).find((l: ArchLayer) => l?.id === selected);
-
   return (
     <div>
       <p className="t-eyebrow mb-3">Section 04</p>
@@ -49,64 +34,27 @@ export default function ArchitectureContent() {
         </p>
       </GlassCard>
 
-      <Section eyebrow="End-to-End Architecture" title="From Source Systems to Marketing Activation" className="mt-10">
-        <GlassCard className="p-2 md:p-4">
-          <ArchitectureDiagram />
+      <Section
+        eyebrow="Interactive · End-to-End Architecture"
+        title="From Source Systems to Marketing Activation"
+        className="mt-10"
+      >
+        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+          Every box below is a working part of the design, and every one of them opens: what it is in one plain
+          sentence, what happens to the data there, the sample file or dashboard on the prototype page that stands
+          behind it, how that layer is charged, and what can go wrong there. Use{' '}
+          <span className="font-semibold text-primary">Follow one ticket</span> to watch a single sample transaction
+          travel the whole path.
+        </p>
+        <GlassCard className="p-3 md:p-5">
+          <ArchitectureGraph />
         </GlassCard>
         <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
-          Per the reconciliation above, this is the post-trigger target design, not the committed MVP build.
+          Per the reconciliation above, this is the post-trigger target design, not the committed MVP build. No cost
+          line is published for any individual layer: none could cite a unit rate or a workload basis, so each node
+          names the basis on which that layer is charged and points back to the one costed stack — the committed MVP
+          bill of materials at the top of this page.
         </p>
-      </Section>
-
-      <Section eyebrow="Interactive" title="The Medallion Stack — Click a Layer">
-        <div className="grid gap-4 lg:grid-cols-5">
-          <div className="flex flex-col gap-2 lg:col-span-2">
-            {(ARCH_LAYERS ?? []).map((l: ArchLayer) => (
-              <button
-                key={l?.id}
-                type="button"
-                onClick={() => setSelected(l?.id ?? '')}
-                className={`glass-card rounded-lg border px-4 py-3 text-left transition-all ${LAYER_TINTS[l?.id ?? ''] ?? 'border-border'} ${
-                  selected === l?.id ? 'bg-primary/15 ring-1 ring-primary/50' : 'hover:bg-secondary/40'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <p className="font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-foreground">{l?.name}</p>
-                  {l?.medallion ? (
-                    <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${
-                      l.medallion === 'gold' ? 'bg-primary/25 text-primary' : l.medallion === 'silver' ? 'bg-slate-400/20 text-slate-300' : l.medallion === 'bronze' ? 'bg-orange-700/25 text-orange-400' : 'bg-secondary text-muted-foreground'
-                    }`}>{l.medallion}</span>
-                  ) : null}
-                </div>
-              </button>
-            ))}
-          </div>
-          <GlassCard className="lg:col-span-3">
-            {layer ? (
-              <div>
-                <div className="mb-3 flex items-center gap-2">
-                  <Layers className="h-5 w-5 text-primary" />
-                  <p className="font-marquee text-lg font-bold uppercase tracking-wide text-foreground">{layer?.name}</p>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{layer?.what}</p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-lg bg-secondary/40 p-3">
-                    <p className="t-eyebrow mb-1">Technology</p>
-                    <p className="text-[13px] text-foreground/85">{layer?.tech}</p>
-                  </div>
-                  <div className="rounded-lg bg-secondary/40 p-3">
-                    <p className="t-eyebrow mb-1">Integration Complexity</p>
-                    <p className="text-[13px] text-foreground/85">{layer?.complexity}</p>
-                  </div>
-                </div>
-                <p className="mt-4 text-xs italic text-muted-foreground">
-                  No cost line is published for any layer: none could cite a unit rate or a workload basis. The
-                  committed MVP stack is priced in the reconciliation at the top of this page.
-                </p>
-              </div>
-            ) : null}
-          </GlassCard>
-        </div>
       </Section>
 
       <OrnamentDivider />
