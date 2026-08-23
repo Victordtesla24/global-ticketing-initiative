@@ -60,7 +60,7 @@ export const MARKETING_DATA_PLAN = [
   {
     pillar: 'Audience & Demographic Data',
     required: 'Census ancestry and language tabulations, migration statistics and cultural participation rates for each target market and city',
-    acquire: 'US Census Bureau and Eurostat APIs A$0 [LIST] (free access, no spend incurred — [ACTUAL] is reserved for the receipted A$350.00 / A$480.00 / A$830.00 figures). ABS custom-tabulation and UK ONS custom-data pricing is [UNKNOWN]: no published price could be verified.',
+    acquire: 'US Census Bureau and Eurostat APIs A$0 [LIST] (free access, no spend incurred — [ACTUAL] is reserved for the receipted A$350.00 [ACTUAL] / A$480.00 [ACTUAL] / A$830.00 [ACTUAL] figures). ABS custom-tabulation and UK ONS custom-data pricing is [UNKNOWN]: no published price could be verified.',
     outcome: 'Precise geo-targeted campaign planning by city and suburb — qualitative, and not costed: no study exists to quantify avoided market-entry spend.',
   },
   {

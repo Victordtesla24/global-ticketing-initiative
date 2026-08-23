@@ -51,10 +51,14 @@ export default function InvestmentContent() {
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
         All figures AUD; source-currency prices are shown with their conversion. Every monetary figure on this page
         carries exactly one of <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" /> <Tag tag="DERIVED" />{' '}
-        <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />, with one labelled exception: a published salary band from an
+        <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />, with two labelled exceptions. A published salary band from an
         aggregator can never earn <Tag tag="LIST" /> under the trust ladder, so it carries the explicit provenance
         label <span className="font-semibold text-foreground/80">Aggregator benchmark</span> instead — context only,
-        feeding no funded figure. FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
+        feeding no funded figure. A baseline figure supplied by the commissioning mandate&apos;s ground-truth register
+        carries the explicit label{' '}
+        <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, because a ground-truth entry
+        is graded nowhere on this site and no provenance marker fits one; it is used once, for the Statista Personal
+        tier (GT D5-[16], reconciliation open at U-01), and feeds no funded figure. FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
       </p>
 
       <Section eyebrow="Actual Spend to Date" title="The Affordability Anchor" className="mt-12">
@@ -77,8 +81,7 @@ export default function InvestmentContent() {
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">{ACTUALS?.ledgerFooterRetained}</p>
         <p className="mt-2 text-xs text-muted-foreground/70">
-          Receipted actuals: A$350.00 AI subscriptions and API credits, A$480.00 consultation at 8.0 hours ×
-          A$60.00/hr, A$830.00 in total.
+          <TagText text="Receipted actuals: A$350.00 [ACTUAL] AI subscriptions and API credits, A$480.00 [ACTUAL] consultation at 8.0 hours × A$60.00/hr [ACTUAL], A$830.00 [ACTUAL] in total." />
         </p>
       </Section>
 

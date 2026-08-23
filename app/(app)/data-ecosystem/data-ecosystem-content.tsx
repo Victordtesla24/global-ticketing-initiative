@@ -95,7 +95,12 @@ export default function DataEcosystemContent() {
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
         estimate 6. Every monetary figure carries a provenance marker — <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
         <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="OFFICIAL" /> <Tag tag="UNKNOWN" />{' '}
-        — and this page declares no labelled exception of its own. A third party&apos;s audited-filing figure (Live
+        — and this page declares one labelled exception of its own: a baseline figure supplied by the commissioning
+        mandate&apos;s ground-truth register carries the explicit label{' '}
+        <span className="font-semibold text-foreground/80">Ground-truth baseline</span> instead of a marker, because a
+        ground-truth entry is graded nowhere on this site and no provenance marker fits one. It is used once, for the
+        Statista Personal tier (GT D5-[16], reconciliation open at U-01), and feeds no funded figure. A third
+        party&apos;s audited-filing figure (Live
         Nation&apos;s fee-bearing GTV, below) is none of the cost-provenance categories — it is neither incurred,
         listed, quoted, derived nor assumed for this programme — but it is a statutory filed record, so it carries{' '}
         <Tag tag="OFFICIAL" />: benchmark only, feeding no funded figure, never a cost comparator. The marker records
@@ -304,7 +309,7 @@ export default function DataEcosystemContent() {
 
       <Section eyebrow="Data Budget" title="Year-1 Data Budget — the Day-1 Bill of Materials">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="Every line below is a vendor-published price or A$0, expressed as a multiple of the AUD 830.00 [ACTUAL] programme-spend anchor. Free official and intergovernmental sources are tagged [LIST] throughout this site, never [ACTUAL]: [ACTUAL] means incurred and receipted, and the entire receipted record is A$350.00 + A$480.00 = A$830.00. A free-access status is the source's own published price of zero, not a spend line. The return on this spend is decision information for gate G1, not revenue — an ROI is not computable while partnership terms (U-02), contracted inventory (U-03) and primary demand evidence (U-04) are all unresolved." />
+          <TagText text="Every line below is a vendor-published price or A$0, expressed as a multiple of the AUD 830.00 [ACTUAL] programme-spend anchor. Free official and intergovernmental sources are tagged [LIST] throughout this site, never [ACTUAL]: [ACTUAL] means incurred and receipted, and the entire receipted record is A$350.00 [ACTUAL] + A$480.00 [ACTUAL] = A$830.00 [ACTUAL]. A free-access status is the source's own published price of zero, not a spend line. The return on this spend is decision information for gate G1, not revenue — an ROI is not computable while partnership terms (U-02), contracted inventory (U-03) and primary demand evidence (U-04) are all unresolved." />
         </p>
         <DataTable
           headers={['Line', 'Figure', 'Multiple of A$830 anchor']}
@@ -318,7 +323,7 @@ export default function DataEcosystemContent() {
           <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is an annualisation, not a vendor-published price). For the Personal tier the catalogue row above carries two published figures side by side, A$922/yr [LIST] and US$649/mo billed annually [LIST]; reconciling them is an open item under U-01, owned by the programme sponsor. Nothing funded rests on it: P2 buys Starter, not Personal." />
+          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is an annualisation, not a vendor-published price). For the Personal tier the catalogue row above carries the vendor's published price, US$649/mo billed annually [LIST], beside the mandate's ground-truth register baseline for that same tier, A$922/yr (GT D5-[16]) — carried under the explicit label Ground-truth baseline and under no provenance marker, because [LIST] would assert a vendor publication that does not exist and a ground-truth entry is graded nowhere on this site. Reconciling the two is an open item under U-01, owned by the programme sponsor. Nothing funded rests on it: P2 buys Starter, not Personal." />
         </p>
       </Section>
 

@@ -63,7 +63,7 @@ const COMMITMENTS = [
     detail:
       'With economics and inventory confirmed: a minimum viable data platform (3 certified dashboards — certification meaning dbt tests plus named sign-off, a process, not a licence — a reconciled finance mart, basic consent management) and a 3–5 event Australian pilot. The pilot volume is a gate deliverable to be unlocked, not evidenced supply: there are zero named, signed promoter or venue counterparties today, and no event volume is evidenced anywhere on this site. G2 cannot be entered until U-03 delivers at least three signed pilot-event agreements or dated LOIs, and the volume actually pursued is whatever U-03 returns. Priced components per line in the table below.',
     provenance:
-      'The IBISWorld line uses AUD $2,500 [LIST], the live AU checkout cart price (accessed 2026-08-23); the vendor’s help centre publishes AU$2,200 [LIST] for the same single report. Both are the vendor’s own published prices, and the transactional cart price is the one used for planning. On the A$2,200 basis the same gate reads: floor A$5,560.00 [DERIVED]: 2,200 + 3,360 = 6.70× the anchor, and full A$9,576.74 [DERIVED]: 2,200 + 3,342.20 + 194.54 + 3,840 = 11.54×; the data-floor line is 2.65× [DERIVED]: 2,200 ÷ 830. Statista Starter (A$3,342.20 [DERIVED] inside the full configuration) is priced from the vendor’s own published tier, US$199/mo billed annually [LIST]. For the Personal tier two published figures stand side by side — A$922/yr [LIST] and US$649/mo billed annually [LIST] — and reconciling them is an open item under U-01, owned by the programme sponsor. No gate figure on this site prices the Personal tier, so no gate total turns on it. Costs: Gate G2 of the decision schedule; IBISWorld live AU checkout cart; Statista and Semrush published tiers (all accessed 2026-08-23). FX: RBA rate 21 Aug 2026, USD 0.7145 per A$1.',
+      'The IBISWorld line uses AUD $2,500 [LIST], the live AU checkout cart price (accessed 2026-08-23); the vendor’s help centre publishes AU$2,200 [LIST] for the same single report. Both are the vendor’s own published prices, and the transactional cart price is the one used for planning. On the A$2,200 basis the same gate reads: floor A$5,560.00 [DERIVED]: 2,200 + 3,360 = 6.70× the anchor, and full A$9,576.74 [DERIVED]: 2,200 + 3,342.20 + 194.54 + 3,840 = 11.54×; the data-floor line is 2.65× [DERIVED]: 2,200 ÷ 830. Statista Starter (A$3,342.20 [DERIVED] inside the full configuration) is priced from the vendor’s own published tier, US$199/mo billed annually [LIST]. For the Personal tier the vendor’s published price is US$649/mo billed annually [LIST], and the mandate’s ground-truth register records A$922/yr for that same tier (GT D5-[16]) — carried under the explicit label Ground-truth baseline and under no provenance marker, because [LIST] would assert a vendor publication that does not exist and a ground-truth entry is graded nowhere on this site. Reconciling the two is an open item under U-01, owned by the programme sponsor. No gate figure on this site prices the Personal tier, so no gate total turns on it. Costs: Gate G2 of the decision schedule; IBISWorld live AU checkout cart; Statista and Semrush published tiers (all accessed 2026-08-23). FX: RBA rate 21 Aug 2026, USD 0.7145 per A$1.',
   },
 ];
 
@@ -173,7 +173,12 @@ export default function ExecutiveSummaryContent() {
 
       <p className="mb-14 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
         Every monetary figure on this page carries exactly one of <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
-        <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />. All figures AUD.
+        <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />, with one labelled
+        exception: a baseline figure supplied by the commissioning mandate&apos;s ground-truth register carries the
+        explicit label <span className="font-semibold text-foreground/80">Ground-truth baseline</span> instead of a
+        marker, because a ground-truth entry is graded nowhere on this site and no provenance marker fits one. It is
+        used once, for the Statista Personal tier (GT D5-[16], reconciliation open at U-01), and feeds no funded
+        figure. All figures AUD.
       </p>
 
       {/* THE NUMBERS THAT STAND */}

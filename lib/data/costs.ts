@@ -76,7 +76,7 @@ export const VENDOR_PRICES = [
     provider: 'Statista',
     published: 'Starter US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]); Personal US$649/mo billed annually [LIST] (= US$7,788/yr [DERIVED]); Professional quote-only [UNKNOWN]',
     disposition:
-      'Starter conditionally in the G2 full tranche at A$3,342.20/yr [DERIVED] — purchase order only against a written gap-list of statistics the free sources failed to supply. Aggregator: every figure must be re-cited to its primary source. For the Personal tier two published figures are carried side by side, A$922/yr [LIST] and US$649/mo billed annually [LIST]; reconciling them is open item U-01, owned by the programme sponsor. No funded line on this page prices the Personal tier: the G2 tranche buys Starter.',
+      'Starter conditionally in the G2 full tranche at A$3,342.20/yr [DERIVED] — purchase order only against a written gap-list of statistics the free sources failed to supply. Aggregator: every figure must be re-cited to its primary source. For the Personal tier the vendor’s published price, US$649/mo billed annually [LIST], is carried beside the mandate’s ground-truth register baseline for that same tier, A$922/yr (GT D5-[16]) — Ground-truth baseline, no provenance marker, because [LIST] would assert a vendor publication that does not exist and a ground-truth entry is graded nowhere on this site; reconciling them is open item U-01, owned by the programme sponsor. No funded line on this page prices the Personal tier: the G2 tranche buys Starter.',
   },
   {
     provider: 'Semrush',

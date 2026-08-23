@@ -51,7 +51,12 @@ export default function MarketOpportunityContent() {
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
         Every monetary figure below carries the provenance marker it has earned — <Tag tag="ACTUAL" />{' '}
         <Tag tag="LIST" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — and this page
-        declares no labelled exception of its own. UK live-music market size is published as <Tag tag="UNKNOWN" />:
+        declares one labelled exception of its own: a baseline figure supplied by the commissioning mandate&apos;s
+        ground-truth register carries the explicit label{' '}
+        <span className="font-semibold text-foreground/80">Ground-truth baseline</span> instead of a marker, because a
+        ground-truth entry is graded nowhere on this site and no provenance marker fits one. It is used once, for the
+        Statista Personal tier (GT D5-[16], reconciliation open at U-01), and feeds no funded figure. UK live-music
+        market size is published as <Tag tag="UNKNOWN" />:
         the only measure located is a trade federation’s own commissioned market-size estimate, which can never earn{' '}
         <Tag tag="LIST" /> — that marker means a vendor-published price. Non-monetary official statistics carry their
         source lines, untagged, per the site-wide convention. No corridor projection table, lump-sum investment
