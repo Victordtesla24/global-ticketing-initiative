@@ -483,9 +483,9 @@ export const MARKETS: Market[] = [
         'StatCan Table 21-10-0186-01 (biennial, 2014–2024) CSV and The Daily, “Performing arts, 2024” (released 2026-01-22) — statcan.gc.ca, accessed 2026-08-23.',
     },
     sizing: [
-      { tier: 'TAM — Total addressable', basis: 'Not sized — no city concentration or event count is sourced. See open item below.' },
-      { tier: 'SAM — Serviceable', basis: 'Cannot be reliably estimated without verified inventory data.' },
-      { tier: 'SOM — Obtainable', basis: 'Cannot be reliably estimated without verified inventory data.' },
+      { tier: 'TAM — Total addressable', basis: 'Not sized — no city concentration or event count is sourced; both are [UNKNOWN]. See open item below.' },
+      { tier: 'SAM — Serviceable', basis: 'Cannot be reliably estimated without verified inventory data. [UNKNOWN] — no such inventory exists yet; an honest statement of missing data, not a figure.' },
+      { tier: 'SOM — Obtainable', basis: 'Cannot be reliably estimated without verified inventory data. [UNKNOWN] — no contractable share can be stated without an inventory.' },
     ],
     sizingOpenItems: [
       {

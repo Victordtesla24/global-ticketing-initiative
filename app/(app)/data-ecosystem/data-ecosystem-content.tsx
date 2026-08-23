@@ -134,7 +134,7 @@ export default function DataEcosystemContent() {
 
       <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue" className="mt-12">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="15 of the 60 catalogued providers carry no URL. Where no published price exists behind a provider, its cost stands as [UNKNOWN]; every price a vendor actually publishes is quoted verbatim in the vendor's own currency and tagged [LIST]. An aggregator may point to a primary source but may never be one; a modelled estimate may never feed a headline or a funded figure." />
+          <TagText text="14 of the 60 catalogued providers carry no URL. The original package shipped 15; this audit verified Statistics Canada's table first-hand (row 18) and gave that row a live URL, which is the whole of the difference — the 15 of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where no published price exists behind a provider, its cost stands as [UNKNOWN]; every price a vendor actually publishes is quoted verbatim in the vendor's own currency and tagged [LIST]. An aggregator may point to a primary source but may never be one; a modelled estimate may never feed a headline or a funded figure." />
         </p>
         <GlassCard className="mb-4">
           <div className="flex flex-wrap items-center gap-2">

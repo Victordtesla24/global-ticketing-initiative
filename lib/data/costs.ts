@@ -111,7 +111,7 @@ export const VENDOR_PRICES = [
   },
   {
     provider: 'Avalara',
-    published: '"Pricing starts at $699" (billing period unstated); suite quote-only [LIST]',
+    published: '"Pricing starts at $699" (billing period unstated) [LIST]; suite quote-only [UNKNOWN]',
     disposition: 'Deferred — overweight for a pre-revenue single-market pilot; a written quote before any commitment.',
   },
   {
