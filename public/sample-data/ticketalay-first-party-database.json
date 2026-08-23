@@ -1,0 +1,150 @@
+{
+  "provider": "Ticketalay First-Party Database",
+  "provider_id": 1,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Real, first-hand-verified facts about the Ticketalay entity, live product, and market footprint, extracted from the entity-reality verification packs. Internal user/order/seat/payment counts are not externally accessible and are NOT included/fabricated here.",
+  "spec_note": "REAL-EXTRACT: rows are externally verifiable entity, product, event and engagement facts recovered from public sources (site, Google Play, App Store, ABN Lookup, RDAP) during the 2026-08-23 audit, not a genuine internal-database export.",
+  "countries": [
+    "IN",
+    "AU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "category": "entity",
+      "finding": "ticketalay.com.au (AU domain) status",
+      "value": "Hostinger parked page over HTTP (200, title 'Parked Domain name on Hostinger DNS system'); HTTPS not served (TLS handshake fails, no certificate)",
+      "source_url": "http://ticketalay.com.au",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "entity",
+      "finding": "AU domain registrant (RDAP)",
+      "value": "V Deshpande & A Kadam, Family Partnership, ABN 91819759805, trading as A&B Entertainments, VIC 3030, status 'server renew prohibited / Not Currently Eligible For Renewal'",
+      "source_url": "https://rdap.org/domain/ticketalay.com.au",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "entity",
+      "finding": "Live operating entity (site footer)",
+      "value": "PAC Theatre Entertainment Pvt. Ltd. (India) — '© 2026 PAC Theatre Entertainment Pvt. Ltd. All rights reserved.'",
+      "source_url": "https://www.ticketalay.com/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "entity",
+      "finding": "AU ABN search for 'Ticketalay'",
+      "value": "No matching names found (active); only fuzzy 'Ticketland' hits on all-ABNs search — no Ticketalay entity registered in Australia",
+      "source_url": "https://abr.business.gov.au/Search/ResultsActive?SearchText=Ticketalay",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "entity",
+      "finding": "AU ABN search for 'AB Entertainment' (exact name)",
+      "value": "56 active fuzzy matches, none exactly 'AB Entertainment'; closest is 'A&B ENTERTAINMENTS' (ABN 91819759805, VIC)",
+      "source_url": "https://abr.business.gov.au/Search/ResultsActive?SearchText=AB+Entertainment",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "product",
+      "finding": "Primary positioning (og:title)",
+      "value": "'Ticketalay: Your One-Stop Shop for Natak, Cinema, Musicals, and Event Tickets - Discover, Review, and Book Today!'",
+      "source_url": "https://www.ticketalay.com/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "product",
+      "finding": "Default city / market on homepage",
+      "value": "Mumbai (India) default city selector; nav items Natak / Cinema / Musicals / Other / Natyagruha",
+      "source_url": "https://www.ticketalay.com/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "event",
+      "finding": "Sample live event: Katkon Trikon",
+      "value": "Marathi thriller play, 2h30m; cast Sharad Ponkshe, Suyash Tilak, Priyanka Tendolkar; writer Vivek Bele; director Ajit Bhure",
+      "source_url": "https://www.ticketalay.com/event-details/katkon-trikon/16311",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "event",
+      "finding": "Sample live event: Hi Dosti Tutaychi Naay (Jalgaon)",
+      "value": "Marathi play listing, Jalgaon show instance",
+      "source_url": "https://www.ticketalay.com/event-details/hi-dosti-tutaychi-naay-(jalgaon)/16529",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "event",
+      "finding": "Sample live event: Niyam Va Ati Lagu",
+      "value": "Marathi play listing",
+      "source_url": "https://www.ticketalay.com/event-details/niyam-va-ati-lagu/2",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "event",
+      "finding": "Sample live event: The Kiran Mane Show - Story Shivrajyabhishekachi",
+      "value": "Marathi stage show listing",
+      "source_url": "https://www.ticketalay.com/event-details/the-kiran-mane-show-:-story-shivrajyabhishekachi/7508",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "event",
+      "finding": "Sample live event: Sankarshan Via Spruha",
+      "value": "Marathi play/performance listing",
+      "source_url": "https://www.ticketalay.com/event-details/sankarshan-via-spruha/5",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "payments",
+      "finding": "Payment gateway signal",
+      "value": "Razorpay trusted-business badge present on event page (key prefix rzp_test_ — TEST-mode key found wired on production)",
+      "source_url": "https://www.ticketalay.com/event-details/katkon-trikon/16311",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "payments",
+      "finding": "Currency",
+      "value": "INR confirmed via Google Play and App Store listings (price 0, priceCurrency INR); not visible on public site pages (pricing behind login)",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "engagement",
+      "finding": "Google Play install band",
+      "value": "'100K+ Downloads' — an install-count band (>=100,000), not verified ticket buyers or active users",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "engagement",
+      "finding": "Google Play rating",
+      "value": "3.36 / 5 from 386 ratings (histogram 122/26/15/26/193 for 5→1 stars)",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "category": "engagement",
+      "finding": "App Store rating (India storefront)",
+      "value": "2.62 / 5 from 45 ratings",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

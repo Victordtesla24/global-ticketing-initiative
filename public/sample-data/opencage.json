@@ -1,0 +1,117 @@
+{
+  "provider": "OpenCage",
+  "provider_id": 55,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring OpenCage's published open-data geocoding response specification (query, formatted result, geometry lat/lng, confidence score 1-10, components, timezone annotation), illustratively populated for candidate AU suburb community-venue addresses and a Mumbai, Maharashtra venue relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field shape (query, formatted, lat/lng, confidence_1to10, country/city/postcode components, timezone_name) mirrors OpenCage's public API response documentation (opencagedata.com/api). Venue names and approximate public coordinates are illustrative reference points for real-world landmarks (public knowledge), NOT an actual OpenCage API response. NOT licensed OpenCage data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "query": "Palais Theatre, St Kilda VIC",
+      "formatted": "Palais Theatre, Lower Esplanade, St Kilda VIC 3182, Australia (mock)",
+      "lat": -37.8676,
+      "lng": 144.9791,
+      "confidence_1to10": 9,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "St Kilda",
+      "postcode": "3182",
+      "timezone_name": "Australia/Melbourne",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Sydney Opera House",
+      "formatted": "Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia (mock)",
+      "lat": -33.8568,
+      "lng": 151.2153,
+      "confidence_1to10": 10,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "Sydney",
+      "postcode": "2000",
+      "timezone_name": "Australia/Sydney",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Springvale Community Hub VIC",
+      "formatted": "Springvale Community Hub, Springvale VIC 3171, Australia (mock)",
+      "lat": -37.949,
+      "lng": 145.152,
+      "confidence_1to10": 7,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "Springvale",
+      "postcode": "3171",
+      "timezone_name": "Australia/Melbourne",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Blacktown Arts Centre NSW",
+      "formatted": "Blacktown Arts Centre, Blacktown NSW 2148, Australia (mock)",
+      "lat": -33.7707,
+      "lng": 150.9057,
+      "confidence_1to10": 8,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "Blacktown",
+      "postcode": "2148",
+      "timezone_name": "Australia/Sydney",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Shanmukhananda Hall, Sion, Mumbai",
+      "formatted": "Shanmukhananda Hall, Sion, Mumbai, Maharashtra 400022, India (mock)",
+      "lat": 19.0413,
+      "lng": 72.8619,
+      "confidence_1to10": 8,
+      "country": "India",
+      "country_code": "in",
+      "city": "Mumbai",
+      "postcode": "400022",
+      "timezone_name": "Asia/Kolkata",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Sunshine Community Hub VIC",
+      "formatted": "Sunshine Community Hub, Sunshine VIC 3020, Australia (mock)",
+      "lat": -37.788,
+      "lng": 144.832,
+      "confidence_1to10": 6,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "Sunshine",
+      "postcode": "3020",
+      "timezone_name": "Australia/Melbourne",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Rooty Hill RSL Club NSW",
+      "formatted": "Rooty Hill RSL Club, Rooty Hill NSW 2766, Australia (mock)",
+      "lat": -33.766,
+      "lng": 150.85,
+      "confidence_1to10": 7,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "Rooty Hill",
+      "postcode": "2766",
+      "timezone_name": "Australia/Sydney",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "query": "Marion Cultural Centre SA",
+      "formatted": "Marion Cultural Centre, Oaklands Park SA 5046, Australia (mock)",
+      "lat": -35.009,
+      "lng": 138.547,
+      "confidence_1to10": 7,
+      "country": "Australia",
+      "country_code": "au",
+      "city": "Oaklands Park",
+      "postcode": "5046",
+      "timezone_name": "Australia/Adelaide",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

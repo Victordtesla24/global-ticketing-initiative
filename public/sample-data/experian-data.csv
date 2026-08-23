@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors Experian consumer marketing data published data specification for prototype purposes; NOT vendor data
+record_id,country,age_band,income_band,household_composition,life_stage_segment,credit_risk_tier,digital_engagement_score,source_url,data_status
+EXP-MOCK-0001,AU,25-34,AUD 80-100k,"Couple, no children",New Households (mock),Prime (mock),78,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0002,AU,35-44,AUD 100-130k,Family with children,Established Families (mock),Prime (mock),65,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0003,UK,18-24,GBP 20-30k,"Single, shared housing",Urban Starters (mock),Near-prime (mock),91,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0004,US,45-54,USD 90-120k,"Couple, empty nest",Comfortable Empty Nesters (mock),Prime (mock),52,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0005,AU,25-34,AUD 60-80k,"Single, renting",Urban Professionals (mock),Near-prime (mock),84,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0006,IN,25-34,INR 8-15 lakh,Extended family,Diaspora-linked Household (mock),Prime (mock),73,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0007,AU,35-44,AUD 100-130k,Family with children,Second-Gen Migrant Family (mock),Prime (mock),69,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0008,UK,55-64,GBP 40-55k,"Couple, empty nest",Settled Suburbans (mock),Prime (mock),41,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0009,AU,18-24,AUD 30-45k,"Single, student household",Student Renters (mock),Thin-file (mock),96,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE
+EXP-MOCK-0010,AU,45-54,AUD 130-160k,Family with children,Affluent Diaspora Family (mock),Prime (mock),58,https://www.experian.com/marketing-services/consumer-data,SYNTHETIC_SAMPLE

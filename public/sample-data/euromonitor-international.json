@@ -1,0 +1,94 @@
+{
+  "provider": "Euromonitor International",
+  "provider_id": 8,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Euromonitor International's published consumer-market-sizing data specification (category, market, indicator, value, unit, year, CAGR), illustratively populated for Australian live-event/ticketing and diaspora consumer indicators relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field names mirror Euromonitor's public market-sizing report schema; all numeric values are illustrative mock figures, NOT licensed Euromonitor data.",
+  "countries": [
+    "Global",
+    "AU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "category": "Consumer Foodservice & Leisure",
+      "market": "Australia",
+      "indicator": "Live Event & Entertainment Ticketing Market Value",
+      "value": 1380,
+      "unit": "AUD million",
+      "year": 2025,
+      "cagr_pct": 6.2,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Consumer Foodservice & Leisure",
+      "market": "Australia",
+      "indicator": "Live Event & Entertainment Ticketing Market Value (2029F)",
+      "value": 1760,
+      "unit": "AUD million",
+      "year": 2029,
+      "cagr_pct": 6.2,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Digital Consumer",
+      "market": "Australia",
+      "indicator": "Mobile Ticketing App Penetration",
+      "value": 58.0,
+      "unit": "%",
+      "year": 2025,
+      "cagr_pct": null,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Consumer Demographics",
+      "market": "Australia",
+      "indicator": "Foreign-born (India) Population Share",
+      "value": 3.3,
+      "unit": "% of total population",
+      "year": 2024,
+      "cagr_pct": null,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Consumer Foodservice & Leisure",
+      "market": "Melbourne, AU",
+      "indicator": "Cultural/Live Event Spend per Capita (South Asian households)",
+      "value": 310,
+      "unit": "AUD/year",
+      "year": 2025,
+      "cagr_pct": 5.5,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Consumer Foodservice & Leisure",
+      "market": "Sydney, AU",
+      "indicator": "Cultural/Live Event Spend per Capita (South Asian households)",
+      "value": 295,
+      "unit": "AUD/year",
+      "year": 2025,
+      "cagr_pct": 5.1,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Digital Consumer",
+      "market": "Australia",
+      "indicator": "Online/Mobile Payment Share of Ticket Purchases",
+      "value": 81.4,
+      "unit": "%",
+      "year": 2025,
+      "cagr_pct": 3.0,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "category": "Consumer Foodservice & Leisure",
+      "market": "Australia",
+      "indicator": "Ethnic/Community Cultural Events Sub-segment Value",
+      "value": 165,
+      "unit": "AUD million",
+      "year": 2025,
+      "cagr_pct": 11.0,
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

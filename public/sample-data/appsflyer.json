@@ -1,0 +1,117 @@
+{
+  "provider": "AppsFlyer",
+  "provider_id": 30,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring AppsFlyer's published mobile-attribution raw-data report specification (AppsFlyer ID, app id, platform, media source, campaign, install time, event name, event value, country code), illustratively populated for a mock Ticketalay Android/iOS app with AU-market launch campaigns.",
+  "spec_note": "SYNTHETIC: field names mirror AppsFlyer's public raw-data/attribution report schema (appsflyer_id, media_source, campaign, install_time, event_name, event_value, country_code) as documented in AppsFlyer's Raw Data Reports help articles. All ids, timestamps and values are fabricated mock placeholders, not licensed AppsFlyer attribution data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "appsflyer_id": "AF-MOCK-0000001",
+      "app_id": "com.ticketalay.mock",
+      "platform": "Android",
+      "media_source": "Meta Ads",
+      "campaign": "AU_Diaspora_Launch (mock)",
+      "install_time": "2026-06-01T08:14:22Z",
+      "event_name": "af_purchase",
+      "event_value_usd": 24.5,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000002",
+      "app_id": "com.ticketalay.mock",
+      "platform": "iOS",
+      "media_source": "Google Ads",
+      "campaign": "AU_Diaspora_Launch (mock)",
+      "install_time": "2026-06-01T09:02:11Z",
+      "event_name": "af_complete_registration",
+      "event_value_usd": 0.0,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000003",
+      "app_id": "com.ticketalay.mock",
+      "platform": "Android",
+      "media_source": "Organic",
+      "campaign": "",
+      "install_time": "2026-06-02T13:40:55Z",
+      "event_name": "af_purchase",
+      "event_value_usd": 18.0,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000004",
+      "app_id": "com.ticketalay.mock",
+      "platform": "Android",
+      "media_source": "TikTok Ads",
+      "campaign": "Melbourne_Diwali_Push (mock)",
+      "install_time": "2026-06-05T18:22:03Z",
+      "event_name": "af_purchase",
+      "event_value_usd": 32.0,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000005",
+      "app_id": "com.ticketalay.mock",
+      "platform": "iOS",
+      "media_source": "WhatsApp Referral",
+      "campaign": "Community_Share (mock)",
+      "install_time": "2026-06-06T07:55:40Z",
+      "event_name": "af_complete_registration",
+      "event_value_usd": 0.0,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000006",
+      "app_id": "com.ticketalay.mock",
+      "platform": "Android",
+      "media_source": "Meta Ads",
+      "campaign": "AU_Diaspora_Launch (mock)",
+      "install_time": "2026-06-07T11:19:29Z",
+      "event_name": "af_purchase",
+      "event_value_usd": 45.0,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000007",
+      "app_id": "com.ticketalay.mock",
+      "platform": "iOS",
+      "media_source": "Organic",
+      "campaign": "",
+      "install_time": "2026-06-08T20:03:12Z",
+      "event_name": "af_purchase",
+      "event_value_usd": 12.5,
+      "country_code": "IN",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "appsflyer_id": "AF-MOCK-0000008",
+      "app_id": "com.ticketalay.mock",
+      "platform": "Android",
+      "media_source": "Google Ads",
+      "campaign": "Sydney_Launch (mock)",
+      "install_time": "2026-06-09T15:47:08Z",
+      "event_name": "af_purchase",
+      "event_value_usd": 27.0,
+      "country_code": "AU",
+      "source_url": "https://support.appsflyer.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

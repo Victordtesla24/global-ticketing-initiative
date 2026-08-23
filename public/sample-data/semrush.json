@@ -1,0 +1,109 @@
+{
+  "provider": "SEMrush",
+  "provider_id": 28,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring SEMrush's published SEO/keyword-research data specification (keyword, country, search volume, keyword difficulty, CPC, ranking position, URL, traffic share), illustratively populated for mock AU-market keywords relevant to the initiative's SEO positioning.",
+  "spec_note": "SYNTHETIC: field names mirror SEMrush's public Keyword Overview / Organic Research report schema (Volume, KD%, CPC, Position, Traffic %) as described on semrush.com. All keywords, volumes and metrics are fabricated mock placeholders, not licensed SEMrush data. Per workflow/verify/web-intel.md, SEMrush's current published plans are SEO $139/mo, Starter $199/mo, Pro+ $299/mo, Advanced $549/mo - no plan named 'Business/Pro/Guru' exists on the live pricing page as the proposal implies.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "keyword": "marathi events melbourne (mock)",
+      "country": "au",
+      "search_volume": 320,
+      "keyword_difficulty": 24,
+      "cpc_usd": 0.85,
+      "position": 6,
+      "url": "ticketalay-mock.com.au/events/melbourne",
+      "traffic_pct": 4.2,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "indian cultural show sydney (mock)",
+      "country": "au",
+      "search_volume": 210,
+      "keyword_difficulty": 31,
+      "cpc_usd": 1.1,
+      "position": 9,
+      "url": "ticketalay-mock.com.au/events/sydney",
+      "traffic_pct": 2.1,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "book event tickets online australia (mock)",
+      "country": "au",
+      "search_volume": 4400,
+      "keyword_difficulty": 58,
+      "cpc_usd": 2.35,
+      "position": 14,
+      "url": "ticketalay-mock.com.au/",
+      "traffic_pct": 0.8,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "diaspora live music tickets (mock)",
+      "country": "au",
+      "search_volume": 90,
+      "keyword_difficulty": 18,
+      "cpc_usd": 0.62,
+      "position": 3,
+      "url": "ticketalay-mock.com.au/genres/live-music",
+      "traffic_pct": 6.5,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "marathi natak melbourne (mock)",
+      "country": "au",
+      "search_volume": 70,
+      "keyword_difficulty": 12,
+      "cpc_usd": 0.44,
+      "position": 2,
+      "url": "ticketalay-mock.com.au/genres/theatre",
+      "traffic_pct": 8.9,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "competitor-a-mock.com.au backlink domain (mock)",
+      "country": "au",
+      "search_volume": 0,
+      "keyword_difficulty": 0,
+      "cpc_usd": 0.0,
+      "position": 0,
+      "url": "referring-domain-example-mock.com",
+      "traffic_pct": 0.0,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "sydney live music tickets (mock)",
+      "country": "au",
+      "search_volume": 590,
+      "keyword_difficulty": 34,
+      "cpc_usd": 1.35,
+      "position": 11,
+      "url": "ticketalay-mock.com.au/events/sydney/live-music",
+      "traffic_pct": 1.4,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "keyword": "melbourne diwali event tickets (mock)",
+      "country": "au",
+      "search_volume": 140,
+      "keyword_difficulty": 16,
+      "cpc_usd": 0.58,
+      "position": 4,
+      "url": "ticketalay-mock.com.au/events/melbourne/diwali",
+      "traffic_pct": 5.3,
+      "source_url": "https://www.semrush.com/prices/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

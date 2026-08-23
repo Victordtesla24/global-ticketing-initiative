@@ -1,0 +1,255 @@
+{
+  "provider": "Australian Bureau of Statistics (ABS)",
+  "provider_id": 11,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Australian cultural attendance rates (Cultural and creative activities survey) plus Census 2021 Marathi-language, India-born and Indian-ancestry counts, extracted verbatim from ABS publications per the abs-attendance and abs-census-diaspora verification packs.",
+  "spec_note": "Every row traces to a verified figure in workflow/verify/abs-attendance.md or workflow/verify/abs-census-diaspora(-reaudit).md. 2021-22 attendance figures cover a COVID-affected collection window (Jul 2020-Jun 2022); city-level (Greater Melbourne/Sydney) Marathi counts are NOT published (ABS TableBuilder required) and are deliberately omitted rather than estimated.",
+  "countries": [
+    "AU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "Adults attended >=1 cultural venue/event",
+      "value": "64",
+      "unit": "% of adults",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "COVID-affected collection window (Jul 2020-Jun 2022)"
+    },
+    {
+      "metric": "Adults (15+) attended >=1 cultural venue/event",
+      "value": "82.4",
+      "unit": "% of persons 15+",
+      "reference_period": "2017-18",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "rounded to 82% in 2021-22 release"
+    },
+    {
+      "metric": "Theatre performances attendance",
+      "value": "8.0",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "directly relevant to Marathi drama/theatre category"
+    },
+    {
+      "metric": "Theatre performances attendance",
+      "value": "16.5",
+      "unit": "% of persons",
+      "reference_period": "2017-18",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "pre-COVID baseline"
+    },
+    {
+      "metric": "Live music concerts or performances attendance",
+      "value": "17.6",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Live music concerts attendance",
+      "value": "38.2",
+      "unit": "% of persons",
+      "reference_period": "2017-18",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/attendance-selected-cultural-venues-and-events-australia/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Musicals or operas attendance",
+      "value": "7.0",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Dance performances attendance",
+      "value": "5.1",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Other performing arts attendance",
+      "value": "8.6",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Cinemas attendance",
+      "value": "43.9",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Art galleries attendance",
+      "value": "18.2",
+      "unit": "% of persons",
+      "reference_period": "2021-22",
+      "geography": "Australia",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Attendance rate, greater capital city residents",
+      "value": "65",
+      "unit": "% of adults",
+      "reference_period": "2021-22",
+      "geography": "Australia (greater capital cities)",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "4pp premium over non-capital regions"
+    },
+    {
+      "metric": "Attendance rate, non-capital-city residents",
+      "value": "61",
+      "unit": "% of adults",
+      "reference_period": "2021-22",
+      "geography": "Australia (outside greater capital cities)",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Attendance rate, highest state/territory (ACT)",
+      "value": "72",
+      "unit": "% of adults",
+      "reference_period": "2021-22",
+      "geography": "Australian Capital Territory",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "highest of all states/territories"
+    },
+    {
+      "metric": "Marathi used at home",
+      "value": "22263",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "Australia (national)",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "Table 5, Cultural diversity data summary"
+    },
+    {
+      "metric": "Marathi used at home",
+      "value": "9753",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "New South Wales",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "NSW exceeds Victoria for Marathi language"
+    },
+    {
+      "metric": "Marathi used at home",
+      "value": "7170",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "Victoria",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "India-born population (estimated resident population)",
+      "value": "971020",
+      "unit": "persons",
+      "reference_period": "30 Jun 2025",
+      "geography": "Australia (national)",
+      "source_url": "https://www.abs.gov.au/statistics/people/population/australias-population-country-birth/latest-release",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "largest overseas-born group on record, ahead of England (970,950)"
+    },
+    {
+      "metric": "India-born population (Census count)",
+      "value": "673352",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "Australia (national)",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "second-largest country of birth after England at Census 2021"
+    },
+    {
+      "metric": "Indian ancestry",
+      "value": "783953",
+      "unit": "responses",
+      "reference_period": "Census 2021",
+      "geography": "Australia (national)",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "Table 4; ancestry allows up to 2 responses per person"
+    },
+    {
+      "metric": "Indian ancestry",
+      "value": "276770",
+      "unit": "responses",
+      "reference_period": "Census 2021",
+      "geography": "Victoria",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "Victoria leads NSW on Indian ancestry (reverse of Marathi-language split)"
+    },
+    {
+      "metric": "Indian ancestry",
+      "value": "261103",
+      "unit": "responses",
+      "reference_period": "Census 2021",
+      "geography": "New South Wales",
+      "source_url": "https://www.abs.gov.au/statistics/people/people-and-communities/cultural-diversity-census/2021/Cultural%20diversity%20data%20summary.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    }
+  ]
+}

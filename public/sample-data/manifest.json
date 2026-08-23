@@ -1,0 +1,985 @@
+[
+  {
+    "id": 1,
+    "name": "Ticketalay First-Party Database",
+    "slug": "ticketalay-first-party-database",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "IN",
+      "AU"
+    ],
+    "files": [
+      "ticketalay-first-party-database.csv",
+      "ticketalay-first-party-database.json"
+    ],
+    "rows": 17,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 2,
+    "name": "Google Play Console",
+    "slug": "google-play-console",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "google-play-console.csv",
+      "google-play-console.json"
+    ],
+    "rows": 16,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 3,
+    "name": "Apple App Store Connect",
+    "slug": "apple-app-store-connect",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "apple-app-store-connect.csv",
+      "apple-app-store-connect.json"
+    ],
+    "rows": 14,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 4,
+    "name": "Nielsen / NielsenIQ",
+    "slug": "nielsen-nielseniq",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "AU"
+    ],
+    "files": [
+      "nielsen-nielseniq.csv",
+      "nielsen-nielseniq.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 5,
+    "name": "Kantar",
+    "slug": "kantar",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "AU"
+    ],
+    "files": [
+      "kantar.csv",
+      "kantar.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 6,
+    "name": "Statista",
+    "slug": "statista",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "statista.csv",
+      "statista.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 7,
+    "name": "IBISWorld",
+    "slug": "ibisworld",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "AU",
+      "Global"
+    ],
+    "files": [
+      "ibisworld.csv",
+      "ibisworld.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 8,
+    "name": "Euromonitor International",
+    "slug": "euromonitor-international",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "AU"
+    ],
+    "files": [
+      "euromonitor-international.csv",
+      "euromonitor-international.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 9,
+    "name": "Mintel",
+    "slug": "mintel",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "UK",
+      "Global"
+    ],
+    "files": [
+      "mintel.csv",
+      "mintel.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 10,
+    "name": "UN DESA Migrant Stock",
+    "slug": "un-desa-migrant-stock",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "un-desa-migrant-stock.csv",
+      "un-desa-migrant-stock.json"
+    ],
+    "rows": 24,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 11,
+    "name": "Australian Bureau of Statistics (ABS)",
+    "slug": "australian-bureau-of-statistics-abs",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "AU"
+    ],
+    "files": [
+      "australian-bureau-of-statistics-abs.csv",
+      "australian-bureau-of-statistics-abs.json"
+    ],
+    "rows": 22,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 12,
+    "name": "UK ONS / DCMS",
+    "slug": "uk-ons-dcms",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "UK"
+    ],
+    "files": [
+      "uk-ons-dcms.csv",
+      "uk-ons-dcms.json"
+    ],
+    "rows": 15,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 13,
+    "name": "US Census Bureau",
+    "slug": "us-census-bureau",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "us-census-bureau.csv",
+      "us-census-bureau.json"
+    ],
+    "rows": 16,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 14,
+    "name": "US Bureau of Labor Statistics (BLS)",
+    "slug": "us-bureau-of-labor-statistics-bls",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "us-bureau-of-labor-statistics-bls.csv",
+      "us-bureau-of-labor-statistics-bls.json"
+    ],
+    "rows": 12,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 15,
+    "name": "US Bureau of Economic Analysis (BEA)",
+    "slug": "us-bureau-of-economic-analysis-bea",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "us-bureau-of-economic-analysis-bea.csv",
+      "us-bureau-of-economic-analysis-bea.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 16,
+    "name": "US National Endowment for the Arts (NEA)",
+    "slug": "us-national-endowment-for-the-arts-nea",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "us-national-endowment-for-the-arts-nea.csv",
+      "us-national-endowment-for-the-arts-nea.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 17,
+    "name": "Eurostat",
+    "slug": "eurostat",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "EU"
+    ],
+    "files": [
+      "eurostat.csv",
+      "eurostat.json"
+    ],
+    "rows": 15,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 18,
+    "name": "Statistics Canada",
+    "slug": "statistics-canada",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "CA"
+    ],
+    "files": [
+      "statistics-canada.csv",
+      "statistics-canada.json"
+    ],
+    "rows": 12,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 19,
+    "name": "World Bank",
+    "slug": "world-bank",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "world-bank.csv",
+      "world-bank.json"
+    ],
+    "rows": 12,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 20,
+    "name": "OECD",
+    "slug": "oecd",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "oecd.csv",
+      "oecd.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 21,
+    "name": "Claritas (PRIZM)",
+    "slug": "claritas-prizm",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "claritas-prizm.csv",
+      "claritas-prizm.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 22,
+    "name": "Experian Data",
+    "slug": "experian-data",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "UK",
+      "US"
+    ],
+    "files": [
+      "experian-data.csv",
+      "experian-data.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 23,
+    "name": "Acxiom",
+    "slug": "acxiom",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "AU",
+      "EU",
+      "UK",
+      "US"
+    ],
+    "files": [
+      "acxiom.csv",
+      "acxiom.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 24,
+    "name": "GWI (GlobalWebIndex)",
+    "slug": "gwi-globalwebindex",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "UK"
+    ],
+    "files": [
+      "gwi-globalwebindex.csv",
+      "gwi-globalwebindex.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 25,
+    "name": "YouGov",
+    "slug": "yougov",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "UK"
+    ],
+    "files": [
+      "yougov.csv",
+      "yougov.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 26,
+    "name": "Qualtrics",
+    "slug": "qualtrics",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "qualtrics.csv",
+      "qualtrics.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 27,
+    "name": "Similarweb",
+    "slug": "similarweb",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "similarweb.csv",
+      "similarweb.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 28,
+    "name": "SEMrush",
+    "slug": "semrush",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "semrush.csv",
+      "semrush.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 29,
+    "name": "Ahrefs",
+    "slug": "ahrefs",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "ahrefs.csv",
+      "ahrefs.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 30,
+    "name": "AppsFlyer",
+    "slug": "appsflyer",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "appsflyer.csv",
+      "appsflyer.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 31,
+    "name": "Live Nation / Ticketmaster (Investor Reporting)",
+    "slug": "live-nation-ticketmaster-investor-reporting",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "live-nation-ticketmaster-investor-reporting.csv",
+      "live-nation-ticketmaster-investor-reporting.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 32,
+    "name": "StubHub / viagogo (Investor Reporting)",
+    "slug": "stubhub-viagogo-investor-reporting",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "stubhub-viagogo-investor-reporting.csv",
+      "stubhub-viagogo-investor-reporting.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 33,
+    "name": "PitchBook",
+    "slug": "pitchbook",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "pitchbook.csv",
+      "pitchbook.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 34,
+    "name": "Crunchbase",
+    "slug": "crunchbase",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "crunchbase.csv",
+      "crunchbase.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 35,
+    "name": "Snowflake Data Marketplace",
+    "slug": "snowflake-data-marketplace",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "snowflake-data-marketplace.csv",
+      "snowflake-data-marketplace.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 36,
+    "name": "AWS Data Exchange",
+    "slug": "aws-data-exchange",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "aws-data-exchange.csv",
+      "aws-data-exchange.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 37,
+    "name": "Bloomberg / Bloomberg Second Measure",
+    "slug": "bloomberg-bloomberg-second-measure",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US",
+      "Global"
+    ],
+    "files": [
+      "bloomberg-bloomberg-second-measure.csv",
+      "bloomberg-bloomberg-second-measure.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 38,
+    "name": "Dun & Bradstreet (D&B)",
+    "slug": "dun-bradstreet-d-b",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "dun-bradstreet-d-b.csv",
+      "dun-bradstreet-d-b.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 39,
+    "name": "ZoomInfo",
+    "slug": "zoominfo",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "zoominfo.csv",
+      "zoominfo.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 40,
+    "name": "Cognism",
+    "slug": "cognism",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "UK",
+      "Europe",
+      "Global"
+    ],
+    "files": [
+      "cognism.csv",
+      "cognism.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 41,
+    "name": "People Data Labs (PDL)",
+    "slug": "people-data-labs-pdl",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "AU",
+      "Global"
+    ],
+    "files": [
+      "people-data-labs-pdl.csv",
+      "people-data-labs-pdl.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 42,
+    "name": "Apollo.io",
+    "slug": "apollo-io",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "apollo-io.csv",
+      "apollo-io.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 43,
+    "name": "Audience Republic",
+    "slug": "audience-republic",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "AU",
+      "UK",
+      "US"
+    ],
+    "files": [
+      "audience-republic.csv",
+      "audience-republic.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 44,
+    "name": "ABR / ABN Lookup",
+    "slug": "abr-abn-lookup",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "AU"
+    ],
+    "files": [
+      "abr-abn-lookup.csv",
+      "abr-abn-lookup.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 45,
+    "name": "ASIC Connect",
+    "slug": "asic-connect",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "AU"
+    ],
+    "files": [
+      "asic-connect.csv",
+      "asic-connect.json"
+    ],
+    "rows": 6,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 46,
+    "name": "FTC Regulatory Materials",
+    "slug": "ftc-regulatory-materials",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "ftc-regulatory-materials.csv",
+      "ftc-regulatory-materials.json"
+    ],
+    "rows": 5,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 47,
+    "name": "USCIS Performer Guidance",
+    "slug": "uscis-performer-guidance",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "uscis-performer-guidance.csv",
+      "uscis-performer-guidance.json"
+    ],
+    "rows": 5,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 48,
+    "name": "Data Privacy Framework",
+    "slug": "data-privacy-framework",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "EU",
+      "UK",
+      "US"
+    ],
+    "files": [
+      "data-privacy-framework.csv",
+      "data-privacy-framework.json"
+    ],
+    "rows": 6,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 49,
+    "name": "Avalara",
+    "slug": "avalara",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "avalara.csv",
+      "avalara.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 50,
+    "name": "Quaderno",
+    "slug": "quaderno",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global",
+      "US"
+    ],
+    "files": [
+      "quaderno.csv",
+      "quaderno.json"
+    ],
+    "rows": 6,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 51,
+    "name": "TaxCloud",
+    "slug": "taxcloud",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US"
+    ],
+    "files": [
+      "taxcloud.csv",
+      "taxcloud.json"
+    ],
+    "rows": 12,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 52,
+    "name": "Google Maps Platform",
+    "slug": "google-maps-platform",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "google-maps-platform.csv",
+      "google-maps-platform.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 53,
+    "name": "Mapbox",
+    "slug": "mapbox",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "mapbox.csv",
+      "mapbox.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 54,
+    "name": "HERE Technologies",
+    "slug": "here-technologies",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "here-technologies.csv",
+      "here-technologies.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 55,
+    "name": "OpenCage",
+    "slug": "opencage",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "opencage.csv",
+      "opencage.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 56,
+    "name": "Geoapify",
+    "slug": "geoapify",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "geoapify.csv",
+      "geoapify.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 57,
+    "name": "Geocodio",
+    "slug": "geocodio",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "US",
+      "CA"
+    ],
+    "files": [
+      "geocodio.csv",
+      "geocodio.json"
+    ],
+    "rows": 10,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 58,
+    "name": "IMF Data",
+    "slug": "imf-data",
+    "data_mode": "REAL-EXTRACT",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "imf-data.csv",
+      "imf-data.json"
+    ],
+    "rows": 20,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 59,
+    "name": "AppBrain",
+    "slug": "appbrain",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "appbrain.csv",
+      "appbrain.json"
+    ],
+    "rows": 9,
+    "verified": true,
+    "issue": null
+  },
+  {
+    "id": 60,
+    "name": "Coresignal",
+    "slug": "coresignal",
+    "data_mode": "SYNTHETIC",
+    "countries": [
+      "Global"
+    ],
+    "files": [
+      "coresignal.csv",
+      "coresignal.json"
+    ],
+    "rows": 8,
+    "verified": true,
+    "issue": null
+  }
+]

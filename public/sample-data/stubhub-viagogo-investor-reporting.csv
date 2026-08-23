@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors StubHub Holdings / viagogo investor-reporting published data specification for prototype purposes; NOT vendor data
+report_period,region,category,gms_usd_m,revenue_usd_m,take_rate_pct,tickets_sold_m,source_url,data_status
+2025-Q1,APAC,Live Entertainment - Theatre,84.2,15.9,18.9,1.10,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q2,APAC,Live Entertainment - Music/Concerts,96.5,18.1,18.8,1.30,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q2,Australia,Live Entertainment - Theatre,18.6,3.6,19.2,0.26,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q3,Australia,Live Entertainment - Theatre,22.7,4.4,19.4,0.31,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q3,Australia,Live Entertainment - Comedy,11.4,2.2,19.3,0.18,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q4,Australia,Live Entertainment - Theatre,26.8,5.2,19.4,0.35,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q4,North America,Live Entertainment - Sports,612.0,116.0,19.0,8.90,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2025-Q1,EMEA (viagogo),Live Entertainment - Music/Concerts,210.4,39.8,18.9,2.70,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+2024-Q4,Australia,Live Entertainment - Theatre,19.9,3.8,19.1,0.27,https://investors.stubhub.com/,SYNTHETIC_SAMPLE
+FY2025,Australia,Live Entertainment - All categories,98.6,19.0,19.3,1.34,https://investors.stubhub.com/,SYNTHETIC_SAMPLE

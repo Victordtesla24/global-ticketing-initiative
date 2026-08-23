@@ -1,0 +1,113 @@
+{
+  "provider": "GWI (GlobalWebIndex)",
+  "provider_id": 24,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring GWI's published consumer-research data specification (wave/period, market, audience segment, survey question, response %, sample size, data-point category), illustratively populated for AU/UK/US/IN markets relevant to the diaspora live-entertainment initiative.",
+  "spec_note": "SYNTHETIC: field names mirror GWI's public platform categories (Audiences, Markets, Interests/Attitudes/Buying habits/Behaviors/Demographics profiling points, quarterly waves) as described on gwi.com/platform. All questions, percentages and sample sizes are fabricated mock placeholders, not licensed GWI survey data.",
+  "countries": [
+    "Global",
+    "UK"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "wave": "2026 Q2",
+      "market": "Australia",
+      "audience_segment": "South Asian diaspora, 18-34",
+      "question": "Attended a live cultural/music event in past 3 months",
+      "response_pct": 47.2,
+      "sample_size": 480,
+      "data_point_category": "Behaviors",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q2",
+      "market": "Australia",
+      "audience_segment": "General population, 18-34",
+      "question": "Attended a live cultural/music event in past 3 months",
+      "response_pct": 31.5,
+      "sample_size": 1500,
+      "data_point_category": "Behaviors",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q2",
+      "market": "Australia",
+      "audience_segment": "South Asian diaspora, 18-34",
+      "question": "Discovers events primarily via social media/community groups",
+      "response_pct": 62.8,
+      "sample_size": 480,
+      "data_point_category": "Behaviors",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q1",
+      "market": "United Kingdom",
+      "audience_segment": "South Asian diaspora, 25-44",
+      "question": "Would pay premium for heritage-language content",
+      "response_pct": 39.4,
+      "sample_size": 610,
+      "data_point_category": "Attitudes",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q1",
+      "market": "India",
+      "audience_segment": "Urban millennials, 25-34",
+      "question": "Books event tickets via mobile app",
+      "response_pct": 71.3,
+      "sample_size": 2200,
+      "data_point_category": "Buying habits",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q2",
+      "market": "Australia",
+      "audience_segment": "South Asian diaspora, 35-54",
+      "question": "Interest in Marathi/regional-language performing arts",
+      "response_pct": 54.1,
+      "sample_size": 390,
+      "data_point_category": "Interests",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q2",
+      "market": "Australia",
+      "audience_segment": "General population, 35-54",
+      "question": "Interest in performing arts events",
+      "response_pct": 22.9,
+      "sample_size": 1500,
+      "data_point_category": "Interests",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q1",
+      "market": "United States",
+      "audience_segment": "South Asian diaspora, 18-34",
+      "question": "Uses WhatsApp for event discovery/coordination",
+      "response_pct": 68.7,
+      "sample_size": 540,
+      "data_point_category": "Behaviors",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "wave": "2026 Q2",
+      "market": "Australia",
+      "audience_segment": "South Asian diaspora, 18-34",
+      "question": "Trusts community-run ticketing apps over global platforms",
+      "response_pct": 44.6,
+      "sample_size": 480,
+      "data_point_category": "Attitudes",
+      "source_url": "https://www.gwi.com/platform",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

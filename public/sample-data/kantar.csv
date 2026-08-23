@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors Kantar published consumer-insights & brand-tracking data specification for prototype purposes; NOT vendor data.
+study_name,brand_or_category,market,metric,value_pct,sample_size,wave_period,data_status
+Kantar BrandZ (mock),Marathi/Indian live-theatre category,"Melbourne, AU",Unprompted Brand Awareness,9.5,400,2026 Wave 1,SYNTHETIC_SAMPLE
+Kantar BrandZ (mock),Marathi/Indian live-theatre category,"Sydney, AU",Unprompted Brand Awareness,8.1,400,2026 Wave 1,SYNTHETIC_SAMPLE
+Kantar TGI (mock),Ticketing apps (general),"Melbourne, AU",Purchase Intent (next 12mo),27.3,650,2025 H2,SYNTHETIC_SAMPLE
+Kantar TGI (mock),Ticketing apps (general),"Sydney, AU",Purchase Intent (next 12mo),29.6,650,2025 H2,SYNTHETIC_SAMPLE
+Kantar Brand Tracker (mock),Ticketalay (illustrative),"Melbourne, AU",Aided Brand Recall,4.2,400,2026 Wave 1,SYNTHETIC_SAMPLE
+Kantar Brand Tracker (mock),Ticketalay (illustrative),"Sydney, AU",Aided Brand Recall,3.8,400,2026 Wave 1,SYNTHETIC_SAMPLE
+Kantar Worldpanel (mock),Cultural/entertainment spend share of wallet,AU national (South Asian households),Share of Discretionary Spend on Live Events,6.7,520,2025 H2,SYNTHETIC_SAMPLE
+Kantar TGI (mock),Ticketing apps (general),"Melbourne, AU",Net Promoter Score proxy (Likely to Recommend),31.0,650,2025 H2,SYNTHETIC_SAMPLE
+Kantar BrandZ (mock),Marathi/Indian live-theatre category,AU national,Category Consideration,18.9,800,2026 Wave 1,SYNTHETIC_SAMPLE
+Kantar Worldpanel (mock),Cultural/entertainment spend share of wallet,AU national (South Asian households),Average Annual Spend on Live Cultural Events,,520,2025 H2,SYNTHETIC_SAMPLE

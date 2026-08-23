@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Coresignal published company/employee/workforce-signal data specification for prototype purposes; NOT vendor data.
+company_name,domain,industry,employee_count_range,employee_count_growth_pct_yoy,hq_country,hq_city,founded_year,linkedin_followers,funding_stage,data_status
+Sample Diaspora Media Pty Ltd (mock),sample-diaspora-media.example (mock),Media & Entertainment,11-50,18.5,Australia,Melbourne,2019,2450,Bootstrapped,SYNTHETIC_SAMPLE
+Sample Southern Cross Events Pty Ltd (mock),sample-southerncross-events.example (mock),Events Services,1-10,42.0,Australia,Sydney,2022,610,Pre-seed,SYNTHETIC_SAMPLE
+Sample Konkan Digital Pvt Ltd (mock),sample-konkan-digital.example (mock),Software Development,11-50,9.2,India,Pune,2016,3800,Seed,SYNTHETIC_SAMPLE
+Sample Global Ticketing Ventures Pty Ltd (mock),sample-gtv.example (mock),Internet Marketplace Platforms,51-200,26.7,Australia,Melbourne,2015,9200,Series A,SYNTHETIC_SAMPLE
+Sample Heritage Apps Pty Ltd (mock),sample-heritage-apps.example (mock),Mobile Apps,1-10,-4.0,Australia,Brisbane,2020,315,Bootstrapped,SYNTHETIC_SAMPLE
+Sample Cinevent Labs Pvt Ltd (mock),sample-cinevent-labs.example (mock),Media & Entertainment,201-500,14.3,India,Mumbai,2011,41000,Series C,SYNTHETIC_SAMPLE
+Sample Rangmanch Digital LLP (mock),sample-rangmanch-digital.example (mock),Performing Arts,1-10,0.0,India,Pune,2021,190,Bootstrapped,SYNTHETIC_SAMPLE
+Sample Kothrud Software Solutions Pvt Ltd (mock),sample-kothrud-software.example (mock),IT Services,11-50,6.1,India,Pune,2013,1650,Bootstrapped,SYNTHETIC_SAMPLE

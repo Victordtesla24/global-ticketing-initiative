@@ -1,0 +1,148 @@
+{
+  "provider": "World Bank",
+  "provider_id": 19,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock World Development Indicators (WDI) rows for Australia and India covering population, GDP per capita, urbanisation, internet penetration and migration - the general macro/demographic context World Bank Open Data would supply for a diaspora market-sizing exercise.",
+  "spec_note": "SYNTHETIC SAMPLE. Field names (country_code ISO3, indicator_code, indicator_name, year, value) mirror the real WDI API schema; all VALUES are illustrative placeholders, not actual World Bank published figures. World Bank has no cultural-attendance or diaspora-specific indicators - included here only for macro/demographic sizing context (population, income, urbanisation) relevant to Australia and India.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors World Bank Open Data (World Development Indicators) published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "year": "2025",
+      "value": "26900000",
+      "unit": "persons",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "IND",
+      "country_name": "India",
+      "indicator_code": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "year": "2025",
+      "value": "1451000000",
+      "unit": "persons",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "NY.GDP.PCAP.CD",
+      "indicator_name": "GDP per capita (current US$)",
+      "year": "2025",
+      "value": "65200",
+      "unit": "current US$",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "IND",
+      "country_name": "India",
+      "indicator_code": "NY.GDP.PCAP.CD",
+      "indicator_name": "GDP per capita (current US$)",
+      "year": "2025",
+      "value": "2730",
+      "unit": "current US$",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "year": "2025",
+      "value": "86.4",
+      "unit": "%",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "IND",
+      "country_name": "India",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "year": "2025",
+      "value": "36.8",
+      "unit": "%",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "IT.NET.USER.ZS",
+      "indicator_name": "Individuals using the Internet (% of population)",
+      "year": "2024",
+      "value": "96.9",
+      "unit": "%",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "IND",
+      "country_name": "India",
+      "indicator_code": "IT.NET.USER.ZS",
+      "indicator_name": "Individuals using the Internet (% of population)",
+      "year": "2024",
+      "value": "52.4",
+      "unit": "%",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "SM.POP.NETM",
+      "indicator_name": "Net migration",
+      "year": "2024",
+      "value": "412000",
+      "unit": "persons (5-yr estimate, annualised)",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "NE.CON.PRVT.PC.KD.ZG",
+      "indicator_name": "Households and NPISHs final consumption expenditure per capita growth",
+      "year": "2025",
+      "value": "1.9",
+      "unit": "% annual",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "IND",
+      "country_name": "India",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "year": "2025",
+      "value": "6.5",
+      "unit": "% annual",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country_code": "AUS",
+      "country_name": "Australia",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "year": "2025",
+      "value": "2.1",
+      "unit": "% annual",
+      "source_url": "https://data.worldbank.org/indicator",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

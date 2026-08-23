@@ -1,0 +1,114 @@
+{
+  "provider": "Kantar",
+  "provider_id": 5,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Kantar's published brand-tracking and consumer-insights data specification (BrandZ awareness/consideration, TGI purchase-intent, Worldpanel spend share), illustratively populated for the AU Marathi/Indian live-entertainment category.",
+  "spec_note": "SYNTHETIC: field names mirror the shape of Kantar's public product documentation for BrandZ, TGI and Worldpanel outputs; all numeric values are illustrative mock figures, NOT licensed Kantar data.",
+  "countries": [
+    "Global",
+    "AU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "study_name": "Kantar BrandZ (mock)",
+      "brand_or_category": "Marathi/Indian live-theatre category",
+      "market": "Melbourne, AU",
+      "metric": "Unprompted Brand Awareness",
+      "value_pct": 9.5,
+      "sample_size": 400,
+      "wave_period": "2026 Wave 1",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar BrandZ (mock)",
+      "brand_or_category": "Marathi/Indian live-theatre category",
+      "market": "Sydney, AU",
+      "metric": "Unprompted Brand Awareness",
+      "value_pct": 8.1,
+      "sample_size": 400,
+      "wave_period": "2026 Wave 1",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar TGI (mock)",
+      "brand_or_category": "Ticketing apps (general)",
+      "market": "Melbourne, AU",
+      "metric": "Purchase Intent (next 12mo)",
+      "value_pct": 27.3,
+      "sample_size": 650,
+      "wave_period": "2025 H2",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar TGI (mock)",
+      "brand_or_category": "Ticketing apps (general)",
+      "market": "Sydney, AU",
+      "metric": "Purchase Intent (next 12mo)",
+      "value_pct": 29.6,
+      "sample_size": 650,
+      "wave_period": "2025 H2",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar Brand Tracker (mock)",
+      "brand_or_category": "Ticketalay (illustrative)",
+      "market": "Melbourne, AU",
+      "metric": "Aided Brand Recall",
+      "value_pct": 4.2,
+      "sample_size": 400,
+      "wave_period": "2026 Wave 1",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar Brand Tracker (mock)",
+      "brand_or_category": "Ticketalay (illustrative)",
+      "market": "Sydney, AU",
+      "metric": "Aided Brand Recall",
+      "value_pct": 3.8,
+      "sample_size": 400,
+      "wave_period": "2026 Wave 1",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar Worldpanel (mock)",
+      "brand_or_category": "Cultural/entertainment spend share of wallet",
+      "market": "AU national (South Asian households)",
+      "metric": "Share of Discretionary Spend on Live Events",
+      "value_pct": 6.7,
+      "sample_size": 520,
+      "wave_period": "2025 H2",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar TGI (mock)",
+      "brand_or_category": "Ticketing apps (general)",
+      "market": "Melbourne, AU",
+      "metric": "Net Promoter Score proxy (Likely to Recommend)",
+      "value_pct": 31.0,
+      "sample_size": 650,
+      "wave_period": "2025 H2",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar BrandZ (mock)",
+      "brand_or_category": "Marathi/Indian live-theatre category",
+      "market": "AU national",
+      "metric": "Category Consideration",
+      "value_pct": 18.9,
+      "sample_size": 800,
+      "wave_period": "2026 Wave 1",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "study_name": "Kantar Worldpanel (mock)",
+      "brand_or_category": "Cultural/entertainment spend share of wallet",
+      "market": "AU national (South Asian households)",
+      "metric": "Average Annual Spend on Live Cultural Events",
+      "value_pct": null,
+      "sample_size": 520,
+      "wave_period": "2025 H2",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

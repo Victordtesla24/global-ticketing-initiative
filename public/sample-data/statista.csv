@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors Statista published statistic-entry data specification for prototype purposes; NOT vendor data.
+statistic_id,title,region,category,unit,value,year,data_status
+STZ-MOCK-10001,"India-born population of Australia, by state (mock)",Australia,Demographics,persons,876074,2024,SYNTHETIC_SAMPLE
+STZ-MOCK-10002,"Live entertainment & event ticketing market size, Australia (mock)",Australia,Media & Entertainment,AUD million,1450,2025,SYNTHETIC_SAMPLE
+STZ-MOCK-10003,"Online event-ticketing penetration rate, Australia (mock)",Australia,Media & Entertainment,%,63.5,2025,SYNTHETIC_SAMPLE
+STZ-MOCK-10004,"Number of Marathi speakers, Australia census (mock illustrative)",Australia,Demographics,persons,45000,2024,SYNTHETIC_SAMPLE
+STZ-MOCK-10005,"Average spend per live-event ticket, Australia (mock)",Australia,Media & Entertainment,AUD,68,2025,SYNTHETIC_SAMPLE
+STZ-MOCK-10006,"Smartphone penetration among South Asian-born households, Australia (mock)",Australia,Technology,%,91.2,2025,SYNTHETIC_SAMPLE
+STZ-MOCK-10007,"Mobile ticketing app monthly active users, Australia (mock, category est.)",Australia,Media & Entertainment,thousand users,890,2025,SYNTHETIC_SAMPLE
+STZ-MOCK-10008,"Indian diaspora population, Melbourne metro (mock)","Melbourne, AU",Demographics,persons,210000,2024,SYNTHETIC_SAMPLE
+STZ-MOCK-10009,"Indian diaspora population, Sydney metro (mock)","Sydney, AU",Demographics,persons,195000,2024,SYNTHETIC_SAMPLE
+STZ-MOCK-10010,"Year-on-year growth of ethnic/diaspora live-event bookings, Australia (mock)",Australia,Media & Entertainment,% YoY,14.8,2025,SYNTHETIC_SAMPLE

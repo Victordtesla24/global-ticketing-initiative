@@ -1,0 +1,109 @@
+{
+  "provider": "Claritas (PRIZM)",
+  "provider_id": 21,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Claritas PRIZM Premier's published segmentation data specification (segment code/name, Lifestage Group, Social Group, household share, median income, median age), illustratively populated to show the shape of a US geodemographic segmentation deliverable.",
+  "spec_note": "SYNTHETIC: field names mirror PRIZM Premier's public schema (68 segments organized into 11 Lifestage Groups and 14 Social Groups, per claritas.com/prizm-premier). All segment codes, names and numeric values are fabricated mock placeholders, not licensed Claritas data. PRIZM Premier is confirmed US-only (see workflow/verify/claritas.md) — it cannot segment Australian households, so this is a US-market reference sample only, not AU coverage.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "segment_code": "PRIZM-01 (mock)",
+      "segment_name": "Upscale Avenues (mock)",
+      "lifestage_group": "Midlife Success",
+      "social_group": "Elite Suburbs",
+      "geography": "US ZIP mock",
+      "households_pct": 1.8,
+      "median_hh_income_usd": 142000,
+      "median_age": 47,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-14 (mock)",
+      "segment_name": "Diverse Metro Starts (mock)",
+      "lifestage_group": "Young Achievers",
+      "social_group": "Urban Uptown",
+      "geography": "US ZIP mock",
+      "households_pct": 2.3,
+      "median_hh_income_usd": 68500,
+      "median_age": 29,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-27 (mock)",
+      "segment_name": "South Asian Enclaves (mock)",
+      "lifestage_group": "Family Life",
+      "social_group": "Second City Society",
+      "geography": "US ZIP mock",
+      "households_pct": 0.6,
+      "median_hh_income_usd": 91200,
+      "median_age": 34,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-33 (mock)",
+      "segment_name": "Cultural Connectors (mock)",
+      "lifestage_group": "Family Life",
+      "social_group": "Urban Uptown",
+      "geography": "US ZIP mock",
+      "households_pct": 1.1,
+      "median_hh_income_usd": 104300,
+      "median_age": 38,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-41 (mock)",
+      "segment_name": "Suburban Strivers (mock)",
+      "lifestage_group": "Affluent Empty Nests",
+      "social_group": "Suburban Periphery",
+      "geography": "US ZIP mock",
+      "households_pct": 2.0,
+      "median_hh_income_usd": 87600,
+      "median_age": 51,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-52 (mock)",
+      "segment_name": "Entertainment Seekers (mock)",
+      "lifestage_group": "Young Achievers",
+      "social_group": "Elite Suburbs",
+      "geography": "US ZIP mock",
+      "households_pct": 1.4,
+      "median_hh_income_usd": 76900,
+      "median_age": 31,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-60 (mock)",
+      "segment_name": "Global Neighborhoods (mock)",
+      "lifestage_group": "Family Life",
+      "social_group": "Second City Society",
+      "geography": "US ZIP mock",
+      "households_pct": 0.9,
+      "median_hh_income_usd": 82400,
+      "median_age": 36,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "segment_code": "PRIZM-68 (mock)",
+      "segment_name": "Multicultural Mosaics (mock)",
+      "lifestage_group": "Young Achievers",
+      "social_group": "Urban Uptown",
+      "geography": "US ZIP mock",
+      "households_pct": 1.2,
+      "median_hh_income_usd": 71300,
+      "median_age": 33,
+      "source_url": "https://claritas.com/prizm-premier/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "provider": "Google Play Console",
+  "provider_id": 2,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Public Google Play Store listing metrics for the Ticketalay Android app (com.ticketalay.app), extracted first-hand from the live listing per the entity-reality audit (not an authenticated Play Console export).",
+  "spec_note": "REAL-EXTRACT: fields mirror what is visible on the public Play Store listing page (title, developer, downloads band, rating, ld+json offer/rating data); true Play Console-only metrics (e.g. install funnels, acquisition channel) require developer-account access and are not included.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "package_id",
+      "value": "com.ticketalay.app",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "title",
+      "value": "Ticketalay - Apps on Google Play",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "developer",
+      "value": "PAC Theatre Entertainment Pvt Ltd",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "downloads_band",
+      "value": "100K+",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_value",
+      "value": "3.36",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_count",
+      "value": "386",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_histogram_5star",
+      "value": "122",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_histogram_4star",
+      "value": "26",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_histogram_3star",
+      "value": "15",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_histogram_2star",
+      "value": "26",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_histogram_1star",
+      "value": "193",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "price_and_currency",
+      "value": "0 INR (free app; 'All prices include GST' footer note)",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "contains_ads",
+      "value": "true",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "category",
+      "value": "Entertainment",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "updated_on",
+      "value": "Dec 26, 2025",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "developer_address",
+      "value": "602 B Resham 7-bunglows, Off J P Road Andheri West, Vesava, Mumbai, Maharashtra 400061, India",
+      "source_url": "https://play.google.com/store/apps/details?id=com.ticketalay.app",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

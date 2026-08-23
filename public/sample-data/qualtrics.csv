@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Qualtrics published survey-platform data specification for prototype purposes; NOT vendor data
+survey_id,response_id,distribution_channel,start_date,end_date,finished,duration_seconds,q_market_fit,q_market,source_url,data_status
+SV_MOCK0001,R_mock00001,email,2026-06-01T09:12:00Z,2026-06-01T09:19:00Z,True,420,5 - Very interested,Australia,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0001,R_mock00002,social,2026-06-01T10:03:00Z,2026-06-01T10:14:00Z,True,660,4 - Interested,Australia,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0001,R_mock00003,email,2026-06-02T08:44:00Z,2026-06-02T08:47:00Z,False,180,,Australia,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0002,R_mock00004,whatsapp,2026-06-05T14:20:00Z,2026-06-05T14:31:00Z,True,660,5 - Very interested,United Kingdom,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0002,R_mock00005,web-intercept,2026-06-06T11:02:00Z,2026-06-06T11:09:00Z,True,420,3 - Neutral,United Kingdom,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0001,R_mock00006,email,2026-06-07T16:10:00Z,2026-06-07T16:20:00Z,True,600,5 - Very interested,Australia,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0002,R_mock00007,web-intercept,2026-06-08T09:33:00Z,2026-06-08T09:41:00Z,True,480,4 - Interested,United Kingdom,https://api.qualtrics.com/,SYNTHETIC_SAMPLE
+SV_MOCK0003,R_mock00008,whatsapp,2026-06-09T19:02:00Z,2026-06-09T19:12:00Z,True,600,5 - Very interested,India,https://api.qualtrics.com/,SYNTHETIC_SAMPLE

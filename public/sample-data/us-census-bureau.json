@@ -1,0 +1,189 @@
+{
+  "provider": "US Census Bureau",
+  "provider_id": 13,
+  "data_mode": "REAL-EXTRACT",
+  "description": "American Community Survey (ACS) figures on India-born population and Marathi/Indic-language speakers in the United States, extracted verbatim from data.census.gov per the us-stats verification pack.",
+  "spec_note": "Every row traces to workflow/verify/us-stats.md item 3. Current ACS tables (B16001) do not itemise Marathi separately; it is folded into a 'Nepali, Marathi, or other Indic languages' line. The only standalone Marathi figure (73,630) is from a 2009-2013 special tabulation, not a current estimate — both are included with vintage flagged, no interpolation to a 'current' Marathi number was performed.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "Foreign-born population, total",
+      "value": "50234841",
+      "unit": "persons (MOE +/-162,666)",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table B05006, variable B05006_001E"
+    },
+    {
+      "metric": "India-born population",
+      "value": "3162885",
+      "unit": "persons (MOE +/-49,783)",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table B05006, variable B05006_060E; a commonly-cited '52.4m Indian-born' figure is a MISMATCH vs this ACS number"
+    },
+    {
+      "metric": "Foreign-born population, total",
+      "value": "47831053",
+      "unit": "persons",
+      "reference_period": "ACS 2023 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "prior-year comparator"
+    },
+    {
+      "metric": "India-born population",
+      "value": "2910042",
+      "unit": "persons",
+      "reference_period": "ACS 2023 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "prior-year comparator"
+    },
+    {
+      "metric": "India-born population",
+      "value": "626214",
+      "unit": "persons (MOE +/-19,614)",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "California",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=040XX00US06",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "largest state total"
+    },
+    {
+      "metric": "India-born population",
+      "value": "431939",
+      "unit": "persons (MOE +/-20,883)",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "Texas",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "India-born population",
+      "value": "296806",
+      "unit": "persons (MOE +/-11,676)",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "New Jersey",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Nepali, Marathi, or other Indic languages spoken at home",
+      "value": "508113",
+      "unit": "persons (MOE +/-22,459)",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table B16001; current ACS tables do NOT publish Marathi as a standalone line"
+    },
+    {
+      "metric": "...of which, speak English 'very well'",
+      "value": "343244",
+      "unit": "persons",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "B16001_061E, within the grouped Nepali/Marathi/other-Indic line"
+    },
+    {
+      "metric": "...of which, speak English less than 'very well'",
+      "value": "164869",
+      "unit": "persons",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "B16001_062E"
+    },
+    {
+      "metric": "Urdu spoken at home",
+      "value": "561196",
+      "unit": "persons",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "context line, table B16001"
+    },
+    {
+      "metric": "Punjabi spoken at home",
+      "value": "382413",
+      "unit": "persons",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "context line, table B16001"
+    },
+    {
+      "metric": "Bengali spoken at home",
+      "value": "494034",
+      "unit": "persons",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "context line, table B16001"
+    },
+    {
+      "metric": "Marathi spoken at home (standalone line)",
+      "value": "73630",
+      "unit": "persons (MOE +/-3,164)",
+      "reference_period": "2009-2013 special tabulation",
+      "geography": "United States",
+      "source_url": "https://www2.census.gov/library/data/tables/2008/demo/language-use/2009-2013-acs-lang-tables-nation.xls",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "only official ACS product with Marathi itemised separately; vintage 2015 release, not current"
+    },
+    {
+      "metric": "...of which, speak English less than 'very well'",
+      "value": "10525",
+      "unit": "persons",
+      "reference_period": "2009-2013 special tabulation",
+      "geography": "United States",
+      "source_url": "https://www2.census.gov/library/data/tables/2008/demo/language-use/2009-2013-acs-lang-tables-nation.xls",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Total population base (language table)",
+      "value": "321745943",
+      "unit": "persons",
+      "reference_period": "ACS 2024 1-year",
+      "geography": "United States",
+      "source_url": "https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table B16001 universe: population 5 years and over"
+    }
+  ]
+}

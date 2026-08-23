@@ -1,0 +1,178 @@
+{
+  "provider": "Eurostat",
+  "provider_id": 17,
+  "data_mode": "REAL-EXTRACT",
+  "description": "EU-SILC 2022 ad-hoc module (dataset ilc_scp03) live-performance attendance rates by country, extracted verbatim from the Eurostat dissemination API per the eu-ca-stats verification pack.",
+  "spec_note": "Every row traces to workflow/verify/eu-ca-stats.md item 1. 'Live performance' = theatre, concerts and ballet combined (Eurostat activity code AC522A); this is a general-population participation rate module collected roughly every 6 years (2022 latest, next planned update ~October 2029), NOT an annual series, and Eurostat publishes no breakdown by country of birth, ethnicity, language, or diaspora status - it cannot support any Indian-origin/Marathi-specific demand claim for the EU.",
+  "countries": [
+    "EU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "country": "Luxembourg",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "48.5",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "highest of all countries in the dataset"
+    },
+    {
+      "country": "Switzerland",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "46.6",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Denmark",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "45.7",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Norway",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "41.8",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Estonia",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "39.8",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "France",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "22.2",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Italy",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "19.1",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Poland",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "18.7",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Slovakia",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "14.4",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Bulgaria",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "10.7",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "lowest among EU member states shown"
+    },
+    {
+      "country": "Romania",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "10.4",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Turkiye",
+      "indicator": "Live performance attendance (theatre, concerts, ballet), at least once in 12 months",
+      "value": "6.2",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_scp03?format=JSON&lang=en&time=2022&acl00=AC522A&frequenc=GE1&isced11=TOTAL&age=Y_GE16&sex=T&unit=PC",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "lowest overall; non-EU candidate country in the dataset"
+    },
+    {
+      "country": "Luxembourg",
+      "indicator": "Live performance attendance frequency: 1-3 times in 12 months",
+      "value": "41.4",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_scp03/default/table?lang=en",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "frequency breakdown for Luxembourg"
+    },
+    {
+      "country": "Luxembourg",
+      "indicator": "Live performance attendance frequency: at least 4 times in 12 months",
+      "value": "7.1",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_scp03/default/table?lang=en",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "country": "Luxembourg",
+      "indicator": "Did not attend a live performance in 12 months",
+      "value": "51.5",
+      "unit": "% of population 16+",
+      "reference_period": "2022",
+      "source_url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_scp03/default/table?lang=en",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    }
+  ]
+}

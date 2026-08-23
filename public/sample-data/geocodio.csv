@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors Geocodio published US/Canada geocoding data specification for prototype purposes; NOT vendor data.
+input_address,formatted_address,lat,lng,accuracy_score,accuracy_type,congressional_district,country,data_status
+"1 Convention Centre Pl, South Wharf, VIC (test row - not serviceable, AU)",n/a - Geocodio covers US/CA only (mock),,,0.0,unsupported_country,n/a,AU,SYNTHETIC_SAMPLE
+"233 S Wacker Dr, Chicago, IL 60606","233 S Wacker Dr, Chicago, IL 60606 (mock)",41.8788,-87.6359,0.97,rooftop,IL-07,US,SYNTHETIC_SAMPLE
+"2001 Woodbridge Ave, Edison, NJ 08817","2001 Woodbridge Ave, Edison, NJ 08817 (mock)",40.534,-74.34,0.95,rooftop,NJ-06,US,SYNTHETIC_SAMPLE
+"3300 Mowry Ave, Fremont, CA 94538","3300 Mowry Ave, Fremont, CA 94538 (mock)",37.534,-121.99,0.96,rooftop,CA-17,US,SYNTHETIC_SAMPLE
+"7700 Bellaire Blvd, Houston, TX 77036","7700 Bellaire Blvd, Houston, TX 77036 (mock)",29.696,-95.501,0.94,rooftop,TX-09,US,SYNTHETIC_SAMPLE
+"789 Don Mills Rd, Toronto, ON M3C 1T5","789 Don Mills Rd, Toronto, ON M3C 1T5 (mock)",43.718,-79.34,0.93,rooftop,"n/a (CA - federal_electoral_district: Don Valley East, mock)",CA,SYNTHETIC_SAMPLE
+"7700 Hurontario St, Brampton, ON L6Y 4M3","7700 Hurontario St, Brampton, ON L6Y 4M3 (mock)",43.66,-79.76,0.92,rooftop,"n/a (CA - federal_electoral_district: Brampton West, mock)",CA,SYNTHETIC_SAMPLE
+"4750 Yonge St, North York, ON M2N 5M6","4750 Yonge St, North York, ON M2N 5M6 (mock)",43.766,-79.413,0.91,rooftop,"n/a (CA - federal_electoral_district: Willowdale, mock)",CA,SYNTHETIC_SAMPLE
+"1000 Kifer Rd, Sunnyvale, CA 94086","1000 Kifer Rd, Sunnyvale, CA 94086 (mock)",37.372,-122.008,0.96,rooftop,CA-16,US,SYNTHETIC_SAMPLE
+"120 Iselin Ave, Iselin, NJ 08830","120 Iselin Ave, Iselin, NJ 08830 (mock)",40.575,-74.322,0.9,range_interpolation,NJ-06,US,SYNTHETIC_SAMPLE

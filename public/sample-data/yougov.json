@@ -1,0 +1,122 @@
+{
+  "provider": "YouGov",
+  "provider_id": 25,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring YouGov's published opinion-poll data specification (poll id, market, topic, question, response option, response %, sample size, fieldwork period), illustratively populated for AU/UK/IN markets relevant to the diaspora live-entertainment initiative.",
+  "spec_note": "SYNTHETIC: field names mirror YouGov's public poll-results schema (poll/topic/question/response-breakdown/sample-size/fieldwork-date) as published on yougov.co.uk and yougov.com poll archives. All poll ids, questions and percentages are fabricated mock placeholders, not licensed YouGov survey data.",
+  "countries": [
+    "Global",
+    "UK"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "poll_id": "YG-MOCK-2026-0142",
+      "market": "Australia",
+      "topic": "Live entertainment attendance",
+      "question": "Have you attended a ticketed live event in the last 6 months?",
+      "response_option": "Yes",
+      "response_pct": 58.3,
+      "sample_size": 2100,
+      "fieldwork_period": "2026-06",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0142",
+      "market": "Australia",
+      "topic": "Live entertainment attendance",
+      "question": "Have you attended a ticketed live event in the last 6 months?",
+      "response_option": "No",
+      "response_pct": 41.7,
+      "sample_size": 2100,
+      "fieldwork_period": "2026-06",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0155",
+      "market": "United Kingdom",
+      "topic": "Brand perception - ticketing platforms",
+      "question": "Which ticketing platform do you trust most?",
+      "response_option": "Independent/local platform",
+      "response_pct": 27.4,
+      "sample_size": 1850,
+      "fieldwork_period": "2026-05",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0160",
+      "market": "India",
+      "topic": "Cultural event engagement",
+      "question": "How important is regional-language programming to your event choice?",
+      "response_option": "Very important",
+      "response_pct": 61.2,
+      "sample_size": 1600,
+      "fieldwork_period": "2026-06",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0142",
+      "market": "Australia",
+      "topic": "Live entertainment attendance",
+      "question": "Which factor most influences event ticket purchase?",
+      "response_option": "Price",
+      "response_pct": 34.8,
+      "sample_size": 2100,
+      "fieldwork_period": "2026-06",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0170",
+      "market": "Australia",
+      "topic": "Diaspora community engagement",
+      "question": "Do you attend events specifically for your cultural/heritage community?",
+      "response_option": "Yes, regularly",
+      "response_pct": 29.6,
+      "sample_size": 620,
+      "fieldwork_period": "2026-07",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0170",
+      "market": "Australia",
+      "topic": "Diaspora community engagement",
+      "question": "Do you attend events specifically for your cultural/heritage community?",
+      "response_option": "Occasionally",
+      "response_pct": 44.1,
+      "sample_size": 620,
+      "fieldwork_period": "2026-07",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0181",
+      "market": "Australia",
+      "topic": "Live entertainment attendance",
+      "question": "Which factor most influences event ticket purchase?",
+      "response_option": "Event lineup/artist",
+      "response_pct": 41.2,
+      "sample_size": 2100,
+      "fieldwork_period": "2026-06",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "poll_id": "YG-MOCK-2026-0190",
+      "market": "United States",
+      "topic": "Brand perception - ticketing platforms",
+      "question": "Which ticketing platform do you trust most?",
+      "response_option": "Large global platform",
+      "response_pct": 52.6,
+      "sample_size": 1900,
+      "fieldwork_period": "2026-05",
+      "source_url": "https://yougov.co.uk/about/panel-methodology/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

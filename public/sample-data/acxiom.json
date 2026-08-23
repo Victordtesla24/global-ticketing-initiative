@@ -1,0 +1,104 @@
+{
+  "provider": "Acxiom",
+  "provider_id": 23,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Acxiom's published audience/identity data specification (audience id, country, identity type, audience segment, in-market indicator, reach estimate, recency), illustratively populated for AU/UK/US/EU markets relevant to the diaspora live-entertainment initiative.",
+  "spec_note": "SYNTHETIC: field names mirror Acxiom's public identity-resolution and audience-segment product categories (household/individual identity graph, in-market indicators, reach) as described on acxiom.com. All record values are fabricated mock placeholders, not licensed Acxiom data.",
+  "countries": [
+    "AU",
+    "EU",
+    "UK",
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "audience_id": "ACX-MOCK-AU-001",
+      "country": "AU",
+      "identity_type": "Household (hashed email match)",
+      "audience_segment": "Live Entertainment Enthusiasts (mock)",
+      "in_market_indicator": "Event Tickets - Performing Arts",
+      "reach_estimate": 42000,
+      "recency_days": 14,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-AU-002",
+      "country": "AU",
+      "identity_type": "Individual (device graph)",
+      "audience_segment": "South Asian Diaspora Households (mock)",
+      "in_market_indicator": "Cultural Events - Regional Language",
+      "reach_estimate": 18500,
+      "recency_days": 30,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-UK-001",
+      "country": "UK",
+      "identity_type": "Household (hashed email match)",
+      "audience_segment": "Theatre & Live Music Frequent Attenders (mock)",
+      "in_market_indicator": "Event Tickets - Concerts",
+      "reach_estimate": 210000,
+      "recency_days": 7,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-US-001",
+      "country": "US",
+      "identity_type": "Individual (device graph)",
+      "audience_segment": "Mobile Ticketing Early Adopters (mock)",
+      "in_market_indicator": "Apps - Entertainment/Ticketing",
+      "reach_estimate": 890000,
+      "recency_days": 21,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-EU-001",
+      "country": "DE",
+      "identity_type": "Household (hashed email match)",
+      "audience_segment": "Cultural Festival Attendees (mock)",
+      "in_market_indicator": "Event Tickets - Festivals",
+      "reach_estimate": 156000,
+      "recency_days": 45,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-AU-003",
+      "country": "AU",
+      "identity_type": "Household (hashed email match)",
+      "audience_segment": "Second-Generation Migrant Households (mock)",
+      "in_market_indicator": "Cultural Events - Regional Language",
+      "reach_estimate": 9800,
+      "recency_days": 30,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-AU-004",
+      "country": "AU",
+      "identity_type": "Individual (device graph)",
+      "audience_segment": "Melbourne Metro Event-Goers (mock)",
+      "in_market_indicator": "Event Tickets - Performing Arts",
+      "reach_estimate": 61000,
+      "recency_days": 10,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "audience_id": "ACX-MOCK-UK-002",
+      "country": "UK",
+      "identity_type": "Household (hashed email match)",
+      "audience_segment": "South Asian Diaspora Households (mock)",
+      "in_market_indicator": "Cultural Events - Regional Language",
+      "reach_estimate": 74500,
+      "recency_days": 30,
+      "source_url": "https://www.acxiom.com/what-we-do/data/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

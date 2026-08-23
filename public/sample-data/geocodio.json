@@ -1,0 +1,124 @@
+{
+  "provider": "Geocodio",
+  "provider_id": 57,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Geocodio's published US/Canada batch-and-API geocoding data specification (input address, formatted address, lat/lng, accuracy score/type, US congressional-district append), illustratively populated for Indian-diaspora-dense US metro ZIP codes and Toronto-area (ON) addresses relevant to a future North American expansion, plus one out-of-coverage AU row showing Geocodio's US/CA-only scope.",
+  "spec_note": "SYNTHETIC: field shape (input_address, formatted_address, lat/lng, accuracy_score, accuracy_type, congressional_district) mirrors Geocodio's public API documentation (www.geocod.io/docs) including its signature US congressional-district append field; Canadian rows note the analogous federal_electoral_district concept as illustrative/mock since Geocodio's district append is US-only. NOT licensed Geocodio data.",
+  "countries": [
+    "US",
+    "CA"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "input_address": "1 Convention Centre Pl, South Wharf, VIC (test row - not serviceable, AU)",
+      "formatted_address": "n/a - Geocodio covers US/CA only (mock)",
+      "lat": "",
+      "lng": "",
+      "accuracy_score": 0.0,
+      "accuracy_type": "unsupported_country",
+      "congressional_district": "n/a",
+      "country": "AU",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "233 S Wacker Dr, Chicago, IL 60606",
+      "formatted_address": "233 S Wacker Dr, Chicago, IL 60606 (mock)",
+      "lat": 41.8788,
+      "lng": -87.6359,
+      "accuracy_score": 0.97,
+      "accuracy_type": "rooftop",
+      "congressional_district": "IL-07",
+      "country": "US",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "2001 Woodbridge Ave, Edison, NJ 08817",
+      "formatted_address": "2001 Woodbridge Ave, Edison, NJ 08817 (mock)",
+      "lat": 40.534,
+      "lng": -74.34,
+      "accuracy_score": 0.95,
+      "accuracy_type": "rooftop",
+      "congressional_district": "NJ-06",
+      "country": "US",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "3300 Mowry Ave, Fremont, CA 94538",
+      "formatted_address": "3300 Mowry Ave, Fremont, CA 94538 (mock)",
+      "lat": 37.534,
+      "lng": -121.99,
+      "accuracy_score": 0.96,
+      "accuracy_type": "rooftop",
+      "congressional_district": "CA-17",
+      "country": "US",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "7700 Bellaire Blvd, Houston, TX 77036",
+      "formatted_address": "7700 Bellaire Blvd, Houston, TX 77036 (mock)",
+      "lat": 29.696,
+      "lng": -95.501,
+      "accuracy_score": 0.94,
+      "accuracy_type": "rooftop",
+      "congressional_district": "TX-09",
+      "country": "US",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "789 Don Mills Rd, Toronto, ON M3C 1T5",
+      "formatted_address": "789 Don Mills Rd, Toronto, ON M3C 1T5 (mock)",
+      "lat": 43.718,
+      "lng": -79.34,
+      "accuracy_score": 0.93,
+      "accuracy_type": "rooftop",
+      "congressional_district": "n/a (CA - federal_electoral_district: Don Valley East, mock)",
+      "country": "CA",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "7700 Hurontario St, Brampton, ON L6Y 4M3",
+      "formatted_address": "7700 Hurontario St, Brampton, ON L6Y 4M3 (mock)",
+      "lat": 43.66,
+      "lng": -79.76,
+      "accuracy_score": 0.92,
+      "accuracy_type": "rooftop",
+      "congressional_district": "n/a (CA - federal_electoral_district: Brampton West, mock)",
+      "country": "CA",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "4750 Yonge St, North York, ON M2N 5M6",
+      "formatted_address": "4750 Yonge St, North York, ON M2N 5M6 (mock)",
+      "lat": 43.766,
+      "lng": -79.413,
+      "accuracy_score": 0.91,
+      "accuracy_type": "rooftop",
+      "congressional_district": "n/a (CA - federal_electoral_district: Willowdale, mock)",
+      "country": "CA",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "1000 Kifer Rd, Sunnyvale, CA 94086",
+      "formatted_address": "1000 Kifer Rd, Sunnyvale, CA 94086 (mock)",
+      "lat": 37.372,
+      "lng": -122.008,
+      "accuracy_score": 0.96,
+      "accuracy_type": "rooftop",
+      "congressional_district": "CA-16",
+      "country": "US",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "input_address": "120 Iselin Ave, Iselin, NJ 08830",
+      "formatted_address": "120 Iselin Ave, Iselin, NJ 08830 (mock)",
+      "lat": 40.575,
+      "lng": -74.322,
+      "accuracy_score": 0.9,
+      "accuracy_type": "range_interpolation",
+      "congressional_district": "NJ-06",
+      "country": "US",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

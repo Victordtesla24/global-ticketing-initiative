@@ -1,0 +1,14 @@
+# SYNTHETIC SAMPLE - mirrors World Bank Open Data (World Development Indicators) published data specification for prototype purposes; NOT vendor data
+country_code,country_name,indicator_code,indicator_name,year,value,unit,source_url,data_status
+AUS,Australia,SP.POP.TOTL,"Population, total",2025,26900000,persons,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+IND,India,SP.POP.TOTL,"Population, total",2025,1451000000,persons,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+AUS,Australia,NY.GDP.PCAP.CD,GDP per capita (current US$),2025,65200,current US$,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+IND,India,NY.GDP.PCAP.CD,GDP per capita (current US$),2025,2730,current US$,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+AUS,Australia,SP.URB.TOTL.IN.ZS,Urban population (% of total),2025,86.4,%,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+IND,India,SP.URB.TOTL.IN.ZS,Urban population (% of total),2025,36.8,%,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+AUS,Australia,IT.NET.USER.ZS,Individuals using the Internet (% of population),2024,96.9,%,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+IND,India,IT.NET.USER.ZS,Individuals using the Internet (% of population),2024,52.4,%,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+AUS,Australia,SM.POP.NETM,Net migration,2024,412000,"persons (5-yr estimate, annualised)",https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+AUS,Australia,NE.CON.PRVT.PC.KD.ZG,Households and NPISHs final consumption expenditure per capita growth,2025,1.9,% annual,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+IND,India,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),2025,6.5,% annual,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE
+AUS,Australia,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),2025,2.1,% annual,https://data.worldbank.org/indicator,SYNTHETIC_SAMPLE

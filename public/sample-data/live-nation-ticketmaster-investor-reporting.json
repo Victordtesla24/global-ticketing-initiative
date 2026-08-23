@@ -1,0 +1,113 @@
+{
+  "provider": "Live Nation / Ticketmaster (Investor Reporting)",
+  "provider_id": 31,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Real figures pulled verbatim from Live Nation Entertainment's audited SEC Form 10-K filings (FY2025 and FY2024) and the corresponding FY2025 investor press release — ticket volumes, fee-bearing GTV, client counts, and category growth mix. This is free, publicly available investor-reporting data (SEC EDGAR), not a paid vendor feed.",
+  "spec_note": "REAL-EXTRACT, source pack workflow/verify/us-stats.md section 2. All values quoted or paraphrased directly from primary SEC filings / press release; the FY2024 fee-bearing-ticket figure has a known unexplained restatement between the FY2024 10-K (331m) and the FY2025 10-K's MD&A comparator (340m) — both are preserved verbatim, not blended.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "Total tickets distributed through Ticketmaster systems",
+      "period": "FY2025",
+      "value": "646",
+      "unit": "million tickets",
+      "detail": "Item 1 (Business): 'distributing 646 million tickets through our systems in 2025.'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Ticketmaster clients worldwide",
+      "period": "FY2025",
+      "value": "10500",
+      "unit": "clients",
+      "detail": "Item 1 (Business): 'Ticketmaster serves 10,500 clients worldwide.'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Fee-bearing tickets sold",
+      "period": "FY2025",
+      "value": "346",
+      "unit": "million tickets",
+      "detail": "MD&A: 'We sold 346 million fee-bearing tickets in 2025 compared to 340 million tickets last year, up 6 million tickets or 2%.'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Fee-bearing gross transaction value (GTV)",
+      "period": "FY2025",
+      "value": "37.1",
+      "unit": "USD billion",
+      "detail": "MD&A: 'Fee-bearing GTV for the year was $37.1 billion, up $2.1 billion, or 6% compared to 2024.'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Non-fee-bearing tickets sold (season packages, venue box offices, other channels)",
+      "period": "FY2025",
+      "value": "300",
+      "unit": "million tickets",
+      "detail": "Item 1: 'approximately 300 million tickets were sold, for which we did not receive a fee, using our Ticketmaster systems...'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Concerts ticketing fee-bearing GTV",
+      "period": "FY2025",
+      "value": "26",
+      "unit": "USD billion (grew 9% YoY)",
+      "detail": "Press release: 'Ticketing fee-bearing gross transaction value (GTV) for concerts grew 9% to $26 billion.'",
+      "source_url": "https://news.livenationentertainment.com/news/live-nation-entertainment-full-year-and-fourth-quarter-2025-results",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Fee-bearing tickets growth driver",
+      "period": "FY2025",
+      "value": "concerts +4%, sports -2%",
+      "unit": "YoY category mix",
+      "detail": "Press release: 'Fee-bearing tickets increased 2% to 346 million, driven by concerts up 4% offsetting a 2% decline in sports.'",
+      "source_url": "https://news.livenationentertainment.com/news/live-nation-entertainment-full-year-and-fourth-quarter-2025-results",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Total tickets distributed through Ticketmaster systems",
+      "period": "FY2024",
+      "value": "637",
+      "unit": "million tickets (over)",
+      "detail": "FY2024 10-K, Item 1: 'distributing over 637 million tickets through our systems in 2024.'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525825000028/lyv-20241231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Fee-bearing tickets sold (as originally reported in FY2024 10-K)",
+      "period": "FY2024",
+      "value": "331",
+      "unit": "million tickets (approximately)",
+      "detail": "FY2024 10-K: 'we sold approximately 331 million tickets in 2024 on which we were paid fees for our services.' NOTE: the later FY2025 10-K MD&A restates 2024 fee-bearing tickets as 340 million (see us-stats.md caveat) — an unexplained restatement between filings; both figures are carried here, do not blend them.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525825000028/lyv-20241231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "Non-fee-bearing tickets sold",
+      "period": "FY2024",
+      "value": "307",
+      "unit": "million tickets (approximately)",
+      "detail": "FY2024 10-K: 'approximately 307 million tickets were sold, for which we did not receive a fee...'",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525825000028/lyv-20241231.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

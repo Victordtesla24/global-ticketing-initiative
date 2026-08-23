@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Claritas PRIZM published data specification for prototype purposes; NOT vendor data
+segment_code,segment_name,lifestage_group,social_group,geography,households_pct,median_hh_income_usd,median_age,source_url,data_status
+PRIZM-01 (mock),Upscale Avenues (mock),Midlife Success,Elite Suburbs,US ZIP mock,1.8,142000,47,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-14 (mock),Diverse Metro Starts (mock),Young Achievers,Urban Uptown,US ZIP mock,2.3,68500,29,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-27 (mock),South Asian Enclaves (mock),Family Life,Second City Society,US ZIP mock,0.6,91200,34,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-33 (mock),Cultural Connectors (mock),Family Life,Urban Uptown,US ZIP mock,1.1,104300,38,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-41 (mock),Suburban Strivers (mock),Affluent Empty Nests,Suburban Periphery,US ZIP mock,2.0,87600,51,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-52 (mock),Entertainment Seekers (mock),Young Achievers,Elite Suburbs,US ZIP mock,1.4,76900,31,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-60 (mock),Global Neighborhoods (mock),Family Life,Second City Society,US ZIP mock,0.9,82400,36,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE
+PRIZM-68 (mock),Multicultural Mosaics (mock),Young Achievers,Urban Uptown,US ZIP mock,1.2,71300,33,https://claritas.com/prizm-premier/,SYNTHETIC_SAMPLE

@@ -1,0 +1,14 @@
+# SYNTHETIC SAMPLE - mirrors US Bureau of Labor Statistics (BLS) published data specification for prototype purposes; NOT vendor data
+series_id,series_title,area,period,year,value,unit,seasonally_adjusted,source_url,data_status
+CUUR0000SS62031,"CPI-U: Admissions to movies, theaters, and concerts",U.S. city average,M06,2026,182.4,index (1982-84=100),N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+CUUR0000SS62031,"CPI-U: Admissions to movies, theaters, and concerts",U.S. city average,M06,2025,176.9,index (1982-84=100),N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+CUURS49ASS62031,"CPI-U: Admissions to movies, theaters, and concerts",West region,M06,2026,185.1,index (1982-84=100),N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+CXUFEEADMLB1502M,"Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, Asian consumer units",United States,annual,2025,742,USD per consumer unit,n/a,https://www.bls.gov/cex/,SYNTHETIC_SAMPLE
+CXUFEEADMLB1502M,"Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, Asian consumer units",United States,annual,2024,701,USD per consumer unit,n/a,https://www.bls.gov/cex/,SYNTHETIC_SAMPLE
+CXUFEEADMLB1401M,"Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, All consumer units",United States,annual,2025,639,USD per consumer unit,n/a,https://www.bls.gov/cex/,SYNTHETIC_SAMPLE
+SMU06419800709100001SA,Employment: Performing arts companies (NAICS 7111),"San Francisco-Oakland-Hayward, CA",M06,2026,3140,"persons (thousands, not seasonally adj.)",N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+SMU36356200709100001SA,Employment: Performing arts companies (NAICS 7111),"New York-Newark-Jersey City, NY-NJ-PA",M06,2026,9870,"persons (thousands, not seasonally adj.)",N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+CUUR0000SEEA02,CPI-U: Recreation services,U.S. city average,M06,2026,191.7,index (1982-84=100),N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+CES7071100001,"Employment: Performing arts, spectator sports, and related industries (NAICS 711)",United States,M06,2026,512.6,thousands of employees,Y,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE
+CXUFEEADMLB1502M,"Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, Asian consumer units",West region,annual,2025,829,USD per consumer unit,n/a,https://www.bls.gov/cex/,SYNTHETIC_SAMPLE
+CUUR0000SS62031,"CPI-U: Admissions to movies, theaters, and concerts","New York-Newark-Jersey City, NY-NJ-PA",M06,2026,197.8,index (1982-84=100),N,https://www.bls.gov/cpi/,SYNTHETIC_SAMPLE

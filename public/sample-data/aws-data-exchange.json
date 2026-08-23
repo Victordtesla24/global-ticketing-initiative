@@ -1,0 +1,112 @@
+{
+  "provider": "AWS Data Exchange",
+  "provider_id": 36,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock third-party data-product listings (name, provider, category, format, update frequency, subscription terms, region, price) mirroring the AWS Data Exchange product-listing schema, curated toward AU-relevant geospatial, financial and demographic datasets.",
+  "spec_note": "SYNTHETIC SAMPLE - mirrors AWS Data Exchange published product-listing specification for prototype purposes; NOT vendor data. Field names mirror AWS Data Exchange's real product-details/subscription schema (docs.aws.amazon.com/data-exchange); all product names, providers and prices are fabricated illustrative placeholders — no real AWS Data Exchange listings were copied.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors AWS Data Exchange published product-listing specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "product_name": "AU/NZ Points-of-Interest & Venue Data",
+      "provider_name": "GeoSignal Pty Ltd",
+      "category": "Geospatial",
+      "data_format": "Parquet/GeoJSON",
+      "update_frequency": "Weekly",
+      "subscription_duration_months": "12",
+      "price_usd_month": "450",
+      "aws_region": "ap-southeast-2",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "Consumer Card Transaction Panel - Entertainment",
+      "provider_name": "CardPanel Insights",
+      "category": "Financial Services",
+      "data_format": "CSV/Parquet",
+      "update_frequency": "Weekly",
+      "subscription_duration_months": "12",
+      "price_usd_month": "2200",
+      "aws_region": "us-east-1",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "Global Population & Migration Statistics Bundle",
+      "provider_name": "DiasporaMetrics",
+      "category": "Demographics",
+      "data_format": "CSV/JSON",
+      "update_frequency": "Quarterly",
+      "subscription_duration_months": "6",
+      "price_usd_month": "300",
+      "aws_region": "ap-southeast-2",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "Foreign Exchange Reference Rates Feed",
+      "provider_name": "FXFeed Markets",
+      "category": "Financial Services",
+      "data_format": "JSON",
+      "update_frequency": "Daily",
+      "subscription_duration_months": "1",
+      "price_usd_month": "0",
+      "aws_region": "us-east-1",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "Event & Venue Master Registry",
+      "provider_name": "VenueGraph",
+      "category": "Media & Entertainment",
+      "data_format": "Parquet",
+      "update_frequency": "Monthly",
+      "subscription_duration_months": "12",
+      "price_usd_month": "600",
+      "aws_region": "ap-southeast-2",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "Social Media Event Engagement Signals - ANZ",
+      "provider_name": "SocialPulse Data Co.",
+      "category": "Media & Entertainment",
+      "data_format": "JSON",
+      "update_frequency": "Daily",
+      "subscription_duration_months": "3",
+      "price_usd_month": "950",
+      "aws_region": "ap-southeast-2",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "AU Census Postcode Demographics Extract",
+      "provider_name": "CensusLink Analytics",
+      "category": "Demographics",
+      "data_format": "CSV",
+      "update_frequency": "Annual",
+      "subscription_duration_months": "12",
+      "price_usd_month": "0",
+      "aws_region": "ap-southeast-2",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "product_name": "APAC Mobile Foot Traffic Panel",
+      "provider_name": "GeoSignal Pty Ltd",
+      "category": "Geospatial",
+      "data_format": "Parquet",
+      "update_frequency": "Weekly",
+      "subscription_duration_months": "12",
+      "price_usd_month": "1800",
+      "aws_region": "ap-southeast-2",
+      "source_url": "https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

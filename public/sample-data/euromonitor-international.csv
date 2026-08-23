@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Euromonitor International published market-sizing data specification for prototype purposes; NOT vendor data.
+category,market,indicator,value,unit,year,cagr_pct,data_status
+Consumer Foodservice & Leisure,Australia,Live Event & Entertainment Ticketing Market Value,1380,AUD million,2025,6.2,SYNTHETIC_SAMPLE
+Consumer Foodservice & Leisure,Australia,Live Event & Entertainment Ticketing Market Value (2029F),1760,AUD million,2029,6.2,SYNTHETIC_SAMPLE
+Digital Consumer,Australia,Mobile Ticketing App Penetration,58.0,%,2025,,SYNTHETIC_SAMPLE
+Consumer Demographics,Australia,Foreign-born (India) Population Share,3.3,% of total population,2024,,SYNTHETIC_SAMPLE
+Consumer Foodservice & Leisure,"Melbourne, AU",Cultural/Live Event Spend per Capita (South Asian households),310,AUD/year,2025,5.5,SYNTHETIC_SAMPLE
+Consumer Foodservice & Leisure,"Sydney, AU",Cultural/Live Event Spend per Capita (South Asian households),295,AUD/year,2025,5.1,SYNTHETIC_SAMPLE
+Digital Consumer,Australia,Online/Mobile Payment Share of Ticket Purchases,81.4,%,2025,3.0,SYNTHETIC_SAMPLE
+Consumer Foodservice & Leisure,Australia,Ethnic/Community Cultural Events Sub-segment Value,165,AUD million,2025,11.0,SYNTHETIC_SAMPLE

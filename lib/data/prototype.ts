@@ -299,7 +299,7 @@ export const WALKTHROUGH: WalkStep[] = [
       },
     ],
     gateG1:
-      'Names precisely what the first-party audit must retrieve — schema, ownership, consent state and export rights (U-07) — by showing which fields are missing today rather than describing them in the abstract.',
+      'Names precisely what the G1 first-party data review must retrieve — schema, ownership, consent state and export rights (U-07) — by showing which fields are missing today rather than describing them in the abstract.',
     gateG2:
       'The synthetic file is the build target. Ingest, conform and mart logic are written and tested against this shape, so real extracts can be swapped in without the pipeline changing.',
     limit:

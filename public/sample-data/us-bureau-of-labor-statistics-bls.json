@@ -1,0 +1,160 @@
+{
+  "provider": "US Bureau of Labor Statistics (BLS)",
+  "provider_id": 14,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock BLS-style series mirroring the published CPI (Admissions to movies/theaters/concerts; Recreation services) and Consumer Expenditure Survey (Fees and admissions, by race/ethnicity) data specifications, illustrating the field shapes an admissions-cost / live-entertainment-spend benchmark feed would carry.",
+  "spec_note": "SYNTHETIC SAMPLE. BLS covers the United States only; mock rows mirror real BLS series/table structures (series_id, area, CPI item names, CE demographic breakdowns incl. an 'Asian' consumer-unit category) but all index and dollar VALUES are fabricated placeholders, not published BLS figures. Included as a US-market cost-benchmark reference for the AU-first initiative's later expansion planning, not as AU data.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors US Bureau of Labor Statistics (BLS) published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "series_id": "CUUR0000SS62031",
+      "series_title": "CPI-U: Admissions to movies, theaters, and concerts",
+      "area": "U.S. city average",
+      "period": "M06",
+      "year": "2026",
+      "value": "182.4",
+      "unit": "index (1982-84=100)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CUUR0000SS62031",
+      "series_title": "CPI-U: Admissions to movies, theaters, and concerts",
+      "area": "U.S. city average",
+      "period": "M06",
+      "year": "2025",
+      "value": "176.9",
+      "unit": "index (1982-84=100)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CUURS49ASS62031",
+      "series_title": "CPI-U: Admissions to movies, theaters, and concerts",
+      "area": "West region",
+      "period": "M06",
+      "year": "2026",
+      "value": "185.1",
+      "unit": "index (1982-84=100)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CXUFEEADMLB1502M",
+      "series_title": "Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, Asian consumer units",
+      "area": "United States",
+      "period": "annual",
+      "year": "2025",
+      "value": "742",
+      "unit": "USD per consumer unit",
+      "seasonally_adjusted": "n/a",
+      "source_url": "https://www.bls.gov/cex/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CXUFEEADMLB1502M",
+      "series_title": "Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, Asian consumer units",
+      "area": "United States",
+      "period": "annual",
+      "year": "2024",
+      "value": "701",
+      "unit": "USD per consumer unit",
+      "seasonally_adjusted": "n/a",
+      "source_url": "https://www.bls.gov/cex/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CXUFEEADMLB1401M",
+      "series_title": "Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, All consumer units",
+      "area": "United States",
+      "period": "annual",
+      "year": "2025",
+      "value": "639",
+      "unit": "USD per consumer unit",
+      "seasonally_adjusted": "n/a",
+      "source_url": "https://www.bls.gov/cex/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "SMU06419800709100001SA",
+      "series_title": "Employment: Performing arts companies (NAICS 7111)",
+      "area": "San Francisco-Oakland-Hayward, CA",
+      "period": "M06",
+      "year": "2026",
+      "value": "3140",
+      "unit": "persons (thousands, not seasonally adj.)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "SMU36356200709100001SA",
+      "series_title": "Employment: Performing arts companies (NAICS 7111)",
+      "area": "New York-Newark-Jersey City, NY-NJ-PA",
+      "period": "M06",
+      "year": "2026",
+      "value": "9870",
+      "unit": "persons (thousands, not seasonally adj.)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CUUR0000SEEA02",
+      "series_title": "CPI-U: Recreation services",
+      "area": "U.S. city average",
+      "period": "M06",
+      "year": "2026",
+      "value": "191.7",
+      "unit": "index (1982-84=100)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CES7071100001",
+      "series_title": "Employment: Performing arts, spectator sports, and related industries (NAICS 711)",
+      "area": "United States",
+      "period": "M06",
+      "year": "2026",
+      "value": "512.6",
+      "unit": "thousands of employees",
+      "seasonally_adjusted": "Y",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CXUFEEADMLB1502M",
+      "series_title": "Consumer Expenditure Survey: Fees and admissions, mean annual expenditure, Asian consumer units",
+      "area": "West region",
+      "period": "annual",
+      "year": "2025",
+      "value": "829",
+      "unit": "USD per consumer unit",
+      "seasonally_adjusted": "n/a",
+      "source_url": "https://www.bls.gov/cex/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "series_id": "CUUR0000SS62031",
+      "series_title": "CPI-U: Admissions to movies, theaters, and concerts",
+      "area": "New York-Newark-Jersey City, NY-NJ-PA",
+      "period": "M06",
+      "year": "2026",
+      "value": "197.8",
+      "unit": "index (1982-84=100)",
+      "seasonally_adjusted": "N",
+      "source_url": "https://www.bls.gov/cpi/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

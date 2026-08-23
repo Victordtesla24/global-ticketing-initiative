@@ -1,0 +1,130 @@
+{
+  "provider": "AppBrain",
+  "provider_id": 59,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring AppBrain's published Android app/developer metadata specification (package name, developer, category, install range, rating, rating count, price, last-updated, category rank), illustratively populated as a mock competitor/adjacent-app landscape (diaspora events, Bollywood/entertainment, community-social apps) relevant to the initiative's AU market context.",
+  "spec_note": "SYNTHETIC: field shape (app_package_name, app_name, developer_name, category, installs_range, rating, rating_count, price, last_updated, category rank) mirrors AppBrain's publicly documented app-stats fields (appbrain.com — app detail pages showing installs, category, rating, developer). All package names, developer names and metrics are wholly fictitious mock values, NOT real Google Play apps and NOT licensed AppBrain data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "app_package_name": "com.mock.desievents.au",
+      "app_name": "Desi Events AU (mock)",
+      "developer_name": "Sample Diaspora Apps Pty Ltd (mock)",
+      "category": "Events",
+      "installs_range": "10,000+",
+      "rating": 4.2,
+      "rating_count": 1850,
+      "price": "Free",
+      "last_updated": "2026-07-15",
+      "au_category_rank": "mock-rank-14",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.marathimela",
+      "app_name": "MarathiMela Tickets (mock)",
+      "developer_name": "Sample Konkan Digital (mock)",
+      "category": "Events",
+      "installs_range": "5,000+",
+      "rating": 4.5,
+      "rating_count": 620,
+      "price": "Free",
+      "last_updated": "2026-06-02",
+      "au_category_rank": "mock-rank-31",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.bollytix",
+      "app_name": "BollyTix Live (mock)",
+      "developer_name": "Sample Cinevent Labs (mock)",
+      "category": "Entertainment",
+      "installs_range": "100,000+",
+      "rating": 4.0,
+      "rating_count": 22400,
+      "price": "Free",
+      "last_updated": "2026-08-01",
+      "au_category_rank": "mock-rank-6",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.sanskruti",
+      "app_name": "Sanskruti Community App (mock)",
+      "developer_name": "Sample Heritage Apps (mock)",
+      "category": "Social",
+      "installs_range": "1,000+",
+      "rating": 3.8,
+      "rating_count": 95,
+      "price": "Free",
+      "last_updated": "2026-05-20",
+      "au_category_rank": "mock-rank-88",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.ganeshfestapp",
+      "app_name": "Ganesh Fest Companion (mock)",
+      "developer_name": "Sample Festival Apps Co (mock)",
+      "category": "Events",
+      "installs_range": "1,000+",
+      "rating": 4.6,
+      "rating_count": 140,
+      "price": "Free",
+      "last_updated": "2026-08-10",
+      "au_category_rank": "mock-rank-42",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.natakonline",
+      "app_name": "Natak Online (mock)",
+      "developer_name": "Sample Rangmanch Digital (mock)",
+      "category": "Entertainment",
+      "installs_range": "500+",
+      "rating": 3.9,
+      "rating_count": 38,
+      "price": "Free",
+      "last_updated": "2026-04-11",
+      "au_category_rank": "mock-rank-120",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.diasporapass",
+      "app_name": "Diaspora Pass (mock)",
+      "developer_name": "Sample Global Ticketing Ventures (mock)",
+      "category": "Events",
+      "installs_range": "10,000+",
+      "rating": 4.1,
+      "rating_count": 980,
+      "price": "Free",
+      "last_updated": "2026-07-28",
+      "au_category_rank": "mock-rank-19",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.puneconnect",
+      "app_name": "Pune Connect Events (mock)",
+      "developer_name": "Sample Kothrud Software (mock)",
+      "category": "Events",
+      "installs_range": "1,000+",
+      "rating": 4.3,
+      "rating_count": 210,
+      "price": "Free",
+      "last_updated": "2026-03-30",
+      "au_category_rank": "mock-rank-55",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "app_package_name": "com.mock.melbmarathi",
+      "app_name": "Melbourne Marathi Circle (mock)",
+      "developer_name": "Sample Southern Cross Apps (mock)",
+      "category": "Social",
+      "installs_range": "1,000+",
+      "rating": 4.4,
+      "rating_count": 175,
+      "price": "Free",
+      "last_updated": "2026-08-05",
+      "au_category_rank": "mock-rank-47",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

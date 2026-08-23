@@ -1,0 +1,137 @@
+{
+  "provider": "US Bureau of Economic Analysis (BEA)",
+  "provider_id": 15,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock BEA-style GDP-by-industry and GDP-by-state rows for the 'Arts, entertainment, and recreation' (NAICS 71) and 'Performing arts, spectator sports, museums' (NAICS 711-712) sectors, mirroring BEA's published table/line/geography schema.",
+  "spec_note": "SYNTHETIC SAMPLE. BEA covers the United States only. Field names (table_id, geo_fips, industry_naics, value_millions_usd) mirror BEA's real GDP-by-Industry and Regional GDP-by-State table conventions; all dollar values are fabricated placeholders and must not be read as actual BEA releases. Included as a US-market economic-scale reference, not AU data.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors US Bureau of Economic Analysis (BEA) published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "table_id": "GDPbyInd_VA_NAICS",
+      "line_description": "Arts, entertainment, recreation, accommodation, and food services",
+      "geo": "United States",
+      "geo_fips": "00000",
+      "industry_naics": "71-72",
+      "year": "2025",
+      "value_millions_usd": "1189400",
+      "measure": "Value added, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-industry",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "GDPbyInd_VA_NAICS",
+      "line_description": "Performing arts, spectator sports, museums, and related activities",
+      "geo": "United States",
+      "geo_fips": "00000",
+      "industry_naics": "711-712",
+      "year": "2025",
+      "value_millions_usd": "138250",
+      "measure": "Value added, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-industry",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "SAGDP2N",
+      "line_description": "Arts, entertainment, and recreation",
+      "geo": "California",
+      "geo_fips": "06000",
+      "industry_naics": "71",
+      "year": "2025",
+      "value_millions_usd": "41870",
+      "measure": "GDP by state, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-state",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "SAGDP2N",
+      "line_description": "Arts, entertainment, and recreation",
+      "geo": "New York",
+      "geo_fips": "36000",
+      "industry_naics": "71",
+      "year": "2025",
+      "value_millions_usd": "33410",
+      "measure": "GDP by state, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-state",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "SAGDP2N",
+      "line_description": "Arts, entertainment, and recreation",
+      "geo": "New Jersey",
+      "geo_fips": "34000",
+      "industry_naics": "71",
+      "year": "2025",
+      "value_millions_usd": "6120",
+      "measure": "GDP by state, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-state",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "SAINC30",
+      "line_description": "Personal consumption expenditures, recreation services",
+      "geo": "United States",
+      "geo_fips": "00000",
+      "industry_naics": "n/a",
+      "year": "2025",
+      "value_millions_usd": "612300",
+      "measure": "PCE, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-industry",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "GDPbyInd_VA_NAICS",
+      "line_description": "Performing arts, spectator sports, museums, and related activities",
+      "geo": "United States",
+      "geo_fips": "00000",
+      "industry_naics": "711-712",
+      "year": "2024",
+      "value_millions_usd": "129870",
+      "measure": "Value added, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-industry",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "SAGDP2N",
+      "line_description": "Arts, entertainment, and recreation",
+      "geo": "Texas",
+      "geo_fips": "48000",
+      "industry_naics": "71",
+      "year": "2025",
+      "value_millions_usd": "17960",
+      "measure": "GDP by state, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-state",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "GDPbyInd_QGDP_NAICS",
+      "line_description": "Performing arts, spectator sports, museums, and related activities",
+      "geo": "United States",
+      "geo_fips": "00000",
+      "industry_naics": "711-712",
+      "year": "2025",
+      "quarter": "Q2",
+      "value_millions_usd": "34980",
+      "measure": "Value added, current dollars, quarterly",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-industry",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "table_id": "SAGDP2N",
+      "line_description": "Arts, entertainment, and recreation",
+      "geo": "Illinois",
+      "geo_fips": "17000",
+      "industry_naics": "71",
+      "year": "2025",
+      "value_millions_usd": "9540",
+      "measure": "GDP by state, current dollars",
+      "source_url": "https://www.bea.gov/data/gdp/gdp-state",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

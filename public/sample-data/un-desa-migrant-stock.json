@@ -1,0 +1,253 @@
+{
+  "provider": "UN DESA Migrant Stock",
+  "provider_id": 10,
+  "data_mode": "REAL-EXTRACT",
+  "description": "India-born migrant stock by destination country/region and year (Table 1, both sexes, mid-year estimates), extracted first-hand from the UN DESA International Migrant Stock 2024 workbook per the un-desa verification pack.",
+  "spec_note": "REAL-EXTRACT: figures are the exact Table-1 India-origin values for 2010/2015/2020/2024 for the initiative's four English-speaking target markets plus Europe (region) and World totals, as verified in the un-desa audit. Marathi-specific or Indian-diaspora (beyond birth-country) figures are NOT available from this dataset (country-of-birth basis only, no language/ethnicity dimension) and are correctly omitted.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "destination": "Australia",
+      "origin": "India",
+      "year": 2010,
+      "migrant_stock": 326913,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Australia",
+      "origin": "India",
+      "year": 2015,
+      "migrant_stock": 448940,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Australia",
+      "origin": "India",
+      "year": 2020,
+      "migrant_stock": 707980,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Australia",
+      "origin": "India",
+      "year": 2024,
+      "migrant_stock": 876074,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United Kingdom",
+      "origin": "India",
+      "year": 2010,
+      "migrant_stock": 700150,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United Kingdom",
+      "origin": "India",
+      "year": 2015,
+      "migrant_stock": 817881,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United Kingdom",
+      "origin": "India",
+      "year": 2020,
+      "migrant_stock": 946151,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United Kingdom",
+      "origin": "India",
+      "year": 2024,
+      "migrant_stock": 1044779,
+      "data_type_flag": "B R",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United States of America",
+      "origin": "India",
+      "year": 2010,
+      "migrant_stock": 1799127,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United States of America",
+      "origin": "India",
+      "year": 2015,
+      "migrant_stock": 2381638,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United States of America",
+      "origin": "India",
+      "year": 2020,
+      "migrant_stock": 2741155,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "United States of America",
+      "origin": "India",
+      "year": 2024,
+      "migrant_stock": 3165238,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Canada",
+      "origin": "India",
+      "year": 2010,
+      "migrant_stock": 548591,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Canada",
+      "origin": "India",
+      "year": 2015,
+      "migrant_stock": 699110,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Canada",
+      "origin": "India",
+      "year": 2020,
+      "migrant_stock": 866951,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Canada",
+      "origin": "India",
+      "year": 2024,
+      "migrant_stock": 1015630,
+      "data_type_flag": "B",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Europe (region)",
+      "origin": "India",
+      "year": 2010,
+      "migrant_stock": 1082357,
+      "data_type_flag": "region total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Europe (region)",
+      "origin": "India",
+      "year": 2015,
+      "migrant_stock": 1310550,
+      "data_type_flag": "region total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Europe (region)",
+      "origin": "India",
+      "year": 2020,
+      "migrant_stock": 1667582,
+      "data_type_flag": "region total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "Europe (region)",
+      "origin": "India",
+      "year": 2024,
+      "migrant_stock": 2021502,
+      "data_type_flag": "region total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "World",
+      "origin": "India",
+      "year": 2010,
+      "migrant_stock": 12350515,
+      "data_type_flag": "world total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "World",
+      "origin": "India",
+      "year": 2015,
+      "migrant_stock": 15277263,
+      "data_type_flag": "world total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "World",
+      "origin": "India",
+      "year": 2020,
+      "migrant_stock": 16532761,
+      "data_type_flag": "world total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "destination": "World",
+      "origin": "India",
+      "year": 2024,
+      "migrant_stock": 18533845,
+      "data_type_flag": "world total",
+      "source_url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

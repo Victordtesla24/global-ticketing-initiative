@@ -1,0 +1,134 @@
+{
+  "provider": "Nielsen / NielsenIQ",
+  "provider_id": 4,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Nielsen/NielsenIQ's published audience-measurement and consumer-panel data specification (TV/streaming reach, panel-based lifestyle attendance metrics, ad-spend intelligence), illustratively populated for Melbourne/Sydney South Asian and Marathi-speaking audience segments relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field names mirror the shape of Nielsen product outputs (NPOWER TV panels, Digital Content Ratings, Scarborough lifestyle panels, Ad Intel, Total Audience) as described in Nielsen's public product documentation; all numeric values are illustrative mock figures, NOT licensed Nielsen data.",
+  "countries": [
+    "Global",
+    "AU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "nielsen_product": "Nielsen NPOWER (mock TV panel)",
+      "market": "Melbourne, AU",
+      "media_category": "Free-to-air TV (SBS/ethnic programming block)",
+      "audience_segment": "South Asian-born adults 25-54",
+      "measurement_period": "2026-Q1",
+      "metric": "Weekly Reach",
+      "value": 14.2,
+      "unit": "%",
+      "panel_size": 1150,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen NPOWER (mock TV panel)",
+      "market": "Sydney, AU",
+      "media_category": "Free-to-air TV (SBS/ethnic programming block)",
+      "audience_segment": "South Asian-born adults 25-54",
+      "measurement_period": "2026-Q1",
+      "metric": "Weekly Reach",
+      "value": 16.8,
+      "unit": "%",
+      "panel_size": 1340,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Digital Content Ratings (mock)",
+      "market": "Melbourne, AU",
+      "media_category": "Streaming video (diaspora/regional-language apps)",
+      "audience_segment": "India-born adults 18-44",
+      "measurement_period": "2026-Q1",
+      "metric": "Monthly Unique Viewers",
+      "value": 38500,
+      "unit": "persons",
+      "panel_size": 980,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Digital Content Ratings (mock)",
+      "market": "Sydney, AU",
+      "media_category": "Streaming video (diaspora/regional-language apps)",
+      "audience_segment": "India-born adults 18-44",
+      "measurement_period": "2026-Q1",
+      "metric": "Monthly Unique Viewers",
+      "value": 46200,
+      "unit": "persons",
+      "panel_size": 1105,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Scarborough (mock lifestyle panel)",
+      "market": "Melbourne, AU",
+      "media_category": "Live entertainment attendance propensity",
+      "audience_segment": "Marathi-speaking households",
+      "measurement_period": "2025 wave",
+      "metric": "Attended a live theatre/cultural show in past 12mo",
+      "value": 41.0,
+      "unit": "%",
+      "panel_size": 310,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Scarborough (mock lifestyle panel)",
+      "market": "Sydney, AU",
+      "media_category": "Live entertainment attendance propensity",
+      "audience_segment": "Marathi-speaking households",
+      "measurement_period": "2025 wave",
+      "metric": "Attended a live theatre/cultural show in past 12mo",
+      "value": 37.5,
+      "unit": "%",
+      "panel_size": 285,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen NPOWER (mock TV panel)",
+      "market": "Melbourne, AU",
+      "media_category": "Ethnic radio (community stations)",
+      "audience_segment": "India-born adults 35-64",
+      "measurement_period": "2026-Q1",
+      "metric": "Weekly Reach",
+      "value": 22.1,
+      "unit": "%",
+      "panel_size": 690,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Ad Intel (mock)",
+      "market": "AU national",
+      "media_category": "Ticketing & live-events category ad spend",
+      "audience_segment": "All advertisers",
+      "measurement_period": "FY2025",
+      "metric": "Estimated Ad Spend",
+      "value": 6.4,
+      "unit": "AUD million",
+      "panel_size": null,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Total Audience (mock)",
+      "market": "Melbourne, AU",
+      "media_category": "Cross-platform video (TV+streaming)",
+      "audience_segment": "South Asian-born adults 18-54",
+      "measurement_period": "2026-Q1",
+      "metric": "Average Weekly Viewing Time",
+      "value": 11.3,
+      "unit": "hours",
+      "panel_size": 1150,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "nielsen_product": "Nielsen Total Audience (mock)",
+      "market": "Sydney, AU",
+      "media_category": "Cross-platform video (TV+streaming)",
+      "audience_segment": "South Asian-born adults 18-54",
+      "measurement_period": "2026-Q1",
+      "metric": "Average Weekly Viewing Time",
+      "value": 12.0,
+      "unit": "hours",
+      "panel_size": 1340,
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

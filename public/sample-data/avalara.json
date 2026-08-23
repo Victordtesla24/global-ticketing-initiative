@@ -1,0 +1,93 @@
+{
+  "provider": "Avalara",
+  "provider_id": 49,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Avalara's published multi-jurisdiction tax-type/product-code data specification (jurisdiction, tax type, product category, Avalara tax code, rate, nexus/registration status), illustratively populated for AU GST plus the initiative's other target markets (US, UK, India, Canada) on a live-event-ticket product.",
+  "spec_note": "SYNTHETIC: field shape (jurisdiction, tax_type, avalara_tax_code, rate, nexus status) mirrors Avalara's public tax-types/AvaTax product documentation structure; the specific mock 'avalara_tax_code' values are illustrative placeholders, not real Avalara Tax Code (system/goods) identifiers. Headline AU (10% GST), UK (20% VAT) and India (18% GST) rates are real published statutory rates used only as realistic illustrative inputs; US and Canadian sub-national rates shown are simplified illustrative examples, NOT a full jurisdiction-accurate rate table. NOT licensed Avalara data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "jurisdiction_country": "Australia",
+      "jurisdiction_region": "National",
+      "tax_type": "GST",
+      "product_category": "Live event ticket (general admission)",
+      "avalara_tax_code": "mock-DC010500 (Digital content/ticket, illustrative)",
+      "tax_rate_pct": 10.0,
+      "nexus_status": "Registered (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "Australia",
+      "jurisdiction_region": "Victoria",
+      "tax_type": "GST",
+      "product_category": "Theatre/performing arts ticket",
+      "avalara_tax_code": "mock-PS081282 (Performing arts services, illustrative)",
+      "tax_rate_pct": 10.0,
+      "nexus_status": "Registered (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "Australia",
+      "jurisdiction_region": "New South Wales",
+      "tax_type": "GST",
+      "product_category": "Theatre/performing arts ticket",
+      "avalara_tax_code": "mock-PS081282 (Performing arts services, illustrative)",
+      "tax_rate_pct": 10.0,
+      "nexus_status": "Registered (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "United States",
+      "jurisdiction_region": "California",
+      "tax_type": "Sales Tax",
+      "product_category": "Electronically delivered ticket/admission",
+      "avalara_tax_code": "mock-DC010200 (Admissions, illustrative)",
+      "tax_rate_pct": 7.25,
+      "nexus_status": "Not registered - below threshold (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "United States",
+      "jurisdiction_region": "New York",
+      "tax_type": "Sales Tax",
+      "product_category": "Electronically delivered ticket/admission",
+      "avalara_tax_code": "mock-DC010200 (Admissions, illustrative)",
+      "tax_rate_pct": 4.0,
+      "nexus_status": "Not registered - below threshold (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "United Kingdom",
+      "jurisdiction_region": "National",
+      "tax_type": "VAT",
+      "product_category": "Live event ticket",
+      "avalara_tax_code": "mock-DC010500 (Digital content/ticket, illustrative)",
+      "tax_rate_pct": 20.0,
+      "nexus_status": "Not registered (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "India",
+      "jurisdiction_region": "Maharashtra",
+      "tax_type": "GST",
+      "product_category": "Entertainment/theatre ticket",
+      "avalara_tax_code": "mock-PS081282 (Performing arts services, illustrative)",
+      "tax_rate_pct": 18.0,
+      "nexus_status": "Registered (mock, primary market)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "jurisdiction_country": "Canada",
+      "jurisdiction_region": "Ontario",
+      "tax_type": "HST",
+      "product_category": "Live event ticket",
+      "avalara_tax_code": "mock-DC010500 (Digital content/ticket, illustrative)",
+      "tax_rate_pct": 13.0,
+      "nexus_status": "Not registered (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

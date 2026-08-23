@@ -1,0 +1,109 @@
+{
+  "provider": "Ahrefs",
+  "provider_id": 29,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Ahrefs' published SEO/backlink-analysis data specification (target, Domain Rating, Ahrefs Rank, referring domains, backlinks, organic keywords, organic traffic estimate, top country), illustratively populated for a mock Ticketalay AU domain, two mock competitors and a mock referring domain.",
+  "spec_note": "SYNTHETIC: field names mirror Ahrefs' public Site Explorer overview report schema (DR, AR, Ref domains, Backlinks, Organic keywords, Organic traffic) as documented at docs.ahrefs.com. All targets and metric values are fabricated mock placeholders, not licensed Ahrefs data. Per workflow/verify/web-intel.md, Ahrefs' current published plans are Lite $129/mo, Standard $249/mo, Advanced $449/mo, Enterprise $1,499/mo (annual commitment) - the proposal's cited low end (1,550) matches Lite annualised ($1,548) almost exactly, suggesting an unconverted USD figure presented as a range.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "target": "ticketalay-mock.com.au",
+      "domain_rating": 18,
+      "ahrefs_rank_mock": 4820000,
+      "referring_domains": 34,
+      "backlinks": 112,
+      "organic_keywords": 260,
+      "organic_traffic_est": 1450,
+      "top_country": "AU",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "competitor-a-mock.com.au",
+      "domain_rating": 46,
+      "ahrefs_rank_mock": 612000,
+      "referring_domains": 410,
+      "backlinks": 3200,
+      "organic_keywords": 8900,
+      "organic_traffic_est": 62000,
+      "top_country": "AU",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "competitor-b-mock.com",
+      "domain_rating": 72,
+      "ahrefs_rank_mock": 28500,
+      "referring_domains": 5100,
+      "backlinks": 89000,
+      "organic_keywords": 210000,
+      "organic_traffic_est": 1850000,
+      "top_country": "US",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "ticketalay-mock.com.au/genres/theatre",
+      "domain_rating": 18,
+      "ahrefs_rank_mock": 4820000,
+      "referring_domains": 6,
+      "backlinks": 14,
+      "organic_keywords": 42,
+      "organic_traffic_est": 210,
+      "top_country": "AU",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "referring-domain-example-mock.com",
+      "domain_rating": 55,
+      "ahrefs_rank_mock": 340000,
+      "referring_domains": 890,
+      "backlinks": 12400,
+      "organic_keywords": 15600,
+      "organic_traffic_est": 98000,
+      "top_country": "US",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "ticketalay-mock.com.au/genres/live-music",
+      "domain_rating": 18,
+      "ahrefs_rank_mock": 4820000,
+      "referring_domains": 4,
+      "backlinks": 9,
+      "organic_keywords": 28,
+      "organic_traffic_est": 150,
+      "top_country": "AU",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "competitor-a-mock.com.au/melbourne",
+      "domain_rating": 46,
+      "ahrefs_rank_mock": 612000,
+      "referring_domains": 62,
+      "backlinks": 340,
+      "organic_keywords": 1100,
+      "organic_traffic_est": 8200,
+      "top_country": "AU",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "target": "ticketalay-mock.com.au/genres/dance",
+      "domain_rating": 18,
+      "ahrefs_rank_mock": 4820000,
+      "referring_domains": 3,
+      "backlinks": 7,
+      "organic_keywords": 19,
+      "organic_traffic_est": 95,
+      "top_country": "AU",
+      "source_url": "https://docs.ahrefs.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

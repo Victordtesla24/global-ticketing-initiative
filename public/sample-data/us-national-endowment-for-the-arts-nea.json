@@ -1,0 +1,93 @@
+{
+  "provider": "US National Endowment for the Arts (NEA)",
+  "provider_id": 16,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Publication metadata (titles, publish years, data-collection year, survey cadence/administrator) for the NEA's Survey of Public Participation in the Arts (SPPA) 2022 wave, live-fetched from arts.gov on the access date.",
+  "spec_note": "REAL-EXTRACT but intentionally thin: the us-stats verification pack (workflow/verify/us-stats.md) does not cover NEA content, so this file was built from a live fetch of arts.gov instead. The site's SPPA attendance PERCENTAGES live only inside downloadable PDFs, which could not be parsed via HTML fetch in this pass - per the 'never copy unverified numbers' rule, no percentage attendance figures are included here (do not substitute a remembered figure). Rows are limited to metadata actually confirmed live. A follow-up pass with PDF extraction is needed for the SPPA/NASERC/ACPSA attendance metrics proper.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "item": "Publication title",
+      "value": "Arts Participation Patterns in 2022: Highlights from the Survey of Public Participation in the Arts",
+      "publication_year": "2023",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications/arts-participation-patterns-2022-highlights-survey-public-participation-arts",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "landing page confirmed live; underlying percentage figures are in the linked PDF, not extracted here (not fetchable as HTML) - none fabricated"
+    },
+    {
+      "item": "Publication title",
+      "value": "Arts Participation in 2022: A Technical Summary Report",
+      "publication_year": "2025",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "detailed technical companion to the highlights report"
+    },
+    {
+      "item": "Publication title",
+      "value": "50 States of Arts Participation: 2022",
+      "publication_year": "2024",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "state-level breakdowns of the same SPPA wave"
+    },
+    {
+      "item": "Survey name",
+      "value": "Survey of Public Participation in the Arts (SPPA)",
+      "publication_year": "n/a",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications/arts-participation-patterns-2022-highlights-survey-public-participation-arts",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "described on the NEA site as the agency's 'flagship survey'"
+    },
+    {
+      "item": "Survey administrator",
+      "value": "US Census Bureau (as a supplement, on behalf of NEA)",
+      "publication_year": "n/a",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications/arts-participation-patterns-2022-highlights-survey-public-participation-arts",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "verbatim: 'the NEA's flagship survey, which the Census Bureau administers every five years'"
+    },
+    {
+      "item": "Survey cadence",
+      "value": "every five years",
+      "publication_year": "n/a",
+      "data_year_covered": "n/a",
+      "source_url": "https://www.arts.gov/impact/research/publications/arts-participation-patterns-2022-highlights-survey-public-participation-arts",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "item": "Most recent SPPA data-collection year",
+      "value": "2022",
+      "publication_year": "n/a",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications/arts-participation-patterns-2022-highlights-survey-public-participation-arts",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "no 2026 or later wave found on the publications listing as of access date"
+    },
+    {
+      "item": "Publications listing check",
+      "value": "3 SPPA-2022-related titles are the most recent arts-participation publications on the NEA research publications index",
+      "publication_year": "n/a",
+      "data_year_covered": "2022",
+      "source_url": "https://www.arts.gov/impact/research/publications",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "live-fetched page listing, not a downloaded PDF"
+    }
+  ]
+}

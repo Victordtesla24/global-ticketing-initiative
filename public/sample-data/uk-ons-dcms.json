@@ -1,0 +1,178 @@
+{
+  "provider": "UK ONS / DCMS",
+  "provider_id": 12,
+  "data_mode": "REAL-EXTRACT",
+  "description": "England arts-engagement figures from the DCMS Participation Survey 2024/25, a trade-body live-music spend estimate, and ONS Census 2021 Marathi-language / India-born counts for England and Wales, per the uk-stats verification pack.",
+  "spec_note": "Every row traces to workflow/verify/uk-stats.md. The GBP6.68bn live-music spend figure is a LIVE (trade federation) estimate, not an ONS/DCMS government statistic — flagged in the note field rather than silently blended with official figures. Coverage is England-only (Participation Survey) or England & Wales-only (Census tables), not UK-wide.",
+  "countries": [
+    "UK"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "Adults engaged with the arts (last 12 months)",
+      "value": "90.6",
+      "unit": "% of adults",
+      "reference_period": "2024/25",
+      "geography": "England",
+      "source_url": "https://www.gov.uk/government/statistics/participation-survey-2024-25-annual-publication/headline-findings-for-the-participation-survey-april-2024-to-march-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "rounded to 91% headline; down from 91.4% in 2023/24; broad measure, not live-event attendance"
+    },
+    {
+      "metric": "Adults engaged with the arts (last 12 months)",
+      "value": "91.4",
+      "unit": "% of adults",
+      "reference_period": "2023/24",
+      "geography": "England",
+      "source_url": "https://www.gov.uk/government/statistics/participation-survey-2024-25-annual-publication/headline-findings-for-the-participation-survey-april-2024-to-march-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "prior-year comparator"
+    },
+    {
+      "metric": "Engaged with arts both physically and digitally",
+      "value": "34",
+      "unit": "% of adults",
+      "reference_period": "2024/25",
+      "geography": "England",
+      "source_url": "https://www.gov.uk/government/statistics/participation-survey-2024-25-annual-publication/headline-findings-for-the-participation-survey-april-2024-to-march-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Engaged with arts exclusively physically",
+      "value": "56",
+      "unit": "% of adults",
+      "reference_period": "2024/25",
+      "geography": "England",
+      "source_url": "https://www.gov.uk/government/statistics/participation-survey-2024-25-annual-publication/headline-findings-for-the-participation-survey-april-2024-to-march-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Engaged with arts exclusively digitally",
+      "value": "1",
+      "unit": "% of adults",
+      "reference_period": "2024/25",
+      "geography": "England",
+      "source_url": "https://www.gov.uk/government/statistics/participation-survey-2024-25-annual-publication/headline-findings-for-the-participation-survey-april-2024-to-march-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "UK consumer spend on live music",
+      "value": "6680000000",
+      "unit": "GBP",
+      "reference_period": "2024",
+      "geography": "United Kingdom",
+      "source_url": "https://www.livemusic.biz/news/latest-live-annual-report-records-another-record-year-for-live-music",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "trade-body estimate (LIVE), NOT an ONS/DCMS government statistic; £6.68bn precise, rounded to £6.7bn"
+    },
+    {
+      "metric": "UK live music consumer spend, YoY change",
+      "value": "9.5",
+      "unit": "% change",
+      "reference_period": "2024 vs 2023",
+      "geography": "United Kingdom",
+      "source_url": "https://www.livemusic.biz/news/latest-live-annual-report-records-another-record-year-for-live-music",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "trade-body estimate (LIVE)"
+    },
+    {
+      "metric": "Marathi as main language",
+      "value": "11022",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts024",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table TS024; counts only those whose MAIN language is Marathi (floor estimate)"
+    },
+    {
+      "metric": "South Asian language speakers (all, main language)",
+      "value": "1374141",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts024",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Gujarati as main language",
+      "value": "188956",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts024",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Panjabi as main language",
+      "value": "290745",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts024",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Urdu as main language",
+      "value": "269849",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts024",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Hindi as main language",
+      "value": "51260",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts024",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "India-born usual residents",
+      "value": "920361",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts012",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table TS012; ~1.54% of E&W usual residents; excludes Scotland/NI"
+    },
+    {
+      "metric": "Total usual residents",
+      "value": "59597538",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "England and Wales",
+      "source_url": "https://www.nomisweb.co.uk/datasets/c2021ts012",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "denominator for India-born share"
+    }
+  ]
+}

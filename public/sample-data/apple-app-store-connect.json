@@ -1,0 +1,111 @@
+{
+  "provider": "Apple App Store Connect",
+  "provider_id": 3,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Public App Store listing and iTunes Lookup API metrics for the Ticketalay iOS app (id6477772996), extracted first-hand per the entity-reality audit (not an authenticated App Store Connect export).",
+  "spec_note": "REAL-EXTRACT: fields mirror what is visible on the public App Store page and the public itunes.apple.com/lookup API (seller, price/currency, rating); true App Store Connect-only metrics (conversion funnels, impressions) require developer-account access and are not included.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "app_store_id",
+      "value": "6477772996",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "storefront",
+      "value": "IN (India)",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "title",
+      "value": "Ticketalay App - App Store",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "seller_name",
+      "value": "PAC THEATRE ENTERTAINMENT PRIVATE LIMITED",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "artist_name",
+      "value": "PAC THEATRE",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "primary_genre",
+      "value": "Entertainment",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "price_and_currency",
+      "value": "0.0 INR",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "release_date",
+      "value": "2024-02-23",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "current_version",
+      "value": "1.0.11 (2025-12-29)",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "average_user_rating",
+      "value": "2.62",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "rating_count",
+      "value": "45",
+      "source_url": "https://itunes.apple.com/lookup?id=6477772996&country=in",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "app_size",
+      "value": "42.1 MB",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "languages",
+      "value": "English",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "metric": "copyright",
+      "value": "© 2024 PAC Theatre Entertainment Pvt Ltd",
+      "source_url": "https://apps.apple.com/in/app/ticketalay/id6477772996",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

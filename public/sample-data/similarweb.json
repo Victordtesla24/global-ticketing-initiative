@@ -1,0 +1,117 @@
+{
+  "provider": "Similarweb",
+  "provider_id": 27,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Similarweb's published website-traffic-analysis data specification (domain, period, country, total visits, unique visitors, bounce rate, avg visit duration, pages per visit, top traffic source), illustratively populated for a mock Ticketalay AU domain plus two mock competitors.",
+  "spec_note": "SYNTHETIC: field names mirror Similarweb's public Digital Rank / Website Analysis report categories (traffic overview, engagement metrics, traffic sources) as described on similarweb.com. All domains, visit counts and rates are fabricated mock placeholders, not licensed Similarweb traffic data. Per workflow/verify/web-intel.md, Similarweb's actual published pricing is USD self-serve tiers ($129-$649/mo) with Business/Enterprise quote-only - the proposal's cited 'Pro plan AUD 15,500-30,000/yr' does not match any published plan.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "domain": "ticketalay-mock.com.au",
+      "period": "2026-06",
+      "country": "Australia",
+      "total_visits": 48200,
+      "unique_visitors": 31500,
+      "bounce_rate_pct": 42.1,
+      "avg_visit_duration_sec": 187,
+      "pages_per_visit": 3.4,
+      "top_traffic_source": "Organic Search",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "competitor-a-mock.com.au",
+      "period": "2026-06",
+      "country": "Australia",
+      "total_visits": 312000,
+      "unique_visitors": 198000,
+      "bounce_rate_pct": 38.7,
+      "avg_visit_duration_sec": 210,
+      "pages_per_visit": 4.1,
+      "top_traffic_source": "Direct",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "competitor-b-mock.com",
+      "period": "2026-06",
+      "country": "Australia",
+      "total_visits": 890000,
+      "unique_visitors": 540000,
+      "bounce_rate_pct": 35.2,
+      "avg_visit_duration_sec": 245,
+      "pages_per_visit": 4.8,
+      "top_traffic_source": "Paid Search",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "ticketalay-mock.com.au",
+      "period": "2026-05",
+      "country": "Australia",
+      "total_visits": 41800,
+      "unique_visitors": 28900,
+      "bounce_rate_pct": 44.6,
+      "avg_visit_duration_sec": 172,
+      "pages_per_visit": 3.1,
+      "top_traffic_source": "Social",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "ticketalay-mock.com.au",
+      "period": "2026-06",
+      "country": "India",
+      "total_visits": 12400,
+      "unique_visitors": 9100,
+      "bounce_rate_pct": 51.3,
+      "avg_visit_duration_sec": 140,
+      "pages_per_visit": 2.6,
+      "top_traffic_source": "Social",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "competitor-a-mock.com.au",
+      "period": "2026-06",
+      "country": "United Kingdom",
+      "total_visits": 22100,
+      "unique_visitors": 15300,
+      "bounce_rate_pct": 40.9,
+      "avg_visit_duration_sec": 198,
+      "pages_per_visit": 3.7,
+      "top_traffic_source": "Organic Search",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "ticketalay-mock.com.au",
+      "period": "2026-04",
+      "country": "Australia",
+      "total_visits": 36500,
+      "unique_visitors": 25100,
+      "bounce_rate_pct": 46.8,
+      "avg_visit_duration_sec": 158,
+      "pages_per_visit": 2.9,
+      "top_traffic_source": "Referral",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "domain": "competitor-b-mock.com",
+      "period": "2026-05",
+      "country": "Australia",
+      "total_visits": 845000,
+      "unique_visitors": 512000,
+      "bounce_rate_pct": 36.1,
+      "avg_visit_duration_sec": 238,
+      "pages_per_visit": 4.6,
+      "top_traffic_source": "Paid Search",
+      "source_url": "https://www.similarweb.com/pricing/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "provider": "OECD",
+  "provider_id": 20,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock OECD International Migration Database and household-consumption rows for AU/UK/CA/US India-origin migration flows and stocks, plus a recreation-and-culture consumption-share indicator, mirroring OECD.Stat's country-pair/indicator/year schema.",
+  "spec_note": "SYNTHETIC SAMPLE. OECD coverage is member and key partner countries (not literally all 200+ countries; tagged 'Global' at provider level per the plan's broad-coverage convention). Field names (destination_country, origin_country, indicator, year, value) mirror OECD.Stat's real International Migration Database and household-account table conventions; all VALUES are fabricated placeholders, not actual OECD published figures.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors OECD.Stat / OECD International Migration Database published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "India",
+      "indicator": "Inflows of foreign population by nationality",
+      "year": "2025",
+      "value": "62400",
+      "unit": "persons",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "India",
+      "indicator": "Stock of foreign-born population by country of birth",
+      "year": "2025",
+      "value": "789000",
+      "unit": "persons",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "All countries",
+      "indicator": "Foreign-born population (% of total population)",
+      "year": "2025",
+      "value": "29.8",
+      "unit": "%",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "United Kingdom",
+      "origin_country": "India",
+      "indicator": "Inflows of foreign population by nationality",
+      "year": "2025",
+      "value": "94300",
+      "unit": "persons",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Canada",
+      "origin_country": "India",
+      "indicator": "Inflows of foreign population by nationality",
+      "year": "2025",
+      "value": "108700",
+      "unit": "persons",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "All countries",
+      "indicator": "International student enrolment, tertiary",
+      "year": "2025",
+      "value": "715000",
+      "unit": "students",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "India",
+      "indicator": "International student enrolment, tertiary",
+      "year": "2025",
+      "value": "138200",
+      "unit": "students",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "All countries",
+      "indicator": "Household disposable income per capita, growth",
+      "year": "2025",
+      "value": "1.4",
+      "unit": "% annual",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "Australia",
+      "origin_country": "All countries",
+      "indicator": "Recreation and culture, share of household consumption expenditure",
+      "year": "2025",
+      "value": "8.9",
+      "unit": "%",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "destination_country": "United States",
+      "origin_country": "India",
+      "indicator": "Inflows of foreign population by nationality",
+      "year": "2025",
+      "value": "184500",
+      "unit": "persons",
+      "source_url": "https://www.oecd.org/en/data/datasets/international-migration-database.html",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

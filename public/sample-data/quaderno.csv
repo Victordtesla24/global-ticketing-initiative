@@ -1,0 +1,8 @@
+# SYNTHETIC SAMPLE - mirrors Quaderno published VAT/GST/sales-tax rate lookup data specification for prototype purposes; NOT vendor data.
+country,tax_name,standard_rate_pct,digital_goods_rate_pct,registration_threshold_local,threshold_period,data_status
+Australia,GST,10.0,10.0,"AUD 75,000 (non-resident digital: no threshold, mock illustrative)",Rolling 12 months (mock),SYNTHETIC_SAMPLE
+United Kingdom,VAT,20.0,20.0,"GBP 90,000 (UK-established sellers, mock illustrative)",Rolling 12 months (mock),SYNTHETIC_SAMPLE
+United States,Sales Tax (varies by state),,,"USD 100,000 or 200 transactions - typical economic nexus threshold (mock illustrative, varies by state)",Prior or current calendar year (mock),SYNTHETIC_SAMPLE
+India,GST,18.0,18.0,"INR 2,000,000 (mock illustrative; non-resident OIDAR: no threshold)",Financial year (mock),SYNTHETIC_SAMPLE
+Canada,GST/HST,5.0,5.0,"CAD 30,000 (mock illustrative)",Rolling 12 months (mock),SYNTHETIC_SAMPLE
+Germany,VAT (EU MOSS/OSS),19.0,19.0,"EUR 10,000 (EU-wide OSS distance-selling threshold, mock illustrative)",Calendar year (mock),SYNTHETIC_SAMPLE

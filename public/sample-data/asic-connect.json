@@ -1,0 +1,55 @@
+{
+  "provider": "ASIC Connect",
+  "provider_id": 45,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Real, first-hand findings from live fetches of ASIC's public registers-overview and business-name-registration pages (asic.gov.au), including a documented Cloudflare block on the entity-name search endpoint itself for 'Ticketalay'.",
+  "spec_note": "REAL-EXTRACT: rows are drawn from live fetches of ASIC Connect's own deep links performed for this build (no ASIC-specific capture existed in the audit's verification packs). The direct entity-name search for 'Ticketalay'/'AB Entertainment'/'PAC Theatre Entertainment' could NOT be completed first-hand — it returned Cloudflare 403 to automated fetchers — so this file does not claim an ASIC entity-search result; it documents register coverage and that block honestly rather than fabricating a search outcome.",
+  "countries": [
+    "AU"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "finding": "ASIC Connect entity-name search availability",
+      "value": "Attempted live search of connectonline.asic.gov.au/RegistrySearch for 'Ticketalay' — blocked by Cloudflare 'Attention Required' interstitial (HTTP 403) to automated fetchers; no entity-level search result could be captured first-hand for this audit.",
+      "source_url": "https://connectonline.asic.gov.au/RegistrySearch/faces/landing/SearchRegisters.jspx?searchText=Ticketalay&searchType=OrgAndBusNm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "ASIC registers overview — what is searchable",
+      "value": "asic.gov.au's 'Search ASIC's registers' page lists: business names register, company/organisation registers (incl. name availability), professional registers, banned & disqualified registers, court enforceable undertakings register, infringement notices register, public warning notices register, financial advisers register (via Moneysmart), unclaimed money search, and published notices (insolvency/external administration).",
+      "source_url": "https://asic.gov.au/online-services/search-asic-s-registers/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Business names register — what the public record shows",
+      "value": "ASIC's business-name-registration guidance states the public register displays the 'service of documents address' and 'principal place of business address' (for a home-based sole operator, only suburb/state/postcode is shown); email addresses and mobile numbers are not made public.",
+      "source_url": "https://asic.gov.au/for-business/registering-a-business-name/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Business-name availability check mechanism",
+      "value": "ASIC's business-name-availability checker uses a traffic-light system: green = name available, amber = requires manual assessment (e.g. 'made up' or unusual words), red = name unavailable.",
+      "source_url": "https://asic.gov.au/for-business/registering-a-business-name/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Business-name registration fee disclosure",
+      "value": "The registration-cost figures for 1-year and 3-year business name registration were served as unresolved template placeholders ('{BZA}' / '{BZB}') on this fetch rather than dollar amounts — exact current fee NOT independently confirmed from this page.",
+      "source_url": "https://asic.gov.au/for-business/registering-a-business-name/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Access route for full register search",
+      "value": "Page directs users to 'ASIC Connect' specifically for the business names register (plus a newer beta search tool), confirming ASIC Connect is the primary self-service portal for AU company/business-name lookups referenced by the provider plan.",
+      "source_url": "https://asic.gov.au/online-services/search-asic-s-registers/",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

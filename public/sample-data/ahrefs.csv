@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Ahrefs published SEO/backlink data specification for prototype purposes; NOT vendor data
+target,domain_rating,ahrefs_rank_mock,referring_domains,backlinks,organic_keywords,organic_traffic_est,top_country,source_url,data_status
+ticketalay-mock.com.au,18,4820000,34,112,260,1450,AU,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+competitor-a-mock.com.au,46,612000,410,3200,8900,62000,AU,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+competitor-b-mock.com,72,28500,5100,89000,210000,1850000,US,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+ticketalay-mock.com.au/genres/theatre,18,4820000,6,14,42,210,AU,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+referring-domain-example-mock.com,55,340000,890,12400,15600,98000,US,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+ticketalay-mock.com.au/genres/live-music,18,4820000,4,9,28,150,AU,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+competitor-a-mock.com.au/melbourne,46,612000,62,340,1100,8200,AU,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE
+ticketalay-mock.com.au/genres/dance,18,4820000,3,7,19,95,AU,https://docs.ahrefs.com/,SYNTHETIC_SAMPLE

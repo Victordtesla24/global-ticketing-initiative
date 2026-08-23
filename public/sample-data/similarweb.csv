@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Similarweb published website-traffic data specification for prototype purposes; NOT vendor data
+domain,period,country,total_visits,unique_visitors,bounce_rate_pct,avg_visit_duration_sec,pages_per_visit,top_traffic_source,source_url,data_status
+ticketalay-mock.com.au,2026-06,Australia,48200,31500,42.1,187,3.4,Organic Search,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+competitor-a-mock.com.au,2026-06,Australia,312000,198000,38.7,210,4.1,Direct,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+competitor-b-mock.com,2026-06,Australia,890000,540000,35.2,245,4.8,Paid Search,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+ticketalay-mock.com.au,2026-05,Australia,41800,28900,44.6,172,3.1,Social,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+ticketalay-mock.com.au,2026-06,India,12400,9100,51.3,140,2.6,Social,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+competitor-a-mock.com.au,2026-06,United Kingdom,22100,15300,40.9,198,3.7,Organic Search,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+ticketalay-mock.com.au,2026-04,Australia,36500,25100,46.8,158,2.9,Referral,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE
+competitor-b-mock.com,2026-05,Australia,845000,512000,36.1,238,4.6,Paid Search,https://www.similarweb.com/pricing/,SYNTHETIC_SAMPLE

@@ -1,0 +1,11 @@
+# SYNTHETIC SAMPLE - mirrors AppBrain published Android app/developer metadata specification for prototype purposes; NOT vendor data.
+app_package_name,app_name,developer_name,category,installs_range,rating,rating_count,price,last_updated,au_category_rank,data_status
+com.mock.desievents.au,Desi Events AU (mock),Sample Diaspora Apps Pty Ltd (mock),Events,"10,000+",4.2,1850,Free,2026-07-15,mock-rank-14,SYNTHETIC_SAMPLE
+com.mock.marathimela,MarathiMela Tickets (mock),Sample Konkan Digital (mock),Events,"5,000+",4.5,620,Free,2026-06-02,mock-rank-31,SYNTHETIC_SAMPLE
+com.mock.bollytix,BollyTix Live (mock),Sample Cinevent Labs (mock),Entertainment,"100,000+",4.0,22400,Free,2026-08-01,mock-rank-6,SYNTHETIC_SAMPLE
+com.mock.sanskruti,Sanskruti Community App (mock),Sample Heritage Apps (mock),Social,"1,000+",3.8,95,Free,2026-05-20,mock-rank-88,SYNTHETIC_SAMPLE
+com.mock.ganeshfestapp,Ganesh Fest Companion (mock),Sample Festival Apps Co (mock),Events,"1,000+",4.6,140,Free,2026-08-10,mock-rank-42,SYNTHETIC_SAMPLE
+com.mock.natakonline,Natak Online (mock),Sample Rangmanch Digital (mock),Entertainment,500+,3.9,38,Free,2026-04-11,mock-rank-120,SYNTHETIC_SAMPLE
+com.mock.diasporapass,Diaspora Pass (mock),Sample Global Ticketing Ventures (mock),Events,"10,000+",4.1,980,Free,2026-07-28,mock-rank-19,SYNTHETIC_SAMPLE
+com.mock.puneconnect,Pune Connect Events (mock),Sample Kothrud Software (mock),Events,"1,000+",4.3,210,Free,2026-03-30,mock-rank-55,SYNTHETIC_SAMPLE
+com.mock.melbmarathi,Melbourne Marathi Circle (mock),Sample Southern Cross Apps (mock),Social,"1,000+",4.4,175,Free,2026-08-05,mock-rank-47,SYNTHETIC_SAMPLE

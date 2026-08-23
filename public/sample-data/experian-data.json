@@ -1,0 +1,135 @@
+{
+  "provider": "Experian Data",
+  "provider_id": 22,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Experian's published consumer marketing/demographic data specification (record id, country, age band, income band, household composition, life-stage segment, credit risk tier, digital engagement score), illustratively populated for AU/UK/US/IN markets relevant to the diaspora initiative.",
+  "spec_note": "SYNTHETIC: field names mirror Experian's public consumer-data schema categories (demographic, financial/credit banding, lifestyle/life-stage segmentation) as described on experian.com/marketing-services. All record values are fabricated mock placeholders, not licensed Experian data - Experian does not publish individual-level records for free access.",
+  "countries": [
+    "Global",
+    "UK",
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "record_id": "EXP-MOCK-0001",
+      "country": "AU",
+      "age_band": "25-34",
+      "income_band": "AUD 80-100k",
+      "household_composition": "Couple, no children",
+      "life_stage_segment": "New Households (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 78,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0002",
+      "country": "AU",
+      "age_band": "35-44",
+      "income_band": "AUD 100-130k",
+      "household_composition": "Family with children",
+      "life_stage_segment": "Established Families (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 65,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0003",
+      "country": "UK",
+      "age_band": "18-24",
+      "income_band": "GBP 20-30k",
+      "household_composition": "Single, shared housing",
+      "life_stage_segment": "Urban Starters (mock)",
+      "credit_risk_tier": "Near-prime (mock)",
+      "digital_engagement_score": 91,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0004",
+      "country": "US",
+      "age_band": "45-54",
+      "income_band": "USD 90-120k",
+      "household_composition": "Couple, empty nest",
+      "life_stage_segment": "Comfortable Empty Nesters (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 52,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0005",
+      "country": "AU",
+      "age_band": "25-34",
+      "income_band": "AUD 60-80k",
+      "household_composition": "Single, renting",
+      "life_stage_segment": "Urban Professionals (mock)",
+      "credit_risk_tier": "Near-prime (mock)",
+      "digital_engagement_score": 84,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0006",
+      "country": "IN",
+      "age_band": "25-34",
+      "income_band": "INR 8-15 lakh",
+      "household_composition": "Extended family",
+      "life_stage_segment": "Diaspora-linked Household (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 73,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0007",
+      "country": "AU",
+      "age_band": "35-44",
+      "income_band": "AUD 100-130k",
+      "household_composition": "Family with children",
+      "life_stage_segment": "Second-Gen Migrant Family (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 69,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0008",
+      "country": "UK",
+      "age_band": "55-64",
+      "income_band": "GBP 40-55k",
+      "household_composition": "Couple, empty nest",
+      "life_stage_segment": "Settled Suburbans (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 41,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0009",
+      "country": "AU",
+      "age_band": "18-24",
+      "income_band": "AUD 30-45k",
+      "household_composition": "Single, student household",
+      "life_stage_segment": "Student Renters (mock)",
+      "credit_risk_tier": "Thin-file (mock)",
+      "digital_engagement_score": 96,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "record_id": "EXP-MOCK-0010",
+      "country": "AU",
+      "age_band": "45-54",
+      "income_band": "AUD 130-160k",
+      "household_composition": "Family with children",
+      "life_stage_segment": "Affluent Diaspora Family (mock)",
+      "credit_risk_tier": "Prime (mock)",
+      "digital_engagement_score": 58,
+      "source_url": "https://www.experian.com/marketing-services/consumer-data",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

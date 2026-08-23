@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors HERE Technologies published Geocoding & Search API data specification for prototype purposes; NOT vendor data.
+location_id,title,address_label,house_number,street,city,state,postal_code,country_code,lat,lng,match_level,position_confidence,data_status
+mock-here-0001,Palais Theatre,"Lower Esplanade, St Kilda VIC 3182, Australia (mock)",,Lower Esplanade,St Kilda,Victoria,3182,AUS,-37.8676,144.9791,building,0.98,SYNTHETIC_SAMPLE
+mock-here-0002,Sydney Opera House,"Bennelong Point, Sydney NSW 2000, Australia (mock)",,Bennelong Point,Sydney,New South Wales,2000,AUS,-33.8568,151.2153,building,0.99,SYNTHETIC_SAMPLE
+mock-here-0003,Broadmeadows Community Hub,"1099 Pascoe Vale Rd, Broadmeadows VIC 3047, Australia (mock)",1099,Pascoe Vale Rd,Broadmeadows,Victoria,3047,AUS,-37.68,144.916,houseNumber,0.91,SYNTHETIC_SAMPLE
+mock-here-0004,Harris Park Community Centre,"178 Wigram St, Harris Park NSW 2150, Australia (mock)",178,Wigram St,Harris Park,New South Wales,2150,AUS,-33.8236,150.9967,houseNumber,0.9,SYNTHETIC_SAMPLE
+mock-here-0005,Balgandharva Rangmandir,"Shivajinagar, Pune, Maharashtra 411005, India (mock)",,Jangli Maharaj Rd,Pune,Maharashtra,411005,IND,18.5304,73.8467,building,0.94,SYNTHETIC_SAMPLE
+mock-here-0006,Dandenong Town Hall,"225 Lonsdale St, Dandenong VIC 3175, Australia (mock)",225,Lonsdale St,Dandenong,Victoria,3175,AUS,-37.987,145.215,houseNumber,0.88,SYNTHETIC_SAMPLE
+mock-here-0007,Liverpool Catholic Club Function Centre,"354 Hoxton Park Rd, Liverpool NSW 2170, Australia (mock)",354,Hoxton Park Rd,Liverpool,New South Wales,2170,AUS,-33.931,150.916,houseNumber,0.89,SYNTHETIC_SAMPLE
+mock-here-0008,Adelaide Festival Centre,"King William Rd, Adelaide SA 5000, Australia (mock)",,King William Rd,Adelaide,South Australia,5000,AUS,-34.921,138.5983,building,0.97,SYNTHETIC_SAMPLE

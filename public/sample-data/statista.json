@@ -1,0 +1,113 @@
+{
+  "provider": "Statista",
+  "provider_id": 6,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Statista's published statistic-entry data specification (statistic_id, title, region, category, unit, value, year), illustratively populated with AU/Melbourne/Sydney demographic and live-entertainment-market figures relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field names mirror Statista's public statistic listing schema; all numeric values are illustrative mock figures, NOT licensed Statista data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "statistic_id": "STZ-MOCK-10001",
+      "title": "India-born population of Australia, by state (mock)",
+      "region": "Australia",
+      "category": "Demographics",
+      "unit": "persons",
+      "value": 876074,
+      "year": 2024,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10002",
+      "title": "Live entertainment & event ticketing market size, Australia (mock)",
+      "region": "Australia",
+      "category": "Media & Entertainment",
+      "unit": "AUD million",
+      "value": 1450,
+      "year": 2025,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10003",
+      "title": "Online event-ticketing penetration rate, Australia (mock)",
+      "region": "Australia",
+      "category": "Media & Entertainment",
+      "unit": "%",
+      "value": 63.5,
+      "year": 2025,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10004",
+      "title": "Number of Marathi speakers, Australia census (mock illustrative)",
+      "region": "Australia",
+      "category": "Demographics",
+      "unit": "persons",
+      "value": 45000,
+      "year": 2024,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10005",
+      "title": "Average spend per live-event ticket, Australia (mock)",
+      "region": "Australia",
+      "category": "Media & Entertainment",
+      "unit": "AUD",
+      "value": 68,
+      "year": 2025,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10006",
+      "title": "Smartphone penetration among South Asian-born households, Australia (mock)",
+      "region": "Australia",
+      "category": "Technology",
+      "unit": "%",
+      "value": 91.2,
+      "year": 2025,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10007",
+      "title": "Mobile ticketing app monthly active users, Australia (mock, category est.)",
+      "region": "Australia",
+      "category": "Media & Entertainment",
+      "unit": "thousand users",
+      "value": 890,
+      "year": 2025,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10008",
+      "title": "Indian diaspora population, Melbourne metro (mock)",
+      "region": "Melbourne, AU",
+      "category": "Demographics",
+      "unit": "persons",
+      "value": 210000,
+      "year": 2024,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10009",
+      "title": "Indian diaspora population, Sydney metro (mock)",
+      "region": "Sydney, AU",
+      "category": "Demographics",
+      "unit": "persons",
+      "value": 195000,
+      "year": 2024,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "statistic_id": "STZ-MOCK-10010",
+      "title": "Year-on-year growth of ethnic/diaspora live-event bookings, Australia (mock)",
+      "region": "Australia",
+      "category": "Media & Entertainment",
+      "unit": "% YoY",
+      "value": 14.8,
+      "year": 2025,
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

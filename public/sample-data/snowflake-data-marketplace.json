@@ -1,0 +1,104 @@
+{
+  "provider": "Snowflake Data Marketplace",
+  "provider_id": 35,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock data-product listings (name, provider, category, update frequency, geographic coverage, price model, use case) mirroring the Snowflake Marketplace listing schema, curated toward listing types relevant to an AU-first diaspora live-entertainment initiative.",
+  "spec_note": "SYNTHETIC SAMPLE - mirrors Snowflake Marketplace published listing specification for prototype purposes; NOT vendor data. Field names (listing_name, provider_name, category, update_frequency, geographic_coverage, price_model) mirror Snowflake's real listing/data-attributes schema (docs.snowflake.com/en/collaboration/collaboration-listings-about); all listing names, provider names and coverage are fabricated illustrative placeholders — no real Snowflake Marketplace listings were copied.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors Snowflake Marketplace published listing specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "listing_name": "AU Live Events & Ticketing Signals",
+      "provider_name": "DataPulse Analytics",
+      "category": "Events & Entertainment",
+      "update_frequency": "Daily",
+      "geographic_coverage": "Australia",
+      "price_model": "Paid - usage-based",
+      "sample_use_case": "Benchmark AU theatre/concert demand by postcode",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "APAC Foot Traffic & Venue Visitation",
+      "provider_name": "GeoSignal Pty Ltd",
+      "category": "Location & Geospatial",
+      "update_frequency": "Weekly",
+      "geographic_coverage": "Australia; New Zealand; Singapore",
+      "price_model": "Paid - flat monthly",
+      "sample_use_case": "Estimate venue catchment for Melbourne/Sydney event sites",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "Global Consumer Card Spend - Entertainment Category",
+      "provider_name": "CardPanel Insights",
+      "category": "Financial & Alternative Data",
+      "update_frequency": "Weekly",
+      "geographic_coverage": "Global (60+ countries)",
+      "price_model": "Paid - tiered subscription",
+      "sample_use_case": "Track category-level spend on live entertainment",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "India-Origin Diaspora Demographics (AU/UK/CA/US)",
+      "provider_name": "DiasporaMetrics",
+      "category": "Demographics & Population",
+      "update_frequency": "Quarterly",
+      "geographic_coverage": "Australia; United Kingdom; Canada; United States",
+      "price_model": "Free sample / Paid full",
+      "sample_use_case": "Size India-born and language-spoken-at-home segments",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "Social Media Event Buzz - ANZ",
+      "provider_name": "SocialPulse Data Co.",
+      "category": "Social & Sentiment",
+      "update_frequency": "Daily",
+      "geographic_coverage": "Australia; New Zealand",
+      "price_model": "Paid - usage-based",
+      "sample_use_case": "Gauge pre-sale buzz for regional-language shows",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "AU Postcode-Level Income & Spend Propensity",
+      "provider_name": "CensusLink Analytics",
+      "category": "Demographics & Population",
+      "update_frequency": "Annual",
+      "geographic_coverage": "Australia",
+      "price_model": "Free (public sample) / Paid (full)",
+      "sample_use_case": "Target marketing spend by SA2 region income band",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "Global Event Venue Registry",
+      "provider_name": "VenueGraph",
+      "category": "Events & Entertainment",
+      "update_frequency": "Monthly",
+      "geographic_coverage": "Global",
+      "price_model": "Paid - flat monthly",
+      "sample_use_case": "Cross-reference Ticketalay venues against a master registry",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "listing_name": "Currency & FX Reference Rates",
+      "provider_name": "FXFeed Markets",
+      "category": "Financial & Alternative Data",
+      "update_frequency": "Daily",
+      "geographic_coverage": "Global",
+      "price_model": "Free",
+      "sample_use_case": "Convert AUD ticket pricing for INR/USD/GBP display",
+      "source_url": "https://docs.snowflake.com/en/collaboration/collaboration-listings-about",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Geoapify published open-data location-services data specification for prototype purposes; NOT vendor data.
+place_id,formatted,lat,lon,result_type,rank_confidence,city,country,country_code,category,data_status
+mock-geoapify-0001,"Palais Theatre, Lower Esplanade, St Kilda VIC 3182, Australia (mock)",-37.8676,144.9791,amenity,0.96,St Kilda,Australia,au,entertainment.culture.theatre,SYNTHETIC_SAMPLE
+mock-geoapify-0002,"Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia (mock)",-33.8568,151.2153,amenity,0.99,Sydney,Australia,au,entertainment.culture.theatre,SYNTHETIC_SAMPLE
+mock-geoapify-0003,"Hurstville Civic Centre, Hurstville NSW 2220, Australia (mock)",-33.967,151.102,amenity,0.85,Hurstville,Australia,au,office.government,SYNTHETIC_SAMPLE
+mock-geoapify-0004,"Glen Waverley Community Centre, Glen Waverley VIC 3150, Australia (mock)",-37.879,145.163,amenity,0.83,Glen Waverley,Australia,au,leisure.community_centre,SYNTHETIC_SAMPLE
+mock-geoapify-0005,"Yashwantrao Chavan Natyagruha, Kothrud, Pune 411038, India (mock)",18.5074,73.8077,amenity,0.9,Pune,India,in,entertainment.culture.theatre,SYNTHETIC_SAMPLE
+mock-geoapify-0006,"Wollongong Town Hall, Wollongong NSW 2500, Australia (mock)",-34.425,150.893,amenity,0.87,Wollongong,Australia,au,office.government,SYNTHETIC_SAMPLE
+mock-geoapify-0007,"Casey ArtsPace, Narre Warren VIC 3805, Australia (mock)",-38.033,145.305,amenity,0.82,Narre Warren,Australia,au,entertainment.culture.gallery,SYNTHETIC_SAMPLE
+mock-geoapify-0008,"Yashwantrao Chavan Natyagruha, Kothrud, Pune 411038, India (mock)",18.5074,73.8077,amenity,0.9,Pune,India,in,entertainment.culture.theatre,SYNTHETIC_SAMPLE

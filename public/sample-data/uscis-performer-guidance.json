@@ -1,0 +1,53 @@
+{
+  "provider": "USCIS Performer Guidance",
+  "provider_id": 47,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring the shape of USCIS's published nonimmigrant temporary-worker visa classification structure for artists and entertainers (O-1B, P-1B, P-3, support-personnel S classifications), illustratively mapped to Marathi live-performance touring scenarios relevant to the initiative.",
+  "spec_note": "SYNTHETIC: category names and general structure (duration, consultation requirement) mirror the publicly known USCIS classification scheme for entertainer/artist visas (uscis.gov/working-in-the-united-states/temporary-workers); exact current durations, fees and consultation rules were NOT independently re-verified against a live USCIS page for this build (direct USCIS visa-category page fetch failed) and must be confirmed against uscis.gov before any real filing. This file is illustrative only and is NOT legal/immigration advice.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "visa_category": "O-1B (mock summary)",
+      "performer_type": "Individual artist/entertainer with extraordinary ability/achievement",
+      "typical_max_duration": "Up to 3 years initially (mock)",
+      "consultation_required_from": "Peer group, labor organization, or management organization (mock)",
+      "initiative_relevance": "Would apply to a headline Marathi theatre performer touring individually to the US (mock illustrative note)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "visa_category": "P-1B (mock summary)",
+      "performer_type": "Member of an internationally recognized entertainment group",
+      "typical_max_duration": "Up to 1 year initially (mock)",
+      "consultation_required_from": "Appropriate labor organization (mock)",
+      "initiative_relevance": "Would apply to a touring Marathi theatre troupe/ensemble (mock illustrative note)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "visa_category": "P-3 (mock summary)",
+      "performer_type": "Artist/entertainer in a culturally unique program",
+      "typical_max_duration": "Up to 1 year initially (mock)",
+      "consultation_required_from": "Labor organization and/or a peer group of experts in the cultural art form (mock)",
+      "initiative_relevance": "Likely category for a traditional Marathi cultural/folk performance program touring the US (mock illustrative note)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "visa_category": "P-1S / P-2S / P-3S (mock summary)",
+      "performer_type": "Essential support personnel accompanying a P-1/P-2/P-3 performer or group",
+      "typical_max_duration": "Matches the accompanied principal's period (mock)",
+      "consultation_required_from": "Same as the accompanied category (mock)",
+      "initiative_relevance": "Would cover sound/lighting/stage crew travelling with a touring production (mock illustrative note)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "visa_category": "B-1 (business visitor, unpaid) (mock summary)",
+      "performer_type": "Performer appearing without US-source payment (e.g. showcase/competition only)",
+      "typical_max_duration": "Up to 6 months per admission (mock)",
+      "consultation_required_from": "Not applicable (mock)",
+      "initiative_relevance": "Not suitable for a ticketed/paid Ticketalay US engagement (mock illustrative note)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

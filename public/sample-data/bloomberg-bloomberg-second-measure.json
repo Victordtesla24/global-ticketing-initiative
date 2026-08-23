@@ -1,0 +1,105 @@
+{
+  "provider": "Bloomberg / Bloomberg Second Measure",
+  "provider_id": 37,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock US consumer-card-panel index rows (dollar spend, transaction count, unique users, average transaction price) and company market-share estimates for the live-entertainment/ticketing category, mirroring Bloomberg Second Measure's real index schema.",
+  "spec_note": "SYNTHETIC SAMPLE - mirrors Bloomberg Second Measure published data specification for prototype purposes; NOT vendor data. Field names and the four-index structure (dollar spend, transactions, unique users, average transaction price) mirror Bloomberg Second Measure's real, publicly described US Consumer Spend Index methodology (20M+ consumer card panel, per bloomberg.com Data Spotlight); all VALUES are fabricated placeholders. Bloomberg Second Measure's transaction panel is explicitly US-only (not AU data) — included here only as a US-market alternative-data benchmark reference for later expansion planning.",
+  "countries": [
+    "US",
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors Bloomberg Second Measure published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "metric": "Dollar spend index - live entertainment & ticketing",
+      "category": "Consumer Spend Index",
+      "region": "United States",
+      "period": "2026-06",
+      "value": "118.4",
+      "unit": "index (Jan 2023=100)",
+      "panel_note": "20M+ card consumer panel",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Transaction count index - live entertainment & ticketing",
+      "category": "Consumer Spend Index",
+      "region": "United States",
+      "period": "2026-06",
+      "value": "109.7",
+      "unit": "index (Jan 2023=100)",
+      "panel_note": "20M+ card consumer panel",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Unique users index - live entertainment & ticketing",
+      "category": "Consumer Spend Index",
+      "region": "United States",
+      "period": "2026-06",
+      "value": "104.2",
+      "unit": "index (Jan 2023=100)",
+      "panel_note": "20M+ card consumer panel",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Average transaction price index - live entertainment & ticketing",
+      "category": "Consumer Spend Index",
+      "region": "United States",
+      "period": "2026-06",
+      "value": "112.9",
+      "unit": "index (Jan 2023=100)",
+      "panel_note": "20M+ card consumer panel",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Dollar spend index - live entertainment & ticketing",
+      "category": "Consumer Spend Index",
+      "region": "United States",
+      "period": "2025-06",
+      "value": "108.1",
+      "unit": "index (Jan 2023=100)",
+      "panel_note": "20M+ card consumer panel",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Company market-share estimate - primary ticketing (Ticketmaster)",
+      "category": "Alternative Data Panel",
+      "region": "United States",
+      "period": "2026-Q2",
+      "value": "61.4",
+      "unit": "% of category card spend",
+      "panel_note": "billions of US card transactions",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Company market-share estimate - resale ticketing (StubHub)",
+      "category": "Alternative Data Panel",
+      "region": "United States",
+      "period": "2026-Q2",
+      "value": "47.8",
+      "unit": "% of category card spend",
+      "panel_note": "billions of US card transactions",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "metric": "Dollar spend growth YoY - performing arts category",
+      "category": "Consumer Spend Index",
+      "region": "United States",
+      "period": "2026-Q2",
+      "value": "6.2",
+      "unit": "% YoY",
+      "panel_note": "20M+ card consumer panel",
+      "source_url": "https://www.bloomberg.com/professional/insights/data/data-spotlight-transactions-fundamentals-more/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

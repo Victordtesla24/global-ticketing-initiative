@@ -1,0 +1,18 @@
+category,finding,value,source_url,access_date,data_status
+entity,ticketalay.com.au (AU domain) status,"Hostinger parked page over HTTP (200, title 'Parked Domain name on Hostinger DNS system'); HTTPS not served (TLS handshake fails, no certificate)",http://ticketalay.com.au,2026-08-23,REAL_EXTRACT
+entity,AU domain registrant (RDAP),"V Deshpande & A Kadam, Family Partnership, ABN 91819759805, trading as A&B Entertainments, VIC 3030, status 'server renew prohibited / Not Currently Eligible For Renewal'",https://rdap.org/domain/ticketalay.com.au,2026-08-23,REAL_EXTRACT
+entity,Live operating entity (site footer),PAC Theatre Entertainment Pvt. Ltd. (India) — '© 2026 PAC Theatre Entertainment Pvt. Ltd. All rights reserved.',https://www.ticketalay.com/,2026-08-23,REAL_EXTRACT
+entity,AU ABN search for 'Ticketalay',No matching names found (active); only fuzzy 'Ticketland' hits on all-ABNs search — no Ticketalay entity registered in Australia,https://abr.business.gov.au/Search/ResultsActive?SearchText=Ticketalay,2026-08-23,REAL_EXTRACT
+entity,AU ABN search for 'AB Entertainment' (exact name),"56 active fuzzy matches, none exactly 'AB Entertainment'; closest is 'A&B ENTERTAINMENTS' (ABN 91819759805, VIC)",https://abr.business.gov.au/Search/ResultsActive?SearchText=AB+Entertainment,2026-08-23,REAL_EXTRACT
+product,Primary positioning (og:title),"'Ticketalay: Your One-Stop Shop for Natak, Cinema, Musicals, and Event Tickets - Discover, Review, and Book Today!'",https://www.ticketalay.com/,2026-08-23,REAL_EXTRACT
+product,Default city / market on homepage,Mumbai (India) default city selector; nav items Natak / Cinema / Musicals / Other / Natyagruha,https://www.ticketalay.com/,2026-08-23,REAL_EXTRACT
+event,Sample live event: Katkon Trikon,"Marathi thriller play, 2h30m; cast Sharad Ponkshe, Suyash Tilak, Priyanka Tendolkar; writer Vivek Bele; director Ajit Bhure",https://www.ticketalay.com/event-details/katkon-trikon/16311,2026-08-23,REAL_EXTRACT
+event,Sample live event: Hi Dosti Tutaychi Naay (Jalgaon),"Marathi play listing, Jalgaon show instance",https://www.ticketalay.com/event-details/hi-dosti-tutaychi-naay-(jalgaon)/16529,2026-08-23,REAL_EXTRACT
+event,Sample live event: Niyam Va Ati Lagu,Marathi play listing,https://www.ticketalay.com/event-details/niyam-va-ati-lagu/2,2026-08-23,REAL_EXTRACT
+event,Sample live event: The Kiran Mane Show - Story Shivrajyabhishekachi,Marathi stage show listing,https://www.ticketalay.com/event-details/the-kiran-mane-show-:-story-shivrajyabhishekachi/7508,2026-08-23,REAL_EXTRACT
+event,Sample live event: Sankarshan Via Spruha,Marathi play/performance listing,https://www.ticketalay.com/event-details/sankarshan-via-spruha/5,2026-08-23,REAL_EXTRACT
+payments,Payment gateway signal,Razorpay trusted-business badge present on event page (key prefix rzp_test_ — TEST-mode key found wired on production),https://www.ticketalay.com/event-details/katkon-trikon/16311,2026-08-23,REAL_EXTRACT
+payments,Currency,"INR confirmed via Google Play and App Store listings (price 0, priceCurrency INR); not visible on public site pages (pricing behind login)",https://play.google.com/store/apps/details?id=com.ticketalay.app,2026-08-23,REAL_EXTRACT
+engagement,Google Play install band,"'100K+ Downloads' — an install-count band (>=100,000), not verified ticket buyers or active users",https://play.google.com/store/apps/details?id=com.ticketalay.app,2026-08-23,REAL_EXTRACT
+engagement,Google Play rating,3.36 / 5 from 386 ratings (histogram 122/26/15/26/193 for 5→1 stars),https://play.google.com/store/apps/details?id=com.ticketalay.app,2026-08-23,REAL_EXTRACT
+engagement,App Store rating (India storefront),2.62 / 5 from 45 ratings,https://apps.apple.com/in/app/ticketalay/id6477772996,2026-08-23,REAL_EXTRACT

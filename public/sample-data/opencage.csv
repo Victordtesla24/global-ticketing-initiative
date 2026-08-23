@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors OpenCage published open-data geocoding data specification for prototype purposes; NOT vendor data.
+query,formatted,lat,lng,confidence_1to10,country,country_code,city,postcode,timezone_name,data_status
+"Palais Theatre, St Kilda VIC","Palais Theatre, Lower Esplanade, St Kilda VIC 3182, Australia (mock)",-37.8676,144.9791,9,Australia,au,St Kilda,3182,Australia/Melbourne,SYNTHETIC_SAMPLE
+Sydney Opera House,"Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia (mock)",-33.8568,151.2153,10,Australia,au,Sydney,2000,Australia/Sydney,SYNTHETIC_SAMPLE
+Springvale Community Hub VIC,"Springvale Community Hub, Springvale VIC 3171, Australia (mock)",-37.949,145.152,7,Australia,au,Springvale,3171,Australia/Melbourne,SYNTHETIC_SAMPLE
+Blacktown Arts Centre NSW,"Blacktown Arts Centre, Blacktown NSW 2148, Australia (mock)",-33.7707,150.9057,8,Australia,au,Blacktown,2148,Australia/Sydney,SYNTHETIC_SAMPLE
+"Shanmukhananda Hall, Sion, Mumbai","Shanmukhananda Hall, Sion, Mumbai, Maharashtra 400022, India (mock)",19.0413,72.8619,8,India,in,Mumbai,400022,Asia/Kolkata,SYNTHETIC_SAMPLE
+Sunshine Community Hub VIC,"Sunshine Community Hub, Sunshine VIC 3020, Australia (mock)",-37.788,144.832,6,Australia,au,Sunshine,3020,Australia/Melbourne,SYNTHETIC_SAMPLE
+Rooty Hill RSL Club NSW,"Rooty Hill RSL Club, Rooty Hill NSW 2766, Australia (mock)",-33.766,150.85,7,Australia,au,Rooty Hill,2766,Australia/Sydney,SYNTHETIC_SAMPLE
+Marion Cultural Centre SA,"Marion Cultural Centre, Oaklands Park SA 5046, Australia (mock)",-35.009,138.547,7,Australia,au,Oaklands Park,5046,Australia/Adelaide,SYNTHETIC_SAMPLE

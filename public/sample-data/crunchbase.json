@@ -1,0 +1,142 @@
+{
+  "provider": "Crunchbase",
+  "provider_id": 34,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock organization records (founding date, funding total, rounds, investor count, HQ, category) for fictional AU/India/UK live-entertainment and ticketing-tech startups, mirroring the Crunchbase Organizations API schema.",
+  "spec_note": "SYNTHETIC SAMPLE - mirrors Crunchbase published data specification for prototype purposes; NOT vendor data. Field names (founded_on, total_funding_usd, num_funding_rounds, last_funding_type, investor_count, hq_location, category) mirror the real Crunchbase API v4 organizations schema (confirmed via data.crunchbase.com/docs); all company names, dates and dollar figures are fabricated illustrative placeholders, not real Crunchbase records.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors Crunchbase published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "organization_name": "NatyaTech Pty Ltd",
+      "founded_on": "2023-02-01",
+      "operating_status": "active",
+      "total_funding_usd": "2100000",
+      "num_funding_rounds": "1",
+      "last_funding_type": "seed",
+      "last_funding_date": "2025-03-14",
+      "investor_count": "3",
+      "hq_location": "Melbourne, Australia",
+      "category": "Ticketing & Event Software",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Konkani Stage Digital",
+      "founded_on": "2021-06-15",
+      "operating_status": "active",
+      "total_funding_usd": "10500000",
+      "num_funding_rounds": "2",
+      "last_funding_type": "series_a",
+      "last_funding_date": "2024-11-02",
+      "investor_count": "5",
+      "hq_location": "Sydney, Australia",
+      "category": "Live Entertainment Platforms",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "DiasporaLive Pty Ltd",
+      "founded_on": "2024-01-10",
+      "operating_status": "active",
+      "total_funding_usd": "1500000",
+      "num_funding_rounds": "1",
+      "last_funding_type": "seed",
+      "last_funding_date": "2025-06-20",
+      "investor_count": "2",
+      "hq_location": "Melbourne, Australia",
+      "category": "Cultural Events Tech",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Southern Cross Natak Ventures",
+      "founded_on": "2019-03-22",
+      "operating_status": "active",
+      "total_funding_usd": "39000000",
+      "num_funding_rounds": "3",
+      "last_funding_type": "series_b",
+      "last_funding_date": "2023-09-11",
+      "investor_count": "8",
+      "hq_location": "Sydney, Australia",
+      "category": "Live Entertainment Platforms",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "MarathiStage Global",
+      "founded_on": "2022-08-01",
+      "operating_status": "active",
+      "total_funding_usd": "6700000",
+      "num_funding_rounds": "2",
+      "last_funding_type": "series_a",
+      "last_funding_date": "2025-01-08",
+      "investor_count": "4",
+      "hq_location": "Pune, India",
+      "category": "Regional-Language Entertainment",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "TixMandal Pty Ltd",
+      "founded_on": "2023-05-19",
+      "operating_status": "active",
+      "total_funding_usd": "900000",
+      "num_funding_rounds": "1",
+      "last_funding_type": "seed",
+      "last_funding_date": "2024-04-30",
+      "investor_count": "2",
+      "hq_location": "Melbourne, Australia",
+      "category": "Ticketing & Event Software",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Natyagruha Digital Holdings",
+      "founded_on": "2016-11-03",
+      "operating_status": "active",
+      "total_funding_usd": "87000000",
+      "num_funding_rounds": "4",
+      "last_funding_type": "series_c",
+      "last_funding_date": "2022-12-05",
+      "investor_count": "12",
+      "hq_location": "Mumbai, India",
+      "category": "Regional-Language Entertainment",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "AussieDesi Events Pty Ltd",
+      "founded_on": "2024-09-12",
+      "operating_status": "active",
+      "total_funding_usd": "1200000",
+      "num_funding_rounds": "1",
+      "last_funding_type": "seed",
+      "last_funding_date": "2025-07-17",
+      "investor_count": "2",
+      "hq_location": "Brisbane, Australia",
+      "category": "Diaspora Event Marketplaces",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "BollyStage London Ltd",
+      "founded_on": "2020-04-08",
+      "operating_status": "active",
+      "total_funding_usd": "5400000",
+      "num_funding_rounds": "2",
+      "last_funding_type": "series_a",
+      "last_funding_date": "2023-10-01",
+      "investor_count": "4",
+      "hq_location": "London, United Kingdom",
+      "category": "Diaspora Event Marketplaces",
+      "source_url": "https://data.crunchbase.com/docs/using-the-api",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

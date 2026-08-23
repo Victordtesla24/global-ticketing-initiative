@@ -1,0 +1,11 @@
+# SYNTHETIC SAMPLE - mirrors GWI (GlobalWebIndex) published data specification for prototype purposes; NOT vendor data
+wave,market,audience_segment,question,response_pct,sample_size,data_point_category,source_url,data_status
+2026 Q2,Australia,"South Asian diaspora, 18-34",Attended a live cultural/music event in past 3 months,47.2,480,Behaviors,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q2,Australia,"General population, 18-34",Attended a live cultural/music event in past 3 months,31.5,1500,Behaviors,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q2,Australia,"South Asian diaspora, 18-34",Discovers events primarily via social media/community groups,62.8,480,Behaviors,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q1,United Kingdom,"South Asian diaspora, 25-44",Would pay premium for heritage-language content,39.4,610,Attitudes,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q1,India,"Urban millennials, 25-34",Books event tickets via mobile app,71.3,2200,Buying habits,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q2,Australia,"South Asian diaspora, 35-54",Interest in Marathi/regional-language performing arts,54.1,390,Interests,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q2,Australia,"General population, 35-54",Interest in performing arts events,22.9,1500,Interests,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q1,United States,"South Asian diaspora, 18-34",Uses WhatsApp for event discovery/coordination,68.7,540,Behaviors,https://www.gwi.com/platform,SYNTHETIC_SAMPLE
+2026 Q2,Australia,"South Asian diaspora, 18-34",Trusts community-run ticketing apps over global platforms,44.6,480,Attitudes,https://www.gwi.com/platform,SYNTHETIC_SAMPLE

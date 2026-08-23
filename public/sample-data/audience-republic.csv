@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Audience Republic published event-audience/campaign-attribution data specification for prototype purposes; NOT vendor data.
+campaign_id,campaign_name,event_name,market,channel,segment,audience_size,open_rate_pct,click_rate_pct,tickets_sold_attributed,revenue_attributed_aud,data_status
+mock-ar-c001,Katkon Trikon - Melbourne presale (mock),Katkon Trikon (mock listing),"Melbourne, AU",Email,Past Marathi-theatre attendees,2450,38.2,6.1,112,6160,SYNTHETIC_SAMPLE
+mock-ar-c002,Katkon Trikon - Melbourne presale (mock),Katkon Trikon (mock listing),"Melbourne, AU",SMS,Waitlist sign-ups,610,94.5,19.8,54,2970,SYNTHETIC_SAMPLE
+mock-ar-c003,Sydney Marathi Natak Night (mock),Sankarshan Via Spruha (mock listing),"Sydney, AU",Email,Community newsletter subscribers,3100,29.7,4.4,88,4840,SYNTHETIC_SAMPLE
+mock-ar-c004,Sydney Marathi Natak Night (mock),Sankarshan Via Spruha (mock listing),"Sydney, AU",Paid Social,Lookalike - South Asian AU 25-54,18500,,2.3,41,2255,SYNTHETIC_SAMPLE
+mock-ar-c005,Referral competition - Melbourne (mock),Multiple listings (mock),"Melbourne, AU",Referral / competition,Existing ticket buyers,890,,,63,3465,SYNTHETIC_SAMPLE
+mock-ar-c006,Diwali season push - Sydney (mock),Multiple listings (mock),"Sydney, AU",Email,Diaspora database opt-ins,4200,33.5,5.6,140,7700,SYNTHETIC_SAMPLE
+mock-ar-c007,Diwali season push - Melbourne (mock),Multiple listings (mock),"Melbourne, AU",SMS,VIP past buyers,520,91.0,22.4,71,3905,SYNTHETIC_SAMPLE
+mock-ar-c008,London expansion test (mock),Test listing - UK market (mock),"London, UK",Email,UK Marathi association subscribers,1350,25.1,3.2,19,1045,SYNTHETIC_SAMPLE

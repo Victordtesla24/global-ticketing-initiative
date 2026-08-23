@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors PitchBook published data specification for prototype purposes; NOT vendor data
+company_name,deal_date,deal_type,deal_size_usd_m,post_money_valuation_usd_m,lead_investors,industry_vertical,hq_city,hq_country,source_url,data_status
+NatyaTech Pty Ltd,2025-03-14,Seed,2.1,9.0,Blackbird Ventures; Antler AU,Ticketing & Event Software,Melbourne,Australia,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+Konkani Stage Digital,2024-11-02,Series A,8.4,34.0,Square Peg Capital,Live Entertainment Platforms,Sydney,Australia,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+DiasporaLive Pty Ltd,2025-06-20,Seed,1.5,6.5,Rampersand,Cultural Events Tech,Melbourne,Australia,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+Southern Cross Natak Ventures,2023-09-11,Series B,22.0,96.0,AirTree Ventures; Blackbird Ventures,Live Entertainment Platforms,Sydney,Australia,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+MarathiStage Global,2025-01-08,Series A,4.2,18.0,Peak XV Partners (Sequoia India),Regional-Language Entertainment,Pune,India,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+TixMandal Pty Ltd,2024-04-30,Seed,0.9,4.2,Startmate,Ticketing & Event Software,Melbourne,Australia,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+Natyagruha Digital Holdings,2022-12-05,Series C,41.0,210.0,Tiger Global; Peak XV Partners,Regional-Language Entertainment,Mumbai,India,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE
+AussieDesi Events Pty Ltd,2025-07-17,Seed,1.2,5.5,Investible,Diaspora Event Marketplaces,Brisbane,Australia,https://pitchbook.com/platform-data/deals,SYNTHETIC_SAMPLE

@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Acxiom consumer identity/audience data published data specification for prototype purposes; NOT vendor data
+audience_id,country,identity_type,audience_segment,in_market_indicator,reach_estimate,recency_days,source_url,data_status
+ACX-MOCK-AU-001,AU,Household (hashed email match),Live Entertainment Enthusiasts (mock),Event Tickets - Performing Arts,42000,14,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-AU-002,AU,Individual (device graph),South Asian Diaspora Households (mock),Cultural Events - Regional Language,18500,30,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-UK-001,UK,Household (hashed email match),Theatre & Live Music Frequent Attenders (mock),Event Tickets - Concerts,210000,7,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-US-001,US,Individual (device graph),Mobile Ticketing Early Adopters (mock),Apps - Entertainment/Ticketing,890000,21,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-EU-001,DE,Household (hashed email match),Cultural Festival Attendees (mock),Event Tickets - Festivals,156000,45,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-AU-003,AU,Household (hashed email match),Second-Generation Migrant Households (mock),Cultural Events - Regional Language,9800,30,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-AU-004,AU,Individual (device graph),Melbourne Metro Event-Goers (mock),Event Tickets - Performing Arts,61000,10,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE
+ACX-MOCK-UK-002,UK,Household (hashed email match),South Asian Diaspora Households (mock),Cultural Events - Regional Language,74500,30,https://www.acxiom.com/what-we-do/data/,SYNTHETIC_SAMPLE

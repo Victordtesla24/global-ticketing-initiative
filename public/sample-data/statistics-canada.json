@@ -1,0 +1,145 @@
+{
+  "provider": "Statistics Canada",
+  "provider_id": 18,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Not-for-profit performing-arts attendance and revenue (StatCan table 21-10-0186-01 / The Daily) plus Census 2021 India-born immigrant counts, extracted verbatim per the eu-ca-stats verification pack.",
+  "spec_note": "Every row traces to workflow/verify/eu-ca-stats.md item 2-3. Attendance figures cover the not-for-profit performing-arts sector only (for-profit reported in dollars, not attendance) and are biennial with no ethnicity/diaspora breakdown; Marathi-specific counts were not part of this verification pass. Note for the plan maintainer: the site's earlier 'StatCan cultural-attendance data UNVERIFIED/none found' claim is a MISMATCH - official attendance data does exist (see rows above).",
+  "countries": [
+    "CA"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "metric": "Total attendance, not-for-profit performing arts companies (NAICS 7111)",
+      "value": "7072536",
+      "unit": "attendees",
+      "reference_period": "2022",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "table 21-10-0186-01; not-for-profit sector only"
+    },
+    {
+      "metric": "Attendance, theatre (except musical) (NAICS 711111)",
+      "value": "3646585",
+      "unit": "attendees",
+      "reference_period": "2022",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Attendance, musical theatre and opera (NAICS 711112)",
+      "value": "573442",
+      "unit": "attendees",
+      "reference_period": "2022",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Attendance, dance companies (NAICS 711120)",
+      "value": "670563",
+      "unit": "attendees",
+      "reference_period": "2022",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Attendance, musical groups and artists (NAICS 711130)",
+      "value": "1633708",
+      "unit": "attendees",
+      "reference_period": "2022",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Total attendance, not-for-profit performing arts companies (NAICS 7111)",
+      "value": "10374787",
+      "unit": "attendees",
+      "reference_period": "2024",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "most recent reference year in the table"
+    },
+    {
+      "metric": "Attendance, musical groups and artists (NAICS 711130)",
+      "value": "2597963",
+      "unit": "attendees",
+      "reference_period": "2024",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110018601",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": ""
+    },
+    {
+      "metric": "Performing arts industry operating revenue",
+      "value": "3200000000",
+      "unit": "CAD",
+      "reference_period": "2024",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260122/dq260122b-eng.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "up 17.0% from 2022; The Daily release 2026-01-22"
+    },
+    {
+      "metric": "Not-for-profit single-ticket sales",
+      "value": "225900000",
+      "unit": "CAD",
+      "reference_period": "2024",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260122/dq260122b-eng.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "up 70.2% from 2022"
+    },
+    {
+      "metric": "Immigrant population, total",
+      "value": "8361505",
+      "unit": "persons",
+      "reference_period": "Census 2021",
+      "geography": "Canada",
+      "source_url": "https://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/page.cfm?lang=E&topic=9&dguid=2021A000011124",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "2016 comparator: 7,540,830"
+    },
+    {
+      "metric": "India-born immigrants",
+      "value": "898045",
+      "unit": "persons (10.7% of immigrants, rank 1)",
+      "reference_period": "Census 2021",
+      "geography": "Canada",
+      "source_url": "https://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/page.cfm?lang=E&topic=9&dguid=2021A000011124",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "2016 comparator: 668,565 (8.9%, rank 1)"
+    },
+    {
+      "metric": "India-born recent immigrants (2016-2021 arrivals)",
+      "value": "246995",
+      "unit": "persons (18.6% of recent immigrants, rank 1)",
+      "reference_period": "2016-2021",
+      "geography": "Canada",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/221026/dq221026a-eng.htm",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT",
+      "note": "leading country of birth for recent immigration to Canada"
+    }
+  ]
+}

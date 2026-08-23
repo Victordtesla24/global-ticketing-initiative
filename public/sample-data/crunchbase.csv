@@ -1,0 +1,11 @@
+# SYNTHETIC SAMPLE - mirrors Crunchbase published data specification for prototype purposes; NOT vendor data
+organization_name,founded_on,operating_status,total_funding_usd,num_funding_rounds,last_funding_type,last_funding_date,investor_count,hq_location,category,source_url,data_status
+NatyaTech Pty Ltd,2023-02-01,active,2100000,1,seed,2025-03-14,3,"Melbourne, Australia",Ticketing & Event Software,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+Konkani Stage Digital,2021-06-15,active,10500000,2,series_a,2024-11-02,5,"Sydney, Australia",Live Entertainment Platforms,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+DiasporaLive Pty Ltd,2024-01-10,active,1500000,1,seed,2025-06-20,2,"Melbourne, Australia",Cultural Events Tech,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+Southern Cross Natak Ventures,2019-03-22,active,39000000,3,series_b,2023-09-11,8,"Sydney, Australia",Live Entertainment Platforms,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+MarathiStage Global,2022-08-01,active,6700000,2,series_a,2025-01-08,4,"Pune, India",Regional-Language Entertainment,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+TixMandal Pty Ltd,2023-05-19,active,900000,1,seed,2024-04-30,2,"Melbourne, Australia",Ticketing & Event Software,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+Natyagruha Digital Holdings,2016-11-03,active,87000000,4,series_c,2022-12-05,12,"Mumbai, India",Regional-Language Entertainment,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+AussieDesi Events Pty Ltd,2024-09-12,active,1200000,1,seed,2025-07-17,2,"Brisbane, Australia",Diaspora Event Marketplaces,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE
+BollyStage London Ltd,2020-04-08,active,5400000,2,series_a,2023-10-01,4,"London, United Kingdom",Diaspora Event Marketplaces,https://data.crunchbase.com/docs/using-the-api,SYNTHETIC_SAMPLE

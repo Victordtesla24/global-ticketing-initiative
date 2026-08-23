@@ -1,0 +1,117 @@
+{
+  "provider": "Geoapify",
+  "provider_id": 56,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Geoapify's published open-data geocoding/Places API response specification (place_id, formatted address, geometry lat/lon, result_type, rank confidence, category), illustratively populated for candidate AU suburb venues and a Pune, Maharashtra venue relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field shape (place_id, formatted, lat/lon, result_type, rank_confidence, city/country, category) mirrors Geoapify's public API documentation (apidocs.geoapify.com). Venue names and approximate public coordinates are illustrative reference points for real-world landmarks (public knowledge), NOT an actual Geoapify API response. NOT licensed Geoapify data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "place_id": "mock-geoapify-0001",
+      "formatted": "Palais Theatre, Lower Esplanade, St Kilda VIC 3182, Australia (mock)",
+      "lat": -37.8676,
+      "lon": 144.9791,
+      "result_type": "amenity",
+      "rank_confidence": 0.96,
+      "city": "St Kilda",
+      "country": "Australia",
+      "country_code": "au",
+      "category": "entertainment.culture.theatre",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0002",
+      "formatted": "Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia (mock)",
+      "lat": -33.8568,
+      "lon": 151.2153,
+      "result_type": "amenity",
+      "rank_confidence": 0.99,
+      "city": "Sydney",
+      "country": "Australia",
+      "country_code": "au",
+      "category": "entertainment.culture.theatre",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0003",
+      "formatted": "Hurstville Civic Centre, Hurstville NSW 2220, Australia (mock)",
+      "lat": -33.967,
+      "lon": 151.102,
+      "result_type": "amenity",
+      "rank_confidence": 0.85,
+      "city": "Hurstville",
+      "country": "Australia",
+      "country_code": "au",
+      "category": "office.government",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0004",
+      "formatted": "Glen Waverley Community Centre, Glen Waverley VIC 3150, Australia (mock)",
+      "lat": -37.879,
+      "lon": 145.163,
+      "result_type": "amenity",
+      "rank_confidence": 0.83,
+      "city": "Glen Waverley",
+      "country": "Australia",
+      "country_code": "au",
+      "category": "leisure.community_centre",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0005",
+      "formatted": "Yashwantrao Chavan Natyagruha, Kothrud, Pune 411038, India (mock)",
+      "lat": 18.5074,
+      "lon": 73.8077,
+      "result_type": "amenity",
+      "rank_confidence": 0.9,
+      "city": "Pune",
+      "country": "India",
+      "country_code": "in",
+      "category": "entertainment.culture.theatre",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0006",
+      "formatted": "Wollongong Town Hall, Wollongong NSW 2500, Australia (mock)",
+      "lat": -34.425,
+      "lon": 150.893,
+      "result_type": "amenity",
+      "rank_confidence": 0.87,
+      "city": "Wollongong",
+      "country": "Australia",
+      "country_code": "au",
+      "category": "office.government",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0007",
+      "formatted": "Casey ArtsPace, Narre Warren VIC 3805, Australia (mock)",
+      "lat": -38.033,
+      "lon": 145.305,
+      "result_type": "amenity",
+      "rank_confidence": 0.82,
+      "city": "Narre Warren",
+      "country": "Australia",
+      "country_code": "au",
+      "category": "entertainment.culture.gallery",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "place_id": "mock-geoapify-0008",
+      "formatted": "Yashwantrao Chavan Natyagruha, Kothrud, Pune 411038, India (mock)",
+      "lat": 18.5074,
+      "lon": 73.8077,
+      "result_type": "amenity",
+      "rank_confidence": 0.9,
+      "city": "Pune",
+      "country": "India",
+      "country_code": "in",
+      "category": "entertainment.culture.theatre",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

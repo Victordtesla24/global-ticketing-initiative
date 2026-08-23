@@ -1,0 +1,110 @@
+{
+  "provider": "IBISWorld",
+  "provider_id": 7,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring IBISWorld's published industry-report data specification (ANZSIC industry code, market size, revenue growth, business/employment counts, profit margin), illustratively populated for Australian performing-arts, cinema and ticketing industries relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field names mirror IBISWorld's public report-metadata schema (ANZSIC-coded AU industry reports); all numeric values are illustrative mock figures, NOT licensed IBISWorld data.",
+  "countries": [
+    "AU",
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "industry_code_anzsic": "P9004",
+      "industry_name": "Performing Arts Venue Operation",
+      "report_title": "Performing Arts Venue Operation in Australia (mock)",
+      "market_size_aud_m": 1120,
+      "revenue_growth_pct": 3.4,
+      "number_of_businesses": 410,
+      "employment": 8200,
+      "profit_margin_pct": 6.1,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "R9002",
+      "industry_name": "Performing Arts Operation",
+      "report_title": "Performing Arts Operation in Australia (mock)",
+      "market_size_aud_m": 980,
+      "revenue_growth_pct": 4.1,
+      "number_of_businesses": 1250,
+      "employment": 6400,
+      "profit_margin_pct": 5.5,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "N7299b",
+      "industry_name": "Ticket & Event Booking Agencies",
+      "report_title": "Ticket Agency & Event Booking Services in Australia (mock)",
+      "market_size_aud_m": 610,
+      "revenue_growth_pct": 8.9,
+      "number_of_businesses": 95,
+      "employment": 1450,
+      "profit_margin_pct": 11.2,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "P9004b",
+      "industry_name": "Ethnic & Community Cultural Events",
+      "report_title": "Ethnic Cultural Festivals & Live Events in Australia (mock, sub-segment est.)",
+      "market_size_aud_m": 145,
+      "revenue_growth_pct": 12.5,
+      "number_of_businesses": 310,
+      "employment": 1100,
+      "profit_margin_pct": 4.8,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "J5video",
+      "industry_name": "Motion Picture Exhibition",
+      "report_title": "Motion Picture Exhibition in Australia (mock)",
+      "market_size_aud_m": 1340,
+      "revenue_growth_pct": 2.0,
+      "number_of_businesses": 210,
+      "employment": 9800,
+      "profit_margin_pct": 7.3,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "J5video-b",
+      "industry_name": "Regional-Language Cinema Screenings",
+      "report_title": "Regional-Language & Diaspora Cinema Screenings in Australia (mock, sub-segment est.)",
+      "market_size_aud_m": 52,
+      "revenue_growth_pct": 15.7,
+      "number_of_businesses": 40,
+      "employment": 180,
+      "profit_margin_pct": 6.9,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "N7299",
+      "industry_name": "Online Event Ticketing Platforms",
+      "report_title": "Online Event Ticketing Platforms in Australia (mock)",
+      "market_size_aud_m": 430,
+      "revenue_growth_pct": 10.3,
+      "number_of_businesses": 28,
+      "employment": 760,
+      "profit_margin_pct": 13.5,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "industry_code_anzsic": "P9001",
+      "industry_name": "Amusement & Recreation Services",
+      "report_title": "Amusement & Recreation Services in Australia (mock, context benchmark)",
+      "market_size_aud_m": 8900,
+      "revenue_growth_pct": 3.9,
+      "number_of_businesses": 5200,
+      "employment": 61000,
+      "profit_margin_pct": 8.0,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

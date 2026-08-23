@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Avalara published multi-jurisdiction tax-calculation data specification for prototype purposes; NOT vendor data.
+jurisdiction_country,jurisdiction_region,tax_type,product_category,avalara_tax_code,tax_rate_pct,nexus_status,data_status
+Australia,National,GST,Live event ticket (general admission),"mock-DC010500 (Digital content/ticket, illustrative)",10.0,Registered (mock),SYNTHETIC_SAMPLE
+Australia,Victoria,GST,Theatre/performing arts ticket,"mock-PS081282 (Performing arts services, illustrative)",10.0,Registered (mock),SYNTHETIC_SAMPLE
+Australia,New South Wales,GST,Theatre/performing arts ticket,"mock-PS081282 (Performing arts services, illustrative)",10.0,Registered (mock),SYNTHETIC_SAMPLE
+United States,California,Sales Tax,Electronically delivered ticket/admission,"mock-DC010200 (Admissions, illustrative)",7.25,Not registered - below threshold (mock),SYNTHETIC_SAMPLE
+United States,New York,Sales Tax,Electronically delivered ticket/admission,"mock-DC010200 (Admissions, illustrative)",4.0,Not registered - below threshold (mock),SYNTHETIC_SAMPLE
+United Kingdom,National,VAT,Live event ticket,"mock-DC010500 (Digital content/ticket, illustrative)",20.0,Not registered (mock),SYNTHETIC_SAMPLE
+India,Maharashtra,GST,Entertainment/theatre ticket,"mock-PS081282 (Performing arts services, illustrative)",18.0,"Registered (mock, primary market)",SYNTHETIC_SAMPLE
+Canada,Ontario,HST,Live event ticket,"mock-DC010500 (Digital content/ticket, illustrative)",13.0,Not registered (mock),SYNTHETIC_SAMPLE

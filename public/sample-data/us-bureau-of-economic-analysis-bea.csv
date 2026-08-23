@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors US Bureau of Economic Analysis (BEA) published data specification for prototype purposes; NOT vendor data
+table_id,line_description,geo,geo_fips,industry_naics,year,value_millions_usd,measure,source_url,data_status,quarter
+GDPbyInd_VA_NAICS,"Arts, entertainment, recreation, accommodation, and food services",United States,00000,71-72,2025,1189400,"Value added, current dollars",https://www.bea.gov/data/gdp/gdp-industry,SYNTHETIC_SAMPLE,
+GDPbyInd_VA_NAICS,"Performing arts, spectator sports, museums, and related activities",United States,00000,711-712,2025,138250,"Value added, current dollars",https://www.bea.gov/data/gdp/gdp-industry,SYNTHETIC_SAMPLE,
+SAGDP2N,"Arts, entertainment, and recreation",California,06000,71,2025,41870,"GDP by state, current dollars",https://www.bea.gov/data/gdp/gdp-state,SYNTHETIC_SAMPLE,
+SAGDP2N,"Arts, entertainment, and recreation",New York,36000,71,2025,33410,"GDP by state, current dollars",https://www.bea.gov/data/gdp/gdp-state,SYNTHETIC_SAMPLE,
+SAGDP2N,"Arts, entertainment, and recreation",New Jersey,34000,71,2025,6120,"GDP by state, current dollars",https://www.bea.gov/data/gdp/gdp-state,SYNTHETIC_SAMPLE,
+SAINC30,"Personal consumption expenditures, recreation services",United States,00000,n/a,2025,612300,"PCE, current dollars",https://www.bea.gov/data/gdp/gdp-industry,SYNTHETIC_SAMPLE,
+GDPbyInd_VA_NAICS,"Performing arts, spectator sports, museums, and related activities",United States,00000,711-712,2024,129870,"Value added, current dollars",https://www.bea.gov/data/gdp/gdp-industry,SYNTHETIC_SAMPLE,
+SAGDP2N,"Arts, entertainment, and recreation",Texas,48000,71,2025,17960,"GDP by state, current dollars",https://www.bea.gov/data/gdp/gdp-state,SYNTHETIC_SAMPLE,
+GDPbyInd_QGDP_NAICS,"Performing arts, spectator sports, museums, and related activities",United States,00000,711-712,2025,34980,"Value added, current dollars, quarterly",https://www.bea.gov/data/gdp/gdp-industry,SYNTHETIC_SAMPLE,Q2
+SAGDP2N,"Arts, entertainment, and recreation",Illinois,17000,71,2025,9540,"GDP by state, current dollars",https://www.bea.gov/data/gdp/gdp-state,SYNTHETIC_SAMPLE,

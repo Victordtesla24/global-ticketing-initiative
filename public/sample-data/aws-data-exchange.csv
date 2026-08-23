@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors AWS Data Exchange published product-listing specification for prototype purposes; NOT vendor data
+product_name,provider_name,category,data_format,update_frequency,subscription_duration_months,price_usd_month,aws_region,source_url,data_status
+AU/NZ Points-of-Interest & Venue Data,GeoSignal Pty Ltd,Geospatial,Parquet/GeoJSON,Weekly,12,450,ap-southeast-2,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+Consumer Card Transaction Panel - Entertainment,CardPanel Insights,Financial Services,CSV/Parquet,Weekly,12,2200,us-east-1,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+Global Population & Migration Statistics Bundle,DiasporaMetrics,Demographics,CSV/JSON,Quarterly,6,300,ap-southeast-2,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+Foreign Exchange Reference Rates Feed,FXFeed Markets,Financial Services,JSON,Daily,1,0,us-east-1,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+Event & Venue Master Registry,VenueGraph,Media & Entertainment,Parquet,Monthly,12,600,ap-southeast-2,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+Social Media Event Engagement Signals - ANZ,SocialPulse Data Co.,Media & Entertainment,JSON,Daily,3,950,ap-southeast-2,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+AU Census Postcode Demographics Extract,CensusLink Analytics,Demographics,CSV,Annual,12,0,ap-southeast-2,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE
+APAC Mobile Foot Traffic Panel,GeoSignal Pty Ltd,Geospatial,Parquet,Weekly,12,1800,ap-southeast-2,https://docs.aws.amazon.com/data-exchange/latest/userguide/prod-details-over.html,SYNTHETIC_SAMPLE

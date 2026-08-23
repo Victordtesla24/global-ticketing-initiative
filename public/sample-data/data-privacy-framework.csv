@@ -1,0 +1,8 @@
+# SYNTHETIC SAMPLE - mirrors the Data Privacy Framework (dataprivacyframework.gov) published participant-list data specification for prototype purposes; NOT vendor data.
+organization_name,dpf_program,certification_status,certification_date,recertification_due_date,industry_sector,privacy_policy_url,data_status
+Sample Ticketing Cloud Services Inc. (mock),"EU-U.S. DPF, UK Extension, Swiss-U.S. DPF (mock)",Active (mock),2025-03-14,2026-03-14,Software / SaaS,https://example-mock.com/privacy,SYNTHETIC_SAMPLE
+Sample Payments Processor LLC (mock),EU-U.S. DPF (mock),Active (mock),2025-07-02,2026-07-02,Financial Services,https://example-mock.com/legal/privacy,SYNTHETIC_SAMPLE
+Sample Email Marketing Platform Inc. (mock),"EU-U.S. DPF, Swiss-U.S. DPF (mock)",Active (mock),2024-11-20,2025-11-20,Marketing Technology,https://example-mock.com/trust/privacy,SYNTHETIC_SAMPLE
+Sample Cloud Hosting Corp (mock),"EU-U.S. DPF, UK Extension (mock)",Inactive - recertification lapsed (mock),2023-09-05,2024-09-05,Cloud Infrastructure,https://example-mock.com/policies/privacy,SYNTHETIC_SAMPLE
+Sample Analytics Provider Inc. (mock),"EU-U.S. DPF, UK Extension, Swiss-U.S. DPF (mock)",Active (mock),2026-01-10,2027-01-10,Data Analytics,https://example-mock.com/privacy-policy,SYNTHETIC_SAMPLE
+Sample Customer Support Platform (mock),EU-U.S. DPF (mock),Active (mock),2025-05-30,2026-05-30,Customer Service Software,https://example-mock.com/privacy,SYNTHETIC_SAMPLE

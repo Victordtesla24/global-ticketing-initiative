@@ -1,0 +1,94 @@
+{
+  "provider": "Mintel",
+  "provider_id": 9,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Mintel's published consumer-market-research report data specification (report title, market segment, region, attitude statement, % agreement, sample size), illustratively populated for AU South Asian/diaspora live-entertainment consumer attitudes relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field names mirror Mintel's public consumer-report schema (attitudinal statement + % agreement + sample size, per market/segment); all numeric values are illustrative mock figures, NOT licensed Mintel data.",
+  "countries": [
+    "UK",
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "report_title": "Live Entertainment & Cultural Events Consumer Report (mock)",
+      "market_segment": "South Asian diaspora consumers",
+      "region": "Australia",
+      "consumer_attitude_metric": "'I actively seek out cultural events tied to my heritage'",
+      "value_pct": 54.0,
+      "sample_size": 600,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Live Entertainment & Cultural Events Consumer Report (mock)",
+      "market_segment": "South Asian diaspora consumers",
+      "region": "Australia",
+      "consumer_attitude_metric": "'I would pay a premium for authentic regional-language performances'",
+      "value_pct": 38.5,
+      "sample_size": 600,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Mobile Ticketing Consumer Attitudes Report (mock)",
+      "market_segment": "General AU consumers",
+      "region": "Australia",
+      "consumer_attitude_metric": "'I prefer booking event tickets via a mobile app over a website'",
+      "value_pct": 62.1,
+      "sample_size": 1000,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Mobile Ticketing Consumer Attitudes Report (mock)",
+      "market_segment": "South Asian diaspora consumers",
+      "region": "Melbourne, AU",
+      "consumer_attitude_metric": "'I trust local/community-run apps more than large global platforms'",
+      "value_pct": 47.2,
+      "sample_size": 350,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Live Entertainment & Cultural Events Consumer Report (mock)",
+      "market_segment": "South Asian diaspora consumers",
+      "region": "Sydney, AU",
+      "consumer_attitude_metric": "'Lack of local Marathi/regional-language content is a barrier to attendance'",
+      "value_pct": 33.0,
+      "sample_size": 350,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Diaspora Consumer Trends Report (mock)",
+      "market_segment": "Second-generation South Asian-Australians",
+      "region": "Australia",
+      "consumer_attitude_metric": "'I attend cultural events mainly to stay connected with my parents' heritage'",
+      "value_pct": 59.4,
+      "sample_size": 420,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Mobile Ticketing Consumer Attitudes Report (mock)",
+      "market_segment": "General AU consumers",
+      "region": "Australia",
+      "consumer_attitude_metric": "'I have abandoned a ticket purchase due to a confusing checkout flow'",
+      "value_pct": 29.8,
+      "sample_size": 1000,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_title": "Live Entertainment & Cultural Events Consumer Report (mock)",
+      "market_segment": "South Asian diaspora consumers",
+      "region": "Australia",
+      "consumer_attitude_metric": "'I discover live events mainly through WhatsApp/community groups, not apps'",
+      "value_pct": 44.6,
+      "sample_size": 600,
+      "report_year": 2026,
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

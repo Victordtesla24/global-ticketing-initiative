@@ -1,0 +1,12 @@
+# SYNTHETIC SAMPLE - mirrors OECD.Stat / OECD International Migration Database published data specification for prototype purposes; NOT vendor data
+destination_country,origin_country,indicator,year,value,unit,source_url,data_status
+Australia,India,Inflows of foreign population by nationality,2025,62400,persons,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Australia,India,Stock of foreign-born population by country of birth,2025,789000,persons,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Australia,All countries,Foreign-born population (% of total population),2025,29.8,%,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+United Kingdom,India,Inflows of foreign population by nationality,2025,94300,persons,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Canada,India,Inflows of foreign population by nationality,2025,108700,persons,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Australia,All countries,"International student enrolment, tertiary",2025,715000,students,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Australia,India,"International student enrolment, tertiary",2025,138200,students,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Australia,All countries,"Household disposable income per capita, growth",2025,1.4,% annual,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+Australia,All countries,"Recreation and culture, share of household consumption expenditure",2025,8.9,%,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE
+United States,India,Inflows of foreign population by nationality,2025,184500,persons,https://www.oecd.org/en/data/datasets/international-migration-database.html,SYNTHETIC_SAMPLE

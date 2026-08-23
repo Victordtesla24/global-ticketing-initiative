@@ -1,0 +1,117 @@
+{
+  "provider": "Qualtrics",
+  "provider_id": 26,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Qualtrics' published survey-response export data specification (survey id, response id, distribution channel, start/end timestamps, finished flag, duration, question responses), illustratively populated for a mock AU/UK primary-research survey relevant to the diaspora live-entertainment initiative.",
+  "spec_note": "SYNTHETIC: field names mirror the Qualtrics Survey Response Export / API v3 response object schema (responseId, values, startDate, endDate, finished, duration) as documented at api.qualtrics.com. All response ids, timestamps and answers are fabricated mock placeholders, not real survey data collected via Qualtrics.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "survey_id": "SV_MOCK0001",
+      "response_id": "R_mock00001",
+      "distribution_channel": "email",
+      "start_date": "2026-06-01T09:12:00Z",
+      "end_date": "2026-06-01T09:19:00Z",
+      "finished": true,
+      "duration_seconds": 420,
+      "q_market_fit": "5 - Very interested",
+      "q_market": "Australia",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0001",
+      "response_id": "R_mock00002",
+      "distribution_channel": "social",
+      "start_date": "2026-06-01T10:03:00Z",
+      "end_date": "2026-06-01T10:14:00Z",
+      "finished": true,
+      "duration_seconds": 660,
+      "q_market_fit": "4 - Interested",
+      "q_market": "Australia",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0001",
+      "response_id": "R_mock00003",
+      "distribution_channel": "email",
+      "start_date": "2026-06-02T08:44:00Z",
+      "end_date": "2026-06-02T08:47:00Z",
+      "finished": false,
+      "duration_seconds": 180,
+      "q_market_fit": "",
+      "q_market": "Australia",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0002",
+      "response_id": "R_mock00004",
+      "distribution_channel": "whatsapp",
+      "start_date": "2026-06-05T14:20:00Z",
+      "end_date": "2026-06-05T14:31:00Z",
+      "finished": true,
+      "duration_seconds": 660,
+      "q_market_fit": "5 - Very interested",
+      "q_market": "United Kingdom",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0002",
+      "response_id": "R_mock00005",
+      "distribution_channel": "web-intercept",
+      "start_date": "2026-06-06T11:02:00Z",
+      "end_date": "2026-06-06T11:09:00Z",
+      "finished": true,
+      "duration_seconds": 420,
+      "q_market_fit": "3 - Neutral",
+      "q_market": "United Kingdom",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0001",
+      "response_id": "R_mock00006",
+      "distribution_channel": "email",
+      "start_date": "2026-06-07T16:10:00Z",
+      "end_date": "2026-06-07T16:20:00Z",
+      "finished": true,
+      "duration_seconds": 600,
+      "q_market_fit": "5 - Very interested",
+      "q_market": "Australia",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0002",
+      "response_id": "R_mock00007",
+      "distribution_channel": "web-intercept",
+      "start_date": "2026-06-08T09:33:00Z",
+      "end_date": "2026-06-08T09:41:00Z",
+      "finished": true,
+      "duration_seconds": 480,
+      "q_market_fit": "4 - Interested",
+      "q_market": "United Kingdom",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "survey_id": "SV_MOCK0003",
+      "response_id": "R_mock00008",
+      "distribution_channel": "whatsapp",
+      "start_date": "2026-06-09T19:02:00Z",
+      "end_date": "2026-06-09T19:12:00Z",
+      "finished": true,
+      "duration_seconds": 600,
+      "q_market_fit": "5 - Very interested",
+      "q_market": "India",
+      "source_url": "https://api.qualtrics.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors AppsFlyer published mobile-attribution data specification for prototype purposes; NOT vendor data
+appsflyer_id,app_id,platform,media_source,campaign,install_time,event_name,event_value_usd,country_code,source_url,data_status
+AF-MOCK-0000001,com.ticketalay.mock,Android,Meta Ads,AU_Diaspora_Launch (mock),2026-06-01T08:14:22Z,af_purchase,24.5,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000002,com.ticketalay.mock,iOS,Google Ads,AU_Diaspora_Launch (mock),2026-06-01T09:02:11Z,af_complete_registration,0.0,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000003,com.ticketalay.mock,Android,Organic,,2026-06-02T13:40:55Z,af_purchase,18.0,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000004,com.ticketalay.mock,Android,TikTok Ads,Melbourne_Diwali_Push (mock),2026-06-05T18:22:03Z,af_purchase,32.0,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000005,com.ticketalay.mock,iOS,WhatsApp Referral,Community_Share (mock),2026-06-06T07:55:40Z,af_complete_registration,0.0,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000006,com.ticketalay.mock,Android,Meta Ads,AU_Diaspora_Launch (mock),2026-06-07T11:19:29Z,af_purchase,45.0,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000007,com.ticketalay.mock,iOS,Organic,,2026-06-08T20:03:12Z,af_purchase,12.5,IN,https://support.appsflyer.com/,SYNTHETIC_SAMPLE
+AF-MOCK-0000008,com.ticketalay.mock,Android,Google Ads,Sydney_Launch (mock),2026-06-09T15:47:08Z,af_purchase,27.0,AU,https://support.appsflyer.com/,SYNTHETIC_SAMPLE

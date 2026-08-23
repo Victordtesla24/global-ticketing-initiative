@@ -1,0 +1,75 @@
+{
+  "provider": "Data Privacy Framework",
+  "provider_id": 48,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring the structure of the official Data Privacy Framework participant list (organization, program(s) joined — EU-U.S./UK Extension/Swiss-U.S., certification status and dates, industry sector, privacy policy URL), illustratively populated with mock US-based vendor entries relevant to due-diligence on a Ticketalay data-processing sub-vendor.",
+  "spec_note": "SYNTHETIC: field shape (organization name, DPF program, certification status/date, recertification due date, industry sector, privacy policy URL) mirrors the general structure described for the public DPF participant list at dataprivacyframework.gov/list; the live page's exact column layout could not be independently re-confirmed for this build (fetch returned no extractable table content), so field names are a best-effort mirror, not a verified 1:1 schema. All organization names, dates and statuses are fictitious mock values, NOT real DPF participants.",
+  "countries": [
+    "EU",
+    "UK",
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "organization_name": "Sample Ticketing Cloud Services Inc. (mock)",
+      "dpf_program": "EU-U.S. DPF, UK Extension, Swiss-U.S. DPF (mock)",
+      "certification_status": "Active (mock)",
+      "certification_date": "2025-03-14",
+      "recertification_due_date": "2026-03-14",
+      "industry_sector": "Software / SaaS",
+      "privacy_policy_url": "https://example-mock.com/privacy",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Sample Payments Processor LLC (mock)",
+      "dpf_program": "EU-U.S. DPF (mock)",
+      "certification_status": "Active (mock)",
+      "certification_date": "2025-07-02",
+      "recertification_due_date": "2026-07-02",
+      "industry_sector": "Financial Services",
+      "privacy_policy_url": "https://example-mock.com/legal/privacy",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Sample Email Marketing Platform Inc. (mock)",
+      "dpf_program": "EU-U.S. DPF, Swiss-U.S. DPF (mock)",
+      "certification_status": "Active (mock)",
+      "certification_date": "2024-11-20",
+      "recertification_due_date": "2025-11-20",
+      "industry_sector": "Marketing Technology",
+      "privacy_policy_url": "https://example-mock.com/trust/privacy",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Sample Cloud Hosting Corp (mock)",
+      "dpf_program": "EU-U.S. DPF, UK Extension (mock)",
+      "certification_status": "Inactive - recertification lapsed (mock)",
+      "certification_date": "2023-09-05",
+      "recertification_due_date": "2024-09-05",
+      "industry_sector": "Cloud Infrastructure",
+      "privacy_policy_url": "https://example-mock.com/policies/privacy",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Sample Analytics Provider Inc. (mock)",
+      "dpf_program": "EU-U.S. DPF, UK Extension, Swiss-U.S. DPF (mock)",
+      "certification_status": "Active (mock)",
+      "certification_date": "2026-01-10",
+      "recertification_due_date": "2027-01-10",
+      "industry_sector": "Data Analytics",
+      "privacy_policy_url": "https://example-mock.com/privacy-policy",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "organization_name": "Sample Customer Support Platform (mock)",
+      "dpf_program": "EU-U.S. DPF (mock)",
+      "certification_status": "Active (mock)",
+      "certification_date": "2025-05-30",
+      "recertification_due_date": "2026-05-30",
+      "industry_sector": "Customer Service Software",
+      "privacy_policy_url": "https://example-mock.com/privacy",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

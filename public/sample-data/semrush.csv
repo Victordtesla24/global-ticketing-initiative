@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors SEMrush published SEO/SEM data specification for prototype purposes; NOT vendor data
+keyword,country,search_volume,keyword_difficulty,cpc_usd,position,url,traffic_pct,source_url,data_status
+marathi events melbourne (mock),au,320,24,0.85,6,ticketalay-mock.com.au/events/melbourne,4.2,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+indian cultural show sydney (mock),au,210,31,1.1,9,ticketalay-mock.com.au/events/sydney,2.1,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+book event tickets online australia (mock),au,4400,58,2.35,14,ticketalay-mock.com.au/,0.8,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+diaspora live music tickets (mock),au,90,18,0.62,3,ticketalay-mock.com.au/genres/live-music,6.5,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+marathi natak melbourne (mock),au,70,12,0.44,2,ticketalay-mock.com.au/genres/theatre,8.9,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+competitor-a-mock.com.au backlink domain (mock),au,0,0,0.0,0,referring-domain-example-mock.com,0.0,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+sydney live music tickets (mock),au,590,34,1.35,11,ticketalay-mock.com.au/events/sydney/live-music,1.4,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE
+melbourne diwali event tickets (mock),au,140,16,0.58,4,ticketalay-mock.com.au/events/melbourne/diwali,5.3,https://www.semrush.com/prices/,SYNTHETIC_SAMPLE

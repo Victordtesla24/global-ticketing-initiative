@@ -1,0 +1,11 @@
+# SYNTHETIC SAMPLE - mirrors Apollo.io published contact/organization enrichment data specification for prototype purposes; NOT vendor data.
+apollo_id,name,title,organization_name,seniority,department,city,country,email_status,linkedin_url,employee_count_range,industry,data_status
+mock-apo-0001,Ritu Phadke (mock),Community Engagement Lead,Sample Diaspora Media Pty Ltd (mock),manager,marketing,Melbourne,Australia,verified (mock),linkedin.com/in/mock-ritu-phadke,11-50,media production,SYNTHETIC_SAMPLE
+mock-apo-0002,Kedar Vaidya (mock),Events Sponsorship Manager,Sample Festivals Group (mock),manager,events,Sydney,Australia,verified (mock),linkedin.com/in/mock-kedar-vaidya,51-200,events services,SYNTHETIC_SAMPLE
+mock-apo-0003,Tanvi Ranade (mock),Head of Growth Marketing,Sample Ticketing Startup (mock),director,marketing,Melbourne,Australia,verified (mock),linkedin.com/in/mock-tanvi-ranade,11-50,internet,SYNTHETIC_SAMPLE
+mock-apo-0004,Omkar Bapat (mock),Founder & President,Sample Marathi Cultural Association (mock),c_suite,executive,Sydney,Australia,verified (mock),linkedin.com/in/mock-omkar-bapat,1-10,civic & social organization,SYNTHETIC_SAMPLE
+mock-apo-0005,Aparna Dixit (mock),Venue Operations Manager,Sample Performing Arts Centre (mock),manager,operations,Melbourne,Australia,guessed (mock),linkedin.com/in/mock-aparna-dixit,51-200,performing arts,SYNTHETIC_SAMPLE
+mock-apo-0006,Chinmay Gupte (mock),Digital Marketing Executive,Sample Radio Network (mock),entry,marketing,Sydney,Australia,verified (mock),linkedin.com/in/mock-chinmay-gupte,201-500,broadcast media,SYNTHETIC_SAMPLE
+mock-apo-0007,Sneha Karnik (mock),Partnerships Manager,Sample Community App Co (mock),manager,partnerships,Melbourne,Australia,verified (mock),linkedin.com/in/mock-sneha-karnik,11-50,internet,SYNTHETIC_SAMPLE
+mock-apo-0008,Yash Gadre (mock),Box Office Manager,Sample Theatre Company (mock),manager,operations,Sydney,Australia,guessed (mock),linkedin.com/in/mock-yash-gadre,11-50,performing arts,SYNTHETIC_SAMPLE
+mock-apo-0009,Isha Paranjape (mock),Social Media Manager,Sample Influencer Agency (mock),manager,marketing,Melbourne,Australia,verified (mock),linkedin.com/in/mock-isha-paranjape,1-10,marketing and advertising,SYNTHETIC_SAMPLE

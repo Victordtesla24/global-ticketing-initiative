@@ -1,0 +1,17 @@
+metric,value,unit,reference_period,geography,source_url,access_date,data_status,note
+"Foreign-born population, total",50234841,"persons (MOE +/-162,666)",ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US,2026-08-23,REAL_EXTRACT,"table B05006, variable B05006_001E"
+India-born population,3162885,"persons (MOE +/-49,783)",ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US,2026-08-23,REAL_EXTRACT,"table B05006, variable B05006_060E; a commonly-cited '52.4m Indian-born' figure is a MISMATCH vs this ACS number"
+"Foreign-born population, total",47831053,persons,ACS 2023 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US,2026-08-23,REAL_EXTRACT,prior-year comparator
+India-born population,2910042,persons,ACS 2023 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US,2026-08-23,REAL_EXTRACT,prior-year comparator
+India-born population,626214,"persons (MOE +/-19,614)",ACS 2024 1-year,California,https://data.census.gov/table/ACSDT1Y2024.B05006?g=040XX00US06,2026-08-23,REAL_EXTRACT,largest state total
+India-born population,431939,"persons (MOE +/-20,883)",ACS 2024 1-year,Texas,https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US,2026-08-23,REAL_EXTRACT,
+India-born population,296806,"persons (MOE +/-11,676)",ACS 2024 1-year,New Jersey,https://data.census.gov/table/ACSDT1Y2024.B05006?g=010XX00US,2026-08-23,REAL_EXTRACT,
+"Nepali, Marathi, or other Indic languages spoken at home",508113,"persons (MOE +/-22,459)",ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,table B16001; current ACS tables do NOT publish Marathi as a standalone line
+"...of which, speak English 'very well'",343244,persons,ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,"B16001_061E, within the grouped Nepali/Marathi/other-Indic line"
+"...of which, speak English less than 'very well'",164869,persons,ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,B16001_062E
+Urdu spoken at home,561196,persons,ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,"context line, table B16001"
+Punjabi spoken at home,382413,persons,ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,"context line, table B16001"
+Bengali spoken at home,494034,persons,ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,"context line, table B16001"
+Marathi spoken at home (standalone line),73630,"persons (MOE +/-3,164)",2009-2013 special tabulation,United States,https://www2.census.gov/library/data/tables/2008/demo/language-use/2009-2013-acs-lang-tables-nation.xls,2026-08-23,REAL_EXTRACT,"only official ACS product with Marathi itemised separately; vintage 2015 release, not current"
+"...of which, speak English less than 'very well'",10525,persons,2009-2013 special tabulation,United States,https://www2.census.gov/library/data/tables/2008/demo/language-use/2009-2013-acs-lang-tables-nation.xls,2026-08-23,REAL_EXTRACT,
+Total population base (language table),321745943,persons,ACS 2024 1-year,United States,https://data.census.gov/table/ACSDT1Y2024.B16001?g=010XX00US,2026-08-23,REAL_EXTRACT,table B16001 universe: population 5 years and over

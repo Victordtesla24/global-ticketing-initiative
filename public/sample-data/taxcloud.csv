@@ -1,0 +1,14 @@
+# SYNTHETIC SAMPLE - mirrors TaxCloud published US sales-tax data specification for prototype purposes; NOT vendor data.
+order_id,ship_to_state,ship_to_city,ship_to_zip,tic_code,item_description,sale_amount_usd,state_tax_rate_pct,local_tax_rate_pct,total_tax_rate_pct,tax_amount_usd,data_status
+mock-ORD-1001,NJ,Edison,08820,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Live Marathi music concert ticket,65.0,6.625,0.0,6.625,4.31,SYNTHETIC_SAMPLE
+mock-ORD-1002,CA,Fremont,94538,"mock-TIC-10041 (Electronically delivered ticket/e-ticket, illustrative)",Diwali gala e-ticket (digital delivery),85.0,6.0,3.125,9.125,7.76,SYNTHETIC_SAMPLE
+mock-ORD-1003,IL,Naperville,60563,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Classical dance recital ticket,40.0,6.25,1.75,8.0,3.2,SYNTHETIC_SAMPLE
+mock-ORD-1004,TX,Sugar Land,77479,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Bollywood live show ticket,55.0,6.25,2.0,8.25,4.54,SYNTHETIC_SAMPLE
+mock-ORD-1005,NY,Jersey City,07306,"mock-TIC-10041 (Electronically delivered ticket/e-ticket, illustrative)",Ganesh festival mela e-ticket,25.0,4.0,4.5,8.5,2.13,SYNTHETIC_SAMPLE
+mock-ORD-1006,GA,Johns Creek,30097,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Regional theatre subscription pass,150.0,4.0,3.0,7.0,10.5,SYNTHETIC_SAMPLE
+mock-ORD-1007,WA,Bellevue,98006,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Comedy night ticket,35.0,6.5,3.7,10.2,3.57,SYNTHETIC_SAMPLE
+mock-ORD-1008,MA,Westford,01886,"mock-TIC-10041 (Electronically delivered ticket/e-ticket, illustrative)",Youth talent showcase e-ticket,20.0,6.25,0.0,6.25,1.25,SYNTHETIC_SAMPLE
+mock-ORD-1009,PA,King of Prussia,19406,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Fusion orchestra concert ticket,75.0,6.0,0.0,6.0,4.5,SYNTHETIC_SAMPLE
+mock-ORD-1010,VA,Ashburn,20147,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Cultural festival day-pass,45.0,4.3,1.0,5.3,2.39,SYNTHETIC_SAMPLE
+mock-ORD-1011,MI,Novi,48375,"mock-TIC-10041 (Electronically delivered ticket/e-ticket, illustrative)",Poetry (Kavi Sammelan) evening e-ticket,18.0,6.0,0.0,6.0,1.08,SYNTHETIC_SAMPLE
+mock-ORD-1012,OH,Dublin,43017,"mock-TIC-10040 (Admission to entertainment/amusement event, illustrative)",Marathi natak (play) ticket,30.0,5.75,1.5,7.25,2.18,SYNTHETIC_SAMPLE

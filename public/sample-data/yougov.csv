@@ -1,0 +1,11 @@
+# SYNTHETIC SAMPLE - mirrors YouGov published data specification for prototype purposes; NOT vendor data
+poll_id,market,topic,question,response_option,response_pct,sample_size,fieldwork_period,source_url,data_status
+YG-MOCK-2026-0142,Australia,Live entertainment attendance,Have you attended a ticketed live event in the last 6 months?,Yes,58.3,2100,2026-06,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0142,Australia,Live entertainment attendance,Have you attended a ticketed live event in the last 6 months?,No,41.7,2100,2026-06,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0155,United Kingdom,Brand perception - ticketing platforms,Which ticketing platform do you trust most?,Independent/local platform,27.4,1850,2026-05,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0160,India,Cultural event engagement,How important is regional-language programming to your event choice?,Very important,61.2,1600,2026-06,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0142,Australia,Live entertainment attendance,Which factor most influences event ticket purchase?,Price,34.8,2100,2026-06,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0170,Australia,Diaspora community engagement,Do you attend events specifically for your cultural/heritage community?,"Yes, regularly",29.6,620,2026-07,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0170,Australia,Diaspora community engagement,Do you attend events specifically for your cultural/heritage community?,Occasionally,44.1,620,2026-07,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0181,Australia,Live entertainment attendance,Which factor most influences event ticket purchase?,Event lineup/artist,41.2,2100,2026-06,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE
+YG-MOCK-2026-0190,United States,Brand perception - ticketing platforms,Which ticketing platform do you trust most?,Large global platform,52.6,1900,2026-05,https://yougov.co.uk/about/panel-methodology/,SYNTHETIC_SAMPLE

@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors ZoomInfo published data specification for prototype purposes; NOT vendor data
+company_name,domain,industry,employee_count,revenue_range_usd,hq_city,hq_country,contact_name,contact_title,contact_email_masked,contact_phone_masked,source_url,data_status
+NatyaTech Pty Ltd,natyatech.com.au,Events Services,18,$1M-$10M,Melbourne,Australia,P. Deshmukh,Head of Growth,p.d***@natyatech.com.au,+61 3 9*** ***2,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+TixMandal Pty Ltd,tixmandal.com.au,Computer Software,9,$1M-$10M,Melbourne,Australia,R. Kulkarni,Founder & CEO,r.k***@tixmandal.com.au,+61 3 9*** ***7,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+Konkani Stage Digital,konkanistage.com,Media Production,42,$10M-$25M,Sydney,Australia,S. Naik,VP Partnerships,s.n***@konkanistage.com,+61 2 8*** ***4,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+DiasporaLive Pty Ltd,diasporalive.com.au,Events Services,11,$1M-$10M,Melbourne,Australia,A. Joshi,Marketing Director,a.j***@diasporalive.com.au,+61 3 9*** ***9,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+Bluegum Stagecraft Pty Ltd,bluegumstage.com.au,Performing Arts,34,$1M-$10M,Melbourne,Australia,M. Patwardhan,Operations Manager,m.p***@bluegumstage.com.au,+61 3 9*** ***1,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+Windrose Diaspora Media Pty Ltd,windrosemedia.com.au,Broadcast Media,12,$1M-$10M,Melbourne,Australia,K. Bhide,Sales Director,k.b***@windrosemedia.com.au,+61 3 9*** ***5,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+Southern Cross Natak Ventures,southerncrossnatak.com,Venture Capital & Private Equity,15,$10M-$25M,Sydney,Australia,D. Wallace,Principal,d.w***@sxnventures.com,+61 2 8*** ***3,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE
+Harborview Ticketing Solutions Pty Ltd,harborviewtix.com.au,Computer Software,17,$1M-$10M,Perth,Australia,V. Rane,Head of Sales,v.r***@harborviewtix.com.au,+61 8 9*** ***6,https://www.zoominfo.com/data,SYNTHETIC_SAMPLE

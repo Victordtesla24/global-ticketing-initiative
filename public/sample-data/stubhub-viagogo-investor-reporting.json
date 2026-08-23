@@ -1,0 +1,126 @@
+{
+  "provider": "StubHub / viagogo (Investor Reporting)",
+  "provider_id": 32,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock quarterly GMS/revenue/take-rate/tickets-sold rows by region and live-entertainment category, mirroring the field conventions StubHub Holdings' investor-reporting disclosures use (GMS, revenue, take rate).",
+  "spec_note": "SYNTHETIC SAMPLE - mirrors StubHub Holdings / viagogo investor-reporting published data specification for prototype purposes; NOT vendor data. Field names (report_period, region, category, gms_usd_m, revenue_usd_m, take_rate_pct, tickets_sold_m) mirror real StubHub/viagogo investor-reporting terminology; all VALUES are fabricated placeholders and are deliberately different in scale from StubHub's actual disclosed FY2025 company-wide totals (real: ~$9.2B GMS / ~$1.7B revenue per investors.stubhub.com) so this sample is never mistaken for real figures. Regional/category breakdowns at this granularity are not part of StubHub's actual public disclosure.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors StubHub Holdings / viagogo investor-reporting published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "report_period": "2025-Q1",
+      "region": "APAC",
+      "category": "Live Entertainment - Theatre",
+      "gms_usd_m": "84.2",
+      "revenue_usd_m": "15.9",
+      "take_rate_pct": "18.9",
+      "tickets_sold_m": "1.10",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q2",
+      "region": "APAC",
+      "category": "Live Entertainment - Music/Concerts",
+      "gms_usd_m": "96.5",
+      "revenue_usd_m": "18.1",
+      "take_rate_pct": "18.8",
+      "tickets_sold_m": "1.30",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q2",
+      "region": "Australia",
+      "category": "Live Entertainment - Theatre",
+      "gms_usd_m": "18.6",
+      "revenue_usd_m": "3.6",
+      "take_rate_pct": "19.2",
+      "tickets_sold_m": "0.26",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q3",
+      "region": "Australia",
+      "category": "Live Entertainment - Theatre",
+      "gms_usd_m": "22.7",
+      "revenue_usd_m": "4.4",
+      "take_rate_pct": "19.4",
+      "tickets_sold_m": "0.31",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q3",
+      "region": "Australia",
+      "category": "Live Entertainment - Comedy",
+      "gms_usd_m": "11.4",
+      "revenue_usd_m": "2.2",
+      "take_rate_pct": "19.3",
+      "tickets_sold_m": "0.18",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q4",
+      "region": "Australia",
+      "category": "Live Entertainment - Theatre",
+      "gms_usd_m": "26.8",
+      "revenue_usd_m": "5.2",
+      "take_rate_pct": "19.4",
+      "tickets_sold_m": "0.35",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q4",
+      "region": "North America",
+      "category": "Live Entertainment - Sports",
+      "gms_usd_m": "612.0",
+      "revenue_usd_m": "116.0",
+      "take_rate_pct": "19.0",
+      "tickets_sold_m": "8.90",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2025-Q1",
+      "region": "EMEA (viagogo)",
+      "category": "Live Entertainment - Music/Concerts",
+      "gms_usd_m": "210.4",
+      "revenue_usd_m": "39.8",
+      "take_rate_pct": "18.9",
+      "tickets_sold_m": "2.70",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "2024-Q4",
+      "region": "Australia",
+      "category": "Live Entertainment - Theatre",
+      "gms_usd_m": "19.9",
+      "revenue_usd_m": "3.8",
+      "take_rate_pct": "19.1",
+      "tickets_sold_m": "0.27",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "report_period": "FY2025",
+      "region": "Australia",
+      "category": "Live Entertainment - All categories",
+      "gms_usd_m": "98.6",
+      "revenue_usd_m": "19.0",
+      "take_rate_pct": "19.3",
+      "tickets_sold_m": "1.34",
+      "source_url": "https://investors.stubhub.com/",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

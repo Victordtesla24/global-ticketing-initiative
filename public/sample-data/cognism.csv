@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Cognism published data specification for prototype purposes; NOT vendor data
+company_name,domain,industry,employee_count,hq_city,hq_country,contact_name,contact_title,contact_email_masked,phone_verified,gdpr_consent_logged,source_url,data_status
+BollyStage London Ltd,bollystage.co.uk,Events Services,22,London,United Kingdom,N. Apte,Head of UK Partnerships,n.a***@bollystage.co.uk,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Marathi Mandal Events CIC,marathimandalevents.org.uk,Nonprofit Organization Management,4,Leicester,United Kingdom,S. Gokhale,Events Coordinator,s.g***@marathimandalevents.org.uk,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Konkani Stage Digital (EU Branch),konkanistage.eu,Media Production,6,Dublin,Ireland,F. Byrne,EU Business Development Lead,f.b***@konkanistage.eu,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Diaspora Ticketing Europe GmbH,diasporatix.de,Computer Software,13,Berlin,Germany,L. Hoffmann,Sales Manager DACH,l.h***@diasporatix.de,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Windrose Diaspora Media (UK) Ltd,windrosemedia.co.uk,Broadcast Media,8,Birmingham,United Kingdom,R. Chitnis,Regional Sales Lead,r.c***@windrosemedia.co.uk,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Southern Cross Natak Ventures (Europe Rep Office),southerncrossnatak.eu,Venture Capital & Private Equity,3,Amsterdam,Netherlands,J. de Vries,Associate,j.d***@sxnventures.eu,FALSE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Harborview Ticketing Solutions (UK) Ltd,harborviewtix.co.uk,Computer Software,5,Manchester,United Kingdom,P. Furlong,Partnerships Manager,p.f***@harborviewtix.co.uk,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE
+Amber Fields Hospitality Group (Europe),amberfields.eu,Hospitality,19,Paris,France,C. Lefevre,Account Director,c.l***@amberfields.eu,TRUE,TRUE,https://www.cognism.com/diamond-data,SYNTHETIC_SAMPLE

@@ -1,0 +1,25 @@
+destination,origin,year,migrant_stock,data_type_flag,source_url,access_date,data_status
+Australia,India,2010,326913,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Australia,India,2015,448940,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Australia,India,2020,707980,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Australia,India,2024,876074,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United Kingdom,India,2010,700150,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United Kingdom,India,2015,817881,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United Kingdom,India,2020,946151,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United Kingdom,India,2024,1044779,B R,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United States of America,India,2010,1799127,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United States of America,India,2015,2381638,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United States of America,India,2020,2741155,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+United States of America,India,2024,3165238,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Canada,India,2010,548591,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Canada,India,2015,699110,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Canada,India,2020,866951,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Canada,India,2024,1015630,B,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Europe (region),India,2010,1082357,region total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Europe (region),India,2015,1310550,region total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Europe (region),India,2020,1667582,region total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+Europe (region),India,2024,2021502,region total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+World,India,2010,12350515,world total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+World,India,2015,15277263,world total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+World,India,2020,16532761,world total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT
+World,India,2024,18533845,world total,https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx,2026-08-23,REAL_EXTRACT

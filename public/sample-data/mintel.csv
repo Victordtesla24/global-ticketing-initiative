@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors Mintel published consumer-market-research report data specification for prototype purposes; NOT vendor data.
+report_title,market_segment,region,consumer_attitude_metric,value_pct,sample_size,report_year,data_status
+Live Entertainment & Cultural Events Consumer Report (mock),South Asian diaspora consumers,Australia,'I actively seek out cultural events tied to my heritage',54.0,600,2026,SYNTHETIC_SAMPLE
+Live Entertainment & Cultural Events Consumer Report (mock),South Asian diaspora consumers,Australia,'I would pay a premium for authentic regional-language performances',38.5,600,2026,SYNTHETIC_SAMPLE
+Mobile Ticketing Consumer Attitudes Report (mock),General AU consumers,Australia,'I prefer booking event tickets via a mobile app over a website',62.1,1000,2026,SYNTHETIC_SAMPLE
+Mobile Ticketing Consumer Attitudes Report (mock),South Asian diaspora consumers,"Melbourne, AU",'I trust local/community-run apps more than large global platforms',47.2,350,2026,SYNTHETIC_SAMPLE
+Live Entertainment & Cultural Events Consumer Report (mock),South Asian diaspora consumers,"Sydney, AU",'Lack of local Marathi/regional-language content is a barrier to attendance',33.0,350,2026,SYNTHETIC_SAMPLE
+Diaspora Consumer Trends Report (mock),Second-generation South Asian-Australians,Australia,'I attend cultural events mainly to stay connected with my parents' heritage',59.4,420,2026,SYNTHETIC_SAMPLE
+Mobile Ticketing Consumer Attitudes Report (mock),General AU consumers,Australia,'I have abandoned a ticket purchase due to a confusing checkout flow',29.8,1000,2026,SYNTHETIC_SAMPLE
+Live Entertainment & Cultural Events Consumer Report (mock),South Asian diaspora consumers,Australia,"'I discover live events mainly through WhatsApp/community groups, not apps'",44.6,600,2026,SYNTHETIC_SAMPLE

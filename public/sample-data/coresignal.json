@@ -1,0 +1,117 @@
+{
+  "provider": "Coresignal",
+  "provider_id": 60,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Coresignal's published company/employee/workforce-signal data specification (company name, domain, industry, employee count range, YoY headcount growth, HQ location, founded year, LinkedIn followers, funding stage), illustratively populated as mock AU/India competitor and adjacent-company firmographic records relevant to the initiative.",
+  "spec_note": "SYNTHETIC: field shape (company_name, domain, industry, employee_count_range, employee_count_growth_pct_yoy, hq_country/city, founded_year, linkedin_followers, funding_stage) mirrors Coresignal's publicly documented Company/Employee dataset fields (coresignal.com — firmographic and workforce-growth data sourced from public professional-network signals). All company names, domains and metrics are wholly fictitious mock values, NOT real companies and NOT licensed Coresignal data.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "company_name": "Sample Diaspora Media Pty Ltd (mock)",
+      "domain": "sample-diaspora-media.example (mock)",
+      "industry": "Media & Entertainment",
+      "employee_count_range": "11-50",
+      "employee_count_growth_pct_yoy": 18.5,
+      "hq_country": "Australia",
+      "hq_city": "Melbourne",
+      "founded_year": 2019,
+      "linkedin_followers": 2450,
+      "funding_stage": "Bootstrapped",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Southern Cross Events Pty Ltd (mock)",
+      "domain": "sample-southerncross-events.example (mock)",
+      "industry": "Events Services",
+      "employee_count_range": "1-10",
+      "employee_count_growth_pct_yoy": 42.0,
+      "hq_country": "Australia",
+      "hq_city": "Sydney",
+      "founded_year": 2022,
+      "linkedin_followers": 610,
+      "funding_stage": "Pre-seed",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Konkan Digital Pvt Ltd (mock)",
+      "domain": "sample-konkan-digital.example (mock)",
+      "industry": "Software Development",
+      "employee_count_range": "11-50",
+      "employee_count_growth_pct_yoy": 9.2,
+      "hq_country": "India",
+      "hq_city": "Pune",
+      "founded_year": 2016,
+      "linkedin_followers": 3800,
+      "funding_stage": "Seed",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Global Ticketing Ventures Pty Ltd (mock)",
+      "domain": "sample-gtv.example (mock)",
+      "industry": "Internet Marketplace Platforms",
+      "employee_count_range": "51-200",
+      "employee_count_growth_pct_yoy": 26.7,
+      "hq_country": "Australia",
+      "hq_city": "Melbourne",
+      "founded_year": 2015,
+      "linkedin_followers": 9200,
+      "funding_stage": "Series A",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Heritage Apps Pty Ltd (mock)",
+      "domain": "sample-heritage-apps.example (mock)",
+      "industry": "Mobile Apps",
+      "employee_count_range": "1-10",
+      "employee_count_growth_pct_yoy": -4.0,
+      "hq_country": "Australia",
+      "hq_city": "Brisbane",
+      "founded_year": 2020,
+      "linkedin_followers": 315,
+      "funding_stage": "Bootstrapped",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Cinevent Labs Pvt Ltd (mock)",
+      "domain": "sample-cinevent-labs.example (mock)",
+      "industry": "Media & Entertainment",
+      "employee_count_range": "201-500",
+      "employee_count_growth_pct_yoy": 14.3,
+      "hq_country": "India",
+      "hq_city": "Mumbai",
+      "founded_year": 2011,
+      "linkedin_followers": 41000,
+      "funding_stage": "Series C",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Rangmanch Digital LLP (mock)",
+      "domain": "sample-rangmanch-digital.example (mock)",
+      "industry": "Performing Arts",
+      "employee_count_range": "1-10",
+      "employee_count_growth_pct_yoy": 0.0,
+      "hq_country": "India",
+      "hq_city": "Pune",
+      "founded_year": 2021,
+      "linkedin_followers": 190,
+      "funding_stage": "Bootstrapped",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Sample Kothrud Software Solutions Pvt Ltd (mock)",
+      "domain": "sample-kothrud-software.example (mock)",
+      "industry": "IT Services",
+      "employee_count_range": "11-50",
+      "employee_count_growth_pct_yoy": 6.1,
+      "hq_country": "India",
+      "hq_city": "Pune",
+      "founded_year": 2013,
+      "linkedin_followers": 1650,
+      "funding_stage": "Bootstrapped",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# SYNTHETIC SAMPLE - mirrors IBISWorld published industry-report data specification for prototype purposes; NOT vendor data.
+industry_code_anzsic,industry_name,report_title,market_size_aud_m,revenue_growth_pct,number_of_businesses,employment,profit_margin_pct,report_year,data_status
+P9004,Performing Arts Venue Operation,Performing Arts Venue Operation in Australia (mock),1120,3.4,410,8200,6.1,2026,SYNTHETIC_SAMPLE
+R9002,Performing Arts Operation,Performing Arts Operation in Australia (mock),980,4.1,1250,6400,5.5,2026,SYNTHETIC_SAMPLE
+N7299b,Ticket & Event Booking Agencies,Ticket Agency & Event Booking Services in Australia (mock),610,8.9,95,1450,11.2,2026,SYNTHETIC_SAMPLE
+P9004b,Ethnic & Community Cultural Events,"Ethnic Cultural Festivals & Live Events in Australia (mock, sub-segment est.)",145,12.5,310,1100,4.8,2026,SYNTHETIC_SAMPLE
+J5video,Motion Picture Exhibition,Motion Picture Exhibition in Australia (mock),1340,2.0,210,9800,7.3,2026,SYNTHETIC_SAMPLE
+J5video-b,Regional-Language Cinema Screenings,"Regional-Language & Diaspora Cinema Screenings in Australia (mock, sub-segment est.)",52,15.7,40,180,6.9,2026,SYNTHETIC_SAMPLE
+N7299,Online Event Ticketing Platforms,Online Event Ticketing Platforms in Australia (mock),430,10.3,28,760,13.5,2026,SYNTHETIC_SAMPLE
+P9001,Amusement & Recreation Services,"Amusement & Recreation Services in Australia (mock, context benchmark)",8900,3.9,5200,61000,8.0,2026,SYNTHETIC_SAMPLE

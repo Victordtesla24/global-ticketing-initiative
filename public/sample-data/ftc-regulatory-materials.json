@@ -1,0 +1,48 @@
+{
+  "provider": "FTC Regulatory Materials",
+  "provider_id": 46,
+  "data_mode": "REAL-EXTRACT",
+  "description": "Real, first-hand findings on the FTC 'Rule on Unfair or Deceptive Fees' (effective 12 May 2025) governing US live-event ticket price disclosure, extracted from the us-stats verification pack.",
+  "spec_note": "REAL-EXTRACT: rows are drawn verbatim/paraphrased from the FTC's own press release (fetched with a browser User-Agent after a 403 on default fetchers) and a search snippet of the companion FAQ page, captured in the 2026-08-23 us-stats audit.",
+  "countries": [
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "finding": "FTC 'Rule on Unfair or Deceptive Fees' — effective date",
+      "value": "Rule takes effect 12 May 2025; FTC press release (dated 5 May 2025) states it 'prohibits bait-and-switch pricing and other tactics used to hide total prices and mislead people about fees in the live-event ticketing and short-term lodging industries.'",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-rule-unfair-or-deceptive-fees-take-effect-may-12-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "FTC fetch note",
+      "value": "ftc.gov returns HTTP 403 to non-browser fetchers; page retrieved HTTP 200 only via curl with a browser User-Agent. The commonly cited slug '/legal-library/browse/rules/rule-unfair-or-deceptive-fees' is a 404 and should not be cited.",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-rule-unfair-or-deceptive-fees-take-effect-may-12-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Rule's legal citation and exclusions (QUOTE-ONLY, via search snippet)",
+      "value": "Companion FAQ page snippet gives CFR cite 16 C.F.R. Part 464 and lists exclusions: government charges, shipping charges, and optional ancillary goods/services. Treat as QUOTE-ONLY until the FAQ page itself is independently fetched.",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/rule-unfair-or-deceptive-fees-frequently-asked-questions",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Initiative relevance",
+      "value": "Any Ticketalay US ticket page must show the all-in total price (ticket + mandatory fees) as the most prominent price from first display; the rule applies to both primary sellers and resale platforms for live-event tickets.",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-rule-unfair-or-deceptive-fees-take-effect-may-12-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    },
+    {
+      "finding": "Scope note (jurisdiction)",
+      "value": "The FTC is a US federal regulator; this rule governs US live-event ticketing and short-term-lodging pricing disclosure only. No UK-jurisdiction rule or FTC authority applies outside the US.",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-rule-unfair-or-deceptive-fees-take-effect-may-12-2025",
+      "access_date": "2026-08-23",
+      "data_status": "REAL_EXTRACT"
+    }
+  ]
+}

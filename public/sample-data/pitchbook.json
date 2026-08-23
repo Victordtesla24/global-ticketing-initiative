@@ -1,0 +1,120 @@
+{
+  "provider": "PitchBook",
+  "provider_id": 33,
+  "data_mode": "SYNTHETIC",
+  "description": "Mock private-market deal rows (deal date/type/size, post-money valuation, lead investors, industry vertical, HQ) for fictional AU/India live-entertainment and ticketing-tech startups, mirroring PitchBook's deals/valuation schema.",
+  "spec_note": "SYNTHETIC SAMPLE - mirrors PitchBook published data specification for prototype purposes; NOT vendor data. Field names mirror PitchBook's real Deals and Valuation Estimates data model (deal date, deal size, deal type, pre/post-money valuation, investor names); all company names, dates, and dollar figures are fabricated illustrative placeholders — no real PitchBook subscription was used and no real company records were copied.",
+  "countries": [
+    "Global"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "_synthetic_notice": "SYNTHETIC SAMPLE - mirrors PitchBook published data specification for prototype purposes; NOT vendor data"
+    },
+    {
+      "company_name": "NatyaTech Pty Ltd",
+      "deal_date": "2025-03-14",
+      "deal_type": "Seed",
+      "deal_size_usd_m": "2.1",
+      "post_money_valuation_usd_m": "9.0",
+      "lead_investors": "Blackbird Ventures; Antler AU",
+      "industry_vertical": "Ticketing & Event Software",
+      "hq_city": "Melbourne",
+      "hq_country": "Australia",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Konkani Stage Digital",
+      "deal_date": "2024-11-02",
+      "deal_type": "Series A",
+      "deal_size_usd_m": "8.4",
+      "post_money_valuation_usd_m": "34.0",
+      "lead_investors": "Square Peg Capital",
+      "industry_vertical": "Live Entertainment Platforms",
+      "hq_city": "Sydney",
+      "hq_country": "Australia",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "DiasporaLive Pty Ltd",
+      "deal_date": "2025-06-20",
+      "deal_type": "Seed",
+      "deal_size_usd_m": "1.5",
+      "post_money_valuation_usd_m": "6.5",
+      "lead_investors": "Rampersand",
+      "industry_vertical": "Cultural Events Tech",
+      "hq_city": "Melbourne",
+      "hq_country": "Australia",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Southern Cross Natak Ventures",
+      "deal_date": "2023-09-11",
+      "deal_type": "Series B",
+      "deal_size_usd_m": "22.0",
+      "post_money_valuation_usd_m": "96.0",
+      "lead_investors": "AirTree Ventures; Blackbird Ventures",
+      "industry_vertical": "Live Entertainment Platforms",
+      "hq_city": "Sydney",
+      "hq_country": "Australia",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "MarathiStage Global",
+      "deal_date": "2025-01-08",
+      "deal_type": "Series A",
+      "deal_size_usd_m": "4.2",
+      "post_money_valuation_usd_m": "18.0",
+      "lead_investors": "Peak XV Partners (Sequoia India)",
+      "industry_vertical": "Regional-Language Entertainment",
+      "hq_city": "Pune",
+      "hq_country": "India",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "TixMandal Pty Ltd",
+      "deal_date": "2024-04-30",
+      "deal_type": "Seed",
+      "deal_size_usd_m": "0.9",
+      "post_money_valuation_usd_m": "4.2",
+      "lead_investors": "Startmate",
+      "industry_vertical": "Ticketing & Event Software",
+      "hq_city": "Melbourne",
+      "hq_country": "Australia",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "Natyagruha Digital Holdings",
+      "deal_date": "2022-12-05",
+      "deal_type": "Series C",
+      "deal_size_usd_m": "41.0",
+      "post_money_valuation_usd_m": "210.0",
+      "lead_investors": "Tiger Global; Peak XV Partners",
+      "industry_vertical": "Regional-Language Entertainment",
+      "hq_city": "Mumbai",
+      "hq_country": "India",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "company_name": "AussieDesi Events Pty Ltd",
+      "deal_date": "2025-07-17",
+      "deal_type": "Seed",
+      "deal_size_usd_m": "1.2",
+      "post_money_valuation_usd_m": "5.5",
+      "lead_investors": "Investible",
+      "industry_vertical": "Diaspora Event Marketplaces",
+      "hq_city": "Brisbane",
+      "hq_country": "Australia",
+      "source_url": "https://pitchbook.com/platform-data/deals",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}

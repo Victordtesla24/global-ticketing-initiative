@@ -1,0 +1,21 @@
+record_type,currency,rate_date,rba_units_per_aud,aud_per_unit_derived,ticketalay_assumption_aud_per_unit,delta_vs_actual_pct,note,source_url,access_date,data_status
+comparison_summary,USD,2026-08-21,0.7145,1.3996,1.55,10.7,Site AUD 1.55/USD overstates AUD value of USD revenue by ~10.7% vs RBA-derived 1.3996.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+comparison_summary,GBP,2026-08-21,0.5234,1.9106,2.0,4.7,Site AUD 2.00/GBP is close but still ~4.7% above RBA-derived 1.9106.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+comparison_summary,EUR,2026-08-21,0.6108,1.6372,1.55,-5.3,Site AUD 1.55/EUR UNDERstates actual RBA-derived 1.6372 by ~5.3%.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+comparison_summary,CAD,2026-08-21,0.9832,1.0171,1.42,39.6,"MATERIAL MISMATCH: site AUD 1.42/CAD vs RBA-derived 1.0171, a +39.6% overstatement of CAD-denominated figures converted to AUD.",https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+comparison_summary,INR,2026-08-21,68.4,0.01462,n/a,n/a,RBA publishes 68.40 INR per AUD (AUD 0.01462/INR); the proposal offered no INR rate to check against.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,USD,2026-08-19,0.707,1.4144,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,USD,2026-08-20,0.7116,1.4053,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,USD,2026-08-21,0.7145,1.3996,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,GBP,2026-08-19,0.522,1.9157,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,GBP,2026-08-20,0.523,1.912,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,GBP,2026-08-21,0.5234,1.9106,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,EUR,2026-08-19,0.6101,1.6391,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,EUR,2026-08-20,0.6095,1.6407,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,EUR,2026-08-21,0.6108,1.6372,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,CAD,2026-08-19,0.9814,1.019,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,CAD,2026-08-20,0.9818,1.0185,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,CAD,2026-08-21,0.9832,1.0171,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,INR,2026-08-19,67.69,0.014774,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,INR,2026-08-20,68.06,0.014693,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT
+daily_rate,INR,2026-08-21,68.4,0.01462,n/a,n/a,RBA daily verbatim series point.,https://www.rba.gov.au/statistics/frequency/exchange-rates.html,2026-08-23,REAL_EXTRACT

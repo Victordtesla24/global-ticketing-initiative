@@ -1,0 +1,68 @@
+{
+  "provider": "Quaderno",
+  "provider_id": 50,
+  "data_mode": "SYNTHETIC",
+  "description": "SYNTHETIC SAMPLE mirroring Quaderno's published VAT/GST/sales-tax rate lookup data specification (country, tax name, standard/digital-goods rate, registration threshold and period), illustratively populated for AU GST plus the initiative's other target/EU markets relevant to a live-event ticketing platform's tax-compliance workflow.",
+  "spec_note": "SYNTHETIC: field shape (country, tax_name, standard/digital-goods rate, registration threshold) mirrors the structure of Quaderno's public tax-rate-lookup product; direct re-verification of Quaderno's own rate-table page returned a 404 on this fetch, so field names are a best-effort mirror of the well-known VAT/GST-rate-lookup pattern rather than a page-confirmed schema. Headline AU/UK/India/Canada/Germany statutory rates shown are real published rates used only as realistic illustrative inputs; threshold figures are simplified illustrative examples and change over time — NOT licensed Quaderno data and NOT tax advice.",
+  "countries": [
+    "Global",
+    "US"
+  ],
+  "generated": "2026-08-23",
+  "records": [
+    {
+      "country": "Australia",
+      "tax_name": "GST",
+      "standard_rate_pct": 10.0,
+      "digital_goods_rate_pct": 10.0,
+      "registration_threshold_local": "AUD 75,000 (non-resident digital: no threshold, mock illustrative)",
+      "threshold_period": "Rolling 12 months (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country": "United Kingdom",
+      "tax_name": "VAT",
+      "standard_rate_pct": 20.0,
+      "digital_goods_rate_pct": 20.0,
+      "registration_threshold_local": "GBP 90,000 (UK-established sellers, mock illustrative)",
+      "threshold_period": "Rolling 12 months (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country": "United States",
+      "tax_name": "Sales Tax (varies by state)",
+      "standard_rate_pct": null,
+      "digital_goods_rate_pct": null,
+      "registration_threshold_local": "USD 100,000 or 200 transactions - typical economic nexus threshold (mock illustrative, varies by state)",
+      "threshold_period": "Prior or current calendar year (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country": "India",
+      "tax_name": "GST",
+      "standard_rate_pct": 18.0,
+      "digital_goods_rate_pct": 18.0,
+      "registration_threshold_local": "INR 2,000,000 (mock illustrative; non-resident OIDAR: no threshold)",
+      "threshold_period": "Financial year (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country": "Canada",
+      "tax_name": "GST/HST",
+      "standard_rate_pct": 5.0,
+      "digital_goods_rate_pct": 5.0,
+      "registration_threshold_local": "CAD 30,000 (mock illustrative)",
+      "threshold_period": "Rolling 12 months (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    },
+    {
+      "country": "Germany",
+      "tax_name": "VAT (EU MOSS/OSS)",
+      "standard_rate_pct": 19.0,
+      "digital_goods_rate_pct": 19.0,
+      "registration_threshold_local": "EUR 10,000 (EU-wide OSS distance-selling threshold, mock illustrative)",
+      "threshold_period": "Calendar year (mock)",
+      "data_status": "SYNTHETIC_SAMPLE"
+    }
+  ]
+}
