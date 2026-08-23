@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── AB Entertainment Brand Fonts (self-hosted) ─── */
+@font-face { font-family: 'AB Marquee'; font-weight: 300; font-style: normal; font-display: swap; src: url('/fonts/AB-Marquee-Light.ttf') format('truetype'); }
+@font-face { font-family: 'AB Marquee'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/AB-Marquee-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'AB Marquee'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/AB-Marquee-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'AB Marquee'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/AB-Marquee-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'AB Marquee'; font-weight: 900; font-style: normal; font-display: swap; src: url('/fonts/AB-Marquee-Black.ttf') format('truetype'); }
+@font-face { font-family: 'AB Sans'; font-weight: 300; font-style: normal; font-display: swap; src: url('/fonts/AB-Sans-Light.ttf') format('truetype'); }
+@font-face { font-family: 'AB Sans'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/AB-Sans-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'AB Sans'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/AB-Sans-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'AB Sans'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/AB-Sans-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'AB Sans'; font-weight: 900; font-style: normal; font-display: swap; src: url('/fonts/AB-Sans-Black.ttf') format('truetype'); }
+
+@layer base {
+  :root {
+    /* Semantic tokens mapped to AB Entertainment palette */
+    --background: 0 0% 3.9%;            /* #0A0A0A */
+    --foreground: 0 0% 100%;
+    --card: 0 0% 6.7%;                  /* #111111 */
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10.2%;              /* #1A1A1A */
+    --popover-foreground: 0 0% 100%;
+    --primary: 44 54% 54%;              /* #C9A84C */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10.2%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10.2%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 44 54% 54%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 72% 51%;           /* #DC2626 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 44 54% 54%;
+    --input: 0 0% 13.3%;
+    --ring: 44 54% 54%;
+    --radius: 0.375rem;
+    --radius-sm: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-full: 9999px;
+
+    /* AB brand raw variables */
+    --color-bg: #0A0A0A;
+    --color-bg-deep: #050505;
+    --color-surface: #111111;
+    --color-surface-2: #1A1A1A;
+    --color-surface-3: #222222;
+    --color-gold: #C9A84C;
+    --color-gold-light: #D4B65C;
+    --color-gold-pale: #E8D5A3;
+    --color-gold-dark: #B0923F;
+    --color-burgundy: #722F37;
+    --color-success: #22C55E;
+    --color-warning: #F59E0B;
+    --color-danger: #DC2626;
+    --color-fg-1: rgba(255, 255, 255, 1);
+    --color-fg-2: rgba(255, 255, 255, 0.65);
+    --color-fg-3: rgba(255, 255, 255, 0.5);
+    --color-gold-08: rgba(201, 168, 76, 0.08);
+    --color-gold-15: rgba(201, 168, 76, 0.15);
+    --color-gold-25: rgba(201, 168, 76, 0.25);
+    --font-display: 'AB Marquee', 'Playfair Display', Georgia, serif;
+    --font-body: 'AB Sans', 'DM Sans', 'Helvetica Neue', Helvetica, sans-serif;
+    --ease-brand: cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  * {
+    border-color: rgba(201, 168, 76, 0.12);
+  }
+
+  body {
+    background-color: #0A0A0A;
+    color: rgba(255, 255, 255, 1);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .font-marquee { font-family: var(--font-display); }
+  .font-absans { font-family: var(--font-body); }
+
+  .t-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #C9A84C;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 168, 76, 0.08);
+    transition: all 600ms cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(201, 168, 76, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transform: translateY(-4px);
+  }
+
+  .ambient-glow {
+    background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05), transparent 60%);
+  }
+
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.2), transparent);
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    display: block;
+    width: 4rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4));
+  }
+  .ornament::after {
+    background: linear-gradient(90deg, rgba(201, 168, 76, 0.4), transparent);
+  }
+  .ornament-diamond {
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: rotate(45deg);
+    border: 1px solid rgba(201, 168, 76, 0.5);
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(90deg, #B0923F 0%, #C9A84C 20%, #FFD700 40%, #E8D5A3 50%, #FFD700 60%, #C9A84C 80%, #B0923F 100%);
+    background-size: 200% auto;
+    animation: goldShimmer 3s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2.5rem;
+    background: linear-gradient(135deg, #C9A84C 0%, #D4B65C 50%, #C9A84C 100%);
+    color: #000;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    border: none;
+  }
+  .btn-gold:hover {
+    background: linear-gradient(135deg, #D4B65C 0%, #E8D5A3 50%, #D4B65C 100%);
+    box-shadow: 0 0 50px rgba(201, 168, 76, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-gold-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2.5rem;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    color: #C9A84C;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+  }
+  .btn-gold-outline:hover {
+    background: #C9A84C;
+    color: #000;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #FDF8F1;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.4), rgba(201, 168, 76, 0.15));
+  border-radius: 10px;
+}
+
+:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 2px;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
