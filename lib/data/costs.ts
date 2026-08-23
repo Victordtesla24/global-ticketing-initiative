@@ -70,7 +70,12 @@ export const VENDOR_PRICES = [
   {
     provider: 'IBISWorld — "Musical & Theatre Productions in Australia", single report',
     published: 'AUD $2,500 live AU checkout cart; AU$2,200 on the vendor’s help centre [LIST] — the cart price is used for planning',
-    disposition: 'Recommended G1 buy: A$2,500.00 = 3.01x anchor. The only priced source of AU live-theatre industry structure.',
+    // The Disposition cell restates the vendor's published cart price, so it carries its own
+    // [LIST] — the same treatment every other money-bearing Disposition cell in this table
+    // already carried, and the same treatment / and /data-ecosystem and /recommendations give
+    // this figure. It was the one cell in the table restating an amount under no marker
+    // (editor pass R6, 2026-08-23, F-R2L-02).
+    disposition: 'Recommended G1 buy: A$2,500.00 [LIST] = 3.01x anchor. The only priced source of AU live-theatre industry structure.',
   },
   {
     provider: 'Statista',

@@ -13,7 +13,28 @@ import { INSIGHTS_KEPT, INSIGHT_OPEN_ITEMS, FIRST_PARTY_OPEN_ITEM } from '@/lib/
 import { Slider } from '@/components/ui/slider';
 
 const CATS: (ProviderCategory | 'All')[] = ['All', 'A', 'B', 'C', 'D', 'E', 'F'];
-const COST_CAP = 300000;
+
+/**
+ * Upper bound of the cost filter, in AUD/yr.
+ *
+ * It is COMPUTED from the catalogue it filters — the largest `costMax` any provider row
+ * carries — rather than typed in, so the control can never publish a ceiling that traces to
+ * nothing. Today that is A$10,900 (rows 6 Statista and 27 Similarweb: US$649/mo billed
+ * annually [LIST] × 12 ÷ 0.7145 [DERIVED]); if a row's published price changes, the bound
+ * follows it.
+ *
+ * Until editor pass R6 (2026-08-23, F-R2L-01) this read `const COST_CAP = 300000` and the
+ * control published "Indicative Annual Cost: AUD 0 – 300,000+" — a live monetary range under
+ * no provenance marker, roughly 27.5x the largest priced line in the catalogue beneath it,
+ * traceable to no vendor page and unpriced at both ends, on a page whose own lede binds every
+ * monetary figure to the closed marker set. No sanctioned marker fits a figure with no source,
+ * so the figure was replaced rather than tagged.
+ *
+ * The slider bounds PUBLISHED prices only. The 28 rows whose costMin/costMax are null are
+ * [UNKNOWN] — quote-only, usage-metered or unpriced — and are governed by the
+ * include-unpriced checkbox beneath the slider, never by this bound.
+ */
+const COST_CAP = Math.max(0, ...(PROVIDERS ?? []).map((p: Provider) => p?.costMax ?? p?.costMin ?? 0));
 
 function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
   return (
@@ -107,7 +128,7 @@ export default function DataEcosystemContent() {
         how a figure enters this programme&apos;s accounts and does not restate its trust tier: the source stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
         official statistic. No unpublished price bracket appears anywhere below. Filter by category, country coverage,
-        payment model, indicative cost and recommendation strength.
+        payment model, published annual cost and recommendation strength.
       </p>
 
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
@@ -200,9 +221,16 @@ export default function DataEcosystemContent() {
             </div>
             <div>
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Indicative Annual Cost: AUD {(costRange?.[0] ?? 0).toLocaleString('en-AU')} – {(costRange?.[1] ?? COST_CAP).toLocaleString('en-AU')}{(costRange?.[1] ?? 0) >= COST_CAP ? '+' : ''}
+                Published Annual Cost: AUD {(costRange?.[0] ?? 0).toLocaleString('en-AU')} – {(costRange?.[1] ?? COST_CAP).toLocaleString('en-AU')}
+                <Tag tag="DERIVED" />
               </p>
-              <Slider value={costRange} min={0} max={COST_CAP} step={5000} onValueChange={(v: number[]) => setCostRange(v ?? [0, COST_CAP])} />
+              <Slider value={costRange} min={0} max={COST_CAP} step={100} onValueChange={(v: number[]) => setCostRange(v ?? [0, COST_CAP])} />
+              <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
+                The bound is the catalogue&apos;s own highest published annual price, not a budget
+                ceiling: A${COST_CAP.toLocaleString('en-AU')} = US$649/mo billed annually <Tag tag="LIST" /> &times; 12 &divide;
+                0.7145 (rows 6 and 27). Unpriced providers carry no bound — they are{' '}
+                <Tag tag="UNKNOWN" /> and are governed by the checkbox below, not by this slider.
+              </p>
               <label className="mt-2 flex items-center gap-2 text-[11px] text-muted-foreground">
                 <input type="checkbox" checked={includeUnpriced} onChange={(e) => setIncludeUnpriced(e?.target?.checked ?? true)} className="accent-[#C9A84C]" />
                 Include quote-only / internal / [UNKNOWN] sources
