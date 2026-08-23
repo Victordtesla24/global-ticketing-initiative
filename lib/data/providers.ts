@@ -178,7 +178,7 @@ export const HISTORICAL_DEPTH = [
     dataType: 'Competitive web/app data (Semrush or Ahrefs; Similarweb deferred)',
     recommended: '12 trailing months, bought ≤60 days before the decision that consumes it',
     cadence: 'This data decays in months — rankings, traffic and competitor sets churn continuously; 12 months captures seasonality, the only durable signal.',
-    marginalCost: 'Trailing window: included in P3\'s price. Extended multi-year backfill: [UNKNOWN] — not published on the pricing pages fetched; owner: Data lead, written vendor confirmation before any purchase.',
+    marginalCost: 'Trailing window: included in P3\'s price. Extended multi-year backfill: [UNKNOWN] — not published on the pricing pages fetched (verify/web-intel.md); owner: Data lead, written vendor confirmation before any purchase.',
     marginalValue: '≈ Nil for the entry decision — the 2023 AU competitive landscape does not bear on a 2026-27 entry. Do not buy backfill; buy fresh, close to the gate.',
   },
   {

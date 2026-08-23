@@ -75,8 +75,13 @@ export default function DataEcosystemContent() {
         of demand. Every provider carries its trust tier on the mandate ladder (official statistic &gt; audited
         filing &gt; licensed panel &gt; aggregator &gt; modelled estimate) and a corrected cost cell; every monetary
         figure that survives carries a provenance tag — <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" />{' '}
-        <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — and every unpublished price bracket
-        has been deleted, not softened. Filter by category, payment model, indicative cost and recommendation strength.
+        <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — with one declared labelled exception: a
+        third party&apos;s audited-filing figure (Live Nation&apos;s fee-bearing GTV, below) is none of the six
+        cost-provenance categories — it is neither incurred, listed, quoted, derived, assumed nor unknown for this
+        programme — so it carries the explicit provenance label{' '}
+        <span className="font-semibold text-foreground/80">Audited filing</span> instead: benchmark only, feeding no
+        funded figure, never a cost comparator. Every unpublished price bracket has been deleted, not softened. Filter
+        by category, payment model, indicative cost and recommendation strength.
       </p>
 
       <Alert className="mt-6 max-w-3xl border-red-500/40 bg-red-500/5">
@@ -283,6 +288,17 @@ export default function DataEcosystemContent() {
             <TagText key="v" text={h?.marginalValue ?? ''} />,
           ])}
         />
+        <p className="mt-3 max-w-4xl text-[11px] leading-relaxed text-muted-foreground/60">
+          financial_rebuild.md §A.2 (historical-depth table, LQ-03 — &quot;scored NONE on all 13 routes&quot; in the
+          prior review, rebuilt there and carried onto this page). Cadence sources, all accessed 2026-08-23: ABS 2026
+          Census topics and data release plan (abs.gov.au — first release June 2027, LANP/BPLP/ANCP first-release
+          items; verify/abs-census-diaspora-reaudit.md §4); ABS Cultural and creative activities 2021-22 header
+          &quot;Next release Unknown&quot; (verify/abs-attendance.md); Eurostat ilc_scp03 — EU-SILC ~6-yearly module,
+          2022 latest, next planned update October 2029 (verify/eu-ca-stats.md); NEA SPPA 2022 (financial_rebuild.md
+          §A.1.1 F9); StatCan 21-10-0186-01 biennial 2014–2024 (verify/eu-ca-stats.md); Apple lookup API release date
+          (verify/entity-reality-reaudit.md §4). Depth rows are planning assumptions until the Data lead signs them at
+          gate G1; their cost cells stand on the cited [LIST]/[DERIVED] evidence and need no such confirmation.
+        </p>
       </Section>
 
       <OrnamentDivider />

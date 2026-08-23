@@ -25,7 +25,7 @@ export const INSIGHTS_KEPT = [
     n: 2,
     category: 'Competitive Benchmarking — kept, qualitative only',
     insight: 'Audited take-rate benchmarks, free',
-    impact: "Live Nation's FY2025 10-K (audited filing) reports 346 million fee-bearing tickets on US$37.1 billion of fee-bearing GTV — a sanity bound on per-ticket fee economics at gate G1. Benchmark use only: audited filings may never serve as cost comparators for an A$830 entity, and no revenue figure for this programme may be derived from them.",
+    impact: "Live Nation's FY2025 10-K reports 346 million fee-bearing tickets on US$37.1 billion of fee-bearing GTV — provenance label: Audited filing, the labelled exception declared in this page's tag rule above — a sanity bound on per-ticket fee economics at gate G1. Benchmark use only: audited filings may never serve as cost comparators for an A$830 entity, and no revenue figure for this programme may be derived from them.",
     basis: 'Live Nation 10-K FY2025, SEC EDGAR (verify/us-stats.md)',
   },
 ];

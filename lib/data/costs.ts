@@ -33,7 +33,7 @@ export const GATE_SCHEDULE = [
     buys:
       'Ownership memorandum (code, brand, app-store accounts, .com.au domain), executed partnership term sheet, all five written professional-services quotes on file',
     priced:
-      'Vendor cash A$0 (quote requests are free). Fractional analyst 4.0 days [ASSUMPTION] at A$60.00/hr [ACTUAL] = A$1,920.00 [DERIVED], conditional on written rate and day-count confirmation by 2026-09-30. Legal and entity fees [UNKNOWN] until the quotes arrive.',
+      'Vendor cash: none committed (quote requests are free to lodge). Fractional analyst 4.0 days [ASSUMPTION] at A$60.00/hr [ACTUAL] = A$1,920.00 [DERIVED], conditional on written rate and day-count confirmation by 2026-09-30. Legal and entity fees [UNKNOWN] until the quotes arrive.',
     multiple: '2.31x (analyst line, conditional)',
   },
   {
@@ -56,7 +56,7 @@ export const GATE_SCHEDULE = [
 
 export const GATE_SCHEDULE_NOTES = {
   intro:
-    'No cumulative programme total is published: a cumulative total would manufacture a budget for a business state that does not exist (the AU domain is parked, there is zero contracted inventory, and the partnership terms are unwritten). Each gate below is a separate board decision; money committed at one gate buys the information for the next, and nothing is committed past the next gate. Committable today in third-party vendor cash: A$0 — the five professional-services quote requests are free to lodge.',
+    'No cumulative programme total is published: a cumulative total would manufacture a budget for a business state that does not exist (the AU domain is parked, there is zero contracted inventory, and the partnership terms are unwritten). Each gate below is a separate board decision; money committed at one gate buys the information for the next, and nothing is committed past the next gate. Committable today in third-party vendor cash: none — the five professional-services quote requests are free to lodge.',
   noG3:
     'There is no G3 on this schedule: a pilot-launch gate can only be drafted from G1’s outputs, and pricing it now would require the very numbers this page records as [UNKNOWN]. The deleted 15-seat team bench (A$2.0–2.8m/yr, whose own envelope failed to sum by A$200,000 against its own rows), the deleted phase cards (A$350K–650K through A$2.8m–5.0m+), the deleted consulting and legal ranges, and the deleted cloud cost bands are out of scope until the gates pass; any post-G2 proposal must be rebuilt line by line from written quotes and published prices, not carried forward from the deleted figures.',
 };
@@ -93,7 +93,7 @@ export const VENDOR_PRICES = [
     provider: 'Apollo.io',
     deleted: '"Professional 1,800–3,600/yr" — top ~2.4x the published annual price',
     published: 'Professional US$79/seat/mo billed annually = US$948/yr; Free tier 900 credits/seat/yr at US$0 [LIST]',
-    disposition: 'Free tier recommended (A$0) — 900 credits cover the pilot outreach universe. Step up only when free credits are demonstrably exhausted.',
+    disposition: 'Free tier recommended (A$0 [LIST], the vendor’s published free tier) — 900 credits cover the pilot outreach universe. Step up only when free credits are demonstrably exhausted.',
   },
   {
     provider: 'People Data Labs',
@@ -112,7 +112,7 @@ export const VENDOR_PRICES = [
     deleted: '"775–3,100 for 100k–400k calls" — the floor exceeded even the single-month worst case and ignored the free cap',
     published:
       '10,000 requests/month free, then US$5.00/1,000: 100k calls/yr costs US$0 spread evenly, at most ~US$450 in a single-month worst case [LIST]',
-    disposition: 'A$0 at pilot volume, under the ≤10,000 requests/month volume [ASSUMPTION] (confirmer: programme sponsor, against the first month’s metered billing).',
+    disposition: 'A$0 [LIST] at pilot volume, under the ≤10,000 requests/month volume [ASSUMPTION] (confirmer: programme sponsor, against the first month’s metered billing).',
   },
   {
     provider: 'Avalara',
@@ -132,10 +132,18 @@ export const VENDOR_PRICES = [
     published: 'A$0 [LIST] — free access demonstrated first-hand (public dissemination API)',
     disposition: 'Kept (adjudicated VERIFIED).',
   },
+  {
+    provider: 'US BLS / BEA APIs',
+    deleted: 'Free — retained',
+    published:
+      'A$0 [LIST] — free by statute; the official portals are the only distribution channel (BEA responds 200 to this audit’s probe, BLS bot-blocks it on an otherwise public page)',
+    disposition:
+      'Kept (re-adjudicated VERIFIED on the fresh pass — this row had been deleted while the two rows above it, and the same BLS/BEA claim in the catalogue, were kept; see the amendment note in the deletion register).',
+  },
 ];
 
 export const VENDOR_PRICES_NOTE =
-  'The deleted tab’s subtotal rows (one-time A$10,750–27,000; subscriptions A$29,080–58,100; usage APIs A$2,325–7,750) summed correctly from their own rows, but a correct sum of unsourced, misattributed and overstated components is still unsupported — all three totals are deleted. The rebuilt day-1 data spend is A$6,036.74 [DERIVED] full / A$2,500.00 [LIST] floor, per the G2 line above. The claimed free status of the BLS/BEA APIs was not demonstrated in this audit (unlike Census and Eurostat) and is deleted rather than asserted.';
+  'The deleted tab’s subtotal rows (one-time A$10,750–27,000; subscriptions A$29,080–58,100; usage APIs A$2,325–7,750) summed correctly from their own rows, but a correct sum of unsourced, misattributed and overstated components is still unsupported — all three totals are deleted. The rebuilt day-1 data spend is A$6,036.74 [DERIVED] full / A$2,500.00 [LIST] floor, per the G2 line above. The BLS/BEA free-access row, deleted on the first pass, was restored on the fresh pass under the free-status rule recorded in the deletion register (F-P3-03): a non-monetary free/public-access status claim about an official government or intergovernmental statistical source is verified on a live official URL — or a bot-block on an otherwise public page — plus that source’s statutory free-access basis. Every priced claim still requires a vendor-published price on file, and a priced band containing a zero remains a priced claim.';
 
 // People — what a salary claim survives on (CL-0275/CL-0277/CL-0285 replaced; the rest deleted).
 export const PEOPLE_CORRECTIONS = [
@@ -143,7 +151,7 @@ export const PEOPLE_CORRECTIONS = [
     item: 'Data Analyst, base salary',
     deleted: 'AUD 100,000–130,000/yr',
     corrected:
-      'Aggregator benchmark — AUD 95,000–115,000/yr (SEEK, employer-disclosed job-ad salaries; not [LIST] under the trust ladder)',
+      'Aggregator benchmark — AUD 95,000–115,000/yr (SEEK, employer-disclosed job-ad salaries; not [LIST] under the trust ladder — see the tag rule above)',
     standing:
       'Context only, feeds no funded figure; no fact-tagged salary figure is publishable for this role. The deleted band’s top exceeded every SEEK industry average.',
   },

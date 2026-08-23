@@ -47,7 +47,7 @@ const COMMITMENTS = [
     title: 'Establish the Commercial Foundation',
     gate: 'Gate G0: due diligence & terms',
     detail:
-      'Commission independent legal and commercial due diligence covering corporate structure, ownership, IP rights, domain and app-store account control, financial history and Australian operating credentials. Vendor cash today: A$0 — the five quote requests are free to lodge (U-05). Consultant labour: 4.0 days [ASSUMPTION] at A$60.00/hr [ACTUAL] = A$1,920.00 [DERIVED] (2.31x the A$830 anchor), conditional on written rate and day-count confirmation due 2026-09-30. The professional fees themselves are [UNKNOWN] until the quotes arrive.',
+      'Commission independent legal and commercial due diligence covering corporate structure, ownership, IP rights, domain and app-store account control, financial history and Australian operating credentials. Vendor cash today: none committed — the five quote requests are free to lodge (U-05). Consultant labour: 4.0 days [ASSUMPTION] at A$60.00/hr [ACTUAL] = A$1,920.00 [DERIVED] (2.31x the A$830 anchor), conditional on written rate and day-count confirmation due 2026-09-30. The professional fees themselves are [UNKNOWN] until the quotes arrive.',
     provenance: 'financial_rebuild.md §E.4 Gate G0 and §D.1.4; rate per GT-12 (receipted).',
   },
   {
@@ -95,7 +95,7 @@ const HOME_OPEN_ITEMS = {
       'No written PSP, legal, insurance, entity or QSA quotes exist, and IP, domain, trademark, source-code and merchant-account due diligence has never been performed — who owns the thing being expanded is unestablished. What the audit’s first-hand registry checks already show (a lookup, not the missing GT-09 due diligence): no "Ticketalay" entity is registered in Australia; ticketalay.com.au is held by ABN 91 819 759 805 (V DESHPANDE & A KADAM family partnership t/a A&B ENTERTAINMENTS, not GST-registered), and the domain is flagged "server renew prohibited — Not Currently Eligible For Renewal" (RDAP, status changed 2026-08-16) — the proof market’s named domain may lapse, making the memorandum time-critical.',
     owner: 'CEO / company secretary, with an appointed AU law firm',
     action:
-      'Request written quotes (AU law firm for entity + IP due diligence, Stripe AU and Adyen AU for merchant onboarding, insurance broker, QSA) and commission the due-diligence memorandum, including resolution of the domain-renewal flag. Cost of asking: A$0.',
+      'Request written quotes (AU law firm for entity + IP due diligence, Stripe AU and Adyen AU for merchant onboarding, insurance broker, QSA) and commission the due-diligence memorandum, including resolution of the domain-renewal flag. Cost of asking: nil — the requests themselves are free to lodge.',
   },
   u04: {
     ref: 'U-04',
@@ -191,12 +191,12 @@ export default function ExecutiveSummaryContent() {
           <StatCard
             label="Target Markets"
             value="5"
-            sub="Australia, United Kingdom, United States, Canada and the European Union — sequenced by evidence. Australia is the only market with any evidenced basis today."
+            sub="Australia, United Kingdom, United States, Canada and the European Union — sequenced by evidence. Australia is the only market with any evidenced basis today. Structural scope statement; matches the five market pages of this proposal (adjudicated VERIFIED, CL-0002). &quot;Only evidenced market&quot; per financial_rebuild.md §E.2.1."
           />
           <StatCard
             label="Catalogued Data Sources"
             value="60"
-            sub="Across six categories: first-party transactions, demographics, competitive intelligence, enrichment, compliance and geospatial. The category list is corrected by the audit — the original tile named a &quot;financial&quot; category that does not exist in the shipped A–F catalogue (CL-0003 resolved to the verified CL-0008 list)."
+            sub="Across six categories: first-party transactions, demographics, competitive intelligence, enrichment, compliance and geospatial. The category list is corrected by the audit — the original tile's list, which named a &quot;financial&quot; category, conflicted with the shipped A–F catalogue and with the same page's Objectives list, and is resolved to the verified list above (CL-0003/CL-0008). The Data Ecosystem page's section headings carry the same A–F mapping. Source: evidence/providers.json — 60 catalogued providers, categories A–F."
           />
           <StatCard
             label="Programme Spend to Date — the Affordability Anchor"

@@ -53,14 +53,16 @@ export default function InvestmentContent() {
         <AlertTriangle className="h-4 w-4 !text-red-400" />
         <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
         <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          115 claims removed from this page by the adversarial audit — see register (a further 10 replaced with
-          vendor-published figures; 11 verified disclosures retained or restructured). All figures AUD;
+          114 claims removed from this page by the adversarial audit — see register (a further 10 replaced with
+          vendor-published figures; 12 verified disclosures retained or restructured — one earlier removal, the
+          BLS/BEA free-access row, was restored on the fresh pass). All figures AUD;
           source-currency prices shown with their conversion. The site&apos;s estimate tag is abolished on this page:
           every surviving monetary figure carries exactly one of <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
           <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />, with one labelled
           exception: a published salary band from an aggregator can never earn <Tag tag="LIST" /> under the trust
           ladder, so it carries the explicit provenance label <span className="font-semibold text-foreground/80">Aggregator benchmark</span>{' '}
-          instead — context only, feeding no funded figure. FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
+          instead — context only, feeding no funded figure (financial_rebuild.md §B.7, §D.1.2). FX: RBA, 21 Aug 2026 —
+          USD 0.7145 per A$1.
         </AlertDescription>
       </Alert>
 
@@ -124,10 +126,7 @@ export default function InvestmentContent() {
         <div className="mb-4 flex items-start gap-2">
           <Wallet className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
           <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            The deleted data-acquisition tab attributed prices to plans that do not exist and ranges no vendor
-            publishes. The corrected table shows what each vendor actually publishes, and the rebuild&apos;s disposition of
-            each line. Only the IBISWorld report is a recommended near-term purchase; the free official-statistics
-            sources (ABS, UN DESA, ONS, US Census, Eurostat, StatCan and the statutory registers) cost A$0 and come first.
+            <TagText text="The deleted data-acquisition tab attributed prices to plans that do not exist and ranges no vendor publishes. The corrected table shows what each vendor actually publishes, and the rebuild's disposition of each line. Only the IBISWorld report is a recommended near-term purchase; the free official-statistics sources (ABS, UN DESA, ONS, US Census, Eurostat, StatCan and the statutory registers) cost A$0 [LIST] and come first." />
           </p>
         </div>
         <DataTable
@@ -163,8 +162,9 @@ export default function InvestmentContent() {
           ])}
         />
         <p className="mt-3 text-xs text-muted-foreground/70">
-          SEEK Data Analyst salary page (accessed 2026-08-23; adjudicated OVERSTATED at CL-0275/CL-0285, replaced).
-          Rate: GT-12. The deleted Year-1 staffing envelope also failed to sum from its own rows (T0-121).
+          SEEK Data Analyst salary page (accessed 2026-08-23; verify/au-salaries.md; adjudicated OVERSTATED at
+          CL-0275/CL-0285, replaced). Rate: GT-12. Roster: financial_rebuild.md §D.1. The deleted Year-1 staffing
+          envelope (A$2,024,800–2,842,000) also failed to sum from its own rows (T0-121).
         </p>
       </Section>
 
