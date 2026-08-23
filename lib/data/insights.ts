@@ -125,7 +125,7 @@ export const STRATEGIC_OPTIONS = [
     name: 'Staged, Data-Led Expansion — Australia First',
     investment: 'Gated stages, each priced or explicitly [UNKNOWN] — no cumulative total is published: G0 A$1,920.00 [DERIVED]; G1 A$2,880.00 [DERIVED] + study and legal fees [UNKNOWN]; G2 A$5,860.00 or A$9,876.74 [DERIVED]',
     detail: 'Prove the Australian market with contracted inventory and the marketing data programme, then extend through partner-led corridors to the UK, US, Canada and the EU as gates are passed.',
-    assessment: 'Aligns capital with evidence: each stage is funded only when the prior gate — entity, data feasibility, pilot contribution — is met. The original claim that this option "contains the top five register risks" had no demonstrated mapping to the risk register and has been removed. ROI is not computable at any gate until partnership terms (U-02), contracted supply (U-03) and the primary demand study (U-04) exist.',
+    assessment: 'Aligns capital with evidence: each stage is funded only when the prior gate — due diligence & terms (G0), discovery (G1), MVP build (G2) — is passed. The original claim that this option "contains the top five register risks" had no demonstrated mapping to the risk register and has been removed. ROI is not computable at any gate until partnership terms (U-02), contracted supply (U-03) and the primary demand study (U-04) exist.',
     recommended: true,
   },
   {

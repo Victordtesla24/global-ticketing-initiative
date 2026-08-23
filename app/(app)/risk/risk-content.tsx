@@ -2,9 +2,30 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldAlert, Grid3X3, ListChecks, Target } from 'lucide-react';
-import { Section, GlassCard, OrnamentDivider, EstText, DataTable } from '@/components/proposal/section';
-import { RISKS, riskColour, TOP5_MITIGATIONS, Risk } from '@/lib/data/risks';
+import { ShieldAlert, Grid3X3, ListChecks, Target, AlertTriangle, Landmark } from 'lucide-react';
+import { Section, GlassCard, StatCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
+import { TagText } from '@/components/proposal/tag';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import {
+  RISKS, riskColour, Risk,
+  RISK_LEDE, RISK_AUDIT_NOTE, RISK_LANDSCAPE, RISK_REGISTER_PROVENANCE,
+  REGISTRY_CHECKS, TOP5_INTRO, TOP5_MITIGATIONS, RISK_OPEN_ITEM,
+  RISK_BLOCKING_UNKNOWNS, FOUNDATION_STATEMENT, FOUNDATION_PROVENANCE,
+} from '@/lib/data/risks';
+
+function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
+  return (
+    <Alert className="border-amber-500/40 bg-amber-500/5">
+      <AlertTriangle className="h-4 w-4 !text-amber-400" />
+      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+        <p><span className="font-semibold text-foreground/80">What is unknown:</span> <TagText text={item?.unknown ?? ''} /></p>
+        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
+        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
+      </AlertDescription>
+    </Alert>
+  );
+}
 
 export default function RiskContent() {
   const [selectedId, setSelectedId] = useState<number | null>(1);
@@ -20,11 +41,18 @@ export default function RiskContent() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-12 md:px-10">
       <Section eyebrow="Section 06 — Risk Analysis" title="The Risk Heat Map">
-        <p className="max-w-3xl text-muted-foreground leading-relaxed mb-8">
-          Ten risk categories assessed on likelihood and impact (1–5 each). Four risks sit at or near the
-          maximum score, and the two highest-rated risks — entity ambiguity and the financial evidence gap —
-          are the direct basis for the staged, evidence-led investment sequence. Select any marker to inspect its mitigation.
+        <p className="max-w-3xl text-muted-foreground leading-relaxed mb-6">{RISK_LEDE}</p>
+
+        <p className="mb-8 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">
+          {RISK_AUDIT_NOTE?.removed} {RISK_AUDIT_NOTE?.detail}
         </p>
+
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {(RISK_LANDSCAPE?.stats ?? []).map((s: any, i: number) => (
+            <StatCard key={i} label={s?.label ?? ''} value={s?.value ?? ''} sub={s?.note} />
+          ))}
+        </div>
+        <p className="mb-10 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{RISK_LANDSCAPE?.provenance}</p>
 
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           {/* Heat map */}
@@ -109,7 +137,7 @@ export default function RiskContent() {
                     <p className="text-xs text-muted-foreground">Score {selected?.score} — Likelihood {selected?.likelihood} × Impact {selected?.impact}</p>
                   </div>
                 </div>
-                <p className="t-eyebrow mb-1">Mitigation</p>
+                <p className="t-eyebrow mb-1">Mitigation (prospective)</p>
                 <p className="text-sm leading-relaxed text-foreground/85">{selected?.mitigation}</p>
               </motion.div>
             ) : (
@@ -163,11 +191,30 @@ export default function RiskContent() {
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground mb-2">Likelihood {r?.likelihood} · Impact {r?.impact}</p>
+                <p className="t-eyebrow mb-1">Mitigation (prospective)</p>
                 <p className="text-sm leading-relaxed text-foreground/85">{r?.mitigation}</p>
               </GlassCard>
             </motion.div>
           ))}
         </div>
+        <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{RISK_REGISTER_PROVENANCE}</p>
+      </Section>
+
+      <OrnamentDivider />
+
+      <Section eyebrow="Audit Additions" title={REGISTRY_CHECKS?.title ?? ''}>
+        <div className="space-y-4">
+          {(REGISTRY_CHECKS?.rows ?? []).map((row: any, i: number) => (
+            <GlassCard key={i}>
+              <div className="mb-2 flex items-center gap-2">
+                <Landmark className="h-4 w-4 shrink-0 text-primary" />
+                <p className="text-sm font-semibold leading-snug text-foreground">{row?.heading}</p>
+              </div>
+              <p className="text-sm leading-relaxed text-foreground/80">{row?.body}</p>
+            </GlassCard>
+          ))}
+        </div>
+        <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{REGISTRY_CHECKS?.provenance}</p>
       </Section>
 
       <OrnamentDivider />
@@ -175,15 +222,39 @@ export default function RiskContent() {
       <Section eyebrow="Priority Actions" title="Top Five Mitigations">
         <div className="mb-4 flex items-center gap-2 text-muted-foreground">
           <ListChecks className="h-4 w-4 text-primary" />
-          <p className="text-sm">Ranked by urgency and leverage across the whole programme.</p>
+          <p className="text-sm">{TOP5_INTRO}</p>
         </div>
         <DataTable
           headers={['#', 'Risk', 'Mitigation']}
           rows={(TOP5_MITIGATIONS ?? []).map((m: any) => [String(m?.rank ?? ''), m?.risk ?? '', m?.mitigation ?? ''])}
         />
-        <p className="mt-6 text-sm text-muted-foreground">
-          <EstText text="The two highest risks (entity ambiguity and financial evidence, both scored 25) cannot be mitigated by design or spend — only by documentary evidence. This is why the foundation work leads the programme sequence." />
+        <div className="mt-4">
+          <OpenItemCallout item={RISK_OPEN_ITEM} />
+        </div>
+      </Section>
+
+      <OrnamentDivider />
+
+      <Section eyebrow="Unresolved Register" title="Blocking Unknowns (U-02 – U-07)">
+        <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          Every item below gates the programme, none is priced or resolved, and each names its owner. They are
+          the audit&apos;s unresolved register (U-02–U-07), carried on this page because they are the substance
+          behind the register&apos;s highest scores.
         </p>
+        <div className="space-y-4">
+          {(RISK_BLOCKING_UNKNOWNS ?? []).map((u: any, i: number) => (
+            <OpenItemCallout key={i} item={u} />
+          ))}
+        </div>
+      </Section>
+
+      <OrnamentDivider />
+
+      <Section eyebrow="Sequencing" title="Why Foundation Work Leads the Sequence">
+        <GlassCard>
+          <p className="text-sm leading-relaxed text-foreground/85">{FOUNDATION_STATEMENT}</p>
+          <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{FOUNDATION_PROVENANCE}</p>
+        </GlassCard>
       </Section>
     </div>
   );

@@ -171,7 +171,7 @@ export default function MarketOpportunityContent() {
             ))}
             <p className="text-xs leading-relaxed text-muted-foreground">
               Recommendation: Option B — staged, data-led expansion beginning with Australia, with capital
-              released only as the entity, data-feasibility and pilot-contribution gates are passed.
+              released only as the due-diligence &amp; terms (G0), discovery (G1) and MVP-build (G2) gates are passed.
             </p>
           </div>
         </div>
