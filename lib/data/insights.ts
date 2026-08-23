@@ -78,13 +78,13 @@ export const MARKETING_DATA_PLAN = [
   {
     pillar: 'Geospatial & Venue Data',
     required: 'Geocoded venue locations, audience proximity and catchment analysis for event placement and local media buying',
-    acquire: 'Google Maps geocoding at 100,000 calls/yr: USD 0–450/yr [LIST], within Google\'s free monthly cap. OpenCage: the X-Small tier at USD 50/mo [LIST] (= USD 600/yr [DERIVED]: 50 × 12) is sufficient for this workload; the Medium tier at USD 500/mo [LIST] (= USD 6,000/yr [DERIVED]: 500 × 12) is oversized for it.',
+    acquire: 'Google Maps geocoding: USD 0 within the 10,000 req/mo free cap [LIST], then USD 5.00/1,000 [LIST] — at 100,000 calls/yr that is USD 0–450/yr [DERIVED]: (100,000 − 10,000) × 5.00 ÷ 1,000, depending on how the calls distribute across months, on a ≤10,000 req/mo volume [ASSUMPTION] (confirmer: programme sponsor, against the first month\'s metered billing). OpenCage: the X-Small tier at USD 50/mo [LIST] (= USD 600/yr [DERIVED]: 50 × 12) is sufficient for this workload; the Medium tier at USD 500/mo [LIST] (= USD 6,000/yr [DERIVED]: 500 × 12) is oversized for it.',
     outcome: 'Localised campaign targeting around venues, once venues are under contract — none are contracted at time of writing. No sell-through improvement rate is published: no study supports one.',
   },
   {
     pillar: 'Partner & B2B Enrichment Data',
     required: 'Verified contact and firmographic data for promoters, producers, venues and cultural associations',
-    acquire: 'Apollo.io Professional: USD 948/yr [LIST] ≈ A$1,326.80 [DERIVED] (948 ÷ 0.7145, RBA rate 21 Aug 2026). People Data Labs Pro: USD 940/yr on annual billing [LIST]; PDL publishes no paid pilot tier.',
+    acquire: 'Apollo.io Professional: USD 79/seat/mo billed annually [LIST] (= USD 948/yr [DERIVED]: 79 × 12) ≈ A$1,326.80 [DERIVED]: 948 ÷ 0.7145, RBA rate 21 Aug 2026. Apollo publishes no annual band — the yearly figure is this audit\'s own annualisation, tagged [DERIVED] on every route that carries it. People Data Labs Pro: USD 940/yr on annual billing [LIST] — PDL\'s own published yearly figure, not an annualisation; PDL publishes no paid pilot tier.',
     outcome: 'OPEN ITEM — zero promoters, producers or venues are named or signed at time of writing (U-03): no qualified pipeline of organiser targets or venues exists. Owner: Commercial lead (currently unassigned — LT to appoint). Action: secure a minimum of three signed pilot-event agreements or dated LOIs.',
   },
   {

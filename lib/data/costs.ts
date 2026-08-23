@@ -53,7 +53,7 @@ export const GATE_SCHEDULE = [
       'One-off: floor configuration A$5,860.00 [DERIVED] (data floor A$2,500.00 [LIST] + setup 7.0 days A$3,360.00 [DERIVED], pre-U-07 maximum) or full configuration A$9,876.74 [DERIVED] (data full A$6,036.74 + setup 8.0 days A$3,840.00) — alternatives, not a range; setup labour holds only under the unconfirmed rate and day-count [ASSUMPTION]s. Run rate, monthly-cancellable and not part of the authorised gate cost: tech A$46.43/mo [DERIVED] + AI (Claude Pro, billed monthly) A$27.99/mo [DERIVED].',
     multiple: '7.06x floor / 11.90x full one-off (setup-labour share conditional); run rate 0.090x/month',
     committed:
-      'Floor configuration A$5,860.00 [DERIVED] or full configuration A$9,876.74 [DERIVED] — alternatives, not a range. The setup-labour share of each (7.0 and 8.0 analyst-days) holds only under the unconfirmed consultant rate and day count [ASSUMPTION]; the data lines are [LIST]/[DERIVED] and stand on their own.',
+      'Floor configuration A$5,860.00 [DERIVED] or full configuration A$9,876.74 [DERIVED] — alternatives, not a range. The setup-labour share of each (7.0 and 8.0 analyst-days) holds only under the unconfirmed consultant rate and day count [ASSUMPTION]; the data lines carry their own markers — [LIST] on each vendor-published unit, [DERIVED] on every conversion or annualisation computed from one — and stand on their own.',
     mustPass: 'G1 passed; first-party data disclosed under NDA; consultant-rate confirmation in writing',
   },
 ];
@@ -106,7 +106,7 @@ export const VENDOR_PRICES = [
   {
     provider: 'Google Maps Platform (Geocoding)',
     published:
-      '10,000 requests/month free, then US$5.00/1,000: 100k calls/yr costs US$0 spread evenly, at most ~US$450 in a single-month worst case [LIST]',
+      '10,000 requests/month free [LIST], then US$5.00/1,000 [LIST]: 100k calls/yr costs US$0 spread evenly, at most ~US$450 in a single-month worst case [DERIVED]: (100,000 − 10,000) × 5.00 ÷ 1,000. Google publishes no yearly price — the worst-case figure is this audit\'s own arithmetic over an assumed workload',
     disposition: 'A$0 [LIST] at pilot volume, under the ≤10,000 requests/month volume [ASSUMPTION] (confirmer: programme sponsor, against the first month’s metered billing).',
   },
   {
