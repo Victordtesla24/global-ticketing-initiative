@@ -15,7 +15,7 @@ export const ACTUALS = {
   ai: {
     label: 'AI subscriptions and API credits, incurred',
     value: 'A$350.00 [ACTUAL]',
-    note: 'Cumulative, receipted. This replaces the deleted AI cost ledger, whose invoice-ready total of A$1,384.80–4,992.49 was 1.7–6.0x the receipted actual and carried a fabricated invoice number.',
+    note: 'Cumulative, receipted. This replaces the deleted AI cost ledger, whose invoice-ready total of A$1,384.80–4,992.49 was 1.7–6.0x the A$830.00 [ACTUAL] total programme spend (GT-13) — not 1.7–6.0x the A$350.00 shown on this tile, which is only its AI component — and carried a fabricated invoice number.',
   },
   consultation: {
     label: 'Consultation & feasibility study, incurred',

@@ -162,7 +162,7 @@ export const MARKETS: Market[] = [
           'The promoter-interview count (originally printed here as “10–15”) and the pilot and expansion event volumes (originally “3–5” and “12–24”) had no source. The interview count also contradicted the /recommendations route’s own figure of “15–20” for the same programme step — two different numbers for one metric, with no defensible figure recorded for either.',
         owner: 'Commercial lead (role, currently unassigned — LT to appoint)',
         action:
-          'Secure a minimum of three signed pilot-event agreements or dated LOIs with named promoters/venues before any interview count or event volume is set.',
+          'Secure a minimum of three signed pilot-event agreements or dated LOIs with named promoters/venues before any interview count or event volume is set. Reconciliation (fresh pass 5, F-P5B-04): what is deleted here is the estimate-tagged event volume as a phase-plan input (CL-0504). The Vision and Recommendations pages describe “a 3–5 event Australian pilot” as the deliverable of gate G2, adjudicated VERIFIED at CL-0017 and CL-0474 as gated plan language conditional on this same U-03 evidence — not as existing or achievable supply. Both pages now state that condition explicitly. One rule, one evidence state: no event volume is evidenced today; a target may be named only as a gate deliverable that U-03 must first unlock.',
       },
     ],
     revenue: {
@@ -217,7 +217,7 @@ export const MARKETS: Market[] = [
     name: 'United Kingdom',
     shortName: 'UK',
     status: 'Partner-Led Corridor Candidate',
-    removedNote: '17 claims removed from this page by the adversarial audit — see register (markets_uk.json).',
+    removedNote: '17 claims removed from this page by the adversarial audit — see register (markets_uk.json); a further 3 replaced with source-published figures or resolved in place, so 20 of this route’s 30 claims were defective.',
     heroStat: 'GBP 6.68bn consumer spend on live music (2024) [LIST]; 90.6% arts engagement in England (2024/25)',
     heroStatSource: 'LIVE, Annual Report 2024 (live-music trade federation) / DCMS Participation Survey 2024/25',
     heroTilesIntro:
@@ -339,7 +339,7 @@ export const MARKETS: Market[] = [
     shortName: 'USA',
     status: 'Feasibility — Highest Complexity',
     removedNote:
-      '11 claims removed from this page by the adversarial audit — see register (markets_usa.json). One earlier removal was reversed on the fresh pass: the NEA SPPA citation was wrongly deleted as unsupported and is re-adjudicated verified; it stands below with its first-hand source.',
+      '11 claims removed from this page by the adversarial audit — see register (markets_usa.json). A further 2 claims were replaced with source-published figures or resolved in place, so 13 of this route’s 28 claims were defective. One earlier removal was reversed on the fresh pass: the NEA SPPA citation was wrongly deleted as unsupported and is re-adjudicated verified; it stands below with its first-hand source.',
     heroStat: '3,165,238 India-born residents (2024) — the honest upper denominator; Ticketmaster distributed 646m tickets in 2025',
     heroStatSource: 'UN DESA, International Migrant Stock 2024; Live Nation FY2025 Form 10-K (SEC EDGAR)',
     heroTiles: [
@@ -442,7 +442,7 @@ export const MARKETS: Market[] = [
       unknown:
         'No source establishes that legal counsel is mandatory for all four visa categories — USCIS petitions require a US petitioner or agent and labor-organisation consultation, not counsel by rule.',
       owner: 'CEO / company secretary',
-      action: 'Request written quotes and scope confirmation from immigration counsel before asserting a counsel requirement.',
+      action: 'Request written quotes and scope confirmation from immigration counsel before asserting a counsel requirement. Restated under the sitewide rule (fresh pass 5, F-P5B-05): this proposal commits to engaging US immigration counsel on each of these pathways before any US market-entry commitment. That is a prudential commitment by the proposer, not a claim that counsel is legally mandated — the same form now carried on the Canada and EU market pages, where the identical certainty claim had previously been retained uncaveated while it was deleted here.',
     },
     partnerships: [
       { type: 'US-based Indian cultural promoters and producers', criticality: 'Critical', detail: 'Event inventory and production. Not yet secured — planning stage only.' },
@@ -456,7 +456,7 @@ export const MARKETS: Market[] = [
     confidenceTile: {
       label: 'India-born population, by destination (2024)',
       value: 'US 3,165,238',
-      note: 'UN DESA International Migrant Stock 2024 (India as origin). Largest of the four comparator corridors: UK 1,044,779; Canada 1,015,630; Australia 876,074.',
+      note: 'UN DESA International Migrant Stock 2024 (India as origin). Largest of the four comparator corridors: UK 1,044,779; Canada 1,015,630; Australia 876,074. The comparator figures are UN DESA’s so that all four sit on one basis; they are not per-country ceilings — Australia’s own ABS Estimated Resident Population (30 June 2025) counts 971,020 India-born residents, and the Australia market page uses that national measure.',
     },
     confidenceSources: ['UN DESA, International Migrant Stock 2024, destination × origin matrix — un.org. Accessed 2026-08-23.'],
   },
@@ -540,7 +540,7 @@ export const MARKETS: Market[] = [
       'Performer work permit requirements',
       'Provincial entertainment regulations',
     ],
-    regulatoryNote: 'All require Canadian legal counsel — detail unverified.',
+    regulatoryNote: 'This proposal commits to engaging Canadian legal counsel on each of these before any Canadian market-entry commitment — detail unverified. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally mandated. No source in this audit establishes a counsel mandate in any of the five markets, so the same rule is applied on all three market pages (fresh pass 5, F-P5B-05): the certainty claim “all require legal counsel” is not published anywhere, and the commitment to engage counsel is published everywhere, against Unresolved Register U-05 (no written legal quotes on file, GT-08).',
     partnerships: [
       { type: 'Local promoters and cultural associations', criticality: 'Prospective', detail: 'Direct discovery required — no verified pipeline exists' },
     ],
@@ -637,7 +637,7 @@ export const MARKETS: Market[] = [
       'PSD2 and Strong Customer Authentication (SCA)',
       'Country-specific ticket resale regulations',
     ],
-    regulatoryNote: 'All require local legal counsel per country.',
+    regulatoryNote: 'This proposal commits to engaging local legal counsel in each member state before any EU market-entry commitment. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally mandated. No source in this audit establishes a counsel mandate in any of the five markets, so the same rule is applied on all three market pages (fresh pass 5, F-P5B-05): the certainty claim “all require legal counsel” is not published anywhere, and the commitment to engage counsel is published everywhere, against Unresolved Register U-05 (no written legal quotes on file, GT-08).',
     partnerships: [
       { type: 'Country-specific promoter partner', criticality: 'Prospective', detail: 'Selected via Eurostat-ranked country assessment; local distributor before entity' },
     ],

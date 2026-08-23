@@ -52,7 +52,9 @@ export default function MarketOpportunityContent() {
         <AlertTriangle className="h-4 w-4 !text-red-400" />
         <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
         <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          24 claims removed from this page by the adversarial audit — see register. Every monetary figure below
+          24 claims removed from this page by the adversarial audit — see register (a further 14 replaced with
+          vendor- or source-published figures, resolved or restructured in place; 38 of this route’s 63 claims were
+          defective). Every monetary figure below
           carries the provenance tag it has actually earned — <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
           <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — and non-monetary official
           statistics carry their source lines, untagged, per the site-wide convention. The corridor projection

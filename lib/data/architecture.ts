@@ -1,34 +1,62 @@
-// DELIVERABLE 2 — data architecture. All AUD [EST].
+// DELIVERABLE 2 — data architecture.
+// Corrected by the independent adversarial audit (2026-08-23), register: workflow/register_by_route/architecture.json.
+// 33 of this route's 64 claims were defective. Every AUD figure that appeared on this page — the per-layer
+// t10k/t100k/t1m cost tables, the three stage run-cost bands, the Procurement "Indicative AUD/yr" column and the
+// two run-cost StatCards — is DELETED, not re-estimated: none cited a published unit rate or a workload basis, and
+// several ranges were far wider than the ±30% the rebuild permits for an unpriced band (Procurement Governance ran
+// 8,000–100,000, a 12.5× spread). The site-wide estimate tag [EST] is abolished; no figure on this page carries it.
+// The committed MVP bill of materials, with prices, lives in financial_rebuild.md §C.
+
+export const ARCH_LEDE =
+  'The engine room of the Vision Statement. Every campaign audience, revenue metric and market-entry decision the ' +
+  'vision depends on is meant to be produced here — a medallion lakehouse on AWS, serverless-first and deliberately ' +
+  'staged so that spend scales with proven value, with consent and data-residency controls built in from day one. ' +
+  'All cost figures are removed from this page; the stack is costed separately, at MVP scale, in financial_rebuild.md §C.';
+
+export const ARCH_AUDIT_NOTE =
+  '32 claims removed from this page by the adversarial audit — see register (a further 1 resolved or restructured in ' +
+  'place; 33 of this route’s 64 claims were defective). The dollar ranges that appeared on this page — for every AWS ' +
+  'component, every layer’s cost table and the Procurement price list — had no workload basis and no cited unit rate, ' +
+  'so they are removed here rather than re-estimated. The site-wide estimate tag is abolished and appears on no ' +
+  'figure. This page keeps only the design that was not in dispute: what the pipeline is, what runs it, and how it is governed.';
+
+export const ARCH_RECONCILIATION = {
+  label: 'Which stack is actually committed — the reconciliation',
+  value: 'MVP: S3 · Glue Data Catalog · Athena · dbt Core · QuickSight',
+  note:
+    'At MVP scale the committed bill of materials is financial_rebuild.md §C — S3, Glue Data Catalog free tier, Athena, ' +
+    'dbt Core and QuickSight (Metabase OSS self-hosted as the A$0 [LIST] alternative — the vendor’s own pricing page ' +
+    'publishes “Free unlimited users” for the self-hosted Open Source edition, verify/ai-cloud-prices.md item 6) at ' +
+    'A$46.43/mo [DERIVED] run cost and 8.0 setup days (7.0 committable before the U-07 disclosure) — which supersedes ' +
+    'this page’s design as the funded day-1 system. The full lakehouse shown below (Kinesis streaming, Airbyte, ' +
+    'Redshift Serverless, SageMaker, the five marts) is post-G2, trigger-gated growth design: §C.0/§C.4 deletes the ' +
+    '10-layer stack as a category error for this entity at MVP scale, and each heavier layer may be re-proposed only ' +
+    'against a measured §C.4 trigger — storage > 100 GB sustained, scans > 1 TB/month, dashboard readers > 8, a ' +
+    'Spark-only transform, or the first AU customer record. The Stage 1–3 teams below are likewise growth design: the ' +
+    'rebuilt day-1 roster prices no data-engineering hires — one fractional analyst (§D.1.4), not “2–3 data engineers”.',
+  provenance:
+    'financial_rebuild.md §C.0 (sizing statement), §C.1–C.3 (bill of materials and run cost), §C.4 (deleted layers and ' +
+    'their re-proposal triggers), §D.1.4 (day-1 roster).',
+};
+
 export interface ArchLayer {
-  id: string; name: string; medallion?: 'bronze' | 'silver' | 'gold' | 'landing';
-  what: string; tech: string; complexity: string;
-  costs: { label: string; t10k: string; t100k: string; t1m: string }[];
-  costNote?: string;
+  id: string;
+  name: string;
+  medallion?: 'bronze' | 'silver' | 'gold' | 'landing';
+  what: string;
+  tech: string;
+  complexity: string;
 }
 
 export const ARCH_LAYERS: ArchLayer[] = [
-  { id: 'sources', name: 'Source Systems', what: 'Systems that generate or supply raw data — the ticketing app, payment gateway, CRM, public statistical sources and commercial APIs. Requirement: document every source’s owner, update frequency, data format and permitted use.', tech: 'No specific purchase — existing systems', complexity: 'Documentation discipline', costs: [], costNote: 'Internal operational cost only' },
-  { id: 'ingestion', name: 'Ingestion Layer', what: 'Receives data from all sources, validates schema, checks for security threats and routes to the Landing Zone. Batch handles periodic loads; event streaming handles real-time transactions.', tech: 'AWS-native transfer and API jobs; Amazon Kinesis for streaming; Airbyte where connectors needed. Fivetran is a premium alternative charging by Monthly Active Rows.', complexity: 'Medium', costs: [
-    { label: 'Batch ingestion', t10k: '500–1,500', t100k: '2,000–6,000', t1m: '8,000–25,000' },
-    { label: 'Streaming (Kinesis)', t10k: '250–1,000', t100k: '1,500–5,000', t1m: '6,000–20,000' },
-    { label: 'Connectors (Airbyte/managed)', t10k: '250–1,500', t100k: '1,000–6,000', t1m: '5,000–20,000' },
-  ] },
-  { id: 'landing', name: 'Landing Zone', medallion: 'landing', what: 'Secure quarantine area where incoming data is stored in its original form. Encrypted, timestamped, uniquely identified. Nothing is modified at this stage.', tech: 'Amazon S3 — durable, low-cost object storage with encryption at rest', complexity: 'Low', costs: [ { label: 'Storage', t10k: '150–1,000', t100k: '—', t1m: '2,000–10,000' } ], costNote: 'Depending on volume and retention' },
-  { id: 'bronze', name: 'Bronze Layer (Raw)', medallion: 'bronze', what: 'Stores raw records with full source fidelity, enabling reprocessing if business rules change. Analyst access prohibited by default.', tech: 'Amazon S3 with Apache Iceberg or Delta Lake table format', complexity: 'Low–Medium', costs: [], costNote: 'Included in storage costs' },
-  { id: 'silver', name: 'Silver Layer (Validated)', medallion: 'silver', what: 'Applies quality rules, standardises timestamps and currencies, deduplicates, tokenises personal identifiers, maps consent status and reconciles orders to payments.', tech: 'AWS Glue (managed Spark) with dbt Core for version-controlled transformations', complexity: 'Medium–High', costs: [
-    { label: 'Processing (Glue/Spark)', t10k: '500–2,500', t100k: '3,000–12,000', t1m: '12,000–45,000' },
-    { label: 'Orchestration', t10k: '200–800', t100k: '500–2,000', t1m: '2,000–8,000' },
-  ] },
-  { id: 'gold', name: 'Gold Layer (Business-Ready)', medallion: 'gold', what: 'Board-approved business measures: GTV, platform revenue, refund rate, contribution per ticket, repeat purchase rate, consented reachable audience. The single source of truth for reporting.', tech: 'Amazon Redshift Serverless plus Amazon Athena; dbt manages Silver-to-Gold transformation', complexity: 'Medium', costs: [
-    { label: 'Warehouse (Redshift Serverless)', t10k: '500–2,500', t100k: '3,000–15,000', t1m: '15,000–60,000' },
-    { label: 'Ad-hoc queries (Athena)', t10k: '100–500', t100k: '500–2,000', t1m: '2,000–8,000' },
-  ] },
-  { id: 'marts', name: 'Data Marts', what: 'Purpose-built subsets of Gold data for specific business teams, each with its own access controls, retention policies and metric definitions.', tech: 'Logical schemas within Redshift Serverless, governed by AWS Lake Formation', complexity: 'Medium', costs: [], costNote: 'Included in warehouse costs' },
-  { id: 'consumption', name: 'Consumption Layer', what: 'Delivers insights to human users (dashboards, reports) and automated systems (APIs, ML models).', tech: 'Amazon QuickSight for BI; SageMaker for AI/ML when justified; API Gateway with Lambda for governed sharing. Do not build AI before baseline data quality is demonstrated.', complexity: 'Medium', costs: [
-    { label: 'BI (QuickSight)', t10k: '500–2,000', t100k: '2,000–8,000', t1m: '8,000–25,000' },
-    { label: 'API services', t10k: '200–800', t100k: '1,000–5,000', t1m: '5,000–20,000' },
-    { label: 'AI/ML (when justified)', t10k: '0', t100k: '1,000–5,000', t1m: '5,000–30,000' },
-  ] },
+  { id: 'sources', name: 'Source Systems', what: 'Systems that generate or supply raw data — the ticketing app, payment gateway, CRM, public statistical sources and commercial APIs. Requirement: document every source’s owner, update frequency, data format and permitted use.', tech: 'No specific purchase — existing systems', complexity: 'Documentation discipline' },
+  { id: 'ingestion', name: 'Ingestion Layer', what: 'Receives data from all sources, validates schema, checks for security threats and routes to the Landing Zone. Batch handles periodic loads; event streaming handles real-time transactions.', tech: 'AWS-native transfer and API jobs; Amazon Kinesis for streaming; Airbyte where connectors are needed. Fivetran is a premium alternative charging by Monthly Active Rows.', complexity: 'Medium' },
+  { id: 'landing', name: 'Landing Zone', medallion: 'landing', what: 'Secure quarantine area where incoming data is stored in its original form. Encrypted, timestamped, uniquely identified. Nothing is modified at this stage.', tech: 'Amazon S3 — durable, low-cost object storage with encryption at rest', complexity: 'Low' },
+  { id: 'bronze', name: 'Bronze Layer (Raw)', medallion: 'bronze', what: 'Stores raw records with full source fidelity, enabling reprocessing if business rules change. Analyst access prohibited by default. Its storage cost is bundled with the Landing Zone’s S3 spend, not costed separately.', tech: 'Amazon S3 with Apache Iceberg or Delta Lake table format', complexity: 'Low–Medium' },
+  { id: 'silver', name: 'Silver Layer (Validated)', medallion: 'silver', what: 'Applies quality rules, standardises timestamps and currencies, deduplicates, tokenises personal identifiers, maps consent status and reconciles orders to payments.', tech: 'AWS Glue (managed Spark) with dbt Core for version-controlled transformations', complexity: 'Medium–High' },
+  { id: 'gold', name: 'Gold Layer (Business-Ready)', medallion: 'gold', what: 'Proposed business measures: GTV, platform revenue, refund rate, contribution per ticket, repeat purchase rate, consented reachable audience. Not yet a board-approved reporting standard — this proposal is itself what goes to the board.', tech: 'Amazon Redshift Serverless plus Amazon Athena; dbt manages Silver-to-Gold transformation', complexity: 'Medium' },
+  { id: 'marts', name: 'Data Marts', what: 'Purpose-built subsets of Gold data for specific business teams, each with its own access controls, retention policies and metric definitions.', tech: 'Logical schemas within Redshift Serverless, governed by AWS Lake Formation', complexity: 'Medium' },
+  { id: 'consumption', name: 'Consumption Layer', what: 'Delivers insights to human users (dashboards, reports) and automated systems (APIs, ML models).', tech: 'Amazon QuickSight for BI; SageMaker for AI/ML when justified; API Gateway with Lambda for governed sharing. Do not build AI before baseline data quality is demonstrated.', complexity: 'Medium' },
 ];
 
 export const DATA_MARTS = [
@@ -39,31 +67,69 @@ export const DATA_MARTS = [
   { name: 'Markets, Partners & Risk', purpose: 'Support market-entry decisions, partner due diligence and risk monitoring', tables: 'Country Indicators, Prospects, Contracts, Incidents, Compliance Status', metrics: 'Market Opportunity Score, Partner Pipeline Value, Control Status, Incident Count', access: 'CEO, Strategy team, Legal/compliance, Board (summary)', sensitive: 'B2B contacts and due-diligence records (restricted)', refresh: 'Monthly market indicators; event-driven incidents' },
 ];
 
+// Growth path. The MAU/session/order targets and every AUD run-cost band are deleted (CL-0212 class:
+// unsourced, estimate-tagged workload assumptions; the Stage 1 band also contradicted the investment page's
+// own cloud-cost tab for the same posture, with no basis given for either). Infrastructure and team shape
+// are retained as design intent.
+export const SCALABILITY_OPEN_ITEM = {
+  ref: 'U-03 / U-04 (GT-06, GT-07)',
+  title: 'Growth-stage user, order and run-cost figures',
+  unknown:
+    'This page originally sized three growth stages by monthly active users, monthly sessions and annual orders, each ' +
+    'with an AUD run-cost band. Those figures are removed: they were unsourced, estimate-tagged workload assumptions, ' +
+    'and the Stage 1 run-cost band was found internally inconsistent with this proposal’s own investment-page cloud-cost ' +
+    'tabs (one showed AUD 60,000–150,000/yr, the other AUD 21,600–97,200/yr, for the same posture) with no basis given ' +
+    'for either. No primary diaspora demand, fee-tolerance or platform-trust study exists to size active users, sessions ' +
+    'or orders for this audience, and there are zero named, signed promoter or venue counterparties, so no ticket-volume ' +
+    'figure has contracted supply behind it.',
+  owner: 'Research lead and Commercial lead (both roles currently unassigned — LT to appoint)',
+  action:
+    'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (U-04), and secure at least ' +
+    'three signed pilot-event agreements or dated letters of intent (U-03), before any user, order or run-cost figure ' +
+    'is set for any stage.',
+};
+
 export const SCALABILITY = [
-  { stage: 'Stage 1', mau: '10,000 MAU', posture: 'Serverless, scheduled processing, one BI environment', workload: '50,000 sessions/month; 20,000 orders/year; daily batch; limited event stream [EST]', infra: 'Single AWS account; S3, Glue, Redshift Serverless, QuickSight', team: '2–3 data engineers (can be contractors); fractional architect', cost: 'AUD 60,000–150,000/yr [EST]', trigger: 'Prove reconciled metrics and demonstrate user value' },
-  { stage: 'Stage 2', mau: '100,000 MAU', posture: 'Autoscaling ingestion, separated dev/test/prod, stronger observability', workload: '500,000 sessions/month; 250,000 orders/year; near-real-time transactions [EST]', infra: 'Multi-environment AWS; dedicated networking; monitoring and alerting', team: '4–6 data/platform engineers; dedicated BI developer; data analyst', cost: 'AUD 180,000–450,000/yr [EST]', trigger: 'Add availability guarantees, private networking and formal on-call support' },
-  { stage: 'Stage 3', mau: '1,000,000 MAU', posture: 'Multi-account, queue buffering, load testing, regional recovery design', workload: '5m sessions/month; 3m orders/year; burst ticket launches [EST]', infra: 'Multi-account AWS; cross-region recovery; CDN; advanced security', team: '8–12+ platform, data and security engineers; dedicated governance', cost: 'AUD 600,000–1,800,000/yr [EST]', trigger: 'Dedicated platform/security team and negotiated cloud commitments' },
+  { stage: 'Stage 1', posture: 'Serverless, scheduled processing, one BI environment', infra: 'Single AWS account; S3, Glue, Redshift Serverless, QuickSight', team: '2–3 data engineers (can be contractors); fractional architect', trigger: 'Prove reconciled metrics and demonstrate user value' },
+  { stage: 'Stage 2', posture: 'Autoscaling ingestion, separated dev/test/prod, stronger observability', infra: 'Multi-environment AWS; dedicated networking; monitoring and alerting', team: '4–6 data/platform engineers; dedicated BI developer; data analyst', trigger: 'Add availability guarantees, private networking and formal on-call support' },
+  { stage: 'Stage 3', posture: 'Multi-account, queue buffering, load testing, regional recovery design', infra: 'Multi-account AWS; cross-region recovery; CDN; advanced security', team: '8–12+ platform, data and security engineers; dedicated governance', trigger: 'Dedicated platform/security team and negotiated cloud commitments' },
 ];
+
+export const TECH_COMPARISON_NOTE =
+  'Indicative AUD/yr pricing has been removed from every row below: none of it cited a published vendor rate or a ' +
+  'workload assumption grounding the range, and no written quote is on file for any of these vendors (GT-08). The ' +
+  'widest of the deleted bands, Governance at 8,000–100,000, spanned 12.5× — far outside the ±30% the rebuild allows ' +
+  'an unpriced band. The recommended, alternative and premium-alternative products themselves are the site’s own ' +
+  'technology choices and are kept.';
 
 export const TECH_COMPARISON = [
-  { layer: 'Source Contracts', opt1: 'Open JSON schemas', opt2: 'AWS Glue Schema Registry', opt3: 'Confluent Schema Registry', pricing: 'Internal labour / managed usage', cost: '5,000–20,000' },
-  { layer: 'Batch Ingestion', opt1: 'AWS-native jobs', opt2: 'Airbyte (open-source)', opt3: 'Fivetran (MAR-based)', pricing: 'Compute / infra / MAR', cost: '6,000–35,000' },
-  { layer: 'Streaming', opt1: 'Amazon Kinesis', opt2: 'Amazon MSK (Kafka)', opt3: 'Confluent Cloud', pricing: 'Throughput / storage', cost: '3,000–25,000' },
-  { layer: 'Landing/Raw Storage', opt1: 'Amazon S3', opt2: 'Azure Data Lake Storage Gen2', opt3: 'Google Cloud Storage', pricing: 'Storage + requests', cost: '2,000–12,000' },
-  { layer: 'Processing', opt1: 'AWS Glue/Spark', opt2: 'Databricks', opt3: 'Snowflake Processing', pricing: 'Job compute / DBU / credits', cost: '10,000–80,000' },
-  { layer: 'Warehouse/Query', opt1: 'Redshift Serverless + Athena', opt2: 'Snowflake', opt3: 'BigQuery', pricing: 'RPU / credits / bytes', cost: '8,000–70,000' },
-  { layer: 'Orchestration', opt1: 'AWS Step Functions + dbt Core', opt2: 'Prefect', opt3: 'dbt Cloud', pricing: 'Usage / workspace / seats', cost: '5,000–35,000' },
-  { layer: 'Governance', opt1: 'Lake Formation + Glue Catalogue', opt2: 'Databricks Unity Catalog', opt3: 'Alation/Collibra', pricing: 'Cloud use / platform / quote', cost: '8,000–100,000' },
-  { layer: 'BI', opt1: 'Amazon QuickSight', opt2: 'Power BI', opt3: 'Looker', pricing: 'User / session / capacity', cost: '8,000–40,000' },
-  { layer: 'AI/API', opt1: 'SageMaker + API Gateway', opt2: 'Databricks ML', opt3: 'BigQuery ML + API', pricing: 'Compute / inference', cost: '5,000–60,000' },
+  { layer: 'Source Contracts', opt1: 'Open JSON schemas', opt2: 'AWS Glue Schema Registry', opt3: 'Confluent Schema Registry', pricing: 'Internal labour / managed usage' },
+  { layer: 'Batch Ingestion', opt1: 'AWS-native jobs', opt2: 'Airbyte (open-source)', opt3: 'Fivetran (MAR-based)', pricing: 'Compute / infra / MAR' },
+  { layer: 'Streaming', opt1: 'Amazon Kinesis', opt2: 'Amazon MSK (Kafka)', opt3: 'Confluent Cloud', pricing: 'Throughput / storage' },
+  { layer: 'Landing/Raw Storage', opt1: 'Amazon S3', opt2: 'Azure Data Lake Storage Gen2', opt3: 'Google Cloud Storage', pricing: 'Storage + requests' },
+  { layer: 'Processing', opt1: 'AWS Glue/Spark', opt2: 'Databricks', opt3: 'Snowflake Processing', pricing: 'Job compute / DBU / credits' },
+  { layer: 'Warehouse/Query', opt1: 'Redshift Serverless + Athena', opt2: 'Snowflake', opt3: 'BigQuery', pricing: 'RPU / credits / bytes' },
+  { layer: 'Orchestration', opt1: 'AWS Step Functions + dbt Core', opt2: 'Prefect', opt3: 'dbt Cloud', pricing: 'Usage / workspace / seats' },
+  { layer: 'Governance', opt1: 'Lake Formation + Glue Catalogue', opt2: 'Databricks Unity Catalog', opt3: 'Alation/Collibra', pricing: 'Cloud use / platform / quote' },
+  { layer: 'BI', opt1: 'Amazon QuickSight', opt2: 'Power BI', opt3: 'Looker', pricing: 'User / session / capacity' },
+  { layer: 'AI/API', opt1: 'SageMaker + API Gateway', opt2: 'Databricks ML', opt3: 'BigQuery ML + API', pricing: 'Compute / inference' },
 ];
 
+// Renamed TG-0…TG-4 by the audit so they cannot be read as the rebuilt financial decision schedule,
+// which runs G0–G2 only and explicitly records "There is no G3 on this schedule" (financial_rebuild.md §E.4).
+export const APPROVAL_GATES_NOTE =
+  'These are this page’s engineering approval gates, renamed TG-0…TG-4 so they cannot be confused with the rebuilt ' +
+  'financial decision schedule, which runs G0–G2 only (G0 due diligence & terms, G1 discovery — the primary demand ' +
+  'study, not data feasibility — G2 MVP build; “There is no G3 on this schedule”, financial_rebuild.md §E.4). Mapping: ' +
+  'TG-0 sits inside G0’s scope; TG-1 is a technical check consumed within G1’s discovery scope, not the rebuild’s G1 ' +
+  'itself; TG-2 is G2’s exit test; TG-3 and TG-4 lie beyond the rebuilt schedule and would each require a new decision paper.';
+
 export const APPROVAL_GATES = [
-  { gate: 'G0: Entity and Rights', evidence: 'Certified entity, ownership, IP, data and contract rights', outcome: 'Stop all work' },
-  { gate: 'G1: Data Feasibility', evidence: 'Representative extracts, data dictionaries, control totals and consent samples', outcome: 'Do not build' },
-  { gate: 'G2: MVP Value', evidence: 'Three certified dashboards, reconciliation above agreed threshold, named users', outcome: 'Fix or stop' },
-  { gate: 'G3: Production', evidence: 'Security review, recovery test, retention policies, vendor DPAs, runbook', outcome: 'No production PII' },
-  { gate: 'G4: Scale', evidence: 'Demonstrated unit economics, reliability and procurement case', outcome: 'Avoid committed licences' },
+  { gate: 'TG-0: Entity and Rights', evidence: 'Certified entity, ownership, IP, data and contract rights', outcome: 'Stop all work' },
+  { gate: 'TG-1: Data Feasibility', evidence: 'Representative extracts, data dictionaries, control totals and consent samples', outcome: 'Do not build' },
+  { gate: 'TG-2: MVP Value', evidence: 'Three certified dashboards, reconciliation above agreed threshold, named users', outcome: 'Fix or stop' },
+  { gate: 'TG-3: Production', evidence: 'Security review, recovery test, retention policies, vendor DPAs, runbook', outcome: 'No production PII' },
+  { gate: 'TG-4: Scale', evidence: 'Demonstrated unit economics, reliability and procurement case', outcome: 'Avoid committed licences' },
 ];
 
 export const SANKEY_FLOWS = [
@@ -95,6 +161,12 @@ export const TRANSFER_ROUTES = [
   { route: 'Australia to EU', mechanism: 'Standard Contractual Clauses (SCCs) or adequacy decision' },
   { route: 'Australia to UK', mechanism: 'UK International Data Transfer Agreement or UK SCCs' },
   { route: 'Australia to USA', mechanism: 'EU-US Data Privacy Framework (participating vendors); SCCs otherwise' },
-  { route: 'Australia to Canada', mechanism: 'Adequacy decision (PIPEDA deemed adequate by EU)' },
+  { route: 'Australia to Canada', mechanism: 'APP 8 (Privacy Act 1988 (Cth)) reasonable-steps assessment before disclosure' },
   { route: 'Any transfer', mechanism: 'Transfer Impact Assessment required before production data flows' },
 ];
+
+export const TRANSFER_ROUTES_NOTE =
+  'The Australia-to-Canada row was corrected by this audit (CL-0212, CATEGORY-ERROR): the original page cited an EU ' +
+  'adequacy decision for Canada’s PIPEDA as the legal basis. That adequacy decision is a GDPR instrument governing ' +
+  'EU-to-Canada transfers only — it has no legal force over an Australian-origin disclosure, which is governed instead ' +
+  'by Australian Privacy Principle 8 of the Privacy Act 1988 (Cth).';

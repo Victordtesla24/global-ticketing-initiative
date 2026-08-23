@@ -1,10 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Layers, Database, TrendingUp, ShieldCheck, Timer, Globe } from 'lucide-react';
-import { Section, GlassCard, OrnamentDivider, EstText, DataTable, StatCard } from '@/components/proposal/section';
+import { Layers, Database, TrendingUp, ShieldCheck, Timer, Globe, AlertTriangle } from 'lucide-react';
+import { Section, GlassCard, OrnamentDivider, DataTable, StatCard } from '@/components/proposal/section';
+import { TagText } from '@/components/proposal/tag';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import ArchitectureDiagram from '@/components/proposal/architecture-diagram';
-import { ARCH_LAYERS, DATA_MARTS, SCALABILITY, TECH_COMPARISON, APPROVAL_GATES, RETENTION, TRANSFER_ROUTES, type ArchLayer } from '@/lib/data/architecture';
+import {
+  ARCH_LEDE, ARCH_AUDIT_NOTE, ARCH_RECONCILIATION,
+  ARCH_LAYERS, DATA_MARTS, SCALABILITY, SCALABILITY_OPEN_ITEM,
+  TECH_COMPARISON, TECH_COMPARISON_NOTE, APPROVAL_GATES, APPROVAL_GATES_NOTE,
+  RETENTION, TRANSFER_ROUTES, TRANSFER_ROUTES_NOTE, type ArchLayer,
+} from '@/lib/data/architecture';
 
 const LAYER_TINTS: Record<string, string> = {
   sources: 'border-border/70',
@@ -27,17 +34,36 @@ export default function ArchitectureContent() {
       <h1 className="font-marquee text-3xl font-black uppercase tracking-wide text-foreground md:text-5xl">
         Data <span className="text-primary">Architecture</span>
       </h1>
-      <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-        The engine room of the Vision Statement. Every campaign audience, revenue metric and market-entry decision the
-        vision depends on is produced here — a medallion lakehouse on AWS, serverless-first and deliberately staged so
-        that spend scales with proven value, with consent and data-residency controls built in from day one. All costs
-        below are estimates pending validation against the actual technology stack.
-      </p>
+      <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">{ARCH_LEDE}</p>
+
+      <Alert className="mt-6 max-w-3xl border-red-500/40 bg-red-500/5">
+        <AlertTriangle className="h-4 w-4 !text-red-400" />
+        <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
+        <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+          <TagText text={ARCH_AUDIT_NOTE} />
+        </AlertDescription>
+      </Alert>
+
+      <GlassCard className="mt-6">
+        <p className="t-eyebrow mb-1">{ARCH_RECONCILIATION.label}</p>
+        <p className="font-marquee text-lg font-bold uppercase tracking-wide text-foreground">
+          {ARCH_RECONCILIATION.value}
+        </p>
+        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+          <TagText text={ARCH_RECONCILIATION.note} />
+        </p>
+        <p className="mt-3 text-[11px] uppercase tracking-[0.16em] text-primary/80">
+          Source: {ARCH_RECONCILIATION.provenance}
+        </p>
+      </GlassCard>
 
       <Section eyebrow="End-to-End Architecture" title="From Source Systems to Marketing Activation" className="mt-10">
         <GlassCard className="p-2 md:p-4">
           <ArchitectureDiagram />
         </GlassCard>
+        <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+          Per the reconciliation above, this is the post-trigger target design, not the committed MVP build.
+        </p>
       </Section>
 
       <Section eyebrow="Interactive" title="The Medallion Stack — Click a Layer">
@@ -70,7 +96,7 @@ export default function ArchitectureContent() {
                   <Layers className="h-5 w-5 text-primary" />
                   <p className="font-marquee text-lg font-bold uppercase tracking-wide text-foreground">{layer?.name}</p>
                 </div>
-                <p className="text-sm leading-relaxed text-muted-foreground"><EstText text={layer?.what ?? ''} /></p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{layer?.what}</p>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-lg bg-secondary/40 p-3">
                     <p className="t-eyebrow mb-1">Technology</p>
@@ -81,20 +107,10 @@ export default function ArchitectureContent() {
                     <p className="text-[13px] text-foreground/85">{layer?.complexity}</p>
                   </div>
                 </div>
-                {(layer?.costs?.length ?? 0) > 0 ? (
-                  <div className="mt-4">
-                    <p className="t-eyebrow mb-2">Indicative Annual Cost by Scale (AUD) [EST]</p>
-                    <DataTable
-                      headers={['Component', '10K MAU', '100K MAU', '1M MAU']}
-                      rows={(layer?.costs ?? []).map((c: any) => [c?.label ?? '', c?.t10k ?? '—', c?.t100k ?? '—', c?.t1m ?? '—'])}
-                    />
-                  </div>
-                ) : (
-                  <p className="mt-4 text-xs italic text-muted-foreground">{layer?.costNote ?? 'No direct cost line — included elsewhere.'}</p>
-                )}
-                {layer?.costNote && (layer?.costs?.length ?? 0) > 0 ? (
-                  <p className="mt-2 text-xs italic text-muted-foreground">{layer.costNote}</p>
-                ) : null}
+                <p className="mt-4 text-xs italic text-muted-foreground">
+                  No cost line is published for any layer. The per-layer AUD tables that stood here cited no unit rate
+                  and no workload basis; the committed MVP stack is priced in financial_rebuild.md §C.
+                </p>
               </div>
             ) : null}
           </GlassCard>
@@ -123,25 +139,29 @@ export default function ArchitectureContent() {
         </div>
       </Section>
 
-      <Section eyebrow="Growth Path" title="Scalability Roadmap — 10K to 1M MAU">
+      <Section eyebrow="Growth Path" title="Scalability Roadmap — Posture, Infrastructure and Team Shape">
+        <Alert className="mb-4 border-amber-500/40 bg-amber-500/5">
+          <AlertTriangle className="h-4 w-4 !text-amber-400" />
+          <AlertTitle className="text-amber-300">OPEN ITEM — {SCALABILITY_OPEN_ITEM.title}</AlertTitle>
+          <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+            <p><span className="font-semibold text-foreground/80">What is unknown:</span> {SCALABILITY_OPEN_ITEM.unknown}</p>
+            <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {SCALABILITY_OPEN_ITEM.owner}</p>
+            <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {SCALABILITY_OPEN_ITEM.action} ({SCALABILITY_OPEN_ITEM.ref})</p>
+          </AlertDescription>
+        </Alert>
         <div className="grid gap-4 lg:grid-cols-3">
           {(SCALABILITY ?? []).map((s: any, i: number) => (
             <GlassCard key={i} className="relative flex h-full flex-col overflow-hidden">
-              <div className="absolute right-0 top-0 rounded-bl-xl bg-primary/15 px-3 py-1 font-marquee text-[11px] font-bold uppercase tracking-wider text-primary">
-                {s?.mau}
-              </div>
               <div className="mb-2 flex items-center gap-2">
                 <TrendingUp className="h-4 w-4 text-primary" />
                 <p className="font-marquee text-sm font-bold uppercase tracking-wide text-foreground">{s?.stage}</p>
               </div>
               <p className="text-[13px] leading-relaxed text-muted-foreground">{s?.posture}</p>
               <div className="mt-3 space-y-1.5 text-[11px] text-muted-foreground">
-                <p><span className="font-semibold text-foreground/70">Workload:</span> <EstText text={s?.workload ?? ''} /></p>
                 <p><span className="font-semibold text-foreground/70">Infrastructure:</span> {s?.infra}</p>
                 <p><span className="font-semibold text-foreground/70">Team:</span> {s?.team}</p>
                 <p><span className="font-semibold text-foreground/70">Trigger to advance:</span> {s?.trigger}</p>
               </div>
-              <p className="mt-3 text-sm font-semibold text-primary"><EstText text={s?.cost ?? ''} /></p>
             </GlassCard>
           ))}
         </div>
@@ -150,13 +170,15 @@ export default function ArchitectureContent() {
       <OrnamentDivider />
 
       <Section eyebrow="Procurement" title="Technology Options by Layer">
+        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">{TECH_COMPARISON_NOTE}</p>
         <DataTable
-          headers={['Layer', 'Recommended', 'Alternative', 'Premium Alternative', 'Pricing Basis', 'Indicative AUD/yr [EST]']}
-          rows={(TECH_COMPARISON ?? []).map((t: any) => [t?.layer ?? '', t?.opt1 ?? '', t?.opt2 ?? '', t?.opt3 ?? '', t?.pricing ?? '', t?.cost ?? ''])}
+          headers={['Layer', 'Recommended', 'Alternative', 'Premium Alternative', 'Pricing Basis']}
+          rows={(TECH_COMPARISON ?? []).map((t: any) => [t?.layer ?? '', t?.opt1 ?? '', t?.opt2 ?? '', t?.opt3 ?? '', t?.pricing ?? ''])}
         />
       </Section>
 
-      <Section eyebrow="Governance" title="Approval Gates — No Gate, No Spend">
+      <Section eyebrow="Governance" title="Technology Approval Gates — No Gate, No Spend">
+        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">{APPROVAL_GATES_NOTE}</p>
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
           {(APPROVAL_GATES ?? []).map((g: any, i: number) => (
             <GlassCard key={i} className="h-full !p-4">
@@ -192,14 +214,22 @@ export default function ArchitectureContent() {
               headers={['Route', 'Legal Mechanism']}
               rows={(TRANSFER_ROUTES ?? []).map((r: any) => [r?.route ?? '', r?.mechanism ?? ''])}
             />
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">{TRANSFER_ROUTES_NOTE}</p>
           </div>
         </div>
       </Section>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Stage 1 Run Cost" value="AUD 60–150K/yr" sub="10K MAU serverless posture [EST]" />
-        <StatCard label="Cloud Setup" value="AUD 26–66K" sub="One-time AWS foundation build [EST]" />
-        <StatCard label="Reviewer Rating" value="AMBER" sub="Sound in principle; validate against actual stack before finalising" />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <StatCard
+          label="Committed MVP Run Cost"
+          value="A$46.43/mo [DERIVED]"
+          sub="financial_rebuild.md §C.2–C.3 — the only run cost this audit publishes for this stack; the two AUD StatCards that stood here are deleted"
+        />
+        <StatCard
+          label="Reviewer Rating"
+          value="AMBER"
+          sub="Sound in principle; validate against actual stack before finalising"
+        />
       </div>
     </div>
   );
