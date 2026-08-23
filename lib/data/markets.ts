@@ -310,7 +310,8 @@ export const MARKETS: Market[] = [
       unknown:
         'Open questions include UK GDPR obligations post-Brexit, Consumer Rights Act 2015 refund and cancellation duties, VAT treatment of digital services and ticket sales, performer visa requirements, and ticket-resale regulation. On the last of these, the original wording named “Tier 5 Creative and Sporting” — a category retired in 2021 and replaced by the Creative Worker (Temporary Work) route, so even the category name needs re-checking, not just the requirement.',
       owner: 'UK legal counsel (not yet engaged)',
-      action: 'Commission a UK regulatory review before any market-entry commitment.',
+      action:
+        'Commission a UK regulatory review before any market-entry commitment. Restated under the sitewide rule (fresh pass 5, F-P5B-05; extended to this page in fresh pass 8, F-P8B-A03): this proposal commits to engaging UK legal counsel on each of these before any UK market-entry commitment. That is a prudential commitment by the proposer, not a claim that counsel is legally mandated — the original page’s certainty claim “All require UK legal counsel” (CL-0550) is deleted, the same treatment the identical construction receives on /markets/usa (CL-0579), /markets/canada (CL-0604) and /markets/eu (CL-0626). No source in this audit establishes a counsel mandate in any of the five markets.',
     },
     partnerships: [
       { type: 'UK-based Marathi drama promoters', criticality: 'Prospective', detail: 'Direct discovery required — no agreement, quote or dated counterparty exists' },
@@ -536,7 +537,7 @@ export const MARKETS: Market[] = [
       'Performer work permit requirements',
       'Provincial entertainment regulations',
     ],
-    regulatoryNote: 'This proposal commits to engaging Canadian legal counsel on each of these before any Canadian market-entry commitment — detail unverified. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally mandated. No source in this audit establishes a counsel mandate in any of the five markets, so the same rule is applied on all three market pages (fresh pass 5, F-P5B-05): the certainty claim “all require legal counsel” is not published anywhere, and the commitment to engage counsel is published everywhere, against Unresolved Register U-05 (no written legal quotes on file, GT-08).',
+    regulatoryNote: 'This proposal commits to engaging Canadian legal counsel on each of these before any Canadian market-entry commitment — detail unverified. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally mandated. No source in this audit establishes a counsel mandate in any of the five markets, so the same rule is applied on all four market pages that carried the claim — US, UK, Canada and the EU (fresh pass 5, F-P5B-05; /markets/uk added in fresh pass 8, F-P8B-A03, having been omitted from the original harmonisation): the certainty claim “all require legal counsel” is not published anywhere, and the commitment to engage counsel is published everywhere, against Unresolved Register U-05 (no written legal quotes on file, GT-08).',
     partnerships: [
       { type: 'Local promoters and cultural associations', criticality: 'Prospective', detail: 'Direct discovery required — no verified pipeline exists' },
     ],
@@ -633,7 +634,7 @@ export const MARKETS: Market[] = [
       'PSD2 and Strong Customer Authentication (SCA)',
       'Country-specific ticket resale regulations',
     ],
-    regulatoryNote: 'This proposal commits to engaging local legal counsel in each member state before any EU market-entry commitment. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally mandated. No source in this audit establishes a counsel mandate in any of the five markets, so the same rule is applied on all three market pages (fresh pass 5, F-P5B-05): the certainty claim “all require legal counsel” is not published anywhere, and the commitment to engage counsel is published everywhere, against Unresolved Register U-05 (no written legal quotes on file, GT-08).',
+    regulatoryNote: 'This proposal commits to engaging local legal counsel in each member state before any EU market-entry commitment. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally mandated. No source in this audit establishes a counsel mandate in any of the five markets, so the same rule is applied on all four market pages that carried the claim — US, UK, Canada and the EU (fresh pass 5, F-P5B-05; /markets/uk added in fresh pass 8, F-P8B-A03, having been omitted from the original harmonisation): the certainty claim “all require legal counsel” is not published anywhere, and the commitment to engage counsel is published everywhere, against Unresolved Register U-05 (no written legal quotes on file, GT-08).',
     partnerships: [
       { type: 'Country-specific promoter partner', criticality: 'Prospective', detail: 'Selected via Eurostat-ranked country assessment; local distributor before entity' },
     ],

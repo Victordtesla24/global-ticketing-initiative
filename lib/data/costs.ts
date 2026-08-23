@@ -45,7 +45,7 @@ export const GATE_SCHEDULE = [
     priced:
       'Study fee [UNKNOWN] — not priceable without a brief; brief written and quoted during G0. Per-agreement legal review [UNKNOWN] per the G0 quote. Outreach tooling A$0 [LIST] (Apollo.io free tier). Fractional analyst 6.0 days [ASSUMPTION] = A$2,880.00 [DERIVED], conditional as above.',
     multiple: '3.47x (analyst line, conditional)',
-    committed: 'A$2,880.00 [DERIVED] — 6.0 analyst-days, plus study and legal-review fees [UNKNOWN]',
+    committed: 'A$2,880.00 [DERIVED] — 6.0 analyst-days [ASSUMPTION], conditional on the same unconfirmed consultant rate and day count as G0, plus study and legal-review fees [UNKNOWN]',
     mustPass: 'G0 passed; ≥3 signed, dated pilot-event agreements; primary demand study delivered with take-rate, ATV and repeat findings',
   },
   {
@@ -54,9 +54,9 @@ export const GATE_SCHEDULE = [
       'Day-1 data bill of materials; ingest, reconciled finance mart, three certified dashboards, consent register; the day-1 AI stack',
     priced:
       'One-off: floor configuration A$5,860.00 [DERIVED] (data floor A$2,500.00 [LIST] + setup 7.0 days A$3,360.00 [DERIVED], pre-U-07 maximum) or full configuration A$9,876.74 [DERIVED] (data full A$6,036.74 + setup 8.0 days A$3,840.00) — alternatives, not a range; setup labour holds only under the unconfirmed rate and day-count [ASSUMPTION]s. Run rate, monthly-cancellable and not part of the authorised gate cost: tech A$46.43/mo [DERIVED] + AI (Claude Pro, billed monthly) A$27.99/mo [DERIVED].',
-    multiple: '7.06x floor / 11.90x full one-off; run rate 0.090x/month',
+    multiple: '7.06x floor / 11.90x full one-off (setup-labour share conditional); run rate 0.090x/month',
     committed:
-      'Floor configuration A$5,860.00 [DERIVED] or full configuration A$9,876.74 [DERIVED] — alternatives, not a range',
+      'Floor configuration A$5,860.00 [DERIVED] or full configuration A$9,876.74 [DERIVED] — alternatives, not a range. The setup-labour share of each (7.0 and 8.0 analyst-days) holds only under the unconfirmed consultant rate and day count [ASSUMPTION]; the data lines are [LIST]/[DERIVED] and stand on their own.',
     mustPass: 'G1 passed; first-party data disclosed under NDA; consultant-rate confirmation in writing',
   },
 ];
@@ -80,7 +80,7 @@ export const VENDOR_PRICES = [
   {
     provider: 'Statista',
     deleted: '"annual access 7,750–15,500" — matches no published tier (deleted)',
-    published: 'Starter US$199/mo billed annually = US$2,388/yr; Personal US$649/mo = US$7,788/yr; Professional quote-only [LIST]',
+    published: 'Starter US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]); Personal US$649/mo billed annually [LIST] (= US$7,788/yr [DERIVED]); Professional quote-only [UNKNOWN]',
     disposition:
       'Starter conditionally in the G2 full tranche at A$3,342.20/yr [DERIVED] — purchase order only against a written gap-list of statistics the free sources failed to supply. Aggregator: every figure must be re-cited to its primary source. The mandate’s ground-truth baseline GT D5-[16] (“Statista Personal: A$922/yr”) is NOT carried: verify/statista-reaudit.md grades it NOT FOUND — no tier at or near A$922/yr appears on the published page in any currency — so the vendor-published tiers are the defensible figures and the GT entry is recorded as unverifiable against its primary source. Unlike the IBISWorld row above, the two are not competing vendor-published prices, so no dual-baseline restatement is possible.',
   },
@@ -93,12 +93,12 @@ export const VENDOR_PRICES = [
   {
     provider: 'Similarweb',
     deleted: '"Pro plan 15,500–30,000" — no plan named "Pro" exists',
-    published: 'Self-serve US$129–649/mo; Business/Enterprise quote-only [LIST]',
+    published: 'Self-serve US$129–649/mo [LIST] (= US$1,548–7,788/yr [DERIVED]: monthly rate × 12 — the annual band is this audit\'s arithmetic, not a vendor-published price); Business/Enterprise quote-only [UNKNOWN]',
     disposition: 'Deferred — panel data adds nothing to a market with zero AU operations; revisit post-launch.',
   },
   {
     provider: 'Apollo.io',
-    deleted: '"Professional 1,800–3,600/yr" — top ~2.4x the published annual price',
+    deleted: '"Professional 1,800–3,600/yr" — top ~2.7x the published annual price (3,600 ÷ A$1,326.80 [DERIVED]). The ~2.4x this row previously published was computed against the site\'s retired 1.55 FX assumption (948 × 1.55 ≈ A$1,470), not against the adjacent canonical figure or the one FX rate used sitewide; the Market Opportunity page states that comparison explicitly and both pages now agree.',
     published: 'Professional US$79/seat/mo billed annually = US$948/yr [LIST] = A$1,326.80 [DERIVED]: 948 ÷ 0.7145, the one FX rate used sitewide — the same treatment the Market Opportunity page gives this vendor; Free tier 900 credits/seat/yr at US$0 [LIST]',
     disposition: 'Free tier recommended (A$0 [LIST], the vendor’s published free tier) — 900 credits cover the pilot outreach universe. Step up only when free credits are demonstrably exhausted.',
   },

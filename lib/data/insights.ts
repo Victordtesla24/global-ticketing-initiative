@@ -88,7 +88,7 @@ export const MARKETING_DATA_PLAN = [
   {
     pillar: 'Competitive & Channel Intelligence',
     required: 'Competitor web traffic, app engagement, keyword pricing and take-rate benchmarks across the five markets',
-    acquire: 'The original page named a Similarweb “Pro” plan and a Semrush “Business” plan with specific AUD prices — neither plan exists on either vendor\'s current price list. The corrected figures: Similarweb self-serve tiers, USD 1,548–7,788/yr [LIST]; Semrush, annual billing, USD ~1,408–5,468/yr [LIST].',
+    acquire: 'The original page named a Similarweb “Pro” plan and a Semrush “Business” plan with specific AUD prices — neither plan exists on either vendor\'s current price list. The corrected figures, each tagged at the level the vendor actually publishes: Similarweb self-serve tiers, USD 129–649/mo [LIST] (= USD 1,548–7,788/yr [DERIVED]: monthly rate × 12); Semrush, USD 117.33–455.67/mo billed annually [LIST] (= USD ~1,408–5,468/yr [DERIVED]: annual per-month rate × 12). Neither vendor publishes an annual band — the yearly figures are this audit\'s own annualisation and are tagged [DERIVED] on every route that carries them.',
     outcome: 'OPEN ITEM — revenue sensitivity to take-rate or channel-pricing improvements cannot be computed (U-04): the original claim that each 1% take-rate improvement adds AUD 64,800 of Year-3 revenue conflicted with a second, different Year-3 GTV used elsewhere on this proposal, and both depend on a platform take rate the rebuilt financials mark [UNKNOWN] — no primary study of fee tolerance exists. Owner: Research lead (currently unassigned).',
   },
   {
@@ -128,7 +128,7 @@ export const STRATEGIC_OPTIONS = [
   {
     key: 'B',
     name: 'Staged, Data-Led Expansion — Australia First',
-    investment: 'Gated stages, each priced or explicitly [UNKNOWN] — no cumulative total is published: G0 A$1,920.00 [DERIVED]; G1 A$2,880.00 [DERIVED] + study and legal fees [UNKNOWN]; G2 A$5,860.00 or A$9,876.74 [DERIVED]',
+    investment: 'Gated stages, each priced or explicitly [UNKNOWN] — no cumulative total is published: G0 A$1,920.00 [DERIVED] (4.0 analyst-days [ASSUMPTION]); G1 A$2,880.00 [DERIVED] (6.0 analyst-days [ASSUMPTION]) + study and legal fees [UNKNOWN]; G2 A$5,860.00 or A$9,876.74 [DERIVED], whose setup-labour share (7.0 and 8.0 analyst-days) holds only under the unconfirmed consultant rate and day count [ASSUMPTION]. Every analyst-labour line on this schedule is conditional; none is a committed price.',
     detail: 'Prove the Australian market with contracted inventory and the marketing data programme, then extend through partner-led corridors to the UK, US, Canada and the EU as gates are passed.',
     assessment: 'Aligns capital with evidence: each stage is funded only when the prior gate — due diligence & terms (G0), discovery (G1), MVP build (G2) — is passed. The original claim that this option "contains the top five register risks" had no demonstrated mapping to the risk register and has been removed. ROI is not computable at any gate until partnership terms (U-02), contracted supply (U-03) and the primary demand study (U-04) exist.',
     recommended: true,
