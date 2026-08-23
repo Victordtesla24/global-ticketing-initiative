@@ -50,7 +50,7 @@ export const GATE_SCHEDULE = [
     buys:
       'Day-1 data bill of materials; ingest, reconciled finance mart, three certified dashboards, consent register; the day-1 AI stack',
     priced:
-      'One-off: floor configuration A$5,860.00 [DERIVED] (data floor A$2,500.00 [LIST] + setup 7.0 days A$3,360.00 [DERIVED], pre-U-07 maximum) or full configuration A$9,876.74 [DERIVED] (data full A$6,036.74 + setup 8.0 days A$3,840.00) — alternatives, not a range; setup labour holds only under the unconfirmed rate and day-count [ASSUMPTION]s. Run rate, monthly-cancellable and not part of the authorised gate cost: tech A$46.43/mo [DERIVED] + AI (Claude Pro, billed monthly) A$27.99/mo [DERIVED].',
+      'One-off: floor configuration A$5,860.00 [DERIVED] (data floor A$2,500.00 [LIST] + setup 7.0 days A$3,360.00 [DERIVED], pre-U-07 maximum) or full configuration A$9,876.74 [DERIVED] (data full A$6,036.74 [DERIVED] + setup 8.0 days A$3,840.00 [DERIVED]) — alternatives, not a range; setup labour holds only under the unconfirmed rate and day-count [ASSUMPTION]s. Run rate, monthly-cancellable and not part of the authorised gate cost: tech A$46.43/mo [DERIVED] + AI (Claude Pro, billed monthly) A$27.99/mo [DERIVED].',
     multiple: '7.06x floor / 11.90x full one-off (setup-labour share conditional); run rate 0.090x/month',
     committed:
       'Floor configuration A$5,860.00 [DERIVED] or full configuration A$9,876.74 [DERIVED] — alternatives, not a range. The setup-labour share of each (7.0 and 8.0 analyst-days) holds only under the unconfirmed consultant rate and day count [ASSUMPTION]; the data lines carry their own markers — [LIST] on each vendor-published unit, [DERIVED] on every conversion or annualisation computed from one — and stand on their own.',

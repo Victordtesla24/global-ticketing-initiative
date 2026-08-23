@@ -358,13 +358,13 @@ export const MARKETS: Market[] = [
       {
         tier: 'TAM — Total addressable',
         basis:
-          'Diaspora concentrated in New York/New Jersey, the SF Bay Area, Chicago, Los Angeles and Dallas–Fort Worth — a pattern consistent with the top India-born state totals: California 626,214, Texas 431,939, New Jersey 296,806 (ACS 2024 1-year, table B05006). No annual count of relevant cultural events has been built. See open item below.',
+          'Diaspora concentrated in New York/New Jersey, the SF Bay Area, Chicago, Los Angeles and Dallas–Fort Worth — a pattern consistent with the top India-born state totals: California 626,214, Texas 431,939, New Jersey 296,806 (ACS 2024 1-year, table B05006). Not sized — no annual count of relevant cultural events has been built; the event count, and any market size derived from it, are both [UNKNOWN]. See open item below.',
       },
       {
         tier: 'SAM — Serviceable',
         basis: 'Bottom-up sizing required from verified metro event inventory. [UNKNOWN] — no such inventory exists yet; an honest statement of missing data, not a figure.',
       },
-      { tier: 'SOM — Obtainable', basis: 'Not sized — no contractable share can be stated without an inventory. See open item below.' },
+      { tier: 'SOM — Obtainable', basis: 'Not sized — [UNKNOWN]: no contractable share can be stated without an inventory, and no inventory exists. See open item below.' },
     ],
     sizingOpenItems: [
       {
@@ -570,9 +570,9 @@ export const MARKETS: Market[] = [
       'Attendance: Eurostat, ilc_scp03 (EU-SILC 2022 cultural participation module; ~6-yearly, next planned update October 2029) — ec.europa.eu/eurostat. Both accessed 2026-08-23.',
     ],
     sizing: [
-      { tier: 'TAM — Total addressable', basis: 'Country-specific; not sized. See open item below.' },
-      { tier: 'SAM — Serviceable', basis: 'Single selected country; not sized — no event inventory exists to size from. See open item below.' },
-      { tier: 'SOM — Obtainable', basis: 'Single-country pilot share; requires country selection first — not sized.' },
+      { tier: 'TAM — Total addressable', basis: 'Country-specific; not sized — no country is selected and no per-country event count is sourced; both are [UNKNOWN]. See open item below.' },
+      { tier: 'SAM — Serviceable', basis: 'Single selected country; not sized — [UNKNOWN]: no event inventory exists to size from. See open item below.' },
+      { tier: 'SOM — Obtainable', basis: 'Single-country pilot share; requires country selection first — not sized, and [UNKNOWN] until a country is selected and its event inventory verified.' },
     ],
     sizingOpenItems: [
       {
