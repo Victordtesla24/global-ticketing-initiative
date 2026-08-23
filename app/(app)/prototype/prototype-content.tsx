@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { Tag, TagText } from '@/components/proposal/tag';
 import { cn } from '@/lib/utils';
 import { CATEGORY_LABELS, type ProviderCategory, type ProviderCountry } from '@/lib/data/providers';
 import {
@@ -31,6 +32,7 @@ import {
   PROTOTYPE_TOTALS,
   WALKTHROUGH,
   MODE_LABEL,
+  MARKER_RULE,
   csvHref,
   jsonHref,
   type DatasetMode,
@@ -116,7 +118,7 @@ function StepDataTable({ table }: { table: StepTable }) {
                   key={i}
                   className="whitespace-nowrap px-3 py-2.5 text-left font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary"
                 >
-                  {h}
+                  <TagText text={h} />
                 </th>
               ))}
             </tr>
@@ -137,10 +139,10 @@ function StepDataTable({ table }: { table: StepTable }) {
                     {j === 0 && excluded.has(i) ? (
                       <span className="flex items-start gap-1.5">
                         <span className="mt-1 inline-block h-3 w-0.5 shrink-0 rounded bg-amber-500/70" aria-hidden />
-                        <span>{c}</span>
+                        <TagText text={c} />
                       </span>
                     ) : (
-                      c
+                      <TagText text={c} />
                     )}
                   </td>
                 ))}
@@ -150,7 +152,9 @@ function StepDataTable({ table }: { table: StepTable }) {
         </table>
       </div>
       {table?.note ? (
-        <p className="mt-2 text-[11.5px] leading-relaxed text-muted-foreground/80">{table.note}</p>
+        <p className="mt-2 text-[11.5px] leading-relaxed text-muted-foreground/80">
+          <TagText text={table.note} />
+        </p>
       ) : null}
     </div>
   );
@@ -205,6 +209,21 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
       {step?.checks ? (
         <div className="mt-6">
           <p className="t-eyebrow mb-2">Reconciliation controls — every line re-addable from the two files above</p>
+          {step?.checksHeader ? (
+            /* A real column header, not a marker parked in an adjacent cell: every
+               figure in the ledger below inherits it. */
+            <div className="mb-1.5 flex flex-col gap-1 px-3 sm:flex-row sm:items-center sm:gap-4">
+              <span className="shrink-0 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:w-48">
+                {step.checksHeader.label}
+              </span>
+              <span className="min-w-0 flex-1 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
+                <TagText text={step.checksHeader.result} />
+              </span>
+              <span className="shrink-0 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:w-36 sm:text-right">
+                {step.checksHeader.variance}
+              </span>
+            </div>
+          ) : null}
           <div className="grid gap-2">
             {step.checks.map((c, i) => (
               <div
@@ -243,7 +262,9 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
                   {(d?.kpis ?? []).map((k) => (
                     <div key={k?.metric} className="border-b border-border/30 pb-2 last:border-0 last:pb-0">
                       <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{k?.metric}</p>
-                      <p className="font-marquee text-lg font-bold leading-tight text-foreground">{k?.value}</p>
+                      <p className="font-marquee text-lg font-bold leading-tight text-foreground">
+                        <TagText text={k?.value ?? ''} />
+                      </p>
                       <p className="text-[11px] leading-snug text-muted-foreground/70">{k?.basis}</p>
                     </div>
                   ))}
@@ -279,7 +300,9 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
           <AlertTriangle className="h-3.5 w-3.5" />
           The limit of this step
         </p>
-        <p className="text-[12.5px] leading-relaxed text-muted-foreground">{step?.limit}</p>
+        <p className="text-[12.5px] leading-relaxed text-muted-foreground">
+          <TagText text={step?.limit ?? ''} />
+        </p>
       </div>
 
       {next ? (
@@ -350,6 +373,16 @@ export default function PrototypeContent() {
         figure here is evidence of demand, supply or revenue in any market.
       </p>
 
+      {/* The marker rule this route declares — the same instrument every other route
+          opens with. Until it existed, the walkthrough's AUD figures stood on two
+          page-local labels (REAL EXTRACT / SYNTHETIC SAMPLE) that named a file, not a
+          figure, and that no page declared as a marker vocabulary. */}
+      <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        Every figure in the walkthrough below carries exactly one marker. <Tag tag="ILLUSTRATIVE" /> —{' '}
+        {MARKER_RULE.illustrative} <Tag tag="OFFICIAL" /> — {MARKER_RULE.official} {MARKER_RULE.inheritance} All
+        currency figures AUD.
+      </p>
+
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <StatCard
           label="Datasets · Files · Rows"
@@ -399,6 +432,13 @@ export default function PrototypeContent() {
             </p>
           </div>
         </div>
+        <p className="mt-4 border-t border-border/40 pt-3 text-[12.5px] leading-relaxed text-muted-foreground">
+          These two label a <span className="font-semibold text-foreground/80">file</span>. The markers in the
+          walkthrough below label a <span className="font-semibold text-foreground/80">figure</span>, and the two are
+          not interchangeable: a figure computed from a synthetic file carries <Tag tag="ILLUSTRATIVE" />, and one
+          copied from an official release carries <Tag tag="OFFICIAL" />. A figure never inherits a marker from the
+          badge on its table — it carries its own, or it inherits one from its column header.
+        </p>
       </GlassCard>
 
       <Section eyebrow="Downloadable Sample Set" title="All 60 Datasets" className="mt-12">
@@ -675,8 +715,8 @@ export default function PrototypeContent() {
             <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
               <p>
                 <span className="font-semibold text-foreground/80">What is unknown:</span> No primary study of the
-                target audience exists. Step 01 fixes the denominators — 22,263 Marathi speakers, 64% adult cultural
-                attendance — but a denominator is a population, not a buyer. No willingness-to-pay, fee-tolerance or
+                target audience exists. Step 01 fixes the denominators — 22,263 <Tag tag="OFFICIAL" /> Marathi speakers,
+                64% <Tag tag="OFFICIAL" /> adult cultural attendance — but a denominator is a population, not a buyer. No willingness-to-pay, fee-tolerance or
                 channel-trust figure can be stated, and none appears anywhere on this page.
               </p>
               <p className="mt-1">

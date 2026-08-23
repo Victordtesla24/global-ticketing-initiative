@@ -14,6 +14,19 @@ import { cn } from '@/lib/utils';
  * restate the source's own trust tier. An audited filing sits one rung below an
  * official statistic on the ladder, and no figure is promoted by carrying a
  * marker.
+ *
+ * [ILLUSTRATIVE] is the one marker on this ladder that is not a provenance
+ * claim — it is the refusal of one. It marks a figure computed from the
+ * downloadable synthetic sample files: an illustration of the pipeline, never a
+ * forecast, a commitment, or evidence of demand, supply or revenue in any
+ * market. It carries no evidentiary weight and can never be promoted into one
+ * of the markers above; a figure that acquires a real basis is retagged, not
+ * relabelled. It is declared in the lede of every page that renders it, in the
+ * same form those pages declare the rest of the set, and it appears only where
+ * that declaration stands: /prototype and the /architecture follow-one-ticket
+ * walkthrough. Before this marker existed those same figures shipped under two
+ * page-local labels (REAL EXTRACT / SYNTHETIC SAMPLE) that no page declared as
+ * a marker vocabulary at all.
  */
 export type ProvenanceTag =
   | 'ACTUAL'
@@ -23,7 +36,8 @@ export type ProvenanceTag =
   | 'ASSUMPTION'
   | 'OFFICIAL'
   | 'UNKNOWN'
-  | 'UNVERIFIED';
+  | 'UNVERIFIED'
+  | 'ILLUSTRATIVE';
 
 const TAG_STYLES: Record<ProvenanceTag, string> = {
   ACTUAL: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400',
@@ -34,6 +48,9 @@ const TAG_STYLES: Record<ProvenanceTag, string> = {
   OFFICIAL: 'border-teal-500/40 bg-teal-500/10 text-teal-300',
   UNKNOWN: 'border-red-500/40 bg-red-500/10 text-red-400',
   UNVERIFIED: 'border-amber-500/40 bg-amber-500/10 text-amber-400',
+  // Same amber the SYNTHETIC SAMPLE mode badge uses, so a figure and the file
+  // it came from read as one label rather than two competing ones.
+  ILLUSTRATIVE: 'border-amber-500/40 bg-amber-500/10 text-amber-400',
 };
 
 /** Small monospace provenance badge, e.g. [LIST] or [UNKNOWN]. */
@@ -51,8 +68,8 @@ export function Tag({ tag, className }: { tag: ProvenanceTag; className?: string
   );
 }
 
-const TAG_RE = /(\[(?:ACTUAL|LIST|QUOTE|DERIVED|ASSUMPTION|OFFICIAL|UNKNOWN|UNVERIFIED)\])/g;
-const TAG_MATCH = /^\[(ACTUAL|LIST|QUOTE|DERIVED|ASSUMPTION|OFFICIAL|UNKNOWN|UNVERIFIED)\]$/;
+const TAG_RE = /(\[(?:ACTUAL|LIST|QUOTE|DERIVED|ASSUMPTION|OFFICIAL|UNKNOWN|UNVERIFIED|ILLUSTRATIVE)\])/g;
+const TAG_MATCH = /^\[(ACTUAL|LIST|QUOTE|DERIVED|ASSUMPTION|OFFICIAL|UNKNOWN|UNVERIFIED|ILLUSTRATIVE)\]$/;
 
 /** Renders text, replacing inline provenance tags with monospace badges. */
 export function TagText({ text, className }: { text: string; className?: string }) {

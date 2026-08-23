@@ -507,6 +507,15 @@ export interface TicketStep {
 
 export const TICKET_LABEL = 'Synthetic sample — mirrors provider spec';
 
+/**
+ * The marker rule this panel declares, in the same form the routes declare the
+ * provenance set. The mode badge beside it labels the *file*; [ILLUSTRATIVE]
+ * labels each *figure*, and the two are not interchangeable.
+ */
+export const TICKET_MARKER_RULE =
+  'Every figure in this walkthrough carries [ILLUSTRATIVE] — computed from the downloadable sample files; ' +
+  'an illustration of the pipeline, not a forecast or a commitment.';
+
 export const TICKET_INTRO =
   'One ticket from row mock-ar-c001 of audience-republic.csv — a Melbourne buyer, Katkon Trikon presale, reached by email. ' +
   'Illustrative — prototype sample data only.';
@@ -545,7 +554,7 @@ export const TICKET_PATH: TicketStep[] = [
   {
     nodeId: 'mart-finance',
     caption:
-      'It joins 568 others in the Australian finance mart, where the totals have to agree: 569 tickets, A$31,295.00 gross, A$2,845.00 GST at 10.0%, A$28,450.00 net, A$0.00 variance. Illustrative — prototype sample data only.',
+      'It joins 568 others in the Australian finance mart, where the totals have to agree: 569 tickets, A$31,295.00 [ILLUSTRATIVE] gross, A$2,845.00 [ILLUSTRATIVE] GST at 10.0%, A$28,450.00 [ILLUSTRATIVE] net, A$0.00 [ILLUSTRATIVE] variance.',
   },
   {
     nodeId: 'act-dashboards',

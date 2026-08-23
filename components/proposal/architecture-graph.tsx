@@ -26,7 +26,7 @@ import { TagText } from '@/components/proposal/tag';
 import { cn } from '@/lib/utils';
 import { ARCH_LAYERS, type ArchLayer } from '@/lib/data/architecture';
 import {
-  ARCH_NODES, NODES_BY_STAGE, TICKET_CLOSE, TICKET_INTRO, TICKET_LABEL, TICKET_PATH,
+  ARCH_NODES, NODES_BY_STAGE, TICKET_CLOSE, TICKET_INTRO, TICKET_LABEL, TICKET_MARKER_RULE, TICKET_PATH,
   findNode, type ArchArtefact, type ArchNode,
 } from '@/lib/data/arch-graph';
 
@@ -536,6 +536,12 @@ export default function ArchitectureGraph() {
                 <p className="text-[11px] leading-relaxed text-muted-foreground">{TICKET_INTRO}</p>
               </div>
 
+              {/* The marker rule, declared where the figures are shown — the mode badge
+                  above labels the file, this labels each figure. */}
+              <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground">
+                <TagText text={TICKET_MARKER_RULE} />
+              </p>
+
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
                 <div className="flex shrink-0 items-center gap-2">
                   <button
@@ -583,7 +589,7 @@ export default function ArchitectureGraph() {
                         Step {step + 1} of {TICKET_PATH.length} — {stepNode?.name}
                       </p>
                       <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/90">
-                        {TICKET_PATH[step]?.caption}
+                        <TagText text={TICKET_PATH[step]?.caption ?? ''} />
                       </p>
                     </motion.div>
                   </AnimatePresence>

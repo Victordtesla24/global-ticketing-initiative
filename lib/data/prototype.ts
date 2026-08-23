@@ -120,6 +120,21 @@ export const MODE_LABEL: Record<DatasetMode, string> = {
   SYNTHETIC: 'SYNTHETIC SAMPLE',
 };
 
+/**
+ * The marker rule this page declares in its lede, in the same form every other
+ * route declares the provenance set. REAL EXTRACT and SYNTHETIC SAMPLE remain
+ * what they always were — labels on a *file* — and they are not markers on a
+ * figure. Every monetary figure the walkthrough renders now carries one.
+ */
+export const MARKER_RULE = {
+  illustrative:
+    'figures in this walkthrough are computed from the downloadable sample files; they are illustrations of the pipeline, not forecasts or commitments.',
+  official:
+    'an official statistic or a statutory filed record, carried with its publisher, reference period and access date.',
+  inheritance:
+    'Where a marker sits in a column header, every cell of that column inherits it; a cell that leaves the column’s basis carries its own.',
+} as const;
+
 /* ------------------------------------------------------------------------- */
 /* AUSTRALIA END-TO-END WALKTHROUGH                                          */
 /* Five steps, each one run on the actual rows of the files listed above.    */
@@ -155,6 +170,13 @@ export interface WalkStep {
   what: string;
   sources: StepSource[];
   tables: StepTable[];
+  /**
+   * Column header for the control-total ledger below. The ledger restates the
+   * mart's own figures, and a restatement needs its own marker — so the marker
+   * sits here, in a real column header the cells inherit, never in an adjacent
+   * cell.
+   */
+  checksHeader?: { label: string; result: string; variance: string };
   /** Arithmetic checks, shown as a control-total ledger (Step 4). */
   checks?: { label: string; result: string; variance: string }[];
   /** The three certified dashboards (Step 5). */
@@ -199,7 +221,7 @@ export const WALKTHROUGH: WalkStep[] = [
       {
         caption: 'Rows copied verbatim from australian-bureau-of-statistics-abs.csv',
         mode: 'REAL',
-        headers: ['Metric', 'Value', 'Unit', 'Reference period', 'Geography'],
+        headers: ['Metric', 'Value [OFFICIAL]', 'Unit', 'Reference period', 'Geography'],
         rows: [
           ['Marathi used at home', '22,263', 'persons', 'Census 2021', 'Australia (national)'],
           ['Marathi used at home', '9,753', 'persons', 'Census 2021', 'New South Wales'],
@@ -215,7 +237,7 @@ export const WALKTHROUGH: WalkStep[] = [
       {
         caption: 'Cross-check on a second publisher — un-desa-migrant-stock.csv',
         mode: 'REAL',
-        headers: ['Destination', 'Origin', 'Year', 'Migrant stock'],
+        headers: ['Destination', 'Origin', 'Year', 'Migrant stock [OFFICIAL]'],
         rows: [
           ['Australia', 'India', '2010', '326,913'],
           ['Australia', 'India', '2015', '448,940'],
@@ -231,7 +253,7 @@ export const WALKTHROUGH: WalkStep[] = [
     gateG2:
       'Becomes the addressable-population dimension of the demand dashboard: a fixed, reproducible table whose every row carries a publisher URL and an access date.',
     limit:
-      'A denominator is not demand. 22,263 Marathi speakers and a 64% national attendance rate bound the population; neither evidences willingness to buy a ticket at any price. That evidence is the G1 primary demand study, and it does not exist yet.',
+      'A denominator is not demand. 22,263 [OFFICIAL] Marathi speakers and a 64% [OFFICIAL] national attendance rate bound the population; neither evidences willingness to buy a ticket at any price. That evidence is the G1 primary demand study, and it does not exist yet.',
   },
   {
     n: 2,
@@ -282,7 +304,7 @@ export const WALKTHROUGH: WalkStep[] = [
       {
         caption: 'All eight rows of audience-republic.csv — the stand-in inventory',
         mode: 'SYNTHETIC',
-        headers: ['Campaign', 'Market', 'Channel', 'Audience', 'Open %', 'Click %', 'Tickets', 'Revenue A$'],
+        headers: ['Campaign', 'Market', 'Channel', 'Audience', 'Open %', 'Click %', 'Tickets', 'Revenue A$ [ILLUSTRATIVE]'],
         rows: [
           ['mock-ar-c001 · Katkon Trikon presale', 'Melbourne, AU', 'Email', '2,450', '38.2', '6.1', '112', '6,160'],
           ['mock-ar-c002 · Katkon Trikon presale', 'Melbourne, AU', 'SMS', '610', '94.5', '19.8', '54', '2,970'],
@@ -413,7 +435,7 @@ export const WALKTHROUGH: WalkStep[] = [
       {
         caption: 'AU finance mart — Illustrative, prototype sample data only',
         mode: 'SYNTHETIC',
-        headers: ['Line', 'Basis', 'Tickets', 'A$'],
+        headers: ['Line', 'Basis', 'Tickets', 'A$ [ILLUSTRATIVE]'],
         rows: [
           ['Melbourne campaigns', 'rows c001, c002, c005, c007', '300', '16,500.00'],
           ['Sydney campaigns', 'rows c003, c004, c006', '269', '14,795.00'],
@@ -427,6 +449,11 @@ export const WALKTHROUGH: WalkStep[] = [
           'Illustrative — prototype sample data only. These are not Ticketalay revenues, not a forecast, and not a basis for any return figure. Download both files and re-add every line.',
       },
     ],
+    checksHeader: {
+      label: 'Control',
+      result: 'Check — every figure below [ILLUSTRATIVE]',
+      variance: 'Variance',
+    },
     checks: [
       {
         label: 'Row completeness',
@@ -459,7 +486,7 @@ export const WALKTHROUGH: WalkStep[] = [
     gateG2:
       'This is the “reconciliation above an agreed threshold” that gate TG-2 asks for — demonstrated at zero variance, on downloadable files, with the arithmetic shown rather than asserted.',
     limit:
-      'Illustrative — prototype sample data only. The purpose is to prove the reconciliation mechanism (control totals, zero variance, nothing unallocated), not to state a revenue. The flat A$55.00 average across all seven rows is itself the tell: a generated sample, not a real price distribution. Every real revenue variable — take rate, average transaction value, event volume, repeat rate — remains unknown until G1 delivers it.',
+      'Illustrative — prototype sample data only. The purpose is to prove the reconciliation mechanism (control totals, zero variance, nothing unallocated), not to state a revenue. The flat A$55.00 [ILLUSTRATIVE] average across all seven rows is itself the tell: a generated sample, not a real price distribution. Every real revenue variable — take rate, average transaction value, event volume, repeat rate — remains unknown until G1 delivers it.',
   },
   {
     n: 5,
@@ -495,10 +522,10 @@ export const WALKTHROUGH: WalkStep[] = [
         name: 'Demand & Diaspora — Australia',
         mode: 'REAL',
         kpis: [
-          { metric: 'Marathi spoken at home, Australia', value: '22,263', basis: 'Census 2021' },
-          { metric: 'Marathi spoken at home, NSW / VIC', value: '9,753 / 7,170', basis: 'Census 2021' },
-          { metric: 'Adult cultural attendance', value: '64%', basis: 'ABS 2021-22' },
-          { metric: 'Theatre attendance', value: '8.0%', basis: 'ABS 2021-22' },
+          { metric: 'Marathi spoken at home, Australia', value: '22,263 [OFFICIAL]', basis: 'Census 2021 · abs.gov.au, accessed 2026-08-23' },
+          { metric: 'Marathi spoken at home, NSW / VIC', value: '9,753 / 7,170 [OFFICIAL]', basis: 'Census 2021 · abs.gov.au, accessed 2026-08-23' },
+          { metric: 'Adult cultural attendance', value: '64% [OFFICIAL]', basis: 'ABS 2021-22 · abs.gov.au, accessed 2026-08-23' },
+          { metric: 'Theatre attendance', value: '8.0% [OFFICIAL]', basis: 'ABS 2021-22 · abs.gov.au, accessed 2026-08-23' },
         ],
         source: [{ slug: 'australian-bureau-of-statistics-abs', label: 'australian-bureau-of-statistics-abs' }],
         certifies:
@@ -508,10 +535,10 @@ export const WALKTHROUGH: WalkStep[] = [
         name: 'Campaign & Channel — Australia',
         mode: 'SYNTHETIC',
         kpis: [
-          { metric: 'Addressable records reached', value: '30,270', basis: '7 AU campaign rows' },
-          { metric: 'Attributed tickets', value: '569', basis: 'sum of tickets_sold_attributed' },
-          { metric: 'Best channel by click rate', value: 'SMS — 22.4%', basis: 'row c007, VIP past buyers' },
-          { metric: 'Email open-rate range', value: '29.7% – 38.2%', basis: 'rows c001, c003, c006' },
+          { metric: 'Addressable records reached', value: '30,270 [ILLUSTRATIVE]', basis: '7 AU campaign rows' },
+          { metric: 'Attributed tickets', value: '569 [ILLUSTRATIVE]', basis: 'sum of tickets_sold_attributed' },
+          { metric: 'Best channel by click rate', value: 'SMS — 22.4% [ILLUSTRATIVE]', basis: 'row c007, VIP past buyers' },
+          { metric: 'Email open-rate range', value: '29.7% – 38.2% [ILLUSTRATIVE]', basis: 'rows c001, c003, c006' },
         ],
         source: [{ slug: 'audience-republic', label: 'audience-republic' }],
         certifies:
@@ -521,10 +548,10 @@ export const WALKTHROUGH: WalkStep[] = [
         name: 'Finance & Reconciliation — Australia',
         mode: 'SYNTHETIC',
         kpis: [
-          { metric: 'Gross attributed (GST-inclusive)', value: 'A$31,295.00', basis: '7 AU rows' },
-          { metric: 'GST at 10.0%', value: 'A$2,845.00', basis: 'Avalara AU rows' },
-          { metric: 'Net of GST', value: 'A$28,450.00', basis: 'gross − GST' },
-          { metric: 'Reconciliation variance', value: 'A$0.00', basis: 'control totals, Step 04' },
+          { metric: 'Gross attributed (GST-inclusive)', value: 'A$31,295.00 [ILLUSTRATIVE]', basis: '7 AU rows' },
+          { metric: 'GST at 10.0%', value: 'A$2,845.00 [ILLUSTRATIVE]', basis: 'Avalara AU rows' },
+          { metric: 'Net of GST', value: 'A$28,450.00 [ILLUSTRATIVE]', basis: 'gross − GST' },
+          { metric: 'Reconciliation variance', value: 'A$0.00 [ILLUSTRATIVE]', basis: 'control totals, Step 04' },
         ],
         source: [
           { slug: 'audience-republic', label: 'audience-republic' },
