@@ -82,7 +82,7 @@ export const VENDOR_PRICES = [
     deleted: '"annual access 7,750–15,500" — matches no published tier (deleted)',
     published: 'Starter US$199/mo billed annually = US$2,388/yr; Personal US$649/mo = US$7,788/yr; Professional quote-only [LIST]',
     disposition:
-      'Starter conditionally in the G2 full tranche at A$3,342.20/yr [DERIVED] — purchase order only against a written gap-list of statistics the free sources failed to supply. Aggregator: every figure must be re-cited to its primary source.',
+      'Starter conditionally in the G2 full tranche at A$3,342.20/yr [DERIVED] — purchase order only against a written gap-list of statistics the free sources failed to supply. Aggregator: every figure must be re-cited to its primary source. The mandate’s ground-truth baseline GT D5-[16] (“Statista Personal: A$922/yr”) is NOT carried: verify/statista-reaudit.md grades it NOT FOUND — no tier at or near A$922/yr appears on the published page in any currency — so the vendor-published tiers are the defensible figures and the GT entry is recorded as unverifiable against its primary source. Unlike the IBISWorld row above, the two are not competing vendor-published prices, so no dual-baseline restatement is possible.',
   },
   {
     provider: 'Semrush',

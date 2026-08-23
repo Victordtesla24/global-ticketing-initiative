@@ -271,6 +271,9 @@ export default function DataEcosystemContent() {
         <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
           <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file (GT-08). Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
         </p>
+        <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually (US$2,388/yr [LIST]). The mandate's ground-truth baseline for Statista — GT D5-[16], “Statista Personal: A$922/yr” — is NOT carried: verify/statista-reaudit.md grades it NOT FOUND, no tier at or near A$922/yr appearing on the published page in any currency, the cheapest paid tier being Starter at US$199/mo. Unlike the IBISWorld variance, the two are not competing vendor-published prices, so no dual-baseline restatement is possible — the published figure stands and the GT entry is recorded as unverifiable against its primary source." />
+        </p>
       </Section>
 
       <Section eyebrow="Historical Depth" title="How Many Years of Each Data Type to Buy — and What an Extra Year Is Worth">
