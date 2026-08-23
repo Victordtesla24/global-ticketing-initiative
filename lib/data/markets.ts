@@ -217,7 +217,7 @@ export const MARKETS: Market[] = [
     name: 'United Kingdom',
     shortName: 'UK',
     status: 'Partner-Led Corridor Candidate',
-    removedNote: '17 claims removed from this page by the adversarial audit — see register (markets_uk.json); a further 3 replaced with source-published figures or resolved in place, so 20 of this route’s 30 claims were defective.',
+    removedNote: '17 claims removed from this page by the adversarial audit — see register (markets_uk.json); a further 4 replaced with source-published figures or resolved in place, so 21 of this route’s 30 claims were defective. The “All require UK legal counsel” certainty claim (CL-0550) was re-adjudicated VERIFIED → UNSUPPORTED in fresh pass 9 (F-P9B-B02), bringing the four market pages that carried that sentence to one verdict; the corrected page already published the prudential commitment in its place.',
     heroStat: 'GBP 6.68bn consumer spend on live music (2024) — Trade-body estimate; 90.6% arts engagement in England (2024/25)',
     heroStatSource: 'LIVE, Annual Report 2024 (live-music trade federation) / DCMS Participation Survey 2024/25',
     heroTilesIntro:
@@ -453,7 +453,7 @@ export const MARKETS: Market[] = [
     confidenceTile: {
       label: 'India-born population, by destination (2024)',
       value: 'US 3,165,238',
-      note: 'UN DESA International Migrant Stock 2024 (India as origin). Largest of the four comparator corridors: UK 1,044,779; Canada 1,015,630; Australia 876,074. The comparator figures are UN DESA’s so that all four sit on one basis; they are not per-country ceilings — Australia’s own ABS Estimated Resident Population (30 June 2025) counts 971,020 India-born residents, and the Australia market page uses that national measure.',
+      note: 'UN DESA International Migrant Stock 2024 (India as origin). Largest of the four comparator corridors: UK 1,044,779; Canada 1,015,630; Australia 876,074. The comparator figures are UN DESA’s so that all four sit on one basis; they are not per-country ceilings, and two of them have a national counterpart on a different basis. Australia’s own ABS Estimated Resident Population (30 June 2025) counts 971,020 India-born residents, and the Australia market page uses that national measure. Canada’s own 2021 Census counts 898,045 India-born immigrants (permanent residents, 25% sample, reference date 11 May 2021) — 117,585 below the UN DESA mid-2024 estimate above — and the Canada market page uses that national measure. Different collector, different measure, different reference date in both cases; neither national figure replaces the comparator, and neither is wrong.',
     },
     confidenceSources: ['UN DESA, International Migrant Stock 2024, destination × origin matrix — un.org. Accessed 2026-08-23.'],
   },
@@ -462,7 +462,7 @@ export const MARKETS: Market[] = [
     name: 'Canada',
     shortName: 'CA',
     status: 'Research-Only — Least Evidenced',
-    removedNote: '8 claims removed from this page by the adversarial audit — see register (markets_canada.json).',
+    removedNote: '8 claims removed from this page by the adversarial audit — see register (markets_canada.json); a further 1 replaced in place, so 9 of this route’s 22 claims were defective. The “All require Canadian legal counsel” certainty claim (CL-0604) was re-adjudicated VERIFIED → UNSUPPORTED in fresh pass 9 (F-P9B-B02), bringing the four market pages that carried that sentence to one verdict; the corrected page already published the prudential commitment in its place.',
     heroStat: 'No Canada-specific diaspora, cultural-attendance or ticket-market metric was supplied [UNKNOWN]',
     heroStatSource: 'Gap admission — StatCan national aggregates located by the audit are shown below',
     heroTiles: [
@@ -474,7 +474,7 @@ export const MARKETS: Market[] = [
       {
         label: 'India-born population of Canada, 2021 Census',
         value: '898,045',
-        note: 'Statistics Canada. National figure only: no city breakdown, no Marathi split, and no attendance or spend data attached to it.',
+        note: 'Statistics Canada, 2021 Census (25% sample; reference date 11 May 2021), counting India-born immigrants — permanent residents. National figure only: no city breakdown, no Marathi split, and no attendance or spend data attached to it. UN DESA’s International Migrant Stock 2024 puts India-born migrants in Canada at 1,015,630 at mid-2024, 117,585 higher: different collector, different measure, different reference date — the comparable cross-market denominator, not a correction of this figure.',
       },
     ],
     hotspots: [
@@ -482,7 +482,7 @@ export const MARKETS: Market[] = [
       { city: 'Vancouver', lat: 49.28, lon: -123.12 },
     ],
     evidence:
-      'No Canada-specific diaspora, cultural-attendance or official ticket-market metric was successfully supplied in the research behind this proposal, so the Canadian opportunity is unverified and must be modelled from Statistics Canada data, local event inventory and promoter evidence. That gap admission is accurate. Statistics Canada does publish performing-arts attendance data and immigration statistics — not-for-profit performing-arts attendance was 10.37 million nationally in 2024, and the India-born population was 898,045 at the 2021 Census — but neither carries the diaspora, city-level or ticket-market breakdown this page would need. Declining to model an opportunity from these inputs is the correct call, not a research failure.',
+      'No Canada-specific diaspora, cultural-attendance or official ticket-market metric was successfully supplied in the research behind this proposal, so the Canadian opportunity is unverified and must be modelled from Statistics Canada data, local event inventory and promoter evidence. That gap admission is accurate. Statistics Canada does publish performing-arts attendance data and immigration statistics — not-for-profit performing-arts attendance was 10.37 million nationally in 2024, and the India-born population was 898,045 at the 2021 Census — but neither carries the diaspora, city-level or ticket-market breakdown this page would need. Declining to model an opportunity from these inputs is the correct call, not a research failure. The two India-born counts this proposal publishes for Canada are reconciled, not competing: Statistics Canada’s 898,045 counts India-born immigrants (permanent residents) at the 2021 Census, 25% sample data, reference date 11 May 2021, while the cross-market comparison strip on /market-opportunity uses UN DESA’s International Migrant Stock 2024 estimate of 1,015,630 India-born migrants in Canada at mid-2024 — 117,585 higher (+13.1% [DERIVED]: 1,015,630 − 898,045). Different collector, different measure, different reference date — the same reconciliation this proposal applies to the Australian pair (ABS ERP 971,020 at 30 June 2025 against UN DESA’s 876,074 at mid-2024). Both figures are verified (verify/eu-ca-stats.md §3; verify/un-desa.md); the UN DESA figure is the comparable cross-market denominator, the StatCan figure is Canada’s own national measure, and neither replaces the other.',
     evidenceSources: [
       'Statistics Canada, Table 21-10-0186-01, “Performing arts, performances and attendance, not-for-profit” (2014–2024) — statcan.gc.ca',
       'Statistics Canada, 2021 Census of Population, Focus on Geography Series — India-born population — statcan.gc.ca. Both accessed 2026-08-23.',
@@ -549,7 +549,7 @@ export const MARKETS: Market[] = [
     name: 'European Union',
     shortName: 'EU',
     status: 'Country Selection — Not One Market',
-    removedNote: '10 claims removed from this page by the adversarial audit — see register (markets_eu.json).',
+    removedNote: '10 claims removed from this page by the adversarial audit — see register (markets_eu.json); a further 1 replaced in place, so 11 of this route’s 22 claims were defective. The “All require local legal counsel per country” certainty claim (CL-0626) was re-adjudicated VERIFIED → UNSUPPORTED in fresh pass 9 (F-P9B-B02), bringing the four market pages that carried that sentence to one verdict; the corrected page already published the prudential commitment in its place.',
     heroStat: '2,021,502 India-born residents, Europe region (2024) — a region proxy that includes the UK and non-EU states',
     heroStatSource: 'UN DESA, International Migrant Stock 2024; Eurostat ilc_scp03',
     heroTilesIntro:

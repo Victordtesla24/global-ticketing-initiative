@@ -72,8 +72,26 @@ export default function DataEcosystemContent() {
         Sixty data providers catalogued across six categories — from Ticketalay's own first-party database (the
         non-negotiable foundation) to premium market intelligence — the raw material for audience intelligence,
         campaign targeting and revenue measurement. The catalogue is an inventory of candidate sources, not evidence
-        of demand. Every provider carries its trust tier on the mandate ladder (official statistic &gt; audited
-        filing &gt; licensed panel &gt; aggregator &gt; modelled estimate) and a corrected cost cell; every monetary
+        of demand. Every provider carries its trust tier and a corrected cost cell. The mandate ladder&apos;s five
+        ranked rungs are official statistic &gt; audited filing &gt; licensed panel &gt; aggregator &gt; modelled
+        estimate; five further tiers appear in the catalogue below, because the sixty shipped sources do not all fall
+        on those rungs, and each is ranked against them explicitly:{' '}
+        <span className="font-semibold text-foreground/80">Public filing — not captured</span> (a public filing exists
+        but this audit never retrieved it — row 32, StubHub/viagogo, whose investor site returned 403; ranks below
+        audited filing and may never be cited as audited content),{' '}
+        <span className="font-semibold text-foreground/80">Primary record — conditional</span> (Ticketalay&apos;s own
+        first-party transaction data: primary if and only if ownership, access rights and reconciliation are
+        demonstrated — U-07),{' '}
+        <span className="font-semibold text-foreground/80">Platform record</span> (a platform&apos;s own operational
+        record of its own activity — primary for that platform and evidence of nothing beyond it; ranks between
+        licensed panel and aggregator), and two sub-classes that rank with aggregator,{' '}
+        <span className="font-semibold text-foreground/80">Aggregator (channel)</span> (a distribution channel whose
+        trust tier inherits from each listing&apos;s original source and which confers none of its own) and{' '}
+        <span className="font-semibold text-foreground/80">Aggregator (tool)</span> (an operational utility over
+        compiled or open data — fit for a task, never a source of demand evidence). Ten tiers across the sixty rows:
+        official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
+        platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
+        estimate 6. Every monetary
         figure that survives carries a provenance tag — <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" />{' '}
         <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — with one declared labelled exception: a
         third party&apos;s audited-filing figure (Live Nation&apos;s fee-bearing GTV, below) is none of the six
@@ -272,7 +290,7 @@ export default function DataEcosystemContent() {
           <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file (GT-08). Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually (US$2,388/yr [LIST]). The mandate's ground-truth baseline for Statista — GT D5-[16], “Statista Personal: A$922/yr” — is NOT carried: verify/statista-reaudit.md grades it NOT FOUND, no tier at or near A$922/yr appearing on the published page in any currency, the cheapest paid tier being Starter at US$199/mo. Unlike the IBISWorld variance, the two are not competing vendor-published prices, so no dual-baseline restatement is possible — the published figure stands and the GT entry is recorded as unverifiable against its primary source." />
+          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is this audit's arithmetic, not a vendor-published price). The mandate's ground-truth baseline for Statista — GT D5-[16], “Statista Personal: A$922/yr” — is NOT carried: verify/statista-reaudit.md grades it NOT FOUND, no tier at or near A$922/yr appearing on the published page in any currency, the cheapest paid tier being Starter at US$199/mo. Unlike the IBISWorld variance, the two are not competing vendor-published prices, so no dual-baseline restatement is possible — the published figure stands and the GT entry is recorded as unverifiable against its primary source." />
         </p>
       </Section>
 

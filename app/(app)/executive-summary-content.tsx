@@ -56,7 +56,7 @@ const COMMITMENTS = [
     gate: 'Gate G1: discovery',
     detail:
       'Building on a confirmed foundation: a programme of promoter interviews (Australian Marathi drama and cultural event producers — the count is withheld site-wide: the original site printed two conflicting figures for the same step with no ledger-recorded correct value (T0-061), and setting it belongs to the Research lead under the open item below), first-party data audit, technology stack assessment, and baseline unit economics (actual GTV, take rate, refund rate, repeat purchase rate). Study fee: [UNKNOWN] — not priceable without a brief; the brief is written and quoted during G0. Per-agreement legal review: [UNKNOWN] per the G0 legal quote. Outreach tooling: A$0 [LIST] (Apollo.io free tier, 900 credits/yr). Consultant labour: 6.0 days [ASSUMPTION] = A$2,880.00 [DERIVED] (3.47x the anchor), conditional as above.',
-    provenance: 'Commitment scope adjudicated VERIFIED (CL-0015). Costs: financial_rebuild.md §E.4 Gate G1; Apollo.io free tier: apollo.io/pricing (accessed 2026-08-23).',
+    provenance: 'Interview count deleted; the commitment scope survives as conditional plan content (CL-0015, re-adjudicated VERIFIED → INTERNALLY-INCONSISTENT in fresh pass 8, F-P8B-A04 — the original site printed two conflicting counts for the same step, T0-061, and no correct value is recorded). Costs: financial_rebuild.md §E.4 Gate G1; Apollo.io free tier: apollo.io/pricing (accessed 2026-08-23).',
   },
   {
     order: 'Third',
@@ -177,8 +177,8 @@ export default function ExecutiveSummaryContent() {
         <AlertTriangle className="h-4 w-4 !text-red-400" />
         <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
         <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          18 claims removed from this page by the adversarial audit — see register (a further 2 resolved or
-          restructured in place). Corrections per the adjudicated ledger (workflow/register_by_route/home.json,
+          18 claims removed from this page by the adversarial audit — see register (a further 3 resolved or
+          restructured in place, so 21 of this route&apos;s 28 claims were defective). Corrections per the adjudicated ledger (workflow/register_by_route/home.json,
           CL-0001–CL-0028), the Ground-Truth Register (GT-01–GT-13) and artifacts/financial_rebuild.md. Every
           surviving monetary figure carries exactly one of <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" />{' '}
           <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />. Run date 2026-08-23. All figures AUD.

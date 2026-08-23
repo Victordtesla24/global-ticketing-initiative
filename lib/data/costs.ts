@@ -99,19 +99,19 @@ export const VENDOR_PRICES = [
   {
     provider: 'Apollo.io',
     deleted: '"Professional 1,800–3,600/yr" — top ~2.7x the published annual price (3,600 ÷ A$1,326.80 [DERIVED]). The ~2.4x this row previously published was computed against the site\'s retired 1.55 FX assumption (948 × 1.55 ≈ A$1,470), not against the adjacent canonical figure or the one FX rate used sitewide; the Market Opportunity page states that comparison explicitly and both pages now agree.',
-    published: 'Professional US$79/seat/mo billed annually = US$948/yr [LIST] = A$1,326.80 [DERIVED]: 948 ÷ 0.7145, the one FX rate used sitewide — the same treatment the Market Opportunity page gives this vendor; Free tier 900 credits/seat/yr at US$0 [LIST]',
+    published: 'Professional US$79/seat/mo billed annually [LIST] (= US$948/yr [DERIVED]: 79 × 12) = A$1,326.80 [DERIVED]: 948 ÷ 0.7145, the one FX rate used sitewide — the same treatment the Market Opportunity page gives this vendor; Free tier 900 credits/seat/yr at US$0 [LIST]',
     disposition: 'Free tier recommended (A$0 [LIST], the vendor’s published free tier) — 900 credits cover the pilot outreach universe. Step up only when free credits are demonstrably exhausted.',
   },
   {
     provider: 'People Data Labs',
     deleted: '"(trial) 1,550–4,650" — no paid trial band exists at any price',
-    published: 'Free tier US$0/mo (100 records); Pro US$98/mo (US$940/yr annual); then custom [LIST]',
+    published: 'Free tier US$0/mo (100 records) [LIST]; Pro US$98/mo or US$940/yr on annual billing [LIST] — both published units, the yearly figure the vendor\u2019s own; then custom [UNKNOWN]',
     disposition: 'Deferred — Apollo Free covers the outreach need.',
   },
   {
     provider: 'OpenCage',
     deleted: '"Medium plan 930–2,800" — Medium is US$500/mo; the claimed range matches no Medium price',
-    published: 'Medium US$6,000/yr; X-Small US$50/mo = US$600/yr [LIST]',
+    published: 'X-Small US$50/mo [LIST] (= US$600/yr [DERIVED]: 50 × 12); Medium US$500/mo [LIST] (= US$6,000/yr [DERIVED]: 500 × 12)',
     disposition: 'Not required — Google’s free cap covers pilot geocoding volume.',
   },
   {
