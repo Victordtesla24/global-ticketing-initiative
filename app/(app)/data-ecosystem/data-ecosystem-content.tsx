@@ -72,13 +72,13 @@ export default function DataEcosystemContent() {
         Sixty data providers catalogued across six categories — from Ticketalay's own first-party database (the
         non-negotiable foundation) to premium market intelligence — the raw material for audience intelligence,
         campaign targeting and revenue measurement. The catalogue is an inventory of candidate sources, not evidence
-        of demand. Every provider carries its trust tier and a corrected cost cell. The mandate ladder&apos;s five
+        of demand. Every provider carries its trust tier and its cost cell. The trust ladder&apos;s five
         ranked rungs are official statistic &gt; audited filing &gt; licensed panel &gt; aggregator &gt; modelled
-        estimate; five further tiers appear in the catalogue below, because the sixty shipped sources do not all fall
-        on those rungs, and each is ranked against them explicitly:{' '}
+        estimate; five further tiers appear in the catalogue below, because the sixty sources do not all fall on those
+        rungs, and each is ranked against them explicitly:{' '}
         <span className="font-semibold text-foreground/80">Public filing — not captured</span> (a public filing exists
-        but this audit never retrieved it — row 32, StubHub/viagogo, whose investor site returned 403; ranks below
-        audited filing and may never be cited as audited content),{' '}
+        but was never retrieved — row 32, StubHub/viagogo, whose investor site returned 403; ranks below audited
+        filing and may never be cited as audited content),{' '}
         <span className="font-semibold text-foreground/80">Primary record — conditional</span> (Ticketalay&apos;s own
         first-party transaction data: primary if and only if ownership, access rights and reconciliation are
         demonstrated — U-07),{' '}
@@ -91,42 +91,33 @@ export default function DataEcosystemContent() {
         compiled or open data — fit for a task, never a source of demand evidence). Ten tiers across the sixty rows:
         official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
-        estimate 6. Every monetary
-        figure that survives carries a provenance tag — <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" />{' '}
-        <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="OFFICIAL" /> <Tag tag="UNKNOWN" /> — and this page now
-        declares no labelled exception of its own. A third party&apos;s audited-filing figure (Live Nation&apos;s
-        fee-bearing GTV, below) is none of the cost-provenance categories — it is neither incurred, listed, quoted,
-        derived nor assumed for this programme — but it is a statutory filed record, so it carries{' '}
-        <Tag tag="OFFICIAL" />: benchmark only, feeding no funded figure, never a cost comparator. Until the closure
-        pass (F-04) it carried the label <span className="font-semibold text-foreground/80">Audited filing</span>{' '}
-        instead — a marker this audit invented for itself and never had authority to mint. The marker records how a
-        figure enters this ledger and does not restate its trust tier: the source stays at{' '}
+        estimate 6. Every monetary figure carries a provenance marker — <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
+        <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="OFFICIAL" /> <Tag tag="UNKNOWN" />{' '}
+        — and this page declares no labelled exception of its own. A third party&apos;s audited-filing figure (Live
+        Nation&apos;s fee-bearing GTV, below) is none of the cost-provenance categories — it is neither incurred,
+        listed, quoted, derived nor assumed for this programme — but it is a statutory filed record, so it carries{' '}
+        <Tag tag="OFFICIAL" />: benchmark only, feeding no funded figure, never a cost comparator. The marker records
+        how a figure enters this programme&apos;s accounts and does not restate its trust tier: the source stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
-        official statistic. Every unpublished price bracket has been deleted, not softened. Filter
-        by category, payment model, indicative cost and recommendation strength.
+        official statistic. No unpublished price bracket appears anywhere below. Filter by category, payment model,
+        indicative cost and recommendation strength.
       </p>
 
-      <Alert className="mt-6 max-w-3xl border-red-500/40 bg-red-500/5">
-        <AlertTriangle className="h-4 w-4 !text-red-400" />
-        <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
-        <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          24 claims removed from this page by the adversarial audit — see register (a further 14 replaced with
-          vendor-published prices, re-sourced or resolved in place). The site-wide estimate tag is abolished. Vendor
-          prices are quoted in the currency the vendor publishes; one FX rate everywhere: RBA, 21 Aug 2026 — USD
-          0.7145 per A$1.
-        </AlertDescription>
-      </Alert>
+      <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        Vendor prices are quoted in the currency the vendor publishes; one FX rate everywhere: RBA, 21 Aug 2026 — USD
+        0.7145 per A$1.
+      </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <StatCard
           label="Providers Catalogued"
           value="60"
-          sub="Across six categories A–F (A: 9, B: 18, C: 12, D: 7, E: 8, F: 6) — recount adjudicated VERIFIED. The original tile's claimed provider-count minimum is deleted: it traces to no located source."
+          sub="Across six categories A–F (A: 9, B: 18, C: 12, D: 7, E: 8, F: 6). No provider-count minimum is claimed: none traces to a located source."
         />
         <StatCard
           label="Free / Public Sources"
           value={`${(PROVIDERS ?? []).filter((p: Provider) => p?.paid === 'Free').length}`}
-          sub="Government statistics and open APIs — acquire first, at zero licence cost. Independently recounted by the audit."
+          sub="Government statistics and open APIs — acquire first, at zero licence cost."
         />
         <GlassCard className="flex flex-col gap-2">
           <p className="t-eyebrow">Day-1 Data Spend — Rebuilt</p>
@@ -134,14 +125,14 @@ export default function DataEcosystemContent() {
             A$6,036.74 <Tag tag="DERIVED" />
           </p>
           <p className="text-sm text-muted-foreground leading-snug">
-            <TagText text="Full day-1 configuration = 7.27× the AUD 830.00 [ACTUAL] programme-spend anchor (GT-13); floor alternative A$2,500.00 [LIST] (one IBISWorld AU report) = 3.01×. Replaces the deleted Year-1 budget tile: its estimate-tagged headline figure and its premature-contracts counterfactual were both unsourced. Line-by-line build-up below." />
+            <TagText text="Full day-1 configuration = 7.27× the AUD 830.00 [ACTUAL] programme-spend anchor; floor alternative A$2,500.00 [LIST] (one IBISWorld AU report) = 3.01×. Line-by-line build-up below." />
           </p>
         </GlassCard>
       </div>
 
-      <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue — Corrected" className="mt-12">
+      <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue" className="mt-12">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="What the audit found across the shipped catalogue: 15 of the 60 providers shipped with no URL at all, and of every paid price the original page attached to a provider, exactly one — Apollo.io — reconciled to a vendor-published price (and only via the proposal's own FX conversion). Every estimate-tagged price bracket with no published price behind it is deleted below and stands as [UNKNOWN]; every price a vendor actually publishes is quoted verbatim in the vendor's own currency and tagged [LIST]. An aggregator may point to a primary source but may never be one; a modelled estimate may never feed a headline or a funded figure." />
+          <TagText text="15 of the 60 catalogued providers carry no URL. Where no published price exists behind a provider, its cost stands as [UNKNOWN]; every price a vendor actually publishes is quoted verbatim in the vendor's own currency and tagged [LIST]. An aggregator may point to a primary source but may never be one; a modelled estimate may never feed a headline or a funded figure." />
         </p>
         <GlassCard className="mb-4">
           <div className="flex flex-wrap items-center gap-2">
@@ -278,9 +269,9 @@ export default function DataEcosystemContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="Rebuilt Budget" title="Rebuilt Year-1 Data Budget — the Day-1 Bill of Materials">
+      <Section eyebrow="Data Budget" title="Year-1 Data Budget — the Day-1 Bill of Materials">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="This table replaces the deleted Year-1 budget tile: neither its estimate-tagged headline figure nor its premature-contracts counterfactual traced to any source. Every line below is a vendor-published price or A$0, expressed as a multiple of the AUD 830.00 [ACTUAL] programme-spend anchor (GT-13, receipted actuals). Free official and intergovernmental sources are tagged [LIST] throughout this site, never [ACTUAL]: the footer defines [ACTUAL] as incurred and receipted, and the entire receipted record is A$350.00 + A$480.00 = A$830.00 (GT-11/GT-12/GT-13). A free-access status is the source's own published price of zero, not a spend line — the Investment page already renders these as A$0 [LIST], and the provider catalogue now matches it. The return on this spend is decision information for gate G1, not revenue — an ROI is not computable while partnership terms (U-02), contracted inventory (U-03) and primary demand evidence (U-04) are all unresolved." />
+          <TagText text="Every line below is a vendor-published price or A$0, expressed as a multiple of the AUD 830.00 [ACTUAL] programme-spend anchor. Free official and intergovernmental sources are tagged [LIST] throughout this site, never [ACTUAL]: [ACTUAL] means incurred and receipted, and the entire receipted record is A$350.00 + A$480.00 = A$830.00. A free-access status is the source's own published price of zero, not a spend line. The return on this spend is decision information for gate G1, not revenue — an ROI is not computable while partnership terms (U-02), contracted inventory (U-03) and primary demand evidence (U-04) are all unresolved." />
         </p>
         <DataTable
           headers={['Line', 'Figure', 'Multiple of A$830 anchor']}
@@ -291,10 +282,10 @@ export default function DataEcosystemContent() {
           ])}
         />
         <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file (GT-08). Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
+          <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is this audit's arithmetic, not a vendor-published price). For the Personal tier the catalogue row above carries two figures side by side: the mandate's ground-truth register records A$922/yr [LIST] for Statista Personal (GT D5-[16]), and the vendor's published page shows that same tier at US$649/mo billed annually [LIST]. Both stand as published and neither is graded here — the register is the operative baseline, its D5 source line sits in the corpus that is not on this machine, and reconciling the two is an open item under U-01, owned by the programme sponsor. Nothing funded rests on it: P2 buys Starter, not Personal. (Closure pass, F-03: this page previously recorded the GT entry as “NOT carried … unverifiable against its primary source”. No live page adjudicates a ground-truth entry.)" />
+          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is an annualisation, not a vendor-published price). For the Personal tier the catalogue row above carries two published figures side by side, A$922/yr [LIST] and US$649/mo billed annually [LIST]; reconciling them is an open item under U-01, owned by the programme sponsor. Nothing funded rests on it: P2 buys Starter, not Personal." />
         </p>
       </Section>
 
@@ -314,15 +305,12 @@ export default function DataEcosystemContent() {
           ])}
         />
         <p className="mt-3 max-w-4xl text-[11px] leading-relaxed text-muted-foreground/60">
-          financial_rebuild.md §A.2 (historical-depth table, LQ-03 — &quot;scored NONE on all 13 routes&quot; in the
-          prior review, rebuilt there and carried onto this page). Cadence sources, all accessed 2026-08-23: ABS 2026
-          Census topics and data release plan (abs.gov.au — first release June 2027, LANP/BPLP/ANCP first-release
-          items; verify/abs-census-diaspora-reaudit.md §4); ABS Cultural and creative activities 2021-22 header
-          &quot;Next release Unknown&quot; (verify/abs-attendance.md); Eurostat ilc_scp03 — EU-SILC ~6-yearly module,
-          2022 latest, next planned update October 2029 (verify/eu-ca-stats.md); NEA SPPA 2022 (financial_rebuild.md
-          §A.1.1 F9); StatCan 21-10-0186-01 biennial 2014–2024 (verify/eu-ca-stats.md); Apple lookup API release date
-          (verify/entity-reality-reaudit.md §4). Depth rows are planning assumptions until the Data lead signs them at
-          gate G1; their cost cells stand on the cited [LIST]/[DERIVED] evidence and need no such confirmation.
+Cadence sources, all accessed 2026-08-23: ABS 2026 Census topics and data release plan (abs.gov.au — first
+          release June 2027, with LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22
+          header &quot;Next release Unknown&quot;; Eurostat ilc_scp03 — EU-SILC ~6-yearly module, 2022 latest, next
+          planned update October 2029; NEA SPPA 2022; StatCan 21-10-0186-01, biennial 2014–2024; Apple lookup API
+          release date. Depth rows are planning assumptions until the Data lead signs them at gate G1; their cost
+          cells stand on the cited [LIST]/[DERIVED] evidence and need no such confirmation.
         </p>
       </Section>
 
@@ -344,9 +332,9 @@ export default function DataEcosystemContent() {
         </div>
       </Section>
 
-      <Section eyebrow="What the Data Buys" title="What the Data Buys — Corrected">
+      <Section eyebrow="What the Data Buys" title="What the Data Buys">
         <p className="mb-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="The original page closed with a quantified investment-versus-value chart and six benefit tiles. The chart is deleted entirely: every value bar was a self-described research benchmark with no primary source behind it. Four of the six benefit quantifications — reconciliation recovery as a share of GTV, campaign-conversion uplift, avoided market-entry spend, and sell-through uplift — are deleted for the same reason: each carried the abolished estimate tag and a basis line that named no identifiable source. The take-rate tile is deleted because the same programme carried two contradictory base-GTV values for one metric, and revenue on this programme is not computable while every input — take rate, ATV, event volume, repeat rate, partnership share — is [UNKNOWN]. What honestly survives:" />
+          <TagText text="No quantified investment-versus-value figure is published: no primary source supports a reconciliation-recovery share of GTV, a campaign-conversion uplift, an avoided market-entry spend or a sell-through uplift, and revenue on this programme is not computable while every input — take rate, ATV, event volume, repeat rate, partnership share — is [UNKNOWN]. What the data does buy, on evidence:" />
         </p>
         <div className="grid gap-4 md:grid-cols-2">
           {(INSIGHTS_KEPT ?? []).map((ins: any) => (

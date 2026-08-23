@@ -8,7 +8,7 @@ import { TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   RISKS, riskColour, Risk,
-  RISK_LEDE, RISK_AUDIT_NOTE, RISK_LANDSCAPE, RISK_REGISTER_PROVENANCE,
+  RISK_LEDE, RISK_BASIS_NOTE, RISK_LANDSCAPE, RISK_REGISTER_PROVENANCE,
   REGISTRY_CHECKS, TOP5_INTRO, TOP5_MITIGATIONS, RISK_OPEN_ITEM,
   RISK_BLOCKING_UNKNOWNS, FOUNDATION_STATEMENT, FOUNDATION_PROVENANCE,
 } from '@/lib/data/risks';
@@ -44,7 +44,7 @@ export default function RiskContent() {
         <p className="max-w-3xl text-muted-foreground leading-relaxed mb-6">{RISK_LEDE}</p>
 
         <p className="mb-8 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">
-          {RISK_AUDIT_NOTE?.removed} {RISK_AUDIT_NOTE?.detail}
+          {RISK_BASIS_NOTE}
         </p>
 
         <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -202,7 +202,7 @@ export default function RiskContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="Audit Additions" title={REGISTRY_CHECKS?.title ?? ''}>
+      <Section eyebrow="Registry Findings" title={REGISTRY_CHECKS?.title ?? ''}>
         <div className="space-y-4">
           {(REGISTRY_CHECKS?.rows ?? []).map((row: any, i: number) => (
             <GlassCard key={i}>
@@ -235,11 +235,10 @@ export default function RiskContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="Unresolved Register" title="Blocking Unknowns (U-02 – U-07)">
+      <Section eyebrow="Open Items" title="Blocking Unknowns (U-02 – U-07)">
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
           Every item below gates the programme, none is priced or resolved, and each names its owner. They are
-          the audit&apos;s unresolved register (U-02–U-07), carried on this page because they are the substance
-          behind the register&apos;s highest scores.
+          carried on this page because they are the substance behind the register&apos;s highest scores.
         </p>
         <div className="space-y-4">
           {(RISK_BLOCKING_UNKNOWNS ?? []).map((u: any, i: number) => (

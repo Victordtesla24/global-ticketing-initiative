@@ -7,7 +7,7 @@ import { TagText } from '@/components/proposal/tag';
 import { Timeline } from '@/components/proposal/timeline';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
-  RECS_LEDE, RECS_AUDIT_NOTE, EXECUTION_INTRO, PRIORITY_RECOMMENDATIONS, EXECUTION_PROVENANCE,
+  RECS_LEDE, EXECUTION_INTRO, PRIORITY_RECOMMENDATIONS, EXECUTION_PROVENANCE,
   NOT_YET, ROADMAP_90_DAYS, ROADMAP_RECONCILIATION, ROADMAP_NOTE, CEO_ACTIONS, CLOSING_STATEMENT, CLOSING_PROVENANCE,
 } from '@/lib/data/review';
 
@@ -30,16 +30,6 @@ export default function RecommendationsContent() {
     <div className="mx-auto max-w-7xl px-6 py-12 md:px-10">
       <Section eyebrow="Section 09 — Recommendations" title="The Execution Sequence">
         <p className="max-w-3xl leading-relaxed text-muted-foreground mb-6">{RECS_LEDE}</p>
-
-        <Alert className="mb-8 max-w-3xl border-red-500/40 bg-red-500/5">
-          <AlertTriangle className="h-4 w-4 !text-red-400" />
-          <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
-          <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-            {RECS_AUDIT_NOTE} The two conflicting due-diligence budgets and the two conflicting interview
-            counts this page previously carried are resolved by deletion — each is now an open item with a
-            named owner, pending written quotes or a single ledger-recorded figure.
-          </AlertDescription>
-        </Alert>
 
         <p className="mb-8 max-w-3xl text-sm leading-relaxed text-muted-foreground"><TagText text={EXECUTION_INTRO} /></p>
 

@@ -3,22 +3,17 @@
 import { cn } from '@/lib/utils';
 
 /**
- * Provenance tags per the adversarial audit's trust ladder. The site-wide
- * estimate tag is abolished; every surviving figure carries exactly one of
- * these instead: [ACTUAL] receipted/first-hand, [LIST] vendor-published price,
- * [QUOTE] written quote on file, [DERIVED] computed from tagged inputs,
- * [ASSUMPTION] declared planning assumption with a named confirmer,
- * [OFFICIAL] an official statistic or a statutory filed record (e.g. an
- * SEC-filed 10-K, an ABR extract), deep-linked in workflow/verify/,
- * [UNKNOWN] genuinely unpriced/unevidenced.
+ * Provenance markers on the trust ladder. Every monetary figure on this site
+ * carries exactly one of: [ACTUAL] receipted/first-hand, [LIST] vendor-published
+ * price, [QUOTE] written quote on file, [DERIVED] computed from tagged inputs,
+ * [ASSUMPTION] declared planning assumption with a named confirmer, [OFFICIAL]
+ * an official statistic or a statutory filed record (e.g. an SEC-filed 10-K, an
+ * ABR extract), [UNKNOWN] genuinely unpriced/unevidenced.
  *
- * [OFFICIAL] was added on the closure pass (2026-08-23, F-04): two live figures
- * had been carrying provenance labels this audit invented for itself ("Audited
- * filing", "Trade-body estimate") rather than a marker from the sanctioned set.
- * [OFFICIAL] marks how a figure enters this programme's ledger; it does not
- * restate the source's trust tier, which stays as financial_rebuild.md §B.2
- * grades it (an audited filing sits one rung below an official statistic there,
- * and no figure is laundered upward by carrying this marker).
+ * A marker records how a figure enters this programme's accounts; it does not
+ * restate the source's own trust tier. An audited filing sits one rung below an
+ * official statistic on the ladder, and no figure is promoted by carrying a
+ * marker.
  */
 export type ProvenanceTag =
   | 'ACTUAL'

@@ -8,7 +8,6 @@ import { Section, GlassCard, StatCard, OrnamentDivider, StatusBadge, DataTable }
 import { TagText } from '@/components/proposal/tag';
 import {
   REVIEW_LEDE,
-  REVIEW_AUDIT_NOTE,
   D6_ACTUAL,
   DELIVERABLE_RATINGS,
   D4_OPEN_ITEM,
@@ -59,15 +58,6 @@ export default function AdversarialReviewContent() {
       <Section eyebrow="Section 08 — Adversarial Review" title="The Case Against This Proposal">
         <p className="max-w-3xl leading-relaxed text-muted-foreground mb-6">{REVIEW_LEDE}</p>
 
-        <Alert className="mb-8 max-w-3xl border-red-500/40 bg-red-500/5">
-          <AlertTriangle className="h-4 w-4 !text-red-400" />
-          <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
-          <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-            <p>{REVIEW_AUDIT_NOTE?.removed}</p>
-            <p className="mt-2">{REVIEW_AUDIT_NOTE?.detail}</p>
-          </AlertDescription>
-        </Alert>
-
         <div className="mb-8 grid gap-4 sm:grid-cols-2">
           <StatCard label={D6_ACTUAL?.confidence?.label ?? ''} value={D6_ACTUAL?.confidence?.value ?? ''} sub={D6_ACTUAL?.confidence?.note} />
           <StatCard label={D6_ACTUAL?.verdict?.label ?? ''} value={D6_ACTUAL?.verdict?.value ?? ''} sub={D6_ACTUAL?.verdict?.note} />
@@ -84,7 +74,7 @@ export default function AdversarialReviewContent() {
                     <StatusBadge status={d.rating} />
                   ) : (
                     <span className="inline-flex items-center rounded-full border border-border/60 bg-secondary/40 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                      {d?.ratingLabel ?? 'RATING REMOVED'}
+                      {d?.ratingLabel ?? 'NOT RATED'}
                     </span>
                   )}
                 </div>
@@ -124,7 +114,7 @@ export default function AdversarialReviewContent() {
         <div className="grid gap-6 lg:grid-cols-[1fr_1.6fr]">
           <div className="space-y-4">
             <StatCard
-              label="Overall Confidence — D6 actual"
+              label="Overall Confidence"
               value={`${CONFIDENCE?.overall ?? 0}% (verdict: ${CONFIDENCE?.verdict ?? ''})`}
               sub={CONFIDENCE?.note}
             />
@@ -145,7 +135,7 @@ export default function AdversarialReviewContent() {
           <GlassCard className="self-start">
             <div className="mb-4 flex items-center gap-2">
               <Gauge className="h-4 w-4 text-primary" />
-              <p className="font-marquee text-sm font-bold uppercase tracking-wide text-foreground">Confidence by Dimension — Attested Rows Only</p>
+              <p className="font-marquee text-sm font-bold uppercase tracking-wide text-foreground">Confidence by Dimension</p>
             </div>
             <div className="space-y-4">
               {(CONFIDENCE?.dimensions ?? []).map((d: any, i: number) => (
@@ -187,7 +177,7 @@ export default function AdversarialReviewContent() {
             <TabsTrigger value="missing" className="rounded-full border border-border/60 px-4 py-1.5 text-xs data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary">Missing Elements ({MISSING_ELEMENTS?.length ?? 0})</TabsTrigger>
             <TabsTrigger value="assumptions" className="rounded-full border border-border/60 px-4 py-1.5 text-xs data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary">Unrealistic Assumptions ({UNREALISTIC_ASSUMPTIONS?.length ?? 0})</TabsTrigger>
             <TabsTrigger value="regulatory" className="rounded-full border border-border/60 px-4 py-1.5 text-xs data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary">Regulatory Gaps ({REGULATORY_GAPS?.length ?? 0})</TabsTrigger>
-            <TabsTrigger value="quality" className="rounded-full border border-border/60 px-4 py-1.5 text-xs data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary">Data Quality ({DATA_QUALITY_CONCERNS?.length ?? 0} of 10)</TabsTrigger>
+            <TabsTrigger value="quality" className="rounded-full border border-border/60 px-4 py-1.5 text-xs data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary">Data Quality ({DATA_QUALITY_CONCERNS?.length ?? 0})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="missing">
@@ -256,10 +246,10 @@ export default function AdversarialReviewContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="Quality Assurance" title="Gate Report — 7 of 15 Rows Survive">
+      <Section eyebrow="Quality Assurance" title="Gate Report">
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">{QUALITY_GATES_INTRO}</p>
         <DataTable
-          headers={['Gate', 'Condition', 'Status', 'Audit cross-check']}
+          headers={['Gate', 'Condition', 'Status', 'Independent cross-check']}
           rows={(QUALITY_GATES ?? []).map((g: any) => [
             g?.id ?? '',
             g?.condition ?? '',

@@ -1,12 +1,8 @@
 // The revenue model — the honest identity, publishing no output number.
-// Corrected per the adversarial audit: the interactive revenue projection sandbox, its
-// presets and every model output were deleted (CL-0250–CL-0254, CL-0256–CL-0262,
-// CL-0356–CL-0365, CL-0367); the data-confidence disclosure was retained (CL-0255,
-// VERIFIED) and is now acted on. Source: artifacts/financial_rebuild.md §E.2.2, §E.3.
 
 export const REVENUE_IDENTITY = {
   intro:
-    'The deleted sandbox’s own data-confidence note said it plainly: every parameter in the model was an assumption, and no take rate, CAC, ATV or repeat-purchase figure had been verified against first-party data. That disclosure was accurate (adjudicated VERIFIED) and is now acted on rather than displayed beside the outputs it disclaimed. The only publishable revenue statement for Australia is the arithmetic identity itself:',
+    'No take rate, CAC, ATV or repeat-purchase figure has been verified against first-party data, so no revenue projection is published. The only publishable revenue statement for Australia is the arithmetic identity itself:',
   formulaGross: 'Gross AU pilot revenue / yr = E × T × ATV × f',
   formulaShare: 'Ticketalay’s share of that gross = the above × s',
   outro:
@@ -27,7 +23,7 @@ export const IDENTITY_VARIABLES: IdentityVariable[] = [
     meaning: 'Events per year',
     tag: '[UNKNOWN]',
     confirms:
-      'Commercial lead (role currently unassigned — LT to appoint) via U-03: ≥3 signed, dated pilot-event agreements or LOIs. E is then the contracted count, not a target. The deleted "48 events Year 1" was a slider default, not supply.',
+      'Commercial lead (role currently unassigned — LT to appoint) via U-03: ≥3 signed, dated pilot-event agreements or LOIs. E is then the contracted count, not a target.',
     when: 'Gate G1',
   },
   {
@@ -70,6 +66,5 @@ export const IDENTITY_VARIABLES: IdentityVariable[] = [
   },
 ];
 
-// The retained (VERIFIED) data-confidence disclosure from the deleted sandbox (CL-0255).
 export const DATA_CONFIDENCE_NOTE =
-  'Data-confidence note (retained from the deleted model, adjudicated VERIFIED): every parameter in that model was an assumption from the research package — no take rate, CAC, ATV or repeat-purchase figure has been verified against first-party data.';
+  'Data-confidence note: every parameter in the research package’s revenue model was an assumption — no take rate, CAC, ATV or repeat-purchase figure has been verified against first-party data.';

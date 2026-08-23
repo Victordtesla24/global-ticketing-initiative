@@ -6,7 +6,7 @@ import { Tag, TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   ACTUALS, GATE_SCHEDULE, GATE_SCHEDULE_NOTES, VENDOR_PRICES, VENDOR_PRICES_NOTE,
-  PEOPLE_CORRECTIONS, PEOPLE_INTRO, REMOVED_SUMMARY, ROI_VERDICT, INVESTMENT_OPEN_ITEMS,
+  PEOPLE_CORRECTIONS, PEOPLE_INTRO, ROI_VERDICT, INVESTMENT_OPEN_ITEMS,
 } from '@/lib/data/costs';
 import { REVENUE_IDENTITY, IDENTITY_VARIABLES, DATA_CONFIDENCE_NOTE } from '@/lib/data/revenue-model';
 import { REVENUE_STREAMS } from '@/lib/data/insights';
@@ -41,39 +41,23 @@ export default function InvestmentContent() {
         Investment & <span className="text-primary">Returns</span>
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-        This page no longer publishes a three-year total cost of ownership, an ROI, a break-even volume or an
-        interactive revenue sandbox. The audit found the originals unsourced, internally contradictory or fabricated,
-        and deleted them. What stands instead: the receipted actual spend to date, a per-gate decision schedule in
-        which every figure carries a provenance tag and a multiple of the affordability anchor, vendor-published
-        prices for the data tools the programme might actually buy, and the honest revenue identity — every variable
-        tagged, its confirmer named, and no output number published.
+        No three-year total cost of ownership, ROI or break-even volume is published on this page: none of them is
+        computable from evidence that exists. What stands instead is the receipted actual spend to date, a per-gate
+        decision schedule in which every figure carries a provenance marker and a multiple of the affordability
+        anchor, vendor-published prices for the data tools the programme might actually buy, and the honest revenue
+        identity — every variable tagged, its confirmer named, and no output number published.
       </p>
 
-      <Alert className="mt-6 max-w-3xl border-red-500/40 bg-red-500/5">
-        <AlertTriangle className="h-4 w-4 !text-red-400" />
-        <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
-        <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          114 claims removed from this page by the adversarial audit — see register (a further 10 replaced with
-          vendor-published figures; 12 verified disclosures retained or restructured — one earlier removal, the
-          BLS/BEA free-access row, was restored on the fresh pass). All figures AUD;
-          source-currency prices shown with their conversion. The site&apos;s estimate tag is abolished on this page:
-          every surviving monetary figure carries exactly one of <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
-          <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />, with one labelled
-          exception: a published salary band from an aggregator can never earn <Tag tag="LIST" /> under the trust
-          ladder, so it carries the explicit provenance label <span className="font-semibold text-foreground/80">Aggregator benchmark</span>{' '}
-          instead — context only, feeding no funded figure (financial_rebuild.md §B.7, §D.1.2). FX: RBA, 21 Aug 2026 —
-          USD 0.7145 per A$1.
-        </AlertDescription>
-      </Alert>
+      <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        All figures AUD; source-currency prices are shown with their conversion. Every monetary figure on this page
+        carries exactly one of <Tag tag="ACTUAL" /> <Tag tag="LIST" /> <Tag tag="QUOTE" /> <Tag tag="DERIVED" />{' '}
+        <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" />, with one labelled exception: a published salary band from an
+        aggregator can never earn <Tag tag="LIST" /> under the trust ladder, so it carries the explicit provenance
+        label <span className="font-semibold text-foreground/80">Aggregator benchmark</span> instead — context only,
+        feeding no funded figure. FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
+      </p>
 
-      <Section eyebrow="What Was Removed" title="What This Page No Longer Claims" className="mt-12">
-        <GlassCard>
-          <p className="text-sm leading-relaxed text-muted-foreground">{REMOVED_SUMMARY?.para1}</p>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{REMOVED_SUMMARY?.para2}</p>
-        </GlassCard>
-      </Section>
-
-      <Section eyebrow="Actual Spend to Date" title="The Affordability Anchor">
+      <Section eyebrow="Actual Spend to Date" title="The Affordability Anchor" className="mt-12">
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <StatCard
             label={ACTUALS?.total?.label ?? ''}
@@ -93,8 +77,8 @@ export default function InvestmentContent() {
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">{ACTUALS?.ledgerFooterRetained}</p>
         <p className="mt-2 text-xs text-muted-foreground/70">
-          Ground-Truth Register GT-11, GT-12, GT-13 (receipted actuals). Ledger deletion: CL-0343/CL-0348/CL-0350
-          (FABRICATED — direct GT-12/GT-13 conflict); footer disclosure retained per CL-0351 (VERIFIED).
+          Receipted actuals: A$350.00 AI subscriptions and API credits, A$480.00 consultation at 8.0 hours ×
+          A$60.00/hr, A$830.00 in total.
         </p>
       </Section>
 
@@ -122,18 +106,17 @@ export default function InvestmentContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="Data Acquisition" title="Vendor-Published Prices Replacing the Deleted Estimates">
+      <Section eyebrow="Data Acquisition" title="Vendor-Published Prices">
         <div className="mb-4 flex items-start gap-2">
           <Wallet className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
           <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            <TagText text="The deleted data-acquisition tab attributed prices to plans that do not exist and ranges no vendor publishes. The corrected table shows what each vendor actually publishes, and the rebuild's disposition of each line. Only the IBISWorld report is a recommended near-term purchase; the free official-statistics sources (ABS, UN DESA, ONS, US Census, Eurostat, StatCan and the statutory registers) cost A$0 [LIST] and come first." />
+            <TagText text="What each vendor actually publishes, and this programme's disposition of each line. Only the IBISWorld report is a recommended near-term purchase; the free official-statistics sources (ABS, UN DESA, ONS, US Census, Eurostat, StatCan and the statutory registers) cost A$0 [LIST] and come first." />
           </p>
         </div>
         <DataTable
-          headers={['Provider', 'Deleted Claim', 'Vendor-Published Price', 'Disposition']}
+          headers={['Provider', 'Vendor-Published Price', 'Disposition']}
           rows={(VENDOR_PRICES ?? []).map((v: any) => [
             <span key="p" className="font-semibold text-foreground">{v?.provider}</span>,
-            <span key="d" className="text-muted-foreground line-through decoration-red-400/50">{v?.deleted}</span>,
             <TagText key="v" text={v?.published ?? ''} />,
             <TagText key="s" text={v?.disposition ?? ''} />,
           ])}
@@ -153,18 +136,15 @@ export default function InvestmentContent() {
           </p>
         </div>
         <DataTable
-          headers={['Item', 'Deleted Claim', 'Corrected Figure', 'Standing']}
+          headers={['Item', 'Figure', 'Standing']}
           rows={(PEOPLE_CORRECTIONS ?? []).map((p: any) => [
             <span key="i" className="font-semibold text-foreground">{p?.item}</span>,
-            <span key="d" className="text-muted-foreground line-through decoration-red-400/50">{p?.deleted}</span>,
             <TagText key="c" text={p?.corrected ?? ''} />,
             <TagText key="s" text={p?.standing ?? ''} />,
           ])}
         />
         <p className="mt-3 text-xs text-muted-foreground/70">
-          SEEK Data Analyst salary page (accessed 2026-08-23; verify/au-salaries.md; adjudicated OVERSTATED at
-          CL-0275/CL-0285, replaced). Rate: GT-12. Roster: financial_rebuild.md §D.1. The deleted Year-1 staffing
-          envelope (A$2,024,800–2,842,000) also failed to sum from its own rows (T0-121).
+          Salary band: SEEK Data Analyst salary page (accessed 2026-08-23). Labour rate: the receipted A$60.00/hr.
         </p>
       </Section>
 
@@ -226,19 +206,15 @@ export default function InvestmentContent() {
         <p className="mt-3 flex items-start gap-2 text-xs text-muted-foreground/70">
           <ReceiptText className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span>
-            Retained: the take-rate row (CL-0352), the B2B deferral (CL-0353) and the dynamic-pricing deferral
-            (CL-0354) were adjudicated VERIFIED as honestly caveated targets and deferrals — nothing in this table is
-            claimed proven. The 8–12% band remains unevidenced until the U-04 study reports (variable f above).
+            The take-rate row, the B2B deferral and the dynamic-pricing deferral are stated targets and deferrals —
+            nothing in this table is claimed proven. The 8–12% band remains unevidenced until the U-04 study reports
+            (variable f above).
           </span>
         </p>
       </Section>
 
       <p className="mt-10 border-t border-border/40 pt-6 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60">
         AB Entertainment · Section 05 · All figures AUD · Australian English · Confidential
-      </p>
-      <p className="mt-2 text-center text-[11px] text-muted-foreground/50">
-        Corrected edition — third-party adversarial audit, 2026-08-23. Deletion is recorded, not disguised: see
-        artifacts/deletion_register.md and workflow/register_by_route/investment.json.
       </p>
     </div>
   );

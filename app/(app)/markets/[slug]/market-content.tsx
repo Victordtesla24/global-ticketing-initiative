@@ -46,15 +46,10 @@ export default function MarketContent({ market }: { market: Market }) {
           </span>
         </div>
 
-        <Alert className="mb-8 max-w-4xl border-red-500/40 bg-red-500/5">
-          <AlertTriangle className="h-4 w-4 !text-red-400" />
-          <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
-          <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-            {market?.removedNote} The site&apos;s estimate tag is abolished here: the three-year projection table is
-            deleted rather than re-estimated, and every surviving monetary figure carries the provenance tag it has
-            earned. Non-monetary official statistics carry their source lines, untagged.
-          </AlertDescription>
-        </Alert>
+        <p className="mb-8 max-w-4xl text-[13px] leading-relaxed text-muted-foreground/70">
+          No three-year projection is published for this market. Every monetary figure below carries the provenance
+          marker it has earned; non-monetary official statistics carry their source lines, untagged.
+        </p>
 
         {market?.heroTilesIntro ? (
           <p className="mb-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">{market.heroTilesIntro}</p>

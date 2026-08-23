@@ -7,7 +7,7 @@ import { TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import ArchitectureDiagram from '@/components/proposal/architecture-diagram';
 import {
-  ARCH_LEDE, ARCH_AUDIT_NOTE, ARCH_RECONCILIATION,
+  ARCH_LEDE, ARCH_RECONCILIATION,
   ARCH_LAYERS, DATA_MARTS, SCALABILITY, SCALABILITY_OPEN_ITEM,
   TECH_COMPARISON, TECH_COMPARISON_NOTE, APPROVAL_GATES, APPROVAL_GATES_NOTE,
   RETENTION, TRANSFER_ROUTES, TRANSFER_ROUTES_NOTE, type ArchLayer,
@@ -35,14 +35,6 @@ export default function ArchitectureContent() {
         Data <span className="text-primary">Architecture</span>
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">{ARCH_LEDE}</p>
-
-      <Alert className="mt-6 max-w-3xl border-red-500/40 bg-red-500/5">
-        <AlertTriangle className="h-4 w-4 !text-red-400" />
-        <AlertTitle className="text-red-300">Adversarial audit — corrections applied to this page</AlertTitle>
-        <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text={ARCH_AUDIT_NOTE} />
-        </AlertDescription>
-      </Alert>
 
       <GlassCard className="mt-6">
         <p className="t-eyebrow mb-1">{ARCH_RECONCILIATION.label}</p>
@@ -108,8 +100,8 @@ export default function ArchitectureContent() {
                   </div>
                 </div>
                 <p className="mt-4 text-xs italic text-muted-foreground">
-                  No cost line is published for any layer. The per-layer AUD tables that stood here cited no unit rate
-                  and no workload basis; the committed MVP stack is priced in financial_rebuild.md §C.
+                  No cost line is published for any layer: none could cite a unit rate or a workload basis. The
+                  committed MVP stack is priced in the reconciliation at the top of this page.
                 </p>
               </div>
             ) : null}
@@ -223,7 +215,7 @@ export default function ArchitectureContent() {
         <StatCard
           label="Committed MVP Run Cost"
           value="A$46.43/mo [DERIVED]"
-          sub="financial_rebuild.md §C.2–C.3 — the only run cost this audit publishes for this stack; the two AUD StatCards that stood here are deleted"
+          sub="The only run cost published for this stack — the committed MVP bill of materials, monthly-cancellable"
         />
         <StatCard
           label="Reviewer Rating"
