@@ -6,8 +6,8 @@ import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/comp
 import { Tag, TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
-  PROVIDERS, CATEGORY_LABELS, ACQUISITION_SEQUENCE, DAY1_BILL, HISTORICAL_DEPTH,
-  type Provider, type ProviderCategory,
+  PROVIDERS, CATEGORY_LABELS, COUNTRY_FILTERS, ACQUISITION_SEQUENCE, DAY1_BILL, HISTORICAL_DEPTH,
+  type Provider, type ProviderCategory, type ProviderCountry,
 } from '@/lib/data/providers';
 import { INSIGHTS_KEPT, INSIGHT_OPEN_ITEMS, FIRST_PARTY_OPEN_ITEM } from '@/lib/data/insights';
 import { Slider } from '@/components/ui/slider';
@@ -32,6 +32,7 @@ function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown
 export default function DataEcosystemContent() {
   const [cat, setCat] = useState<ProviderCategory | 'All'>('All');
   const [payment, setPayment] = useState<'All' | 'Paid' | 'Free' | 'Other'>('All');
+  const [country, setCountry] = useState<ProviderCountry | 'All'>('All');
   const [costRange, setCostRange] = useState<number[]>([0, COST_CAP]);
   const [includeUnpriced, setIncludeUnpriced] = useState(true);
   const [minRec, setMinRec] = useState(1);
@@ -44,6 +45,7 @@ export default function DataEcosystemContent() {
       if (payment === 'Paid' && p?.paid !== 'Paid') return false;
       if (payment === 'Free' && p?.paid !== 'Free') return false;
       if (payment === 'Other' && (p?.paid === 'Paid' || p?.paid === 'Free')) return false;
+      if (country !== 'All' && !(p?.countries ?? []).includes(country)) return false;
       if ((p?.recommendation ?? 0) < minRec) return false;
       const hasPrice = p?.costMin != null || p?.costMax != null;
       if (!hasPrice) {
@@ -60,7 +62,7 @@ export default function DataEcosystemContent() {
       }
       return true;
     });
-  }, [cat, payment, costRange, includeUnpriced, minRec, query]);
+  }, [cat, payment, country, costRange, includeUnpriced, minRec, query]);
 
   return (
     <div>
@@ -99,8 +101,8 @@ export default function DataEcosystemContent() {
         <Tag tag="OFFICIAL" />: benchmark only, feeding no funded figure, never a cost comparator. The marker records
         how a figure enters this programme&apos;s accounts and does not restate its trust tier: the source stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
-        official statistic. No unpublished price bracket appears anywhere below. Filter by category, payment model,
-        indicative cost and recommendation strength.
+        official statistic. No unpublished price bracket appears anywhere below. Filter by category, country coverage,
+        payment model, indicative cost and recommendation strength.
       </p>
 
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
@@ -149,6 +151,29 @@ export default function DataEcosystemContent() {
                 {c === 'All' ? 'All Categories' : `${c} · ${CATEGORY_LABELS?.[c as ProviderCategory] ?? ''}`}
               </button>
             ))}
+          </div>
+          <div className="mt-4">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Country Coverage
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {(['All', ...COUNTRY_FILTERS] as const).map((c) => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setCountry(c)}
+                  className={`rounded-md border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider ${
+                    country === c ? 'border-primary/60 bg-primary/20 text-primary' : 'border-border text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {c === 'All' ? 'All Countries' : c}
+                </button>
+              ))}
+            </div>
+            <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
+              A country tag records where a source has coverage — not that it evidences demand in that market.
+              &quot;Global&quot; is its own tag: a global source is not thereby an AU, UK, US, CA or EU source.
+            </p>
           </div>
           <div className="mt-4 grid gap-5 md:grid-cols-3">
             <div>
@@ -217,10 +242,18 @@ export default function DataEcosystemContent() {
                     <p className="mt-0.5 text-[11px] uppercase tracking-wider text-muted-foreground">
                       {p?.category} · {CATEGORY_LABELS?.[p?.category] ?? ''} · {p?.paid}
                     </p>
-                    <p className="mt-1">
+                    <p className="mt-1 flex flex-wrap items-center gap-1">
                       <span className="inline-flex items-center rounded border border-border bg-secondary/40 px-1.5 py-px font-mono text-[10px] font-semibold uppercase tracking-wider text-foreground/70">
                         {p?.trustTier}
                       </span>
+                      {(p?.countries ?? []).map((c) => (
+                        <span
+                          key={c}
+                          className="inline-flex items-center rounded border border-primary/30 bg-primary/10 px-1.5 py-px font-mono text-[10px] font-semibold uppercase tracking-wider text-primary/80"
+                        >
+                          {c}
+                        </span>
+                      ))}
                     </p>
                   </div>
                   <div className="flex shrink-0 items-center gap-0.5">
