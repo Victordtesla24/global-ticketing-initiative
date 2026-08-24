@@ -19,8 +19,9 @@ const CATS: (ProviderCategory | 'All')[] = ['All', 'A', 'B', 'C', 'D', 'E', 'F']
  *
  * Computed from the catalogue it filters — the largest `costMax` any provider row carries —
  * rather than typed in, so the control can never show a ceiling that traces to nothing. Today
- * that is A$10,900 (rows 6 Statista and 27 Similarweb: US$649/mo billed annually × 12 ÷
- * 0.7145); if a row's published price changes, the bound follows it.
+ * that is A$25,176 (row 29 Ahrefs: the published US$1,499/mo Enterprise tier, on the annual
+ * commitment that vendor requires, 1,499 × 12 ÷ 0.7145). No published tier anywhere in the
+ * catalogue annualises above it; if a row's published price changes, the bound follows it.
  *
  * The slider bounds published prices only. The 28 rows whose costMin/costMax are null are
  * quote-only, usage-metered or unpriced, and are governed by the include-unpriced checkbox
@@ -108,9 +109,11 @@ export default function DataEcosystemContent() {
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
         estimate 6. Each cost cell says where its figure came from: money already spent, a price the vendor
         publishes, a written quote, a calculation from those, a planning assumption with a named confirmer, or an
-        entry still to be confirmed. One figure sits outside that pattern: on the Statista Personal tier an earlier
-        costing recorded A$922/yr against the vendor&apos;s own published US$649/mo billed annually. The two are not
-        reconciled, the programme sponsor owns closing that gap, and no funded line depends on it. Live Nation&apos;s
+        entry still to be confirmed. Two figures sit outside that pattern. On the Statista Personal tier an earlier
+        costing recorded A$922/yr against the vendor&apos;s own published US$649/mo billed annually. On Claritas
+        Spotlight Advanced an earlier costing recorded A$4,679/yr against the vendor&apos;s own published USD
+        3,295/yr, which is A$4,611.62 at the single rate below. Neither pair is reconciled, the programme sponsor
+        owns closing both gaps, and no funded line depends on either. Live Nation&apos;s
         fee-bearing GTV, below, comes from a statutory SEC filing and is an official statistic for this purpose:
         benchmark only, feeding no funded figure and never a cost comparator, while the source itself stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
@@ -220,8 +223,9 @@ export default function DataEcosystemContent() {
               <Slider value={costRange} min={0} max={COST_CAP} step={100} onValueChange={(v: number[]) => setCostRange(v ?? [0, COST_CAP])} />
               <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
                 The bound is the catalogue&apos;s own highest published annual price, not a budget
-                ceiling: A${COST_CAP.toLocaleString('en-AU')} = the published US$649/mo billed annually &times; 12
-                &divide; 0.7145 (rows 6 and 27). Unpriced providers carry no bound: they are still to be confirmed,
+                ceiling: A${COST_CAP.toLocaleString('en-AU')} = the published US$1,499/mo Enterprise tier of row 29,
+                on the annual commitment that vendor requires, &times; 12 &divide; 0.7145. No published tier in the
+                catalogue annualises above it. Unpriced providers carry no bound: they are still to be confirmed,
                 and are governed by the checkbox below rather than by this slider.
               </p>
               <label className="mt-2 flex items-center gap-2 text-[11px] text-muted-foreground">
@@ -348,7 +352,10 @@ export default function DataEcosystemContent() {
           Premium contracts — Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the rows above that carry
           no price — are not deferred on price. They are unpriced: no published price exists and no written quote is
           on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
-          excluded outright as unfit for the Australian proof market at any price.
+          excluded outright as unfit for the Australian proof market at any price. On Claritas the catalogue row
+          above carries the vendor&apos;s published USD 3,295/yr for Spotlight Advanced beside an earlier costing of
+          A$4,679/yr for that same product. The two are not reconciled, and the programme sponsor owns closing that
+          gap. Nothing funded rests on it: no gate line buys Claritas at any tier.
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
           P2 is priced from Statista&apos;s own published tier, US$199/mo billed annually (= US$2,388/yr, calculated:

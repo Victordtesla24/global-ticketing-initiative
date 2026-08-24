@@ -69,7 +69,7 @@ export const VENDOR_PRICES = [
   {
     provider: 'IBISWorld — "Musical & Theatre Productions in Australia", single report',
     published: 'AUD $2,500 on the live AU checkout cart, and AU$2,200 on the vendor’s help centre — both published prices; the cart price is the one used for planning',
-    disposition: 'Recommended G1 buy at the published A$2,500.00 = 3.01x the anchor. The only priced source of AU live-theatre industry structure.',
+    disposition: 'Recommended G2 floor-configuration buy at the published A$2,500.00 = 3.01x the anchor — it is the data floor inside the G2 line above, and it is committed at no earlier gate. The only priced source of AU live-theatre industry structure.',
   },
   {
     provider: 'Statista',
