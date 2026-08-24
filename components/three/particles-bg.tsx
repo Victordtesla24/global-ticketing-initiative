@@ -26,7 +26,15 @@ export default function ParticlesBg() {
     const camera = new THREE.PerspectiveCamera(60, w0 / h0, 0.1, 100);
     camera.position.z = 12;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    // Purely decorative: on a browser without a WebGL context (remote desktops,
+    // hardened privacy settings, some headless modes) skip the background
+    // entirely rather than letting the constructor's throw unmount the page.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    } catch {
+      return;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio ?? 1, 1.5));
     renderer.setSize(w0, h0);
     el.appendChild(renderer.domElement);

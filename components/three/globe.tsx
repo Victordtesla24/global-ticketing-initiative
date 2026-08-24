@@ -53,7 +53,14 @@ export default function Globe() {
     const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100);
     camera.position.set(0, 0.7, 6.4);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // Decorative visual: on a browser without a WebGL context, leave the panel
+    // empty rather than letting the constructor's throw unmount the page.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    } catch {
+      return;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio ?? 1, 2));
     renderer.setSize(width, height);
     el.appendChild(renderer.domElement);
