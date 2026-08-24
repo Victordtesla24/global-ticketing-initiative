@@ -163,7 +163,19 @@ export default function ArchitectureContent() {
         <StatCard
           label="Committed MVP Run Cost"
           value="A$46.43/mo"
-          sub="Calculated, and the only run cost published for this stack — the committed MVP bill of materials, monthly-cancellable"
+          sub={
+            <>
+              Calculated, and the only run cost published for this stack — the committed MVP bill of materials,
+              monthly-cancellable. The working: S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at
+              US$5.00/TB = US$0.05, and QuickSight 1 author at US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue
+              Data Catalog on its published free tier and dbt Core, open source, at A$0 — US$33.175/mo, ÷ 0.7145 (RBA
+              rate, 21 August 2026) = A$46.43/mo. The four rates are the vendors’ own published Sydney prices; the three
+              volumes multiplied by them are planning assumptions — 5 GB stored, to be confirmed by the Ticketalay
+              principal, and 1 author plus 3 board readers, to be confirmed by the CEO, both by 30 September 2026, and
+              10 GB scanned per month, to be confirmed against the first metered month after go-live. Exceed a volume
+              and the line is recalculated.
+            </>
+          }
         />
       </div>
     </div>

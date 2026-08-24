@@ -71,7 +71,12 @@ const A = {
 };
 
 /** The whole-stack anchor, repeated in several node costs so no node invents its own. */
-const MVP_BILL = 'The committed MVP bill of materials works out at A$46.43/mo for the whole stack, at 8.0 setup days.';
+const MVP_BILL =
+  'The committed MVP bill of materials works out at A$46.43/mo for the whole stack, at 8.0 setup days — calculated as ' +
+  'S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, and QuickSight 1 ' +
+  'author at US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue Data Catalog on its published free tier and dbt ' +
+  'Core, open source, at A$0: US$33.175/mo ÷ 0.7145. The rates are published prices; the three volumes are planning ' +
+  'assumptions, and the full working sits in the reconciliation at the top of this page.';
 
 export const ARCH_NODES: ArchNode[] = [
   /* ------------------------------------------------------------ SOURCES */

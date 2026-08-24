@@ -71,8 +71,17 @@ const G2_COMPONENTS = [
   { component: 'Data, full day-1 configuration (adds Statista Starter year 1, Semrush one month)', figure: 'A$6,036.74 — calculated', multiple: '7.27x' },
   { component: 'Tech one-time setup, full (8.0 days, conditional labour)', figure: 'A$3,840.00 — calculated', multiple: '4.63x' },
   { component: 'Tech one-time setup, maximum committable before the first-party data is disclosed (7.0 days)', figure: 'A$3,360.00 — calculated', multiple: '4.05x' },
-  { component: 'Tech run cost (monthly-cancellable)', figure: 'A$46.43/mo — calculated', multiple: '0.056x/mo' },
-  { component: 'AI subscriptions (Claude Pro, billed monthly)', figure: 'A$27.99/mo — calculated', multiple: '0.034x/mo' },
+  {
+    component: 'Tech run cost (monthly-cancellable)',
+    figure:
+      'A$46.43/mo — calculated: S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, QuickSight 1 author at US$24/mo plus 3 readers at US$3/mo = US$33.00 — all four published Sydney rates — with Glue Data Catalog on its published free tier and dbt Core, open source, at A$0; US$33.175/mo total ÷ 0.7145',
+    multiple: '0.056x/mo',
+  },
+  {
+    component: 'AI subscriptions (Claude Pro, billed monthly)',
+    figure: 'A$27.99/mo — calculated: US$20/mo, the vendor’s published Pro price, ÷ 0.7145',
+    multiple: '0.034x/mo',
+  },
 ];
 
 // Outstanding items, with owners.
@@ -255,7 +264,12 @@ export default function ExecutiveSummaryContent() {
             One-off gate decision cost: floor configuration A$5,860.00 = 7.06x the anchor; full configuration
             A$9,876.74 = 11.90x. The two configurations are alternatives, not a range. Each excludes every figure still
             to be confirmed, and the setup-labour share holds only while the consultant rate and day count remain
-            planning assumptions — absent written confirmation, only the day counts stand.
+            planning assumptions — absent written confirmation, only the day counts stand. The vendor rates behind the
+            run cost are published prices; the three workload volumes they are multiplied by are planning assumptions —
+            5 GB stored and 1 author plus 3 dashboard readers, to be confirmed in writing by 30 September 2026 by the
+            Ticketalay principal and the CEO respectively, and 10 GB scanned per month, to be confirmed against the
+            first metered month after go-live. If a volume is exceeded the line is recalculated. Conversions use the
+            RBA rate of 21 August 2026, USD 0.7145 per A$1.
           </p>
         </div>
         <div className="mt-6 space-y-4">
