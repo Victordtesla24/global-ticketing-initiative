@@ -6,7 +6,7 @@ import { ChunkLoadErrorHandler } from '@/components/chunk-load-error-handler';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL('https://ticketalay.abacusai.cloud'),
   title: 'Ticketalay Global Expansion Proposal | AB Entertainment',
   description:
     'Interactive executive proposal for Ticketalay.com.au global expansion: market opportunity, data ecosystem, solution architecture, investment analysis, risk and recommendations.',

@@ -1,234 +1,232 @@
+# Style guide
+
+The visual conventions of this site, as the code actually implements them. Sources of truth:
+[`app/globals.css`](app/globals.css), [`tailwind.config.ts`](tailwind.config.ts) and
+[`components/`](components/). If you change one of those, change this file with it.
+
+The site is **single-theme**: a dark black-and-gold canvas. There is no light mode and no theme
+switching at runtime — `app/providers.tsx` mounts no theme provider, and nothing toggles a `dark`
+class. Design for the dark canvas only.
+
+---
+
 ## Layout
 
-The root layout, `app/layout.tsx`, is the single place for app-wide providers and global infrastructure.
+| File | Role |
+|------|------|
+| `app/layout.tsx` | Root layout. Metadata, `<Providers>`, and `ChunkLoadErrorHandler` — the last is required and prevents a known ChunkLoadError race; do not remove it. |
+| `app/providers.tsx` | Client providers. Currently just `Toaster` from **react-hot-toast**, styled to the brand. |
+| `app/(app)/layout.tsx` | Wraps every proposal route in `AppShell`. |
+| `components/proposal/app-shell.tsx` | The real page frame: particle background, sidebar, `max-w-6xl` main column, site footer. |
 
-**Do not remove any existing entries without a reason.** Current infrastructure in the layout:
-
-| Entry | Purpose |
-|-------|---------|
-| `ThemeProvider` | Light/dark mode via `next-themes` |
-| `Toaster` | Global toast notifications via Sonner |
-| `ChunkLoadErrorHandler` | Required — prevents known ChunkLoadError race condition bug |
+`components/layouts/app-shell.tsx` is a separate generic shell (sidebar/header props) and is **not**
+what the proposal routes use.
 
 ---
 
 ## Typography
 
-| Role | Font | Tailwind Class | Default Usage |
-|------|------|---------------|-------|
-| Body | DM Sans | `font-sans` | All body text, labels, descriptions |
-| Display | Plus Jakarta Sans | `font-display` | Page titles, hero headings, section headers |
-| Mono | JetBrains Mono | `font-mono` | Code snippets, numeric data, IDs, timestamps |
+Two self-hosted families, declared as `@font-face` in `globals.css` from `public/fonts/`, in Light
+(300) through Black (900):
 
-**Size hierarchy:** Use Tailwind's scale. Headings: `text-4xl`→`text-3xl`→`text-2xl`→`text-xl`. Body: `text-base`→`text-sm`. Captions: `text-xs`.
+| Role | Family | CSS variable | How to apply |
+|------|--------|--------------|--------------|
+| Display / headings | **AB Marquee** | `--font-display` | `font-display` (Tailwind) or `.font-marquee` |
+| Body | **AB Sans** | `--font-body` | Inherited — `body` sets `font-family: var(--font-body)`. `.font-absans` applies it explicitly. |
+| Mono | — | — | `font-mono` |
 
-Always use `tracking-tight` on large headings (`text-2xl` and above).
+Headings are uppercase with wide tracking; the house heading is
+`font-marquee text-2xl md:text-3xl font-bold uppercase tracking-wide`.
+Use `.t-eyebrow` for the small gold uppercase label above a section title.
 
----
-
-## Color System (Design Tokens)
-
-All colors use CSS variables — **never hardcode color values**.
-
-| Token | Purpose |
-|-------|---------|
-| `background` / `foreground` | Page-level bg and text |
-| `card` / `card-foreground` | Card surfaces |
-| `primary` / `primary-foreground` | Brand buttons, links, accents |
-| `secondary` / `secondary-foreground` | Secondary buttons, subtle highlights |
-| `muted` / `muted-foreground` | Disabled states, helper text, subtle backgrounds |
-| `accent` / `accent-foreground` | Hover states, active nav items |
-| `destructive` / `destructive-foreground` | Errors, delete actions |
-| `border` | Borders and dividers |
-| `input` | Form input borders |
-| `ring` | Focus rings |
-
-Usage: `bg-primary`, `text-muted-foreground`, `border-border`, etc.
+**Two caveats in the current config.** `tailwind.config.ts` maps `font-sans` to `var(--font-sans)`
+and `font-mono` to `var(--font-mono)`, and `globals.css` defines neither. So `font-mono` renders
+through its fallback (`ui-monospace, monospace`) — fine, and used throughout for slugs, field names
+and tabular figures — while `font-sans` would drop body text to `system-ui`. **Do not use
+`font-sans`**: leave body text to inherit AB Sans.
 
 ---
 
-## Spacing Scale
+## Colour
 
-Based on an 8px grid. Use these CSS variables or Tailwind equivalents:
+All colours are CSS variables in `globals.css`. Prefer the semantic Tailwind tokens over raw hex.
 
-| Token | Value | Tailwind |
-|-------|-------|----------|
-| `--spacing-xs` | 4px | `p-1`, `gap-1` |
-| `--spacing-sm` | 8px | `p-2`, `gap-2` |
-| `--spacing-md` | 16px | `p-4`, `gap-4` |
-| `--spacing-lg` | 24px | `p-6`, `gap-6` |
-| `--spacing-xl` | 32px | `p-8`, `gap-8` |
-| `--spacing-2xl` | 48px | `p-12`, `gap-12` |
-| `--spacing-3xl` | 64px | `p-16`, `gap-16` |
+### Semantic tokens
 
-**Vary spacing rhythm** — don't use the same gap everywhere. Hero → large gap → content → medium gap → footer.
+| Token | Value | Purpose |
+|-------|-------|---------|
+| `background` / `foreground` | `#0A0A0A` / white | Page canvas and text |
+| `card` / `card-foreground` | `#111111` / white | Card surfaces |
+| `popover` / `popover-foreground` | `#1A1A1A` / white | Overlays |
+| `primary` / `primary-foreground` | `#C9A84C` gold / black | Brand accent, headings, links, active nav |
+| `secondary` / `secondary-foreground` | `#1A1A1A` / white | Subtle fills, table header rows |
+| `muted` / `muted-foreground` | `#1A1A1A` / 65% white | Helper and secondary text |
+| `accent` / `accent-foreground` | gold / black | Hover and active states |
+| `destructive` / `destructive-foreground` | `#DC2626` / white | Errors |
+| `border` | gold | Borders and dividers — usually at low opacity, e.g. `border-border/60` |
+| `input` | `#222` | Form input borders |
+| `ring` | gold | Focus rings |
 
----
+Used as `bg-card`, `text-muted-foreground`, `border-border/60`, `text-primary`, and so on.
 
-## Shadow Scale
+### Brand variables
 
-| Token | Default Usage |
-|-------|-------|
-| `--shadow-sm` | Subtle card lift, input focus |
-| `--shadow-md` | Cards, dropdowns, popovers |
-| `--shadow-lg` | Modals, elevated panels |
+`globals.css` also exposes raw brand values for CSS that needs them directly:
 
-These are CSS variables only — use them directly in inline styles or custom CSS as `var(--shadow-sm)` etc. They are not mapped to Tailwind's `shadow-*` utilities.
+`--color-bg` `#0A0A0A` · `--color-bg-deep` `#050505` · `--color-surface` `#111111` ·
+`--color-surface-2` `#1A1A1A` · `--color-surface-3` `#222222` · `--color-gold` `#C9A84C` ·
+`--color-gold-light` `#D4B65C` · `--color-gold-pale` `#E8D5A3` · `--color-gold-dark` `#B0923F` ·
+`--color-burgundy` `#722F37` · `--color-success` `#22C55E` · `--color-warning` `#F59E0B` ·
+`--color-danger` `#DC2626` · `--color-fg-1/2/3` (white at 100 / 65 / 50%) ·
+`--color-gold-08/15/25` (gold at 8 / 15 / 25%).
 
----
+**Charts:** `tailwind.config.ts` declares `chart-1` … `chart-5` colours, but `globals.css` defines
+no `--chart-*` variables, so those utilities resolve to nothing. Nothing in the codebase uses them.
+Pass explicit brand colours to Recharts and Plotly instead.
 
-## Border Radius
-
-| Token | Value | Default Usage |
-|-------|-------|-------|
-| `--radius` | 0.625rem | Default (buttons, inputs, cards) |
-| `--radius-sm` | calc(var(--radius) - 4px) | Small elements (badges, chips) |
-| `--radius-lg` | calc(var(--radius) + 4px) | Large containers, hero cards |
-| `--radius-full` | 9999px | Avatars, pills, circular buttons |
-
----
-
-## Animation Timing
-
-| Token | Value | Tailwind Class | Default Usage |
-|-------|-------|---------------|-------|
-| `--duration-fast` | 150ms | `duration-fast` | Hover states, toggles |
-| `--duration-normal` | 250ms | `duration-normal` | Page transitions, reveals |
-| `--duration-slow` | 350ms | `duration-slow` | Complex animations, modals |
+**Status colours** are Tailwind palette colours at fixed opacities, applied consistently by
+`StatusBadge` and by the provenance chips: emerald = pass/green, amber = partial/planning,
+red = fail, gold = neutral or default.
 
 ---
 
-## Layout Components
+## Radius
 
-### `Container` — `@/components/layouts/container`
-Centers content with responsive padding. Props: `size` (`sm`|`md`|`lg`|`xl`|`full`).
-```tsx
-<Container size="lg">{children}</Container>
-```
+`--radius` is **0.375rem**. Tailwind derives three utilities from it:
 
-### `Section` — `@/components/layouts/section`
-Vertical spacing wrapper for page sections. Props: `id`, `className`.
-```tsx
-<Section id="features">{children}</Section>
-```
+| Utility | Resolves to |
+|---------|-------------|
+| `rounded-lg` | `var(--radius)` → 0.375rem |
+| `rounded-md` | `calc(var(--radius) - 2px)` |
+| `rounded-sm` | `calc(var(--radius) - 4px)` |
 
-### `PageHeader` — `@/components/layouts/page-header`
-Title + description + action buttons. Use at top of every app page.
-```tsx
-<PageHeader title="Dashboard" description="Overview of your account" actions={<Button>Export</Button>} />
-```
-
-### `AppShell` — `@/components/layouts/app-shell`
-Sidebar + header + main content. The standard layout for dashboards and admin panels.
-```tsx
-<AppShell sidebar={<nav>...</nav>} header={<div>...</div>}>{children}</AppShell>
-```
-
-### `AuthLayout` — `@/components/layouts/auth-layout`
-Centered card on gradient background. Use for login, signup, onboarding flows.
-```tsx
-<AuthLayout title="Welcome back" description="Sign in to continue">{form}</AuthLayout>
-```
+`globals.css` additionally defines `--radius-sm` (0.25rem), `--radius-lg` (0.5rem) and
+`--radius-full` (9999px) as CSS variables only — they are not wired to Tailwind utilities. For
+pills and circles use `rounded-full`. Glass cards use `rounded-xl` from Tailwind's own scale.
 
 ---
 
-## Animation Components — `@/components/ui/animate`
+## Spacing and shadows
 
-| Component | Default Usage | Key Props |
-|-----------|-------|-----------|
-| `FadeIn` | Reveal content on scroll | `delay`, `duration` |
-| `ScaleIn` | Pop-in effect | `delay` |
-| `SlideIn` | Directional entrance | `from` (`top`\|`bottom`\|`left`\|`right`), `delay` |
-| `Stagger` + `StaggerItem` | Sequential reveal for lists/grids | `staggerDelay` |
-| `HoverLift` | Lift effect on hover (cards, links) | — |
-| `PressScale` | Press-down feedback for buttons | — |
-| `SkeletonPulse` | Loading placeholder | `className` (set width/height) |
-
-**Pattern:** Wrap page sections in `FadeIn`, list items in `Stagger`/`StaggerItem`, interactive cards in `HoverLift`.
+There are no custom spacing or shadow tokens — use Tailwind's default scales (`p-4`, `gap-6`,
+`shadow-md`, …). Vary the rhythm rather than repeating one gap: the page shell supplies the outer
+padding, and `Section` supplies `mb-16` between sections.
 
 ---
 
-## UI Components — `@/components/ui/`
+## Motion
 
-### Core
-| Component | Import | Key Props |
-|-----------|--------|-----------|
-| `Button` | `@/components/ui/button` | `variant` (`default`\|`secondary`\|`outline`\|`ghost`\|`destructive`\|`link`\|`glass-dark`\|`glass-light`), `size` (`default`\|`xs`\|`sm`\|`lg`\|`icon`\|`icon-sm`), `loading` (boolean). **`glass-dark`**: for dark/vivid backgrounds. **`glass-light`**: for light/pale backgrounds. **Link**: focus uses underline, not ring. |
-| `Badge` | `@/components/ui/badge` | `variant` (`default`\|`secondary`\|`outline`\|`destructive`) |
-| `Card` | `@/components/ui/card` | `variant` (`default`\|`interactive`\|`glass-dark`\|`glass-dark-interactive`\|`glass-light`\|`glass-light-interactive`\|`ghost`). Composed: `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`. **Interactive**: always wrap in `<a>` or `<button>` for keyboard access. |
-| `Separator` | `@/components/ui/separator` | `orientation` (`horizontal`\|`vertical`) |
+| What | Where | Notes |
+|------|-------|-------|
+| `--ease-brand` | `globals.css` | `cubic-bezier(0.25, 1, 0.5, 1)` — the house easing, used by `.glass-card`, `.btn-gold` and friends. |
+| `animate-fade-in` / `animate-fade-out` | `tailwind.config.ts` | 0.4s / 0.2s ease-out. |
+| `animate-accordion-down` / `-up` | `tailwind.config.ts` | For Radix accordion content. |
+| Scroll reveal | `components/proposal/section.tsx` | `Section` animates itself in with framer-motion (`opacity`/`y`, once, 0.6s). Wrapping a page section in `Section` is all that is needed. |
+| `@/components/ui/animate` | framer-motion helpers | `FadeIn`, `ScaleIn`, `SlideIn`, `Stagger` + `StaggerItem`, `HoverLift`, `PressScale`, `SkeletonPulse`. |
 
-### Forms
-| Component | Import |
-|-----------|--------|
-| `Input` | `@/components/ui/input` | `variant` (`default`\|`error`\|`success`\|`ghost`), `size` (`default`\|`sm`\|`lg`) |
-| `Textarea` | `@/components/ui/textarea` | `variant` (`default`\|`error`\|`success`\|`ghost`) |
-| `Label` | `@/components/ui/label` |
-| `Select` | `@/components/ui/select` |
-| `Checkbox` | `@/components/ui/checkbox` |
-| `RadioGroup` | `@/components/ui/radio-group` |
-| `Switch` | `@/components/ui/switch` |
-| `Slider` | `@/components/ui/slider` |
-| `Calendar` | `@/components/ui/calendar` |
-| `DateRangePicker` | `@/components/ui/date-range-picker` |
-| `InputOTP` | `@/components/ui/input-otp` |
-| `Form` | `@/components/ui/form` (react-hook-form integration) |
+`tailwind.config.ts` maps `duration-fast`, `duration-normal` and `duration-slow` to `--duration-*`
+variables that `globals.css` does not define, so those three utilities produce no duration. Use
+Tailwind's numeric durations (`duration-200`, `duration-300`) in new code.
 
-### Navigation & Layout
-| Component | Import |
-|-----------|--------|
-| `Tabs` | `@/components/ui/tabs` — `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent` |
-| `Accordion` | `@/components/ui/accordion` — `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent` |
-| `NavigationMenu` | `@/components/ui/navigation-menu` |
-| `Breadcrumb` | `@/components/ui/breadcrumb` |
-| `Pagination` | `@/components/ui/pagination` |
-| `Menubar` | `@/components/ui/menubar` |
-| `ScrollArea` | `@/components/ui/scroll-area` |
-| `Resizable` | `@/components/ui/resizable` |
+---
 
-### Overlays & Feedback
-| Component | Import |
-|-----------|--------|
-| `Dialog` | `@/components/ui/dialog` |
-| `AlertDialog` | `@/components/ui/alert-dialog` |
-| `Sheet` | `@/components/ui/sheet` — side-panel overlay |
-| `Drawer` | `@/components/ui/drawer` — bottom sheet (great for mobile) |
-| `Popover` | `@/components/ui/popover` |
-| `Tooltip` | `@/components/ui/tooltip` |
-| `HoverCard` | `@/components/ui/hover-card` |
-| `ContextMenu` | `@/components/ui/context-menu` |
-| `DropdownMenu` | `@/components/ui/dropdown-menu` |
-| `Command` | `@/components/ui/command` — command palette / searchable list |
-| `Alert` | `@/components/ui/alert` |
-| `toast` | `import { toast } from 'sonner'` — `toast.success()`, `toast.error()` |
+## Brand utility classes
 
-### Data Display
-| Component | Import |
-|-----------|--------|
-| `Table` | `@/components/ui/table` — `Table`, `TableHeader`, `TableBody`, `TableRow`, `TableHead`, `TableCell` |
-| `Avatar` | `@/components/ui/avatar` |
-| `Progress` | `@/components/ui/progress` |
-| `Skeleton` | `@/components/ui/skeleton` |
-| `AspectRatio` | `@/components/ui/aspect-ratio` |
-| `Carousel` | `@/components/ui/carousel` |
+Defined in `globals.css` and used across the proposal pages:
 
-### Misc
-| Component | Import |
-|-----------|--------|
-| `Toggle` | `@/components/ui/toggle` |
-| `ToggleGroup` | `@/components/ui/toggle-group` |
-| `Collapsible` | `@/components/ui/collapsible` |
-| `ThemeToggle` | `@/components/theme-toggle` — light/dark mode switch |
-## SSR / Hydration Safety — `@/components/client-only`, `@/components/safe-format`
-Server-rendered HTML must match the client's first render. An automated SSR lint
-(`eslint.ssr.config.mjs` — do not delete) runs after every build and fails it on unsafe
-patterns. Use these primitives instead of hand-rolling fixes:
+| Class | Effect |
+|-------|--------|
+| `.glass-card` | Translucent white fill, 12px backdrop blur, hairline gold border; on hover lifts 4px with a gold-tinted shadow. |
+| `.t-eyebrow` | 0.75rem, semibold, `0.25em` tracking, uppercase, gold. |
+| `.ambient-glow` | Soft radial gold wash for hero backgrounds. |
+| `.section-divider` | 1px gold gradient rule, transparent at both ends. |
+| `.ornament` / `.ornament-diamond` | Centred rule pair with a rotated diamond — the `◆ ───` motif. |
+| `.gold-shimmer` | Animated gold gradient clipped to text (3s loop). |
+| `.btn-gold` / `.btn-gold-outline` | Uppercase gold gradient button and its outline counterpart. |
+| `.font-marquee` / `.font-absans` | Apply the display and body families directly. |
+| `.no-print` | Hidden in the print stylesheet, which also forces a white background. |
+
+Focus is a 2px gold outline at 2px offset, site-wide. Selection and scrollbars are gold-tinted.
+
+---
+
+## Proposal components — `@/components/proposal/`
+
+These are the building blocks the pages are actually made of.
+
+| Component | Props | Use |
+|-----------|-------|-----|
+| `Section` | `eyebrow?`, `title?`, `id?`, `className?` | Standard page section: eyebrow, uppercase heading, scroll-reveal. |
+| `GlassCard` | `className?`, `onClick?` | `.glass-card` surface at `rounded-xl p-6`. Passing `onClick` adds button semantics and keyboard handling. |
+| `StatCard` | `label`, `value`, `sub?` | Headline figure in a glass card — eyebrow label, large gold value, optional note. |
+| `DataTable` | `headers`, `rows` | Horizontally scrollable table with gold uppercase headers and hover rows. |
+| `StatusBadge` | `status` | Pill for `GREEN`/`AMBER`/`RED`, `PASS`/`PARTIAL`/`FAIL`; anything else renders gold. |
+| `OrnamentDivider` | `className?` | The `◆` divider between major blocks. |
+| `Tag` | `tag: ProvenanceTag` | Provenance chip — see below. |
+| `Timeline` | `items` | Vertical phase timeline. |
+| `ArchitectureGraph` | — | The interactive architecture graph. |
+| `AppShell`, `Sidebar`, `SiteFooter` | — | Page frame; mounted by `app/(app)/layout.tsx`. |
+
+### Provenance chips
+
+Every figure that needs a source carries a `<Tag>`. The eight values and the plain-word labels they
+render are defined in `components/proposal/tag.tsx`: `ACTUAL` → "Actual spend", `LIST` → "Published
+price", `QUOTE` → "Quoted", `DERIVED` → "Calculated", `ASSUMPTION` → "Planning assumption",
+`OFFICIAL` → "Official statistic", `UNKNOWN` → "To be confirmed", `ILLUSTRATIVE` → "Illustrative —
+from sample data". Where a sentence has room, say it in words instead; the chip is for table cells
+and headline figures.
+
+---
+
+## UI primitives — `@/components/ui/`
+
+Radix-based primitives with `class-variance-authority` variants.
+
+| Component | Variants / props |
+|-----------|------------------|
+| `Button` | `variant`: `default` \| `secondary` \| `outline` \| `ghost` \| `destructive` \| `link` \| `glass-dark` \| `glass-light`. `size`: `default` \| `xs` \| `sm` \| `lg` \| `icon` \| `icon-sm`. `loading` boolean. `link` focuses with an underline, not a ring. |
+| `Card` | `variant`: `default` \| `interactive` \| `glass-dark` \| `glass-dark-interactive` \| `glass-light` \| `glass-light-interactive` \| `ghost`. Composed of `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`. Wrap `interactive` in an `<a>` or `<button>` for keyboard access. |
+| `Badge` | `variant`: `default` \| `secondary` \| `outline` \| `destructive`. |
+| `Input` | `variant`: `default` \| `error` \| `success` \| `ghost`. `size`: `default` \| `sm` \| `lg`. |
+| `Textarea` | `variant`: `default` \| `error` \| `success` \| `ghost`. |
+
+The `glass-light` variants of `Button` and `Card` are built for pale backgrounds and will read
+poorly on this site's black canvas — prefer `glass-dark`, or `GlassCard` from the proposal set.
+
+Also available, unstyled beyond the tokens above: `Accordion`, `Alert`, `AlertDialog`,
+`AspectRatio`, `Avatar`, `Breadcrumb`, `Calendar`, `Carousel`, `Checkbox`, `Collapsible`,
+`Command`, `ContextMenu`, `DateRangePicker`, `Dialog`, `Drawer`, `DropdownMenu`, `Form`,
+`HoverCard`, `InputOTP`, `Label`, `Menubar`, `NavigationMenu`, `Pagination`, `Popover`, `Progress`,
+`RadioGroup`, `Resizable`, `ScrollArea`, `Select`, `Separator`, `Sheet`, `Skeleton`, `Slider`,
+`Switch`, `Table`, `Tabs`, `Toggle`, `ToggleGroup`, `Tooltip`.
+
+Toasts come from **react-hot-toast** (`import toast from 'react-hot-toast'`), whose `Toaster` is
+mounted in `app/providers.tsx`.
+
+---
+
+## SSR / hydration safety
+
+Server-rendered HTML must match the client's first render. Use these primitives rather than
+hand-rolling fixes:
+
 | Primitive | Import | Use for |
 |-----------|--------|---------|
 | `ClientOnly` | `@/components/client-only` | Anything browser-only or non-deterministic: `window`/`localStorage` reads, live clocks, random values, third-party widgets. Pass a `fallback` sized like the content. |
 | `useMounted()` | `@/components/client-only` | Hook variant when you need the boolean directly. |
-| `SafeDate` / `SafeTime` | `@/components/safe-format` | Dates/times — formats with explicit locale + UTC so SSR matches client. `localize` re-renders in the visitor's timezone after mount. |
-| `SafeNumber` | `@/components/safe-format` | Numbers/currency (`currency="USD"`), same guarantees. |
+| `SafeDate` / `SafeTime` | `@/components/safe-format` | Dates and times — formatted with an explicit locale and UTC so SSR matches the client. `localize` re-renders in the visitor's timezone after mount. |
+| `SafeNumber` | `@/components/safe-format` | Numbers and currency (`currency="AUD"`), same guarantees. |
+
 Rules of thumb: never touch `window`/`document` at module scope; never seed `useState` with
-`Date.now()`/`Math.random()`/`new Date()`; never call `toLocaleString`-style methods without
-an explicit locale (and `timeZone` for dates).
+`Date.now()`, `Math.random()` or `new Date()`; never call a `toLocaleString`-style method without an
+explicit locale (and `timeZone` for dates). The three.js components (`components/three/`) are
+client-only and are loaded with `dynamic(..., { ssr: false })`.
+
+---
+
+## Copy
+
+The rendered surface — `app/`, `lib/`, `components/` — is gated by
+[`scripts/no-chrome-gate.sh`](scripts/no-chrome-gate.sh), which fails the build on review-process
+and working-notes vocabulary. Write page copy as prose addressed to the reader of the proposal.
+Spelling and figures are Australian English (`en-AU`, set on `<html lang>`).

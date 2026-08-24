@@ -25,11 +25,5 @@ jobs:
       - name: Production no-chrome gate
         run: bash scripts/no-chrome-gate.sh
 
-      - name: Generate Prisma client
-        run: npx prisma generate
-
       - name: Build
         run: yarn build
-        env:
-          DATABASE_URL: postgresql://user:pass@localhost:5432/placeholder
-          NEXTAUTH_SECRET: ci-placeholder
