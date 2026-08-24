@@ -1,6 +1,6 @@
 name: Deploy to VPS
 
-# Continuous deployment to the Hostinger VPS (ticketalay.srv1356245.hstgr.cloud).
+# Continuous deployment to the Hostinger VPS (the production host).
 # Runs on every push to main after CI. Requires three repository secrets:
 #   VPS_HOST     e.g. srv1356245.hstgr.cloud
 #   VPS_USER     e.g. root
@@ -56,7 +56,7 @@ jobs:
         if: steps.cfg.outputs.configured == 'true'
         run: |
           sleep 10
-          html=$(curl -fsSL --max-time 30 https://ticketalay.srv1356245.hstgr.cloud/)
+          html=$(curl -fsSL --max-time 30 https://ticketalay.abacusai.cloud/)
           echo "$html" | grep -q "V2 Group" || { echo "::error::footer missing after deploy"; exit 1; }
           echo "$html" | grep -qi "Adversarial audit" && { echo "::error::audit chrome still served"; exit 1; }
           echo "production verified"

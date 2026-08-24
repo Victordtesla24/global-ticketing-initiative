@@ -22,7 +22,7 @@ Ticketalay is an Australian Marathi-diaspora cultural-events ticketing platform 
 
 | Environment | Hostname | Status |
 | :--- | :--- | :--- |
-| Production | [`ticketalay-global-strategy-with-data-intelligence.abacusai.app`](https://ticketalay-global-strategy-with-data-intelligence.abacusai.app/data-ecosystem) | Production |
+| Production | [`ticketalay.abacusai.cloud`](https://ticketalay.abacusai.cloud) | Production |
 
 <p align="center" style="color:#C9A84C">◆ ─────────────────────────────────────────────────────── ◆</p>
 
