@@ -383,18 +383,21 @@ export function AudienceDemo() {
                       <Icon className="h-4 w-4" />
                     </span>
                   </span>
+                  {/* Five labels will not sit side by side on a phone. Below sm the
+                      rail is icons only and the active stage is named beneath it. */}
                   <span
                     className={cn(
-                      'font-marquee text-[13px] font-bold uppercase leading-tight tracking-wide transition-colors sm:text-[14px]',
+                      'hidden font-marquee text-[13px] font-bold uppercase leading-tight tracking-wide transition-colors sm:block sm:text-[14px]',
                       active ? 'text-foreground' : 'text-muted-foreground'
                     )}
                   >
                     {s.label}
                   </span>
+                  <span className="sr-only">{s.label}</span>
                   <AnimatePresence>
                     {stage >= i ? (
                       <motion.span
-                        className="font-mono text-[10.5px] uppercase tracking-wider text-primary/80"
+                        className="hidden font-mono text-[10.5px] uppercase tracking-wider text-primary/80 sm:block"
                         initial={reduceMotion ? false : { opacity: 0, y: -4 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
@@ -403,7 +406,10 @@ export function AudienceDemo() {
                         {s.count}
                       </motion.span>
                     ) : (
-                      <span className="font-mono text-[10.5px] uppercase tracking-wider text-transparent" aria-hidden>
+                      <span
+                        className="hidden font-mono text-[10.5px] uppercase tracking-wider text-transparent sm:block"
+                        aria-hidden
+                      >
                         ·
                       </span>
                     )}
@@ -413,6 +419,14 @@ export function AudienceDemo() {
             );
           })}
         </ol>
+        <p className="mt-3 text-center sm:hidden">
+          <span className="font-marquee text-[15px] font-bold uppercase tracking-wide text-foreground">
+            {STAGES[stage]?.label}
+          </span>
+          <span className="ml-2 font-mono text-[11px] uppercase tracking-wider text-primary/80">
+            {STAGES[stage]?.count}
+          </span>
+        </p>
       </div>
 
       {/* stage panel */}
