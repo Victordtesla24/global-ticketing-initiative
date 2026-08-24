@@ -401,7 +401,8 @@ export default function PrototypeContent() {
         or synthetic. All currency figures AUD.
       </p>
       <Disclosure label="What the sample set holds" className="mt-4 max-w-3xl">
-        Sixty datasets, one per catalogued provider, each shipped as a matched CSV and JSON pair — 120 files, 601 rows.
+        A working prototype of the data programme on sample data — Australia first. Every dataset below is downloadable
+        for analyst validation. Sixty datasets, one per catalogued provider, each shipped as a matched CSV and JSON pair — 120 files, 601 rows.
         Fifteen are real extracts taken from the named publisher, carrying a source URL and an access date on every
         row. The other forty-five are synthetic samples that mirror each provider&apos;s published field specification
         so the pipeline can be built and tested before a single licence is bought. The two are labelled on every
@@ -471,13 +472,18 @@ export default function PrototypeContent() {
       </GlassCard>
 
       <Section eyebrow="Downloadable Sample Set" title="All 60 Datasets" className="mt-12">
-        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+        <p className="mb-2 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Filter, then download any dataset in either format. Each row&apos;s full catalogue entry lives on the{' '}
           <Link href="/data-ecosystem" className="text-primary hover:underline">
             Data Ecosystem
           </Link>{' '}
           page.
         </p>
+        <Disclosure label="What the catalogue entry holds" className="mb-4 max-w-3xl">
+          Search and filter the set, then download any dataset in either format. The catalogue entry behind each row —
+          cost, trust tier, refresh cadence and full assessment — lives on the Data Ecosystem page; this page ships the
+          files.
+        </Disclosure>
 
         <GlassCard className="mb-4">
           <div className="flex flex-wrap items-center gap-2">
@@ -765,6 +771,13 @@ export default function PrototypeContent() {
           What it does establish: the pipeline runs, the labels survive end to end, and the mart reconciles to zero
           variance on files anyone can re-add.
         </p>
+        <Disclosure label="What the prototype establishes, in full" className="mt-2 max-w-3xl">
+          What the prototype does establish is narrower and more useful than a forecast: the pipeline runs, the labels
+          survive it end to end, the finance mart reconciles to zero variance on files anyone can re-add, and every
+          number a decision would rest on names the file it came from. The gate schedule and its priced components are
+          on the Investment &amp; Returns page; the platform this pipeline would run on is on the Architecture page; the
+          Australian market evidence behind Step 01 is on the Australia market page.
+        </Disclosure>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link href="/investment" className="btn-gold-outline">
             Gate Schedule <ArrowRight className="ml-2 inline h-4 w-4" />
