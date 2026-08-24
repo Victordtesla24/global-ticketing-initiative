@@ -93,7 +93,15 @@ export default function DataEcosystemContent() {
         official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
         estimate 6. Each cost cell says where its figure came from: money already spent, a price the vendor
-        publishes, a written quote, or a calculation from those. Live Nation&apos;s
+        publishes, a written quote, or a calculation from those. Two figures on this page sit outside that
+        list and carry a fifth label,{' '}
+        <span className="font-semibold text-foreground/80">Ground-truth baseline</span> — an earlier costing
+        carried forward from the commissioning brief: A$922/yr for the Statista Personal tier and A$4,679/yr
+        for Claritas Spotlight Advanced. Neither is a price a vendor publishes and neither is A$0. The label
+        names where the figure came from and asserts nothing further about it: it is not a vendor
+        publication, it is not a verification and it is not a grade, and it feeds no funded figure and no
+        gate multiple. Both stand in the Year-1 Data Budget notes below, each beside the vendor&apos;s own
+        published price for the same product, and neither pair is reconciled. Live Nation&apos;s
         fee-bearing GTV, below, comes from a statutory SEC filing and is an official statistic for this purpose:
         benchmark only, feeding no funded figure and never a cost comparator, while the source itself stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
@@ -311,11 +319,14 @@ export default function DataEcosystemContent() {
 
       <Section eyebrow="Data Budget" title="Year-1 Data Budget — the Day-1 Bill of Materials">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          Every line below is a vendor-published price or A$0, expressed as a multiple of the A$830.00 of actual
-          spend to date. A free official or intergovernmental source is shown at its own published price of zero, not
-          as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. The return on this spend
-          is decision information for gate G1 rather than revenue: it buys the partnership terms, the contracted
-          inventory and the primary demand evidence.
+          Every line in the table below is a vendor-published price or A$0, expressed as a multiple of the
+          A$830.00 of actual spend to date. A free official or intergovernmental source is shown at its own published
+          price of zero, not as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. Two
+          figures in the notes under the table are neither a vendor-published price nor A$0 — A$922/yr for the
+          Statista Personal tier and A$4,679/yr for Claritas Spotlight Advanced — and each carries the{' '}
+          <span className="font-semibold text-foreground/80">Ground-truth baseline</span> label the page lede
+          above sets out. The return on this spend is decision information for gate G1 rather than revenue: it
+          buys the partnership terms, the contracted inventory and the primary demand evidence.
         </p>
         <DataTable
           headers={['Line', 'Figure', 'Multiple of A$830 anchor']}
@@ -330,16 +341,22 @@ export default function DataEcosystemContent() {
           no price — are not deferred on price. They are unpriced: no published price exists and no written quote is
           on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
           excluded outright as unfit for the Australian proof market at any price. On Claritas the catalogue row
-          above carries the vendor&apos;s published USD 3,295/yr for Spotlight Advanced beside an earlier costing of
-          A$4,679/yr for that same product. The two are not reconciled, and the programme sponsor owns closing that
-          gap. Nothing funded rests on it: no gate line buys Claritas at any tier.
+          above prices Spotlight Advanced at the vendor&apos;s published USD 3,295/yr, which is A$4,611.62 at the
+          single rate above. An earlier costing of A$4,679/yr for that same product — a{' '}
+          <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
+          the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
+          cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
+          on it: no gate line buys Claritas at any tier.
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
           P2 is priced from Statista&apos;s own published tier, US$199/mo billed annually (= US$2,388/yr, calculated:
-          199 × 12 — the annual figure is an annualisation, not a price the vendor publishes). On the Personal tier
-          the catalogue row above carries the vendor&apos;s published price of US$649/mo billed annually beside an
-          earlier costing of A$922/yr for that same tier. The two are not reconciled, and the programme sponsor owns
-          closing that gap. Nothing funded rests on it: P2 buys Starter, not Personal.
+          199 × 12 — the annual figure is an annualisation, not a price the vendor publishes). The catalogue row
+          above prices the Personal tier at the vendor&apos;s published US$649/mo billed annually. An earlier costing
+          of A$922/yr for that same tier — a{' '}
+          <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
+          the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
+          cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
+          on it: P2 buys Starter, not Personal.
         </p>
       </Section>
 
