@@ -342,7 +342,7 @@ export default function DataEcosystemContent() {
           on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
           excluded outright as unfit for the Australian proof market at any price. On Claritas the catalogue row
           above prices Spotlight Advanced at the vendor&apos;s published USD 3,295/yr, which is A$4,611.62 at the
-          single rate above. An earlier costing of A$4,679/yr for that same product — a{' '}
+          single rate above (calculated: 3,295 ÷ 0.7145). An earlier costing of A$4,679/yr for that same product — a{' '}
           <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
           the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
           cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
