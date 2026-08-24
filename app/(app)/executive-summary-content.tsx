@@ -158,7 +158,10 @@ export default function ExecutiveSummaryContent() {
         className="ambient-glow relative mb-8 overflow-hidden rounded-2xl border border-primary/25 bg-gradient-to-b from-[hsl(0_0%_7%)] to-[hsl(0_0%_4%)] px-6 py-12 md:px-12 md:py-16"
       >
         <p className="t-eyebrow mb-4">AB Entertainment — Strategic Proposal to the Board</p>
-        <h1 className="font-marquee text-4xl font-black uppercase leading-[1.05] tracking-wide text-foreground md:text-6xl">
+        {/* Sized down and untracked at the narrowest widths: "Marathi Entertainment"
+            is a single 13-character word in a wide display face and overruns a
+            390px canvas at text-4xl. */}
+        <h1 className="font-marquee text-[1.65rem] font-black uppercase leading-[1.05] tracking-normal text-foreground sm:text-4xl sm:tracking-wide md:text-6xl">
           A Global Stage for
           <br />
           <span className="gold-shimmer text-primary">Marathi Entertainment</span>
