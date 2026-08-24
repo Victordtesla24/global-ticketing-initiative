@@ -13,9 +13,9 @@ export const ARCH_RECONCILIATION = {
   value: 'MVP: S3 · Glue Data Catalog · Athena · dbt Core · QuickSight',
   note:
     'At MVP scale the committed bill of materials is S3, Glue Data Catalog free tier, Athena, dbt Core and QuickSight ' +
-    '(Metabase OSS self-hosted as the A$0 [LIST] alternative — the vendor’s own pricing page publishes “Free unlimited ' +
-    'users” for the self-hosted Open Source edition) at A$46.43/mo [DERIVED] run cost and 8.0 setup days, 7.0 of them ' +
-    'committable before the U-07 disclosure. That is the funded day-1 system, and it supersedes the design on this ' +
+    '(Metabase OSS self-hosted as the A$0 alternative — the vendor’s own pricing page publishes “Free unlimited ' +
+    'users” for the self-hosted Open Source edition) at a calculated A$46.43/mo run cost and 8.0 setup days, 7.0 of ' +
+    'them committable before the first-party data is disclosed. That is the funded day-1 system, and it supersedes the design on this ' +
     'page. The full lakehouse shown below (Kinesis streaming, Airbyte, Redshift Serverless, SageMaker, the five marts) ' +
     'is post-G2, trigger-gated growth design: a 10-layer stack is a category error for this entity at MVP scale, and ' +
     'each heavier layer may be re-proposed only against a measured trigger — storage > 100 GB sustained, scans > 1 ' +
@@ -58,18 +58,18 @@ export const DATA_MARTS = [
 // Growth path. No user, session, order or run-cost figure is published for any stage.
 // Infrastructure and team shape stand as design intent.
 export const SCALABILITY_OPEN_ITEM = {
-  ref: 'U-03 / U-04',
+  ref: 'growth-figures',
   title: 'Growth-stage user, order and run-cost figures',
   unknown:
     'No monthly-active-user, session, annual-order or run-cost figure is published for any of the three growth stages ' +
     'below. No primary diaspora demand, fee-tolerance or platform-trust study exists to size active users, sessions or ' +
     'orders for this audience, and there are zero named, signed promoter or venue counterparties, so no ticket-volume ' +
     'figure has contracted supply behind it.',
-  owner: 'Research lead and Commercial lead (both roles currently unassigned — LT to appoint)',
+  owner: 'Research lead and Commercial lead (both roles currently unassigned — leadership team to appoint)',
   action:
-    'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (U-04), and secure at least ' +
-    'three signed pilot-event agreements or dated letters of intent (U-03), before any user, order or run-cost figure ' +
-    'is set for any stage.',
+    'Commission a primary study of Marathi and Indian-origin event buyers in Melbourne and Sydney, and secure at ' +
+    'least three signed pilot-event agreements or dated letters of intent, before any user, order or run-cost ' +
+    'figure is set for any stage.',
 };
 
 export const SCALABILITY = [

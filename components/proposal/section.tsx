@@ -112,24 +112,6 @@ export function StatusBadge({ status, className }: { status: string; className?:
   );
 }
 
-/** Renders text, highlighting [EST] and [UNVERIFIED] tags in gold/amber. */
-export function EstText({ text, className }: { text: string; className?: string }) {
-  const parts = (text ?? '').split(/(\[EST\]|\[UNVERIFIED\])/g);
-  return (
-    <span className={className}>
-      {parts.map((p: string, i: number) =>
-        p === '[EST]' ? (
-          <span key={i} className="mx-0.5 rounded border border-primary/40 bg-primary/10 px-1 py-px text-[10px] font-semibold tracking-wider text-primary align-middle">EST</span>
-        ) : p === '[UNVERIFIED]' ? (
-          <span key={i} className="mx-0.5 rounded border border-amber-500/40 bg-amber-500/10 px-1 py-px text-[10px] font-semibold tracking-wider text-amber-400 align-middle">UNVERIFIED</span>
-        ) : (
-          <span key={i}>{p}</span>
-        )
-      )}
-    </span>
-  );
-}
-
 export function DataTable({
   headers,
   rows,
@@ -156,7 +138,7 @@ export function DataTable({
             <tr key={i} className="border-b border-border/30 last:border-0 hover:bg-secondary/30 transition-colors">
               {(r ?? []).map((c: any, j: number) => (
                 <td key={j} className="px-4 py-3 align-top text-foreground/85">
-                  {typeof c === 'string' ? <EstText text={c} /> : c}
+                  {c}
                 </td>
               ))}
             </tr>

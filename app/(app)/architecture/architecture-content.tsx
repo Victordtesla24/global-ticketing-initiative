@@ -2,7 +2,6 @@
 
 import { Database, TrendingUp, ShieldCheck, Timer, Globe, AlertTriangle } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, DataTable, StatCard } from '@/components/proposal/section';
-import { TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import ArchitectureGraph from '@/components/proposal/architecture-graph';
 import {
@@ -26,9 +25,7 @@ export default function ArchitectureContent() {
         <p className="font-marquee text-lg font-bold uppercase tracking-wide text-foreground">
           {ARCH_RECONCILIATION.value}
         </p>
-        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text={ARCH_RECONCILIATION.note} />
-        </p>
+        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{ARCH_RECONCILIATION.note}</p>
         <p className="mt-3 text-[11px] uppercase tracking-[0.16em] text-primary/80">
           Source: {ARCH_RECONCILIATION.provenance}
         </p>
@@ -82,11 +79,11 @@ export default function ArchitectureContent() {
       <Section eyebrow="Growth Path" title="Scalability Roadmap — Posture, Infrastructure and Team Shape">
         <Alert className="mb-4 border-amber-500/40 bg-amber-500/5">
           <AlertTriangle className="h-4 w-4 !text-amber-400" />
-          <AlertTitle className="text-amber-300">OPEN ITEM — {SCALABILITY_OPEN_ITEM.title}</AlertTitle>
+          <AlertTitle className="text-amber-300">Outstanding before decision — {SCALABILITY_OPEN_ITEM.title}</AlertTitle>
           <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-            <p><span className="font-semibold text-foreground/80">What is unknown:</span> {SCALABILITY_OPEN_ITEM.unknown}</p>
+            <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {SCALABILITY_OPEN_ITEM.unknown}</p>
             <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {SCALABILITY_OPEN_ITEM.owner}</p>
-            <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {SCALABILITY_OPEN_ITEM.action} ({SCALABILITY_OPEN_ITEM.ref})</p>
+            <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {SCALABILITY_OPEN_ITEM.action}</p>
           </AlertDescription>
         </Alert>
         <div className="grid gap-4 lg:grid-cols-3">
@@ -159,15 +156,14 @@ export default function ArchitectureContent() {
         </div>
       </Section>
 
-      {/* A "Reviewer Rating" tile stood here. It asserted an external reviewer that this page never
-          named, which makes it a self-assigned verdict — the one thing no page on this site may
-          publish. Do not reinstate a posture indicator here unless it either names the reviewer or
-          carries the same self-assessment disclosure /risk publishes. */}
+      {/* No posture or reviewer-rating tile belongs here: this page names no external reviewer, so
+          any rating shown here would be a self-assigned verdict. If one is ever added it must name
+          the reviewer, or carry the same self-assessment note the Risk page uses. */}
       <div className="grid gap-4">
         <StatCard
           label="Committed MVP Run Cost"
-          value="A$46.43/mo [DERIVED]"
-          sub="The only run cost published for this stack — the committed MVP bill of materials, monthly-cancellable"
+          value="A$46.43/mo"
+          sub="Calculated, and the only run cost published for this stack — the committed MVP bill of materials, monthly-cancellable"
         />
       </div>
     </div>

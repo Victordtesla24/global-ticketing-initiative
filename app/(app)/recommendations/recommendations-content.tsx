@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { Ban, Flag, Gavel, AlertTriangle } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider } from '@/components/proposal/section';
-import { TagText } from '@/components/proposal/tag';
 import { Timeline } from '@/components/proposal/timeline';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
@@ -11,13 +10,13 @@ import {
   NOT_YET, ROADMAP_90_DAYS, ROADMAP_RECONCILIATION, ROADMAP_NOTE, CEO_ACTIONS, CLOSING_STATEMENT, CLOSING_PROVENANCE,
 } from '@/lib/data/review';
 
-function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
+function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
   return (
     <Alert className="border-amber-500/40 bg-amber-500/5">
       <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
       <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What is unknown:</span> <TagText text={item?.unknown ?? ''} /></p>
+        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
       </AlertDescription>
@@ -31,7 +30,7 @@ export default function RecommendationsContent() {
       <Section eyebrow="Section 09 — Recommendations" title="The Execution Sequence">
         <p className="max-w-3xl leading-relaxed text-muted-foreground mb-6">{RECS_LEDE}</p>
 
-        <p className="mb-8 max-w-3xl text-sm leading-relaxed text-muted-foreground"><TagText text={EXECUTION_INTRO} /></p>
+        <p className="mb-8 max-w-3xl text-sm leading-relaxed text-muted-foreground">{EXECUTION_INTRO}</p>
 
         <div className="grid gap-4 lg:grid-cols-3">
           {(PRIORITY_RECOMMENDATIONS ?? []).map((r: any, i: number) => (
@@ -43,10 +42,10 @@ export default function RecommendationsContent() {
                   <span className="rounded-full border border-border/60 px-3 py-1 text-muted-foreground">{r?.timeline}</span>
                   <span className="rounded-full border border-border/60 px-3 py-1 text-muted-foreground">{r?.timelineNote}</span>
                 </div>
-                <p className="text-sm leading-relaxed text-foreground/85"><TagText text={r?.detail ?? ''} /></p>
+                <p className="text-sm leading-relaxed text-foreground/85">{r?.detail ?? ''}</p>
                 {r?.openItem ? (
                   <div className="mt-4">
-                    <OpenItemCallout item={r.openItem} />
+                    <OutstandingItem item={r.openItem} />
                   </div>
                 ) : null}
               </GlassCard>

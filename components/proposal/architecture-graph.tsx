@@ -22,7 +22,6 @@ import {
   Route, Send, ShieldCheck, Ticket, TrendingUp, Users, X, Zap,
 } from 'lucide-react';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
-import { TagText } from '@/components/proposal/tag';
 import { cn } from '@/lib/utils';
 import { ARCH_LAYERS, type ArchLayer } from '@/lib/data/architecture';
 import {
@@ -176,7 +175,7 @@ function NodePanel({ node, onClose }: { node: ArchNode; onClose?: () => void }) 
       </PanelRow>
 
       <PanelRow label="Cost anchor">
-        <TagText text={node?.cost ?? ''} />
+        {node?.cost ?? ''}
       </PanelRow>
 
       <div className="rounded-md border border-amber-500/30 bg-amber-500/[0.06] p-2.5">
@@ -536,10 +535,9 @@ export default function ArchitectureGraph() {
                 <p className="text-[11px] leading-relaxed text-muted-foreground">{TICKET_INTRO}</p>
               </div>
 
-              {/* The marker rule, declared where the figures are shown — the mode badge
-                  above labels the file, this labels each figure. */}
+              {/* The badge above labels the file; the line below says what the figures are. */}
               <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground">
-                <TagText text={TICKET_MARKER_RULE} />
+                {TICKET_MARKER_RULE}
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
@@ -589,7 +587,7 @@ export default function ArchitectureGraph() {
                         Step {step + 1} of {TICKET_PATH.length} — {stepNode?.name}
                       </p>
                       <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/90">
-                        <TagText text={TICKET_PATH[step]?.caption ?? ''} />
+                        {TICKET_PATH[step]?.caption ?? ''}
                       </p>
                     </motion.div>
                   </AnimatePresence>

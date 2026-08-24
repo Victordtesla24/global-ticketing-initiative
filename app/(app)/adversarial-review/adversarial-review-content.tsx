@@ -5,10 +5,9 @@ import { Scale, AlertTriangle, FileWarning, Landmark, Database, Gauge } from 'lu
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Section, GlassCard, StatCard, OrnamentDivider, StatusBadge, DataTable } from '@/components/proposal/section';
-import { TagText } from '@/components/proposal/tag';
 import {
   REVIEW_LEDE,
-  D6_ACTUAL,
+  INDEPENDENT_REVIEW,
   DELIVERABLE_RATINGS,
   D4_OPEN_ITEM,
   OVERALL_ASSESSMENT,
@@ -30,21 +29,19 @@ import {
   QUALITY_GATES_PROVENANCE,
 } from '@/lib/data/review';
 
-function ProvenanceNote({ text }: { text: string }) {
+function SourceNote({ text }: { text: string }) {
   return (
-    <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">
-      <TagText text={text} />
-    </p>
+    <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{text}</p>
   );
 }
 
-function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
+function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
   return (
     <Alert className="border-amber-500/40 bg-amber-500/5">
       <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
       <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What is unknown:</span> <TagText text={item?.unknown ?? ''} /></p>
+        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
       </AlertDescription>
@@ -59,17 +56,17 @@ export default function AdversarialReviewContent() {
         <p className="max-w-3xl leading-relaxed text-muted-foreground mb-6">{REVIEW_LEDE}</p>
 
         <div className="mb-8 grid gap-4 sm:grid-cols-2">
-          <StatCard label={D6_ACTUAL?.confidence?.label ?? ''} value={D6_ACTUAL?.confidence?.value ?? ''} sub={D6_ACTUAL?.confidence?.note} />
-          <StatCard label={D6_ACTUAL?.verdict?.label ?? ''} value={D6_ACTUAL?.verdict?.value ?? ''} sub={D6_ACTUAL?.verdict?.note} />
+          <StatCard label={INDEPENDENT_REVIEW?.confidence?.label ?? ''} value={INDEPENDENT_REVIEW?.confidence?.value ?? ''} sub={INDEPENDENT_REVIEW?.confidence?.note} />
+          <StatCard label={INDEPENDENT_REVIEW?.verdict?.label ?? ''} value={INDEPENDENT_REVIEW?.verdict?.value ?? ''} sub={INDEPENDENT_REVIEW?.verdict?.note} />
         </div>
-        <p className="mb-10 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{D6_ACTUAL?.provenance}</p>
+        <p className="mb-10 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{INDEPENDENT_REVIEW?.provenance}</p>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 mb-8">
           {(DELIVERABLE_RATINGS ?? []).map((d: any, i: number) => (
             <motion.div key={d?.id} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.05 }}>
               <GlassCard className="h-full">
                 <div className="mb-3 flex items-center justify-between gap-3">
-                  <p className="font-marquee text-sm font-bold uppercase tracking-wide text-foreground">{d?.id}: {d?.name}</p>
+                  <p className="font-marquee text-sm font-bold uppercase tracking-wide text-foreground">{d?.id} — {d?.name}</p>
                   {d?.rating ? (
                     <StatusBadge status={d.rating} />
                   ) : (
@@ -81,19 +78,19 @@ export default function AdversarialReviewContent() {
                 {d?.strength ? (
                   <>
                     <p className="t-eyebrow mb-1">Strength</p>
-                    <p className="mb-3 text-xs leading-relaxed text-foreground/80"><TagText text={d?.strength ?? ''} /></p>
+                    <p className="mb-3 text-xs leading-relaxed text-foreground/80">{d?.strength ?? ''}</p>
                   </>
                 ) : null}
                 <p className="t-eyebrow mb-1">Weakness</p>
-                <p className="mb-3 text-xs leading-relaxed text-foreground/80"><TagText text={d?.weakness ?? ''} /></p>
+                <p className="mb-3 text-xs leading-relaxed text-foreground/80">{d?.weakness ?? ''}</p>
                 <p className="t-eyebrow mb-1">Recommendation</p>
-                <p className="text-xs leading-relaxed text-foreground/80"><TagText text={d?.recommendation ?? ''} /></p>
-                {d?.id === 'D4' ? (
+                <p className="text-xs leading-relaxed text-foreground/80">{d?.recommendation ?? ''}</p>
+                {d?.id === 'Deliverable 4' ? (
                   <div className="mt-3">
-                    <OpenItemCallout item={D4_OPEN_ITEM} />
+                    <OutstandingItem item={D4_OPEN_ITEM} />
                   </div>
                 ) : null}
-                <ProvenanceNote text={d?.provenance ?? ''} />
+                <SourceNote text={d?.provenance ?? ''} />
               </GlassCard>
             </motion.div>
           ))}
@@ -103,7 +100,7 @@ export default function AdversarialReviewContent() {
               <p className="font-marquee text-sm font-bold uppercase tracking-wide text-primary">Overall Assessment</p>
             </div>
             <p className="text-xs leading-relaxed text-foreground/85">{OVERALL_ASSESSMENT}</p>
-            <ProvenanceNote text={OVERALL_ASSESSMENT_PROVENANCE} />
+            <SourceNote text={OVERALL_ASSESSMENT_PROVENANCE} />
           </GlassCard>
         </div>
       </Section>
@@ -129,7 +126,7 @@ export default function AdversarialReviewContent() {
               <ul className="space-y-1.5 text-xs text-foreground/80">
                 {(CONFIDENCE?.decrease ?? []).map((s: string, i: number) => <li key={i}>− {s}</li>)}
               </ul>
-              <ProvenanceNote text={CONFIDENCE?.listsProvenance ?? ''} />
+              <SourceNote text={CONFIDENCE?.listsProvenance ?? ''} />
             </GlassCard>
           </div>
           <GlassCard className="self-start">
@@ -158,7 +155,7 @@ export default function AdversarialReviewContent() {
                 </div>
               ))}
             </div>
-            <ProvenanceNote text={CONFIDENCE?.dimensionsProvenance ?? ''} />
+            <SourceNote text={CONFIDENCE?.dimensionsProvenance ?? ''} />
           </GlassCard>
         </div>
       </Section>
@@ -198,14 +195,14 @@ export default function AdversarialReviewContent() {
 
           <TabsContent value="assumptions">
             <DataTable
-              headers={['Assumption flagged by the review', 'Honest status today']}
+              headers={['Assumption flagged by the review', 'Where it stands today']}
               rows={(UNREALISTIC_ASSUMPTIONS ?? []).map((m: any) => [
                 <span key="a" className="font-semibold text-foreground">{m?.assumption ?? ''}</span>,
-                <TagText key="s" text={m?.status ?? ''} />,
+                m?.status ?? '',
               ])}
             />
             <div className="mt-4">
-              <OpenItemCallout item={ASSUMPTIONS_OPEN_ITEM} />
+              <OutstandingItem item={ASSUMPTIONS_OPEN_ITEM} />
             </div>
             <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{ASSUMPTIONS_PROVENANCE}</p>
           </TabsContent>
@@ -239,7 +236,7 @@ export default function AdversarialReviewContent() {
                 </GlassCard>
               ))}
             </div>
-            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60"><TagText text={DATA_QUALITY_PROVENANCE} /></p>
+            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{DATA_QUALITY_PROVENANCE}</p>
           </TabsContent>
         </Tabs>
       </Section>
@@ -261,7 +258,7 @@ export default function AdversarialReviewContent() {
           ])}
         />
         <GlassCard className="mt-6 border-amber-500/30">
-          <p className="text-sm leading-relaxed text-foreground/85"><TagText text={QG15_RESTRUCTURED} /></p>
+          <p className="text-sm leading-relaxed text-foreground/85">{QG15_RESTRUCTURED}</p>
         </GlassCard>
         <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{QUALITY_GATES_PROVENANCE}</p>
       </Section>

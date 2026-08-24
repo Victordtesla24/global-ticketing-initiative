@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { Search, Filter, Star, ExternalLink, ListOrdered, Lightbulb, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
-import { Tag, TagText } from '@/components/proposal/tag';
+import { Tag } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   PROVIDERS, CATEGORY_LABELS, COUNTRY_FILTERS, ACQUISITION_SEQUENCE, DAY1_BILL, HISTORICAL_DEPTH,
@@ -17,32 +17,24 @@ const CATS: (ProviderCategory | 'All')[] = ['All', 'A', 'B', 'C', 'D', 'E', 'F']
 /**
  * Upper bound of the cost filter, in AUD/yr.
  *
- * It is COMPUTED from the catalogue it filters — the largest `costMax` any provider row
- * carries — rather than typed in, so the control can never publish a ceiling that traces to
- * nothing. Today that is A$10,900 (rows 6 Statista and 27 Similarweb: US$649/mo billed
- * annually [LIST] × 12 ÷ 0.7145 [DERIVED]); if a row's published price changes, the bound
- * follows it.
+ * Computed from the catalogue it filters — the largest `costMax` any provider row carries —
+ * rather than typed in, so the control can never show a ceiling that traces to nothing. Today
+ * that is A$10,900 (rows 6 Statista and 27 Similarweb: US$649/mo billed annually × 12 ÷
+ * 0.7145); if a row's published price changes, the bound follows it.
  *
- * Until editor pass R6 (2026-08-23, F-R2L-01) this read `const COST_CAP = 300000` and the
- * control published "Indicative Annual Cost: AUD 0 – 300,000+" — a live monetary range under
- * no provenance marker, roughly 27.5x the largest priced line in the catalogue beneath it,
- * traceable to no vendor page and unpriced at both ends, on a page whose own lede binds every
- * monetary figure to the closed marker set. No sanctioned marker fits a figure with no source,
- * so the figure was replaced rather than tagged.
- *
- * The slider bounds PUBLISHED prices only. The 28 rows whose costMin/costMax are null are
- * [UNKNOWN] — quote-only, usage-metered or unpriced — and are governed by the
- * include-unpriced checkbox beneath the slider, never by this bound.
+ * The slider bounds published prices only. The 28 rows whose costMin/costMax are null are
+ * quote-only, usage-metered or unpriced, and are governed by the include-unpriced checkbox
+ * beneath the slider rather than by this bound.
  */
 const COST_CAP = Math.max(0, ...(PROVIDERS ?? []).map((p: Provider) => p?.costMax ?? p?.costMin ?? 0));
 
-function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
+function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
   return (
     <Alert className="border-amber-500/40 bg-amber-500/5">
       <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
       <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What is unknown:</span> {item?.unknown}</p>
+        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
       </AlertDescription>
@@ -104,7 +96,7 @@ export default function DataEcosystemContent() {
         filing and may never be cited as audited content),{' '}
         <span className="font-semibold text-foreground/80">Primary record — conditional</span> (Ticketalay&apos;s own
         first-party transaction data: primary if and only if ownership, access rights and reconciliation are
-        demonstrated — U-07),{' '}
+        demonstrated),{' '}
         <span className="font-semibold text-foreground/80">Platform record</span> (a platform&apos;s own operational
         record of its own activity — primary for that platform and evidence of nothing beyond it; ranks between
         licensed panel and aggregator), and two sub-classes that rank with aggregator,{' '}
@@ -114,18 +106,13 @@ export default function DataEcosystemContent() {
         compiled or open data — fit for a task, never a source of demand evidence). Ten tiers across the sixty rows:
         official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
-        estimate 6. Every monetary figure carries a provenance marker — <Tag tag="ACTUAL" /> <Tag tag="LIST" />{' '}
-        <Tag tag="QUOTE" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="OFFICIAL" /> <Tag tag="UNKNOWN" />{' '}
-        — and this page declares one labelled exception of its own: a baseline figure supplied by the commissioning
-        mandate&apos;s ground-truth register carries the explicit label{' '}
-        <span className="font-semibold text-foreground/80">Ground-truth baseline</span> instead of a marker, because a
-        ground-truth entry is graded nowhere on this site and no provenance marker fits one. It is used once, for the
-        Statista Personal tier (GT D5-[16], reconciliation open at U-01), and feeds no funded figure. A third
-        party&apos;s audited-filing figure (Live
-        Nation&apos;s fee-bearing GTV, below) is none of the cost-provenance categories — it is neither incurred,
-        listed, quoted, derived nor assumed for this programme — but it is a statutory filed record, so it carries{' '}
-        <Tag tag="OFFICIAL" />: benchmark only, feeding no funded figure, never a cost comparator. The marker records
-        how a figure enters this programme&apos;s accounts and does not restate its trust tier: the source stays at{' '}
+        estimate 6. Each cost cell says where its figure came from: money already spent, a price the vendor
+        publishes, a written quote, a calculation from those, a planning assumption with a named confirmer, or an
+        entry still to be confirmed. One figure sits outside that pattern: on the Statista Personal tier an earlier
+        costing recorded A$922/yr against the vendor&apos;s own published US$649/mo billed annually. The two are not
+        reconciled, the programme sponsor owns closing that gap, and no funded line depends on it. Live Nation&apos;s
+        fee-bearing GTV, below, comes from a statutory SEC filing and is an official statistic for this purpose:
+        benchmark only, feeding no funded figure and never a cost comparator, while the source itself stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
         official statistic. No unpublished price bracket appears anywhere below. Filter by category, country coverage,
         payment model, published annual cost and recommendation strength.
@@ -153,14 +140,20 @@ export default function DataEcosystemContent() {
             A$6,036.74 <Tag tag="DERIVED" />
           </p>
           <p className="text-sm text-muted-foreground leading-snug">
-            <TagText text="Full day-1 configuration = 7.27× the AUD 830.00 [ACTUAL] programme-spend anchor; floor alternative A$2,500.00 [LIST] (one IBISWorld AU report) = 3.01×. Line-by-line build-up below." />
+            The full day-1 configuration is 7.27× the A$830.00 of actual spend to date. The floor alternative — one
+            IBISWorld AU report at its published A$2,500.00 — is 3.01×. Line-by-line build-up below.
           </p>
         </GlassCard>
       </div>
 
       <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue" className="mt-12">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="14 of the 60 catalogued providers carry no URL. The original package shipped 15; this audit verified Statistics Canada's table first-hand (row 18) and gave that row a live URL, which is the whole of the difference — the 15 of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where no published price exists behind a provider, its cost stands as [UNKNOWN]; every price a vendor actually publishes is quoted verbatim in the vendor's own currency and tagged [LIST]. An aggregator may point to a primary source but may never be one; a modelled estimate may never feed a headline or a funded figure." />
+          14 of the 60 catalogued providers carry no URL. The original package shipped 15; Statistics Canada&apos;s
+          table (row 18) has since been verified and given a live URL, which is the whole of the difference — the 15
+          of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where
+          no published price exists behind a provider, its cost stands as to be confirmed; every price a vendor
+          actually publishes is quoted verbatim in the vendor&apos;s own currency. An aggregator may point to a
+          primary source but may never be one, and a modelled estimate may never feed a headline or a funded figure.
         </p>
         <GlassCard className="mb-4">
           <div className="flex flex-wrap items-center gap-2">
@@ -227,13 +220,13 @@ export default function DataEcosystemContent() {
               <Slider value={costRange} min={0} max={COST_CAP} step={100} onValueChange={(v: number[]) => setCostRange(v ?? [0, COST_CAP])} />
               <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
                 The bound is the catalogue&apos;s own highest published annual price, not a budget
-                ceiling: A${COST_CAP.toLocaleString('en-AU')} = US$649/mo billed annually <Tag tag="LIST" /> &times; 12 &divide;
-                0.7145 (rows 6 and 27). Unpriced providers carry no bound — they are{' '}
-                <Tag tag="UNKNOWN" /> and are governed by the checkbox below, not by this slider.
+                ceiling: A${COST_CAP.toLocaleString('en-AU')} = the published US$649/mo billed annually &times; 12
+                &divide; 0.7145 (rows 6 and 27). Unpriced providers carry no bound: they are still to be confirmed,
+                and are governed by the checkbox below rather than by this slider.
               </p>
               <label className="mt-2 flex items-center gap-2 text-[11px] text-muted-foreground">
                 <input type="checkbox" checked={includeUnpriced} onChange={(e) => setIncludeUnpriced(e?.target?.checked ?? true)} className="accent-[#C9A84C]" />
-                Include quote-only / internal / [UNKNOWN] sources
+                Include quote-only, internal and unpriced sources
               </label>
             </div>
             <div>
@@ -295,19 +288,19 @@ export default function DataEcosystemContent() {
                     ))}
                   </div>
                 </div>
-                <p className="mt-2 text-[12px] leading-snug text-muted-foreground"><TagText text={p?.coverage ?? ''} /></p>
-                <p className="mt-1.5 text-[12px] font-semibold text-primary"><TagText text={`Cost: ${p?.costLabel ?? '—'}`} /></p>
+                <p className="mt-2 text-[12px] leading-snug text-muted-foreground">{p?.coverage ?? ''}</p>
+                <p className="mt-1.5 text-[12px] font-semibold text-primary">Cost: {p?.costLabel ?? '—'}</p>
                 {expanded === p?.id ? (
                   <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 border-t border-border/50 pt-3 text-[11px] text-muted-foreground">
-                    <p><span className="text-foreground/70 font-semibold">Quality:</span> <TagText text={p?.quality ?? '—'} /></p>
+                    <p><span className="text-foreground/70 font-semibold">Quality:</span> {p?.quality ?? '—'}</p>
                     <p><span className="text-foreground/70 font-semibold">Refresh:</span> {p?.refresh || '—'}</p>
-                    <p><span className="text-foreground/70 font-semibold">GDPR:</span> <TagText text={p?.gdpr ?? '—'} /></p>
+                    <p><span className="text-foreground/70 font-semibold">GDPR:</span> {p?.gdpr ?? '—'}</p>
                     <p><span className="text-foreground/70 font-semibold">Latency:</span> {p?.latency || '—'}</p>
                     <p><span className="text-foreground/70 font-semibold">Complexity:</span> {p?.complexity || '—'}</p>
-                    <p><span className="text-foreground/70 font-semibold">History:</span> <TagText text={p?.historicalDepth ?? '—'} /></p>
-                    <p><span className="text-foreground/70 font-semibold">API:</span> <TagText text={p?.api ?? '—'} /></p>
+                    <p><span className="text-foreground/70 font-semibold">History:</span> {p?.historicalDepth ?? '—'}</p>
+                    <p><span className="text-foreground/70 font-semibold">API:</span> {p?.api ?? '—'}</p>
                     <p><span className="text-foreground/70 font-semibold">Sample:</span> {p?.sample || '—'}</p>
-                    <p className="col-span-2"><span className="text-foreground/70 font-semibold">Notes:</span> <TagText text={p?.notes ?? ''} /></p>
+                    <p className="col-span-2"><span className="text-foreground/70 font-semibold">Notes:</span> {p?.notes ?? ''}</p>
                     {p?.url ? (
                       <a
                         href={p.url}
@@ -316,7 +309,7 @@ export default function DataEcosystemContent() {
                         onClick={(e) => e?.stopPropagation?.()}
                         className="col-span-2 inline-flex items-center gap-1 text-primary hover:underline"
                       >
-                        <ExternalLink className="h-3 w-3" /> {p?.urlVerified ? 'Verified URL' : 'URL [UNVERIFIED]'}
+                        <ExternalLink className="h-3 w-3" /> {p?.urlVerified ? 'Verified URL' : 'URL not yet verified'}
                       </a>
                     ) : null}
                   </div>
@@ -329,7 +322,7 @@ export default function DataEcosystemContent() {
         )}
 
         <div className="mt-6">
-          <OpenItemCallout item={FIRST_PARTY_OPEN_ITEM} />
+          <OutstandingItem item={FIRST_PARTY_OPEN_ITEM} />
         </div>
       </Section>
 
@@ -337,46 +330,61 @@ export default function DataEcosystemContent() {
 
       <Section eyebrow="Data Budget" title="Year-1 Data Budget — the Day-1 Bill of Materials">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="Every line below is a vendor-published price or A$0, expressed as a multiple of the AUD 830.00 [ACTUAL] programme-spend anchor. Free official and intergovernmental sources are tagged [LIST] throughout this site, never [ACTUAL]: [ACTUAL] means incurred and receipted, and the entire receipted record is A$350.00 [ACTUAL] + A$480.00 [ACTUAL] = A$830.00 [ACTUAL]. A free-access status is the source's own published price of zero, not a spend line. The return on this spend is decision information for gate G1, not revenue — an ROI is not computable while partnership terms (U-02), contracted inventory (U-03) and primary demand evidence (U-04) are all unresolved." />
+          Every line below is a vendor-published price or A$0, expressed as a multiple of the A$830.00 of actual
+          spend to date. A free official or intergovernmental source is shown at its own published price of zero, not
+          as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. The return on this spend
+          is decision information for gate G1, not revenue — a return on investment is not computable while the
+          partnership terms, the contracted inventory and the primary demand evidence are all unresolved.
         </p>
         <DataTable
           headers={['Line', 'Figure', 'Multiple of A$830 anchor']}
           rows={(DAY1_BILL ?? []).map((b: any) => [
-            <TagText key="l" text={b?.line ?? ''} />,
-            <TagText key="f" text={b?.figure ?? ''} className="whitespace-nowrap font-semibold" />,
+            b?.line ?? '',
+            <span key="f" className="font-semibold">{b?.figure ?? ''}</span>,
             b?.multiple ?? '',
           ])}
         />
         <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="Premium contracts (Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the [UNKNOWN] rows above) are not deferred on price — they are unpriced: no published price exists and no written quote is on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are excluded outright as unfit for the Australian proof market at any price." />
+          Premium contracts — Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the rows above that carry
+          no price — are not deferred on price. They are unpriced: no published price exists and no written quote is
+          on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
+          excluded outright as unfit for the Australian proof market at any price.
         </p>
         <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="P2 is priced from Statista's own published tier, US$199/mo billed annually [LIST] (= US$2,388/yr [DERIVED]: 199 × 12 — the annual figure is an annualisation, not a vendor-published price). For the Personal tier the catalogue row above carries the vendor's published price, US$649/mo billed annually [LIST], beside the mandate's ground-truth register baseline for that same tier, A$922/yr (GT D5-[16]) — carried under the explicit label Ground-truth baseline and under no provenance marker, because [LIST] would assert a vendor publication that does not exist and a ground-truth entry is graded nowhere on this site. Reconciling the two is an open item under U-01, owned by the programme sponsor. Nothing funded rests on it: P2 buys Starter, not Personal." />
+          P2 is priced from Statista&apos;s own published tier, US$199/mo billed annually (= US$2,388/yr, calculated:
+          199 × 12 — the annual figure is an annualisation, not a price the vendor publishes). On the Personal tier
+          the catalogue row above carries the vendor&apos;s published price of US$649/mo billed annually beside an
+          earlier costing of A$922/yr for that same tier. The two are not reconciled, and the programme sponsor owns
+          closing that gap. Nothing funded rests on it: P2 buys Starter, not Personal.
         </p>
       </Section>
 
       <Section eyebrow="Historical Depth" title="How Many Years of Each Data Type to Buy — and What an Extra Year Is Worth">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="Every recommended-history cell is an [ASSUMPTION] — confirmer for all rows: the Data lead (role currently unassigned — LT to appoint), at gate G1, before the first paid data purchase order is raised. The cost cells are [LIST]/[DERIVED] from the price structures above; nothing in this table is an estimate. The headline finding: no recommended extra year of history costs anything — every priced back-catalogue is a free official release — and the binding limits are release cadences, not budgets." />
+          Every recommended-history cell is a planning assumption, which the Data lead — a role the leadership team
+          has still to fill — confirms at gate G1, before the first paid data purchase order is raised. The cost cells
+          come from the published prices above, or are calculated from them; nothing in this table is an estimate. The
+          headline finding: no recommended extra year of history costs anything, because every back-catalogue named
+          here is a free official release, and the binding limits are release cadences rather than budgets.
         </p>
         <DataTable
-          headers={['#', 'Data type', 'Recommended history [ASSUMPTION]', 'Cadence anchor (why)', 'Marginal cost of each extra year', 'Marginal decision value of each extra year']}
+          headers={['#', 'Data type', 'Recommended history (planning assumption)', 'Cadence anchor (why)', 'Marginal cost of each extra year', 'Marginal decision value of each extra year']}
           rows={(HISTORICAL_DEPTH ?? []).map((h: any) => [
             h?.id ?? '',
             <span key="t" className="font-semibold text-foreground">{h?.dataType ?? ''}</span>,
-            <TagText key="r" text={h?.recommended ?? ''} />,
-            <TagText key="c" text={h?.cadence ?? ''} />,
-            <TagText key="m" text={h?.marginalCost ?? ''} />,
-            <TagText key="v" text={h?.marginalValue ?? ''} />,
+            h?.recommended ?? '',
+            h?.cadence ?? '',
+            h?.marginalCost ?? '',
+            h?.marginalValue ?? '',
           ])}
         />
         <p className="mt-3 max-w-4xl text-[11px] leading-relaxed text-muted-foreground/60">
-Cadence sources, all accessed 2026-08-23: ABS 2026 Census topics and data release plan (abs.gov.au — first
-          release June 2027, with LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22
-          header &quot;Next release Unknown&quot;; Eurostat ilc_scp03 — EU-SILC ~6-yearly module, 2022 latest, next
-          planned update October 2029; NEA SPPA 2022; StatCan 21-10-0186-01, biennial 2014–2024; Apple lookup API
-          release date. Depth rows are planning assumptions until the Data lead signs them at gate G1; their cost
-          cells stand on the cited [LIST]/[DERIVED] evidence and need no such confirmation.
+Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — first release June 2027, with
+          LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22 header &quot;Next
+          release Unknown&quot;; Eurostat ilc_scp03 — the EU-SILC module, roughly 6-yearly, 2022 latest, next planned
+          update October 2029; NEA SPPA 2022; StatCan 21-10-0186-01, biennial 2014–2024; and the Apple lookup API
+          release date. Depth rows stay planning assumptions until the Data lead signs them at gate G1; their cost
+          cells stand on the published prices cited above and need no such confirmation.
         </p>
       </Section>
 
@@ -391,7 +399,7 @@ Cadence sources, all accessed 2026-08-23: ABS 2026 Census topics and data releas
                 <ListOrdered className="h-4 w-4 text-primary/70" />
                 <p className="t-eyebrow">{s?.timing}</p>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground"><TagText text={s?.action ?? ''} /></p>
+              <p className="text-[13px] leading-relaxed text-muted-foreground">{s?.action ?? ''}</p>
               <p className="mt-2 text-[11px] leading-snug text-amber-300/80"><span className="font-semibold uppercase tracking-wider">Gate:</span> {s?.rule}</p>
             </GlassCard>
           ))}
@@ -400,7 +408,11 @@ Cadence sources, all accessed 2026-08-23: ABS 2026 Census topics and data releas
 
       <Section eyebrow="What the Data Buys" title="What the Data Buys">
         <p className="mb-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          <TagText text="No quantified investment-versus-value figure is published: no primary source supports a reconciliation-recovery share of GTV, a campaign-conversion uplift, an avoided market-entry spend or a sell-through uplift, and revenue on this programme is not computable while every input — take rate, ATV, event volume, repeat rate, partnership share — is [UNKNOWN]. What the data does buy, on evidence:" />
+          No quantified investment-versus-value figure is published: no primary source supports a
+          reconciliation-recovery share of GTV, a campaign-conversion uplift, an avoided market-entry spend or a
+          sell-through uplift, and revenue on this programme is not computable while every input — take rate, average
+          transaction value, event volume, repeat rate and partnership share — is still to be confirmed. What the data
+          does buy, on the evidence:
         </p>
         <div className="grid gap-4 md:grid-cols-2">
           {(INSIGHTS_KEPT ?? []).map((ins: any) => (
@@ -410,14 +422,14 @@ Cadence sources, all accessed 2026-08-23: ABS 2026 Census topics and data releas
                 <p className="t-eyebrow">{ins?.category}</p>
               </div>
               <p className="text-sm font-semibold text-foreground">{ins?.insight}</p>
-              <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground"><TagText text={ins?.impact ?? ''} /></p>
+              <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">{ins?.impact ?? ''}</p>
               <p className="mt-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">Basis: {ins?.basis}</p>
             </GlassCard>
           ))}
         </div>
         <div className="mt-6 grid gap-4">
           {(INSIGHT_OPEN_ITEMS ?? []).map((item: any, i: number) => (
-            <OpenItemCallout key={i} item={item} />
+            <OutstandingItem key={i} item={item} />
           ))}
         </div>
       </Section>

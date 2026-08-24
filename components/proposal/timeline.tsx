@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { EstText } from '@/components/proposal/section';
 
 export type TimelineItem = {
   marker: string; // e.g. "01" or "M1"
@@ -48,7 +47,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
                 {(m?.blocks ?? []).map((b, j) => (
                   <div key={j}>
                     <p className="t-eyebrow mb-1">{b?.label}</p>
-                    <p className="text-sm leading-relaxed text-foreground/85"><EstText text={b?.text ?? ''} /></p>
+                    <p className="text-sm leading-relaxed text-foreground/85">{b?.text ?? ''}</p>
                   </div>
                 ))}
               </div>

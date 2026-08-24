@@ -23,7 +23,6 @@ import {
 } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { Tag, TagText } from '@/components/proposal/tag';
 import { cn } from '@/lib/utils';
 import { CATEGORY_LABELS, type ProviderCategory, type ProviderCountry } from '@/lib/data/providers';
 import {
@@ -32,7 +31,6 @@ import {
   PROTOTYPE_TOTALS,
   WALKTHROUGH,
   MODE_LABEL,
-  MARKER_RULE,
   csvHref,
   jsonHref,
   type DatasetMode,
@@ -54,7 +52,7 @@ function ModeBadge({ mode, className }: { mode: DatasetMode; className?: string 
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em]',
+        'inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[10px] font-semibold tracking-wide',
         real
           ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
           : 'border-amber-500/40 bg-amber-500/10 text-amber-400',
@@ -118,7 +116,7 @@ function StepDataTable({ table }: { table: StepTable }) {
                   key={i}
                   className="whitespace-nowrap px-3 py-2.5 text-left font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary"
                 >
-                  <TagText text={h} />
+                  {h}
                 </th>
               ))}
             </tr>
@@ -139,10 +137,10 @@ function StepDataTable({ table }: { table: StepTable }) {
                     {j === 0 && excluded.has(i) ? (
                       <span className="flex items-start gap-1.5">
                         <span className="mt-1 inline-block h-3 w-0.5 shrink-0 rounded bg-amber-500/70" aria-hidden />
-                        <TagText text={c} />
+                        {c}
                       </span>
                     ) : (
-                      <TagText text={c} />
+                      c
                     )}
                   </td>
                 ))}
@@ -152,9 +150,7 @@ function StepDataTable({ table }: { table: StepTable }) {
         </table>
       </div>
       {table?.note ? (
-        <p className="mt-2 text-[11.5px] leading-relaxed text-muted-foreground/80">
-          <TagText text={table.note} />
-        </p>
+        <p className="mt-2 text-[11.5px] leading-relaxed text-muted-foreground/80">{table.note}</p>
       ) : null}
     </div>
   );
@@ -210,14 +206,12 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
         <div className="mt-6">
           <p className="t-eyebrow mb-2">Reconciliation controls — every line re-addable from the two files above</p>
           {step?.checksHeader ? (
-            /* A real column header, not a marker parked in an adjacent cell: every
-               figure in the ledger below inherits it. */
             <div className="mb-1.5 flex flex-col gap-1 px-3 sm:flex-row sm:items-center sm:gap-4">
               <span className="shrink-0 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:w-48">
                 {step.checksHeader.label}
               </span>
               <span className="min-w-0 flex-1 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
-                <TagText text={step.checksHeader.result} />
+                {step.checksHeader.result}
               </span>
               <span className="shrink-0 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:w-36 sm:text-right">
                 {step.checksHeader.variance}
@@ -262,9 +256,7 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
                   {(d?.kpis ?? []).map((k) => (
                     <div key={k?.metric} className="border-b border-border/30 pb-2 last:border-0 last:pb-0">
                       <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{k?.metric}</p>
-                      <p className="font-marquee text-lg font-bold leading-tight text-foreground">
-                        <TagText text={k?.value ?? ''} />
-                      </p>
+                      <p className="font-marquee text-lg font-bold leading-tight text-foreground">{k?.value ?? ''}</p>
                       <p className="text-[11px] leading-snug text-muted-foreground/70">{k?.basis}</p>
                     </div>
                   ))}
@@ -300,9 +292,7 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
           <AlertTriangle className="h-3.5 w-3.5" />
           The limit of this step
         </p>
-        <p className="text-[12.5px] leading-relaxed text-muted-foreground">
-          <TagText text={step?.limit ?? ''} />
-        </p>
+        <p className="text-[12.5px] leading-relaxed text-muted-foreground">{step?.limit ?? ''}</p>
       </div>
 
       {next ? (
@@ -366,21 +356,11 @@ export default function PrototypeContent() {
       </p>
       <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
         Sixty datasets, one per catalogued provider, each shipped as a matched CSV and JSON pair — 120 files, 601 rows.
-        Fifteen are real extracts captured first-hand from the named publisher on 2026-08-23, carrying a source URL and
-        an access date on every row. The other forty-five are synthetic samples that mirror each provider&apos;s
-        published field specification so the pipeline can be built and tested before a single licence is bought. The two
-        are labelled on every table, tile and file, and they are never mixed. Nothing on this page is a forecast, and no
-        figure here is evidence of demand, supply or revenue in any market.
-      </p>
-
-      {/* The marker rule this route declares — the same instrument every other route
-          opens with. Until it existed, the walkthrough's AUD figures stood on two
-          page-local labels (REAL EXTRACT / SYNTHETIC SAMPLE) that named a file, not a
-          figure, and that no page declared as a marker vocabulary. */}
-      <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-        Every figure in the walkthrough below carries exactly one marker. <Tag tag="ILLUSTRATIVE" /> —{' '}
-        {MARKER_RULE.illustrative} <Tag tag="OFFICIAL" /> — {MARKER_RULE.official} {MARKER_RULE.inheritance} All
-        currency figures AUD.
+        Fifteen are real extracts taken from the named publisher, carrying a source URL and an access date on every
+        row. The other forty-five are synthetic samples that mirror each provider&apos;s published field specification
+        so the pipeline can be built and tested before a single licence is bought. The two are labelled on every
+        table, tile and file, and they are never mixed. Nothing on this page is a forecast, and no figure here is
+        evidence of demand, supply or revenue in any market. All currency figures AUD.
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -395,8 +375,8 @@ export default function PrototypeContent() {
             {PROTOTYPE_TOTALS.real} datasets
           </p>
           <p className="text-sm leading-snug text-muted-foreground">
-            {PROTOTYPE_TOTALS.realRows} rows captured first-hand from the named publisher, accessed 2026-08-23. Source
-            URL and access date on every row.
+            {PROTOTYPE_TOTALS.realRows} rows taken from the named publisher, with a source URL and an access date on
+            every row.
           </p>
         </GlassCard>
         <GlassCard className="flex flex-col gap-2">
@@ -417,8 +397,8 @@ export default function PrototypeContent() {
           <div>
             <ModeBadge mode="REAL" />
             <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
-              Real extract. Captured first-hand from the publisher named in the file, on the access date recorded in the
-              file. Every row carries <span className="font-mono text-foreground/80">source_url</span> and{' '}
+              Real extract. Taken from the publisher named in the file, on the access date recorded in the file. Every
+              row carries <span className="font-mono text-foreground/80">source_url</span> and{' '}
               <span className="font-mono text-foreground/80">access_date</span>, so any figure can be traced back to its
               publisher without leaving the spreadsheet.
             </p>
@@ -432,13 +412,6 @@ export default function PrototypeContent() {
             </p>
           </div>
         </div>
-        <p className="mt-4 border-t border-border/40 pt-3 text-[12.5px] leading-relaxed text-muted-foreground">
-          These two label a <span className="font-semibold text-foreground/80">file</span>. The markers in the
-          walkthrough below label a <span className="font-semibold text-foreground/80">figure</span>, and the two are
-          not interchangeable: a figure computed from a synthetic file carries <Tag tag="ILLUSTRATIVE" />, and one
-          copied from an official release carries <Tag tag="OFFICIAL" />. A figure never inherits a marker from the
-          badge on its table — it carries its own, or it inherits one from its column header.
-        </p>
       </GlassCard>
 
       <Section eyebrow="Downloadable Sample Set" title="All 60 Datasets" className="mt-12">
@@ -682,16 +655,16 @@ export default function PrototypeContent() {
         </div>
       </Section>
 
-      <Section eyebrow="What the Prototype Does Not Do" title="The Two Blocking Unknowns This Prototype Cannot Close">
+      <Section eyebrow="What the Prototype Does Not Do" title="The Two Things This Prototype Cannot Settle">
         <div className="grid gap-4">
           <Alert className="border-amber-500/40 bg-amber-500/5">
             <AlertTriangle className="h-4 w-4 !text-amber-400" />
             <AlertTitle className="text-amber-300">
-              OPEN ITEM — Ticketalay first-party data (U-07, BLOCKING)
+              Outstanding before decision — Ticketalay first-party data
             </AlertTitle>
             <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
               <p>
-                <span className="font-semibold text-foreground/80">What is unknown:</span> The schema, ownership,
+                <span className="font-semibold text-foreground/80">What must be obtained:</span> The schema, ownership,
                 consent state and export rights of the first-party database have never been inspected. The real extract
                 in Step 02 contains entity, product and engagement facts recovered from public sources — it contains no
                 orders, no seats and no payments, because none of that is externally accessible.
@@ -710,18 +683,19 @@ export default function PrototypeContent() {
           <Alert className="border-amber-500/40 bg-amber-500/5">
             <AlertTriangle className="h-4 w-4 !text-amber-400" />
             <AlertTitle className="text-amber-300">
-              OPEN ITEM — Primary diaspora demand evidence (U-04, BLOCKING)
+              Outstanding before decision — Primary diaspora demand evidence
             </AlertTitle>
             <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
               <p>
-                <span className="font-semibold text-foreground/80">What is unknown:</span> No primary study of the
-                target audience exists. Step 01 fixes the denominators — 22,263 <Tag tag="OFFICIAL" /> Marathi speakers,
-                64% <Tag tag="OFFICIAL" /> adult cultural attendance — but a denominator is a population, not a buyer. No willingness-to-pay, fee-tolerance or
-                channel-trust figure can be stated, and none appears anywhere on this page.
+                <span className="font-semibold text-foreground/80">What must be obtained:</span> No primary study of the
+                target audience exists. Step 01 fixes the denominators — 22,263 Marathi speakers and 64% adult cultural
+                attendance, both official statistics — but a denominator is a population, not a buyer. No
+                willingness-to-pay, fee-tolerance or channel-trust figure can be stated, and none appears anywhere on
+                this page.
               </p>
               <p className="mt-1">
                 <span className="font-semibold text-foreground/80">Owner:</span> Research lead (role currently
-                unassigned — LT to appoint)
+                unassigned — leadership team to appoint)
               </p>
               <p className="mt-1">
                 <span className="font-semibold text-foreground/80">Action:</span> Commission a primary study of

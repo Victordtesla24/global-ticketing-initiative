@@ -2,21 +2,20 @@
 
 import { MapPin, Scale, Handshake, Gauge, AlertTriangle, CalendarClock, Calculator } from 'lucide-react';
 import { Section, GlassCard, StatCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
-import { TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Timeline } from '@/components/proposal/timeline';
 import { REVENUE_IDENTITY, IDENTITY_VARIABLES, DATA_CONFIDENCE_NOTE } from '@/lib/data/revenue-model';
 import type { Market, MarketPhase, OpenItem, HeroTile, SizingRow, Partnership, Blocker } from '@/lib/data/markets';
 
-function OpenItemCallout({ item }: { item: OpenItem }) {
+function OutstandingItem({ item }: { item: OpenItem }) {
   return (
     <Alert className="border-amber-500/40 bg-amber-500/5">
       <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
       <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What is unknown:</span> <TagText text={item?.unknown ?? ''} /></p>
+        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}{item?.ref ? ` (${item.ref})` : ''}</p>
+        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
       </AlertDescription>
     </Alert>
   );
@@ -47,8 +46,8 @@ export default function MarketContent({ market }: { market: Market }) {
         </div>
 
         <p className="mb-8 max-w-4xl text-[13px] leading-relaxed text-muted-foreground/70">
-          No three-year projection is published for this market. Every monetary figure below carries the provenance
-          marker it has earned; non-monetary official statistics carry their source lines, untagged.
+          No three-year projection is published for this market. Each figure below says where it came from, and the
+          official statistics carry their source lines.
         </p>
 
         {market?.heroTilesIntro ? (
@@ -61,20 +60,18 @@ export default function MarketContent({ market }: { market: Market }) {
               key={i}
               className={i === 0 ? 'gold-shimmer' : ''}
               label={t?.label ?? ''}
-              value={<TagText text={t?.value ?? ''} />}
-              sub={<TagText text={t?.note ?? ''} />}
+              value={t?.value ?? ''}
+              sub={t?.note ?? ''}
             />
           ))}
         </div>
 
-        <p className="mt-6 max-w-4xl leading-relaxed text-foreground/85">
-          <TagText text={market?.evidence ?? ''} />
-        </p>
+        <p className="mt-6 max-w-4xl leading-relaxed text-foreground/85">{market?.evidence ?? ''}</p>
         <SourceLines sources={market?.evidenceSources} />
 
         {market?.evidenceOpenItem ? (
           <div className="mt-6 max-w-4xl">
-            <OpenItemCallout item={market.evidenceOpenItem} />
+            <OutstandingItem item={market.evidenceOpenItem} />
           </div>
         ) : null}
 
@@ -98,13 +95,13 @@ export default function MarketContent({ market }: { market: Market }) {
           headers={['Tier', 'Basis']}
           rows={(market?.sizing ?? []).map((s: SizingRow) => [
             <span key="t" className="whitespace-nowrap font-semibold text-foreground">{s?.tier}</span>,
-            <TagText key="b" text={s?.basis ?? ''} />,
+            s?.basis ?? '',
           ])}
         />
         <SourceLines sources={market?.sizingSources} />
         <div className="mt-4 space-y-4">
           {(market?.sizingOpenItems ?? []).map((o: OpenItem, i: number) => (
-            <OpenItemCallout key={i} item={o} />
+            <OutstandingItem key={i} item={o} />
           ))}
         </div>
 
@@ -134,22 +131,20 @@ export default function MarketContent({ market }: { market: Market }) {
         />
         <div className="mt-6 space-y-4">
           {(market?.timelineOpenItems ?? []).map((o: OpenItem, i: number) => (
-            <OpenItemCallout key={i} item={o} />
+            <OutstandingItem key={i} item={o} />
           ))}
         </div>
       </Section>
 
       <Section eyebrow="Financials, Rebuilt" title={revenue?.title ?? ''}>
         <GlassCard>
-          <p className="max-w-4xl text-sm leading-relaxed text-foreground/85">
-            <TagText text={revenue?.body ?? ''} />
-          </p>
+          <p className="max-w-4xl text-sm leading-relaxed text-foreground/85">{revenue?.body ?? ''}</p>
 
           {revenue?.showIdentity ? (
             <>
               <div className="mt-5 flex items-center gap-2">
                 <Calculator className="h-4 w-4 text-primary" />
-                <p className="t-eyebrow">The tagged identity — no output number</p>
+                <p className="t-eyebrow">The identity — no output number</p>
               </div>
               <div className="mt-3 rounded-lg border border-primary/25 bg-secondary/40 p-4 font-mono text-sm text-foreground">
                 <p className="font-semibold text-primary">{REVENUE_IDENTITY?.formulaGross}</p>
@@ -161,8 +156,8 @@ export default function MarketContent({ market }: { market: Market }) {
                 rows={(IDENTITY_VARIABLES ?? []).map((v: any) => [
                   <span key="s" className="font-bold text-primary">{v?.symbol}</span>,
                   v?.meaning ?? '',
-                  <TagText key="t" text={v?.tag ?? ''} />,
-                  <TagText key="c" text={v?.confirms ?? ''} />,
+                  v?.status ?? '',
+                  v?.confirms ?? '',
                   v?.when ?? '',
                 ])}
               />
@@ -187,16 +182,14 @@ export default function MarketContent({ market }: { market: Market }) {
           ) : null}
 
           {revenue?.note ? (
-            <p className="mt-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
-              <TagText text={revenue.note} />
-            </p>
+            <p className="mt-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">{revenue.note}</p>
           ) : null}
           <SourceLines sources={revenue?.sources} />
         </GlassCard>
 
         {revenue?.openItem ? (
           <div className="mt-4">
-            <OpenItemCallout item={revenue.openItem} />
+            <OutstandingItem item={revenue.openItem} />
           </div>
         ) : null}
       </Section>
@@ -223,7 +216,7 @@ export default function MarketContent({ market }: { market: Market }) {
           ) : null}
           {market?.regulatoryOpenItem ? (
             <div className={market?.regulatory?.length ? 'mt-4' : ''}>
-              <OpenItemCallout item={market.regulatoryOpenItem} />
+              <OutstandingItem item={market.regulatoryOpenItem} />
             </div>
           ) : null}
         </Section>
@@ -255,7 +248,7 @@ export default function MarketContent({ market }: { market: Market }) {
           <SourceLines sources={market?.partnershipsSources} />
           {market?.partnershipsOpenItem ? (
             <div className="mt-4">
-              <OpenItemCallout item={market.partnershipsOpenItem} />
+              <OutstandingItem item={market.partnershipsOpenItem} />
             </div>
           ) : null}
         </Section>
@@ -264,14 +257,14 @@ export default function MarketContent({ market }: { market: Market }) {
       <GlassCard className="mt-10 border-primary/30">
         <p className="t-eyebrow mb-2">Data Confidence</p>
         <p className="max-w-4xl text-sm leading-relaxed text-foreground/85">
-          <TagText text={market?.confidenceNote ?? ''} />
+          {market?.confidenceNote ?? ''}
         </p>
         {market?.confidenceTile ? (
           <div className="mt-4 max-w-md">
             <StatCard
               label={market.confidenceTile.label}
-              value={<TagText text={market.confidenceTile.value ?? ''} />}
-              sub={<TagText text={market.confidenceTile.note ?? ''} />}
+              value={market.confidenceTile.value ?? ''}
+              sub={market.confidenceTile.note ?? ''}
             />
           </div>
         ) : null}

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Landmark, Database, ShoppingCart, ShieldCheck, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
-import { Tag, TagText } from '@/components/proposal/tag';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   MARKETS, SEGMENTS, SEGMENTS_NOTE, SEGMENTS_OPEN_ITEM,
@@ -15,15 +14,15 @@ import { MAP_CALLOUTS, MARKETING_DATA_PLAN, STRATEGIC_OPTIONS } from '@/lib/data
 import { GATE_SCHEDULE } from '@/lib/data/costs';
 import { TOP5_MITIGATIONS } from '@/lib/data/risks';
 
-function OpenItemCallout({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
+function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
   return (
     <Alert className="border-amber-500/40 bg-amber-500/5">
       <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">OPEN ITEM — {item?.title}</AlertTitle>
+      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
       <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What is unknown:</span> <TagText text={item?.unknown ?? ''} /></p>
+        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
         <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}{item?.ref ? ` (${item.ref})` : ''}</p>
+        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
       </AlertDescription>
     </Alert>
   );
@@ -49,18 +48,14 @@ export default function MarketOpportunityContent() {
       </p>
 
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-        Every monetary figure below carries the provenance marker it has earned — <Tag tag="ACTUAL" />{' '}
-        <Tag tag="LIST" /> <Tag tag="DERIVED" /> <Tag tag="ASSUMPTION" /> <Tag tag="UNKNOWN" /> — and this page
-        declares one labelled exception of its own: a baseline figure supplied by the commissioning mandate&apos;s
-        ground-truth register carries the explicit label{' '}
-        <span className="font-semibold text-foreground/80">Ground-truth baseline</span> instead of a marker, because a
-        ground-truth entry is graded nowhere on this site and no provenance marker fits one. It is used once, for the
-        Statista Personal tier (GT D5-[16], reconciliation open at U-01), and feeds no funded figure. UK live-music
-        market size is published as <Tag tag="UNKNOWN" />:
-        the only measure located is a trade federation’s own commissioned market-size estimate, which can never earn{' '}
-        <Tag tag="LIST" /> — that marker means a vendor-published price. Non-monetary official statistics carry their
-        source lines, untagged, per the site-wide convention. No corridor projection table, lump-sum investment
-        option, segment size or CLV figure is published. FX: RBA, 21 Aug 2026.
+        Each cost below says where its figure came from: money already spent, a price the vendor publishes, a
+        calculation from those with the working shown, a planning assumption with a named confirmer, or an entry still
+        to be confirmed. One figure sits outside that pattern: on the Statista Personal tier an earlier costing
+        recorded A$922/yr against the vendor&apos;s own published US$649/mo billed annually, the two are not
+        reconciled, and no funded line depends on it. UK live-music market size remains to be confirmed: the only
+        measure located is a trade federation&apos;s own commissioned estimate, which is not a published market size.
+        Official statistics carry their source lines. No corridor projection table, lump-sum investment option,
+        segment size or customer-lifetime-value figure is published. FX: RBA, 21 Aug 2026.
       </p>
 
       <Section eyebrow="Key Market Indicators" title="The Expansion Map" className="mt-10">
@@ -74,7 +69,7 @@ export default function MarketOpportunityContent() {
                 <Landmark className="h-4 w-4 text-primary" />
                 <p className="font-marquee text-xs font-bold uppercase tracking-[0.16em] text-foreground">{c?.title}</p>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground"><TagText text={c?.body ?? ''} /></p>
+              <p className="text-[13px] leading-relaxed text-muted-foreground">{c?.body ?? ''}</p>
               <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-primary/80">Source: {c?.source}</p>
             </GlassCard>
           ))}
@@ -116,11 +111,11 @@ export default function MarketOpportunityContent() {
                     <p className="mb-0.5 flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/70">
                       <ShoppingCart className="h-3 w-3" /> How to acquire it
                     </p>
-                    <p className="text-muted-foreground"><TagText text={p?.acquire ?? ''} /></p>
+                    <p className="text-muted-foreground">{p?.acquire ?? ''}</p>
                   </div>
                   <div className="rounded-lg border border-primary/25 bg-primary/5 p-2.5">
                     <p className="mb-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/80">Business outcome</p>
-                    <p className="text-foreground/85"><TagText text={p?.outcome ?? ''} /></p>
+                    <p className="text-foreground/85">{p?.outcome ?? ''}</p>
                   </div>
                 </div>
               </GlassCard>
@@ -140,9 +135,9 @@ export default function MarketOpportunityContent() {
                 <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">{m?.shortName}</span>
               </div>
               <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{m?.status}</p>
-              <p className="mt-3 text-sm font-semibold text-primary"><TagText text={m?.heroStat ?? ''} /></p>
+              <p className="mt-3 text-sm font-semibold text-primary">{m?.heroStat ?? ''}</p>
               <p className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">Source: {m?.heroStatSource}</p>
-              <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground line-clamp-4"><TagText text={m?.evidence ?? ''} /></p>
+              <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground line-clamp-4">{m?.evidence ?? ''}</p>
               <Link href={`/markets/${m?.slug}`} className="mt-4 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary hover:underline">
                 Full Market Deep-Dive <ArrowRight className="ml-1 h-3 w-3" />
               </Link>
@@ -153,14 +148,14 @@ export default function MarketOpportunityContent() {
 
       <Section eyebrow="Campaign Targeting" title="Customer Segments">
         <p className="mb-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
-          <TagText text={SEGMENTS_NOTE} />
+          {SEGMENTS_NOTE}
         </p>
         <DataTable
           headers={['Segment', 'Profile', 'Primary Channels', 'Churn Risk (Qualitative)']}
           rows={(SEGMENTS ?? []).map((s: any) => [s?.name ?? '', s?.profile ?? '', s?.channel ?? '', s?.churn ?? ''])}
         />
         <div className="mt-4">
-          <OpenItemCallout item={SEGMENTS_OPEN_ITEM} />
+          <OutstandingItem item={SEGMENTS_OPEN_ITEM} />
         </div>
       </Section>
 
@@ -207,9 +202,9 @@ export default function MarketOpportunityContent() {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-1 text-xs font-semibold text-primary/90"><TagText text={o?.investment ?? ''} /></p>
+                <p className="mt-1 text-xs font-semibold text-primary/90">{o?.investment ?? ''}</p>
                 <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{o?.detail}</p>
-                <p className="mt-2 text-[12.5px] leading-relaxed text-foreground/75"><TagText text={o?.assessment ?? ''} /></p>
+                <p className="mt-2 text-[12.5px] leading-relaxed text-foreground/75">{o?.assessment ?? ''}</p>
               </GlassCard>
             ))}
           </div>
@@ -224,17 +219,17 @@ export default function MarketOpportunityContent() {
             headers={['Gate', 'What It Buys', 'Committed One-Off Cost', 'Multiple of the A$830 Anchor', 'Must Be True to Pass']}
             rows={(GATE_SCHEDULE ?? []).map((g: any) => [
               <span key="g" className="whitespace-nowrap font-semibold text-foreground">{g?.gate}</span>,
-              <TagText key="b" text={g?.buys ?? ''} />,
-              <TagText key="c" text={g?.committed ?? ''} />,
+              g?.buys ?? '',
+              g?.committed ?? '',
               <span key="m" className="whitespace-nowrap">{g?.multiple}</span>,
               g?.mustPass ?? '',
             ])}
           />
           <p className="mt-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
-            <TagText text={GATE_RUN_RATE_NOTE} />
+            {GATE_RUN_RATE_NOTE}
           </p>
           <p className="mt-3 max-w-4xl text-xs leading-relaxed text-muted-foreground/70">
-            <TagText text={ANCHOR_FOOTNOTE} />
+            {ANCHOR_FOOTNOTE}
           </p>
           <p className="mt-4 max-w-4xl text-sm leading-relaxed text-foreground/85">
             Recommendation: Option B — staged, gated expansion beginning with Australia, with capital released only

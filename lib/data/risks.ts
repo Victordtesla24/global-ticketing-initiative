@@ -1,14 +1,14 @@
-// Risk Analysis — ten self-assessed risk categories, the registry findings behind the two
-// highest-scored rows, and the blocking unknowns that gate the programme.
+// Risk Analysis — ten self-assessed risk categories, the register findings behind the two
+// highest-scored rows, and the items outstanding before a decision can be taken.
 // Colour scale: green 1–8, amber 9–16, red 17–25.
 
 export interface Risk { id: number; name: string; likelihood: number; impact: number; score: number; mitigation: string; }
 
 export const RISK_LEDE =
-  'Ten risk categories, each self-assessed on likelihood and impact (1–5 on each axis, giving a score out of 25). Two risks sit at the maximum score — entity ambiguity and the financial evidence gap — and they are the direct basis for the staged, evidence-led investment sequence set out on this site. Select any marker to inspect its mitigation.';
+  'Ten risk categories, each self-assessed on likelihood and impact (1–5 on each axis, giving a score out of 25). Two risks sit at the maximum score — entity ambiguity and the financial evidence gap — and they are the direct basis for the staged, evidence-led investment sequence this proposal sets out. Select any marker to inspect its mitigation.';
 
 export const RISK_BASIS_NOTE =
-  'This page’s risk scores are the promoter’s own self-assessment (likelihood × impact, 1–5 each), not a third-party or actuarial rating — every score on this page is presented on that basis.';
+  'The risk scores on this page are the promoter’s own self-assessment — likelihood × impact, 1–5 on each axis — not a third-party or actuarial rating. Every score here is presented on that basis.';
 
 export const RISK_LANDSCAPE = {
   stats: [
@@ -49,16 +49,16 @@ export const REGISTRY_CHECKS = {
     {
       heading: 'Row 1 — entity ambiguity (25) — is not hypothetical; it is documented in the public registers.',
       body:
-        'First-hand searches on 2026-08-23 — a registry lookup, not the full ownership due diligence, which remains unperformed: ABN Lookup returns “No matching names found” for Ticketalay — no entity of that name is registered in Australia — and no active ABN is named exactly “AB Entertainment”. The registrant of ticketalay.com.au is ABN 91 819 759 805 — V DESHPANDE & A KADAM, a two-person family partnership trading as A&B ENTERTAINMENTS (VIC 3030, active since 07 Nov 2022), not registered for GST — not any Ticketalay or PAC Theatre Entertainment entity. The domain’s auDA RDAP record carries status “server renew prohibited” — “Not Currently Eligible For Renewal” (last changed 2026-08-16): the proof market’s named domain may lapse. This is a time-critical adverse fact on the G0 critical path — the ownership memorandum must resolve the renewal flag and name the actual legal counterparty before any agreement is signed.',
+        'Public register searches — a lookup, not the full ownership due diligence, which remains to be done. ABN Lookup returns “No matching names found” for Ticketalay — no entity of that name is registered in Australia — and no active ABN is named exactly “AB Entertainment”. The registrant of ticketalay.com.au is ABN 91 819 759 805 — V DESHPANDE & A KADAM, a two-person family partnership trading as A&B ENTERTAINMENTS (VIC 3030, active since 07 Nov 2022), not registered for GST — not any Ticketalay or PAC Theatre Entertainment entity. The domain’s auDA RDAP record carries status “server renew prohibited” — “Not Currently Eligible For Renewal” (last changed 2026-08-16): the proof market’s named domain may lapse. This is a time-critical adverse fact on the G0 critical path — the ownership memorandum must resolve the renewal flag and name the actual legal counterparty before any agreement is signed.',
     },
     {
       heading: 'Row 2 — financial evidence gap (25) — the engagement reality behind the install band.',
       body:
-        'The 100,000+ Google Play downloads attach to the India-only product and count cumulative installs, not users or buyers. The engagement actually visible first-hand: 386 Google Play ratings at 3.36 stars and 45 App Store ratings at 2.62 stars (both India storefronts, accessed 2026-08-23). No audited statements, settlement records or first-party exports are on file; the install band is the only platform-metered figure in evidence, and it is not financial evidence.',
+        'The 100,000+ Google Play downloads attach to the India-only product and count cumulative installs, not users or buyers. The engagement actually visible in public: 386 Google Play ratings at 3.36 stars and 45 App Store ratings at 2.62 stars, both on India storefronts. No audited statements, settlement records or first-party exports are on file; the install band is the only platform-metered figure in evidence, and it is not financial evidence.',
     },
   ],
   provenance:
-    'All items fetched first-hand on 2026-08-23: ABN Lookup active search (abr.business.gov.au), ABN 91 819 759 805 detail, auDA RDAP via rdap.org/domain/ticketalay.com.au, the Google Play listing and the Apple lookup API.',
+    'Sources: ABN Lookup active search (abr.business.gov.au); the ABN 91 819 759 805 detail record; auDA RDAP via rdap.org/domain/ticketalay.com.au; the Google Play listing; and the Apple lookup API.',
 };
 
 export const TOP5_INTRO = 'Ranked by the promoter’s own assessment of urgency and leverage across the programme.';
@@ -73,7 +73,7 @@ export const TOP5_MITIGATIONS = [
 
 // Open item attached to the Top Five Mitigations.
 export const RISK_OPEN_ITEM = {
-  ref: 'U-03',
+  ref: 'supply',
   title: 'Zero named, signed promoter or venue counterparties exist today',
   unknown:
     'Row 4’s “minimum three contracted pilot events” is a target to secure, not existing inventory.',
@@ -82,38 +82,38 @@ export const RISK_OPEN_ITEM = {
     'Secure a minimum of three signed pilot-event agreements or dated letters of intent with named promoters/venues before any pilot is scheduled, priced or insured.',
 };
 
-// Blocking unknowns (U-02–U-07) — every one gates the programme, and none is priced or
-// resolved. U-02 is the AB partnership terms: modelling revenue share, cost share, capital
-// contribution or control on an assumption is fabrication and is prohibited.
-export const RISK_BLOCKING_UNKNOWNS = [
+// Outstanding before decision — every item gates the programme, and none is priced or resolved.
+// The partnership terms come first: revenue share, cost share, capital contribution and control
+// may not be modelled on an assumption.
+export const RISK_OUTSTANDING_ITEMS = [
   {
-    ref: 'U-02',
-    title: 'AB Entertainment ↔ Ticketalay partnership terms (U-02, BLOCKING)',
+    ref: 'partnership-terms',
+    title: 'AB Entertainment ↔ Ticketalay partnership terms',
     unknown:
-      'The financial terms of the AB Entertainment ↔ Ticketalay partnership — revenue share, cost share, capital contribution, control — have never been disclosed. No P&L for either party can be drawn until they exist on paper, and modelling any of them on an assumption is fabrication and is prohibited.',
+      'The financial terms of the AB Entertainment ↔ Ticketalay partnership — revenue share, cost share, capital contribution, control — have never been disclosed. No profit and loss for either party can be drawn until they exist on paper, and none of them may be modelled on an assumption.',
     owner: 'CEO, AB Entertainment, together with the Ticketalay principal.',
-    action: 'Execute a written term sheet or heads of agreement; disclose it to the leadership team. Legal drafting cost per the U-05 quote round.',
+    action: 'Execute a written term sheet or heads of agreement, and disclose it to the leadership team. The legal drafting cost comes from the written-quote round.',
   },
   {
-    ref: 'U-03',
-    title: 'Contracted promoter/venue supply (U-03, BLOCKING)',
+    ref: 'supply',
+    title: 'Contracted promoter and venue supply',
     unknown:
       'Zero named, signed counterparties; zero LOIs. No ticket-volume figure has contracted supply behind it, and the pilot cannot be scheduled, priced or insured without at least one dated counterparty.',
     owner: 'Commercial lead (currently unassigned — leadership team to appoint).',
     action: 'Secure a minimum of three signed pilot-event agreements or dated LOIs with named promoters/venues.',
   },
   {
-    ref: 'U-04',
-    title: 'Primary diaspora demand, fee-tolerance and platform-trust evidence (U-04, BLOCKING)',
+    ref: 'demand',
+    title: 'Primary diaspora demand, fee-tolerance and platform-trust evidence',
     unknown:
-      'No study exists. Take rate (8–12%), ATV, repeat purchase and conversion assumptions are all unevidenced for the actual target audience.',
+      'No study exists. The take rate (8–12%), average transaction value, repeat purchase and conversion assumptions are all unevidenced for the actual target audience.',
     owner: 'Research lead (currently unassigned).',
     action:
       'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (willingness-to-pay, fee tolerance, channel trust); obtain quotes — not priceable without a brief.',
   },
   {
-    ref: 'U-05',
-    title: 'Written PSP, legal, insurance, entity and QSA quotes (U-05, BLOCKING)',
+    ref: 'quotes',
+    title: 'Written PSP, legal, insurance, entity and QSA quotes',
     unknown:
       'None on file. Every professional-services cost on this programme is therefore unquoted, and legal fees are never proxied from consultant day rates.',
     owner: 'CEO / company secretary.',
@@ -121,16 +121,16 @@ export const RISK_BLOCKING_UNKNOWNS = [
       'Request written quotes: AU entity + IP due diligence (law firm), PSP onboarding (Stripe/Adyen AU), insurance broker, QSA. Quote requests are free.',
   },
   {
-    ref: 'U-06',
-    title: 'IP, domain, trademark, source-code and merchant-account due diligence (U-06, BLOCKING)',
+    ref: 'ownership',
+    title: 'IP, domain, trademark, source-code and merchant-account due diligence',
     unknown:
-      'Never performed. Ownership of the thing being expanded is unestablished: who owns the Ticketalay code, brand, app-store accounts and the .com.au domain is unknown.',
+      'Never performed. Ownership of the thing being expanded is unestablished: who owns the Ticketalay code, brand, app-store accounts and the .com.au domain is not known.',
     owner: 'CEO together with the appointed law firm.',
-    action: 'Commission the due-diligence memorandum — this proposal’s own “FIRST” commitment. Cost per the U-05 quote.',
+    action: 'Commission the due-diligence memorandum — the first commitment in this proposal. Its cost comes from the written-quote round.',
   },
   {
-    ref: 'U-07',
-    title: 'Ticketalay first-party data (U-07, BLOCKING)',
+    ref: 'first-party-data',
+    title: 'Ticketalay first-party data',
     unknown:
       'Schema, ownership, consent state and export rights are all unverified — the “non-negotiable foundation” of the entire data programme has never been inspected.',
     owner: 'Ticketalay principal.',

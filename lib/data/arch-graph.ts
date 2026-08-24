@@ -71,7 +71,7 @@ const A = {
 };
 
 /** The whole-stack anchor, repeated in several node costs so no node invents its own. */
-const MVP_BILL = 'The committed MVP bill of materials is A$46.43/mo [DERIVED] for the whole stack, at 8.0 setup days.';
+const MVP_BILL = 'The committed MVP bill of materials works out at A$46.43/mo for the whole stack, at 8.0 setup days.';
 
 export const ARCH_NODES: ArchNode[] = [
   /* ------------------------------------------------------------ SOURCES */
@@ -91,7 +91,7 @@ export const ARCH_NODES: ArchNode[] = [
     ],
     cost: `No purchase — these are existing systems, charged as internal labour / managed usage. No cost line is published for this layer. ${MVP_BILL}`,
     risk:
-      'Financial evidence gap — self-assessed 25/25, the joint-highest risk on the register. There is no orders table, seat map or payment ledger in evidence today; obtaining them under NDA is open item U-07 and a G2 entry condition.',
+      'Financial evidence gap — self-assessed 25/25, the joint-highest risk on the register. There is no orders table, seat map or payment ledger in evidence today; obtaining them under NDA is outstanding, and a G2 entry condition.',
   },
   {
     id: 'src-payments',
@@ -396,9 +396,9 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(5, 'Walkthrough Step 05 — three certified dashboards'),
       A.page('/prototype#walkthrough', 'Prototype — the full end-to-end run'),
     ],
-    cost: `QuickSight is inside the committed MVP bill of materials; self-hosted Metabase OSS is the A$0 [LIST] alternative. Charged per user / session / capacity — more than 8 dashboard readers is the named trigger to re-propose. ${MVP_BILL}`,
+    cost: `QuickSight is inside the committed MVP bill of materials; self-hosted Metabase OSS is the A$0 published-price alternative. Charged per user / session / capacity — more than 8 dashboard readers is the named trigger to re-propose. ${MVP_BILL}`,
     risk:
-      'A tile that loses its label. A synthetic-sample figure rendered without its marker becomes a false claim on a Leadership screen, which is exactly why the mode flag is a required column end to end.',
+      'A tile that loses its label. A figure from a synthetic sample, rendered without that label, becomes a false claim on a Leadership screen — which is exactly why the mode flag is a required column end to end.',
   },
   {
     id: 'act-api',
@@ -507,14 +507,9 @@ export interface TicketStep {
 
 export const TICKET_LABEL = 'Synthetic sample — mirrors provider spec';
 
-/**
- * The marker rule this panel declares, in the same form the routes declare the
- * provenance set. The mode badge beside it labels the *file*; [ILLUSTRATIVE]
- * labels each *figure*, and the two are not interchangeable.
- */
 export const TICKET_MARKER_RULE =
-  'Every figure in this walkthrough carries [ILLUSTRATIVE] — computed from the downloadable sample files; ' +
-  'an illustration of the pipeline, not a forecast or a commitment.';
+  'Illustrative — computed from sample data. Every figure in this walkthrough comes from the downloadable ' +
+  'sample files: an illustration of the pipeline, not a forecast or a commitment.';
 
 export const TICKET_INTRO =
   'One ticket from row mock-ar-c001 of audience-republic.csv — a Melbourne buyer, Katkon Trikon presale, reached by email. ' +
@@ -554,7 +549,7 @@ export const TICKET_PATH: TicketStep[] = [
   {
     nodeId: 'mart-finance',
     caption:
-      'It joins 568 others in the Australian finance mart, where the totals have to agree: 569 tickets, A$31,295.00 [ILLUSTRATIVE] gross, A$2,845.00 [ILLUSTRATIVE] GST at 10.0%, A$28,450.00 [ILLUSTRATIVE] net, A$0.00 [ILLUSTRATIVE] variance.',
+      'It joins 568 others in the Australian finance mart, where the totals have to agree: 569 tickets, A$31,295.00 gross, A$2,845.00 GST at 10.0%, A$28,450.00 net, A$0.00 variance — all illustrative, computed from sample data.',
   },
   {
     nodeId: 'act-dashboards',
