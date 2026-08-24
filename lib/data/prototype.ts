@@ -432,7 +432,7 @@ export const WALKTHROUGH: WalkStep[] = [
     checksHeader: {
       label: 'Control',
       result: 'Check — every figure below is illustrative, computed from sample data',
-      variance: 'Variance',
+      variance: 'Variance — illustrative, computed from sample data',
     },
     checks: [
       {

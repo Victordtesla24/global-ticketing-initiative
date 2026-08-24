@@ -309,7 +309,7 @@ export default function DataEcosystemContent() {
                         onClick={(e) => e?.stopPropagation?.()}
                         className="col-span-2 inline-flex items-center gap-1 text-primary hover:underline"
                       >
-                        <ExternalLink className="h-3 w-3" /> {p?.urlVerified ? 'Verified URL' : 'URL not yet verified'}
+                        <ExternalLink className="h-3 w-3" /> {p?.urlNote ?? (p?.urlVerified ? 'Verified URL' : 'URL not yet verified')}
                       </a>
                     ) : null}
                   </div>

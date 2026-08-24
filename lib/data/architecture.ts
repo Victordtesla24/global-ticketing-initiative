@@ -13,8 +13,8 @@ export const ARCH_RECONCILIATION = {
   value: 'MVP: S3 · Glue Data Catalog · Athena · dbt Core · QuickSight',
   note:
     'At MVP scale the committed bill of materials is S3, Glue Data Catalog free tier, Athena, dbt Core and QuickSight ' +
-    '(Metabase OSS self-hosted as the A$0 alternative — the vendor’s own pricing page publishes “Free unlimited ' +
-    'users” for the self-hosted Open Source edition) at a calculated A$46.43/mo run cost and 8.0 setup days, 7.0 of ' +
+    '(Metabase OSS self-hosted as the A$0 alternative, at the vendor’s own published price of zero — its pricing ' +
+    'page publishes “Free unlimited users” for the self-hosted Open Source edition) at a calculated A$46.43/mo run cost and 8.0 setup days, 7.0 of ' +
     'them committable before the first-party data is disclosed. That is the funded day-1 system, and it supersedes the design on this ' +
     'page. The full lakehouse shown below (Kinesis streaming, Airbyte, Redshift Serverless, SageMaker, the five marts) ' +
     'is post-G2, trigger-gated growth design: a 10-layer stack is a category error for this entity at MVP scale, and ' +
