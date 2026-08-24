@@ -24,6 +24,14 @@ It is presented in the **AB Entertainment design system**: a deep black canvas (
 primary (`#C9A84C`), the self-hosted AB Marquee and AB Sans typefaces, glass-card surfaces and
 gold ornament dividers.
 
+**The content pattern is visual first.** Every section leads with its visual — headline figures,
+stat cards, tables, badges, matrices, timelines, the architecture graph, the animated pipeline
+demo — and carries one or two short supporting sentences. The full working, provenance and
+caveats behind each figure are kept **word for word** inside a
+[`Disclosure`](components/proposal/disclosure.tsx) fold, one tap away: nothing is deleted to make a
+page shorter, and a figure that was visible stays visible. The rule is written up in
+[`STYLE_GUIDE.md`](STYLE_GUIDE.md#copy).
+
 **Production:**
 
 | Environment | URL |

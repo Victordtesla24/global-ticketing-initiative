@@ -126,6 +126,7 @@ function StarMeter({ store, ratings, stars }: { store: string; ratings: string; 
 
 export default function RiskContent() {
   const [selectedId, setSelectedId] = useState<number | null>(1);
+  const reduceMotion = useReducedMotion();
   const selected = RISKS?.find?.((r: Risk) => r?.id === selectedId) ?? null;
 
   // Group risks by (likelihood, impact) cell
@@ -304,7 +305,7 @@ export default function RiskContent() {
                   <motion.div
                     className="h-full rounded-full"
                     style={{ backgroundColor: b.colour }}
-                    initial={{ width: 0 }}
+                    initial={reduceMotion ? false : { width: 0 }}
                     whileInView={{ width: `${(n / Math.max(1, totalRisks)) * 100}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, ease: EASE }}
