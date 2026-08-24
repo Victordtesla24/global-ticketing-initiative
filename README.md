@@ -116,9 +116,7 @@ plain words:
 | **Published price** | The price the vendor publishes. |
 | **Quoted** | A written quote held on file. |
 | **Calculated** | Worked out from the figures beside it. |
-| **Planning assumption** | A planning figure, with a named confirmer. |
 | **Official statistic** | An official statistic or a statutory filed record. |
-| **To be confirmed** | No figure yet; the note says what is needed. |
 | **Illustrative — from sample data** | Computed from the downloadable sample files. |
 
 Where a sentence has room for it, the running text says the same thing in words; the chip is for

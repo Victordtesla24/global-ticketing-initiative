@@ -169,12 +169,11 @@ These are the building blocks the pages are actually made of.
 
 ### Provenance chips
 
-Every figure that needs a source carries a `<Tag>`. The eight values and the plain-word labels they
+Every figure that needs a source carries a `<Tag>`. The six values and the plain-word labels they
 render are defined in `components/proposal/tag.tsx`: `ACTUAL` → "Actual spend", `LIST` → "Published
-price", `QUOTE` → "Quoted", `DERIVED` → "Calculated", `ASSUMPTION` → "Planning assumption",
-`OFFICIAL` → "Official statistic", `UNKNOWN` → "To be confirmed", `ILLUSTRATIVE` → "Illustrative —
-from sample data". Where a sentence has room, say it in words instead; the chip is for table cells
-and headline figures.
+price", `QUOTE` → "Quoted", `DERIVED` → "Calculated", `OFFICIAL` → "Official statistic",
+`ILLUSTRATIVE` → "Illustrative — from sample data". Where a sentence has room, say it in words
+instead; the chip is for table cells and headline figures.
 
 ---
 
