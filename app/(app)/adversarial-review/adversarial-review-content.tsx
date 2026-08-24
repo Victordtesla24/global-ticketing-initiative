@@ -1,21 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Scale, AlertTriangle, FileWarning, Landmark, Database, Gauge } from 'lucide-react';
+import { Scale, FileWarning, Landmark, Database, Gauge } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Section, GlassCard, StatCard, OrnamentDivider, StatusBadge, DataTable } from '@/components/proposal/section';
 import {
   REVIEW_LEDE,
   INDEPENDENT_REVIEW,
   DELIVERABLE_RATINGS,
-  D4_OPEN_ITEM,
   OVERALL_ASSESSMENT,
   OVERALL_ASSESSMENT_PROVENANCE,
   MISSING_ELEMENTS,
   MISSING_ELEMENTS_PROVENANCE,
   UNREALISTIC_ASSUMPTIONS,
-  ASSUMPTIONS_OPEN_ITEM,
   ASSUMPTIONS_PROVENANCE,
   REGULATORY_GAPS,
   REGULATORY_GAPS_PROVENANCE,
@@ -32,20 +29,6 @@ import {
 function SourceNote({ text }: { text: string }) {
   return (
     <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{text}</p>
-  );
-}
-
-function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
   );
 }
 
@@ -85,11 +68,6 @@ export default function AdversarialReviewContent() {
                 <p className="mb-3 text-xs leading-relaxed text-foreground/80">{d?.weakness ?? ''}</p>
                 <p className="t-eyebrow mb-1">Recommendation</p>
                 <p className="text-xs leading-relaxed text-foreground/80">{d?.recommendation ?? ''}</p>
-                {d?.id === 'Deliverable 4' ? (
-                  <div className="mt-3">
-                    <OutstandingItem item={D4_OPEN_ITEM} />
-                  </div>
-                ) : null}
                 <SourceNote text={d?.provenance ?? ''} />
               </GlassCard>
             </motion.div>
@@ -201,9 +179,6 @@ export default function AdversarialReviewContent() {
                 m?.status ?? '',
               ])}
             />
-            <div className="mt-4">
-              <OutstandingItem item={ASSUMPTIONS_OPEN_ITEM} />
-            </div>
             <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{ASSUMPTIONS_PROVENANCE}</p>
           </TabsContent>
 

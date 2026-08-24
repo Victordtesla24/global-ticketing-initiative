@@ -24,7 +24,7 @@ export interface ArchStage {
 export const ARCH_STAGES: ArchStage[] = [
   { id: 'sources', label: 'Source Systems', blurb: 'Where the data is born — nothing here is owned by the warehouse.' },
   { id: 'ingestion', label: 'Ingestion', blurb: 'The only doors into the platform. Everything else is downstream of these two.' },
-  { id: 'lakehouse', label: 'Governed Lakehouse', blurb: 'Raw is kept, validated is derived, business-ready is published. Never the other way round.' },
+  { id: 'lakehouse', label: 'Governed Lakehouse', blurb: 'Raw is kept, validated is derived, business-ready is served. Never the other way round.' },
   { id: 'marts', label: 'Data Marts', blurb: 'One governed subset per business question, with its own access list.' },
   { id: 'activation', label: 'Activation', blurb: 'Where a number stops being data and starts being a decision.' },
   { id: 'governance', label: 'Governance Spine', blurb: 'Runs underneath every stage above. Not a stage — a set of controls each stage must satisfy.' },
@@ -75,8 +75,9 @@ const MVP_BILL =
   'The committed MVP bill of materials works out at A$46.43/mo for the whole stack, at 8.0 setup days — calculated as ' +
   'S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, and QuickSight 1 ' +
   'author at US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue Data Catalog on its published free tier and dbt ' +
-  'Core, open source, at A$0: US$33.175/mo ÷ 0.7145. The rates are published prices; the three volumes are planning ' +
-  'assumptions, and the full working sits in the reconciliation at the top of this page.';
+  'Core, open source, at A$0: US$33.175/mo ÷ 0.7145. The rates are the vendors’ published prices, applied to assumed ' +
+  'volumes of 5 GB stored, 10 GB scanned per month, and 1 author plus 3 readers; the full working sits in the ' +
+  'reconciliation at the top of this page.';
 
 export const ARCH_NODES: ArchNode[] = [
   /* ------------------------------------------------------------ SOURCES */
@@ -94,9 +95,9 @@ export const ARCH_NODES: ArchNode[] = [
       A.data('ticketalay-first-party-database', 'ticketalay-first-party-database.csv', 'REAL'),
       A.walk(2, 'Walkthrough Step 02 — what the platform actually has today'),
     ],
-    cost: `No purchase — these are existing systems, charged as internal labour / managed usage. No cost line is published for this layer. ${MVP_BILL}`,
+    cost: `No purchase — these are existing systems, charged as internal labour / managed usage. ${MVP_BILL}`,
     risk:
-      'Financial evidence gap — self-assessed 25/25, the joint-highest risk on the register. There is no orders table, seat map or payment ledger in evidence today; obtaining them under NDA is outstanding, and a G2 entry condition.',
+      'Financial evidence gap — self-assessed 25/25, the joint-highest risk on the register. There is no orders table, seat map or payment ledger in evidence today; obtaining them under NDA is a G2 entry condition.',
   },
   {
     id: 'src-payments',
@@ -112,7 +113,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(4, 'Walkthrough Step 04 — the reconciliation this feed has to satisfy'),
       A.data('avalara', 'avalara.csv — jurisdiction and GST routing', 'SYNTHETIC'),
     ],
-    cost: `No cost line is published for this layer; the charging basis is internal labour / managed usage. ${MVP_BILL}`,
+    cost: `Charged as internal labour / managed usage. ${MVP_BILL}`,
     risk:
       'Cybersecurity and fraud — self-assessed 20/25. Payment tokens are restricted-access fields, and a settlement feed that cannot be matched to orders makes every revenue figure downstream unverifiable.',
   },
@@ -130,7 +131,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.data('audience-republic', 'audience-republic.csv — 8 campaign rows', 'SYNTHETIC'),
       A.walk(2, 'Walkthrough Step 02 — the stand-in campaign inventory'),
     ],
-    cost: `No cost line is published for this layer; the charging basis is internal labour / managed usage. ${MVP_BILL}`,
+    cost: `Charged as internal labour / managed usage. ${MVP_BILL}`,
     risk:
       'Acquisition cost exceeding contribution — self-assessed 20/25. Platform-reported attribution without incrementality testing flatters every channel it touches.',
   },
@@ -149,7 +150,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.data('eurostat', 'eurostat.csv', 'REAL'),
       A.walk(1, 'Walkthrough Step 01 — denominators'),
     ],
-    cost: `Publicly available at no charge; no cost line is published for this layer. ${MVP_BILL}`,
+    cost: `Publicly available at no charge. ${MVP_BILL}`,
     risk:
       'A country tag read too generously. A “Global” row silently treated as “Australia” manufactures a market that was never measured — which is why tag conformance is an explicit ingest rule rather than an analyst’s judgement.',
   },
@@ -167,7 +168,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.data('abr-abn-lookup', 'abr-abn-lookup.csv — counterparty registry checks', 'REAL'),
       A.page('/data-ecosystem', 'Data ecosystem — the full provider catalogue'),
     ],
-    cost: `Enrichment vendors in this class are charged per record or per seat; no cost line is published for this layer and no written quote is on file for any of them. ${MVP_BILL}`,
+    cost: `Enrichment vendors in this class are charged per record or per seat, quoted on request. ${MVP_BILL}`,
     risk:
       'Weak inventory — self-assessed 20/25. There are zero named, signed promoter or venue counterparties today, so this feed currently has no contracted supply behind it.',
   },
@@ -187,7 +188,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(3, 'Walkthrough Step 03 — the seven conform rules and their result'),
       A.page('/prototype#walkthrough', 'Prototype — 120 files, 601 rows, 0 quarantined'),
     ],
-    cost: `Charged on compute / infrastructure, or per Monthly Active Row for the premium alternative. No cost line is published for this layer. ${MVP_BILL}`,
+    cost: `Charged on compute / infrastructure, or per Monthly Active Row for the premium alternative. ${MVP_BILL}`,
     risk:
       'Dropping instead of quarantining. A row deleted for failing a test removes a data problem from view without fixing it — the quarantine table exists so that failures stay countable.',
   },
@@ -243,7 +244,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(3, 'Walkthrough Step 03 — 209 rows flagged as real extracts, 392 as synthetic samples'),
       { label: 'manifest.json — the index that drives ingestion', href: '/sample-data/manifest.json', kind: 'dataset', mode: 'REAL', download: true },
     ],
-    cost: `Storage is bundled with the Landing Zone’s S3 spend inside the committed MVP bill; no separate cost line is published for this layer. ${MVP_BILL}`,
+    cost: `Storage is bundled with the Landing Zone’s S3 spend inside the committed MVP bill. ${MVP_BILL}`,
     risk:
       'A raw row read as fact. Bronze rows are unvalidated by definition, and a synthetic-sample row that loses its mode flag on the way out of here becomes a false claim further downstream.',
   },
@@ -294,13 +295,13 @@ export const ARCH_NODES: ArchNode[] = [
     layer: 'marts',
     plain: 'The money view: what was sold, what was refunded, what tax is owed and what actually settled.',
     happens:
-      'Orders, payments, refunds, settlements, fees and currency are assembled into reconciled financial truth, with control totals that must agree to the cent before anything is published.',
+      'Orders, payments, refunds, settlements, fees and currency are assembled into reconciled financial truth, with control totals that must agree to the cent before anything is released.',
     artefacts: [
       A.walk(4, 'Walkthrough Step 04 — AU finance mart, zero variance'),
       A.data('audience-republic', 'audience-republic.csv', 'SYNTHETIC'),
       A.data('avalara', 'avalara.csv', 'SYNTHETIC'),
     ],
-    cost: `No mart carries its own cost line, and none is published for this layer. ${MVP_BILL} The five marts are post-G2 growth design.`,
+    cost: `No mart carries its own cost line. ${MVP_BILL} The five marts are post-G2 growth design.`,
     risk:
       'A reconciliation that does not reconcile. Variance above the agreed threshold fails engineering gate TG-2 outright — the mart is the gate’s exit evidence, not a report.',
   },
@@ -316,9 +317,9 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(5, 'Walkthrough Step 05 — the demand dashboard and its tests'),
       A.data('australian-bureau-of-statistics-abs', 'australian-bureau-of-statistics-abs.csv', 'REAL'),
     ],
-    cost: `No mart carries its own cost line, and none is published for this layer. ${MVP_BILL}`,
+    cost: `No mart carries its own cost line. ${MVP_BILL}`,
     risk:
-      'A stale consent state. Consent has to be event-driven: a reachable-audience figure computed on yesterday’s consent is wrong the day after it is published, and a missed deletion request is a reportable breach rather than a data-quality issue.',
+      'A stale consent state. Consent has to be event-driven: a reachable-audience figure computed on yesterday’s consent is wrong the day after it is computed, and a missed deletion request is a reportable breach rather than a data-quality issue.',
   },
   {
     id: 'mart-events',
@@ -332,7 +333,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.data('ticketalay-first-party-database', 'ticketalay-first-party-database.csv — live listings', 'REAL'),
       A.walk(2, 'Walkthrough Step 02 — supply'),
     ],
-    cost: `No mart carries its own cost line, and none is published for this layer. ${MVP_BILL}`,
+    cost: `No mart carries its own cost line. ${MVP_BILL}`,
     risk:
       'Weak inventory — self-assessed 20/25. With no contracted supply, sell-through and utilisation have no denominator, and the mart reports on an inventory that does not yet exist.',
   },
@@ -348,7 +349,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(5, 'Walkthrough Step 05 — the campaign dashboard'),
       A.data('audience-republic', 'audience-republic.csv — 7 AU rows, 1 routed to the UK', 'SYNTHETIC'),
     ],
-    cost: `No mart carries its own cost line, and none is published for this layer. ${MVP_BILL}`,
+    cost: `No mart carries its own cost line. ${MVP_BILL}`,
     risk:
       'Acquisition cost exceeding contribution — self-assessed 20/25. Attribution without incrementality testing overstates return; channel caps and referral loops are the stated mitigation.',
   },
@@ -365,7 +366,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.page('/risk', 'Risk analysis — the register behind these scores'),
       A.page('/markets', 'Market opportunity — the country indicators'),
     ],
-    cost: `No mart carries its own cost line, and none is published for this layer. ${MVP_BILL}`,
+    cost: `No mart carries its own cost line. ${MVP_BILL}`,
     risk:
       'Entity ambiguity — self-assessed 25/25, the joint-highest risk on the register. The public-register checks show the counterparty is not yet the entity this programme assumes, and the AU domain carries a renewal-prohibited flag.',
   },
@@ -384,7 +385,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.data('audience-republic', 'audience-republic.csv — campaign attribution shape', 'SYNTHETIC'),
       A.walk(5, 'Walkthrough Step 05 — channel performance'),
     ],
-    cost: `Charged per user / session / capacity at the tool, on top of media spend. No cost line is published for this layer. ${MVP_BILL}`,
+    cost: `Charged per user / session / capacity at the tool, on top of media spend. ${MVP_BILL}`,
     risk:
       'Activating an audience whose consent state was never mapped. That is a privacy failure rather than a marketing mistake, and it is the fastest route from a data problem to a regulatory one.',
   },
@@ -396,7 +397,7 @@ export const ARCH_NODES: ArchNode[] = [
     layer: 'consumption',
     plain: 'The screens Leadership actually looks at — every tile carrying the file it came from and the label of what kind of data it is.',
     happens:
-      'Certified dashboards are published: dbt tests plus a named sign-off. Each tile inherits its file’s mode flag, so a synthetic-sourced tile cannot render without its amber marker.',
+      'Certified dashboards carry dbt tests plus a named sign-off. Each tile inherits its file’s mode flag, so a synthetic-sourced tile cannot render without its amber marker.',
     artefacts: [
       A.walk(5, 'Walkthrough Step 05 — three certified dashboards'),
       A.page('/prototype#walkthrough', 'Prototype — the full end-to-end run'),
@@ -433,7 +434,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(3, 'Walkthrough Step 03 — consent and jurisdiction rules'),
       A.page('/risk', 'Risk analysis — privacy and consent'),
     ],
-    cost: `Enforced through the catalogue and permissions layer, charged on cloud use / platform / quote. No cost line is published for this control. ${MVP_BILL}`,
+    cost: `Enforced through the catalogue and permissions layer, charged on cloud use / platform / quote. ${MVP_BILL}`,
     risk:
       'Privacy and consent failure — self-assessed 20/25. Consent is either enforced at this spine or it is not enforced anywhere; a purpose review after the fact cannot retro-fit a permission that was never given.',
   },
@@ -448,7 +449,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(3, 'Walkthrough Step 03 — 601 rows, 0 quarantined'),
       A.walk(4, 'Walkthrough Step 04 — the control-total ledger'),
     ],
-    cost: `Implemented in dbt Core, which is inside the committed MVP bill of materials. No separate cost line is published for this control. ${MVP_BILL}`,
+    cost: `Implemented in dbt Core, which is inside the committed MVP bill of materials. ${MVP_BILL}`,
     risk:
       'Over-reading a clean run. Zero quarantined rows across seven small, well-formed sample files is a statement about the mechanism working — not a quality claim about any vendor’s production feed.',
   },
@@ -463,7 +464,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(3, 'Walkthrough Step 03, rule 7 — preserve provenance'),
       A.page('/prototype', 'Prototype — every dataset labelled at source'),
     ],
-    cost: `Carried by the catalogue, whose free tier is inside the committed MVP bill of materials. No separate cost line is published for this control. ${MVP_BILL}`,
+    cost: `Carried by the catalogue, whose free tier is inside the committed MVP bill of materials. ${MVP_BILL}`,
     risk:
       'Losing provenance in transit. If the source URL and access date do not reach the tile, a disagreement about a number becomes an opinion somebody holds instead of a check somebody can run.',
   },
@@ -478,7 +479,7 @@ export const ARCH_NODES: ArchNode[] = [
       A.walk(3, 'Walkthrough Step 03, rule 6 — route by jurisdiction'),
       A.data('data-privacy-framework', 'data-privacy-framework.csv', 'SYNTHETIC'),
     ],
-    cost: `No cost line is published for this control; it is a design and legal obligation rather than a purchase. ${MVP_BILL}`,
+    cost: `A design and legal obligation rather than a purchase. ${MVP_BILL}`,
     risk:
       'Citing the wrong instrument. The Australia-to-Canada route is governed by Australian Privacy Principle 8 of the Privacy Act 1988 (Cth) — the EU adequacy decision has no force over an Australian-origin disclosure, and a transfer impact assessment is required before any production data flows.',
   },

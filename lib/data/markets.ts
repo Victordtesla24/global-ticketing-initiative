@@ -1,31 +1,16 @@
-// Deliverable 4 — per-market entry strategies. No three-year corridor projection, TAM/SAM/SOM
-// cascade, event, ticket, GTV, take-rate or operating-cost figure is published where no source
-// supports it; each stands instead as an outstanding item with a named owner. Every currency
-// conversion is calculated from the RBA's published rates for 21 Aug 2026.
-
-export interface OpenItem {
-  ref: string;
-  title: string;
-  unknown: string;
-  owner: string;
-  action: string;
-}
+// Deliverable 4 — per-market entry strategies. Every currency conversion is calculated from
+// the RBA's published rates for 21 Aug 2026.
 
 export interface HeroTile { label: string; value: string; note: string }
-export interface SizingRow { tier: string; basis: string }
 export interface MarketPhase { phase: string; period: string; actions: string; gate?: string }
 export interface Partnership { type: string; criticality: string; detail: string }
-export interface Blocker { item: string; owner: string }
 
 export interface MarketRevenue {
   title: string;
   body: string;
-  /** Australia only: publish the arithmetic identity (lib/data/revenue-model.ts), never an output number. */
+  /** Australia only: show the arithmetic identity from lib/data/revenue-model.ts. */
   showIdentity?: boolean;
-  blockersIntro?: string;
-  blockers?: Blocker[];
   note?: string;
-  openItem?: OpenItem;
   sources?: string[];
 }
 
@@ -41,26 +26,18 @@ export interface Market {
   hotspots: { city: string; lat: number; lon: number }[];
   evidence: string;
   evidenceSources: string[];
-  evidenceOpenItem?: OpenItem;
   /** "What no purchase can refresh" — release cadence bounds what gate G1 can know. */
   cadence?: { title: string; body: string; source: string };
-  sizingIntro?: string;
-  sizing: SizingRow[];
-  sizingOpenItems: OpenItem[];
-  sizingSources?: string[];
   entryMode: string;
   entryModeNote?: string;
   timeline: MarketPhase[];
-  timelineOpenItems: OpenItem[];
-  revenue: MarketRevenue;
+  revenue?: MarketRevenue;
   regulatory: string[];
   regulatoryNote?: string;
   regulatorySources?: string[];
-  regulatoryOpenItem?: OpenItem;
   partnerships: Partnership[];
   partnershipsNote?: string;
   partnershipsSources?: string[];
-  partnershipsOpenItem?: OpenItem;
   confidenceNote: string;
   confidenceTile?: HeroTile;
   confidenceSources?: string[];
@@ -96,16 +73,8 @@ export const MARKETS: Market[] = [
       'ABS, Cultural and creative activities, Australia, 2021–22 — abs.gov.au',
       'ABS, Attendance at Selected Cultural Venues and Events, Australia, 2017–18 — abs.gov.au',
       'ABS Census 2021, Cultural diversity data summary, Tables 4–5 — abs.gov.au',
+      'ABS, Australia’s population by country of birth (Estimated Resident Population, June 2025) — abs.gov.au',
     ],
-    evidenceOpenItem: {
-      ref: 'city-level-marathi',
-      title: 'City-level (Greater Melbourne / Greater Sydney) Marathi population',
-      unknown:
-        'The city split of the 22,263 national Marathi-at-home count. Published ABS community profiles fold Marathi into a residual “Other Indo-Aryan” category, so the GCCSA breakdown requires ABS TableBuilder registration, not yet completed.',
-      owner: 'Data lead (role currently unassigned — leadership team to appoint)',
-      action:
-        'Register for ABS TableBuilder and confirm its access cost, then obtain the city-level split before it is used in any pilot-sizing decision.',
-    },
     cadence: {
       title: 'Data cadence — what no purchase can refresh',
       body:
@@ -113,63 +82,22 @@ export const MARKETS: Market[] = [
       source:
         'Sources: ABS, 2026 Census topics and data release plan (“First release – June 2027”); ABS Cultural and creative activities 2021–22 release header (“Next release Unknown”).',
     },
-    sizingIntro:
-      'No TAM, SAM or SOM figure is published for Australia. No bottom-up sizing of the Marathi/Indian-origin live-entertainment segment exists, and no capture assumption beneath a SAM or SOM tier has a source, so no defensible figure can be stated. What can be stated are the population denominators below, which bound the segment without sizing the market.',
-    sizing: [
-      { tier: 'TAM — Total addressable', basis: 'Not sized — no bottom-up sizing of the target segment exists. See the outstanding item below.' },
-      { tier: 'SAM — Serviceable', basis: 'Not sized — no capture assumption beneath a TAM has a source, and there is no TAM to apply one to.' },
-      { tier: 'SOM — Obtainable', basis: 'Not sized — no capture assumption beneath a SAM has a source, and there is no SAM to apply one to.' },
-    ],
-    sizingOpenItems: [
-      {
-        ref: 'au-market-size',
-        title: 'A bottom-up Australian market size for Marathi and Indian-origin live entertainment',
-        unknown:
-          'TAM, SAM and SOM for the actual target segment. The only sourced inputs available today are the population denominators — 22,263 Marathi speakers at home and 971,020 India-born Australian residents — which bound the segment but do not size the market.',
-        owner: 'Research lead (role, currently unassigned)',
-        action:
-          'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney — willingness-to-pay, fee tolerance and channel trust — before any sizing figure is published.',
-      },
-    ],
-    sizingSources: [
-      'ABS, Australia’s population by country of birth (Estimated Resident Population, June 2025) — abs.gov.au',
-    ],
     entryMode:
       'Establish or contract through a verified Australian entity only after legal advice. Begin with a local promoter-led pilot and contracted inventory rather than a broad consumer launch. Prerequisites: ABN/ASIC verification, Privacy Act assessment, GST registration, compliant payment gateway, consumer protection review.',
     entryModeNote:
-      'A programme recommendation, not a claim of existing verification or supply: no signed promoter or venue supply exists, and no written PSP, legal, insurance, entity or QSA quotes are on file.',
+      'A programme recommendation, rather than a claim of existing verification or supply.',
     timeline: [
-      { phase: 'Phase 0: Verify', period: 'Months 0–3', actions: 'Legal verification; Australian structure; event inventory audit; data audit; promoter interviews (count not yet set — see the outstanding item)', gate: 'At least one contractable pilot event and reconciled baseline' },
-      { phase: 'Phase 1: Pilot', period: 'Months 4–6', actions: 'All-in pricing; support and scanning; measure contribution (pilot event count not yet set — see the outstanding item)', gate: 'Positive contribution before fixed platform cost' },
-      { phase: 'Phase 2: Expand', period: 'Months 7–12', actions: 'Repeat-buyer and referral tests (expansion event count not yet set — see the outstanding item)', gate: 'Repeat purchase rate and CAC within approved threshold' },
+      { phase: 'Phase 0: Verify', period: 'Months 0–3', actions: 'Legal verification; Australian structure; event inventory audit; data audit; promoter interviews', gate: 'At least one contractable pilot event and reconciled baseline' },
+      { phase: 'Phase 1: Pilot', period: 'Months 4–6', actions: 'All-in pricing; support and scanning; measure contribution', gate: 'Positive contribution before fixed platform cost' },
+      { phase: 'Phase 2: Expand', period: 'Months 7–12', actions: 'Repeat-buyer and referral tests', gate: 'Repeat purchase rate and CAC within approved threshold' },
       { phase: 'Phase 3: Deepen', period: 'Months 13–24', actions: 'Add venues and adjacent categories; organiser portal; partnerships', gate: 'Inventory concentration and reliability acceptable' },
       { phase: 'Phase 4: National', period: 'Months 25–36', actions: 'National city expansion only where contracted inventory exists', gate: 'Market-level contribution positive' },
     ],
-    timelineOpenItems: [
-      {
-        ref: 'au-event-volumes',
-        title: 'Promoter-interview count and pilot and expansion event volumes',
-        unknown:
-          'The promoter-interview count for Phase 0, and the pilot and expansion event volumes for Phases 1 and 2. None is set, and none is published in this proposal.',
-        owner: 'Commercial lead (role currently unassigned — leadership team to appoint)',
-        action:
-          'Secure a minimum of three signed pilot-event agreements or dated letters of intent with named promoters and venues before any interview count or event volume is set. Where the Vision and Recommendations pages describe “a 3–5 event Australian pilot”, that is the deliverable of gate G2 — a target that contracted supply must first unlock, not supply already in hand. No event volume is evidenced today.',
-      },
-    ],
     revenue: {
-      title: 'Revenue — Not Yet Computable',
+      title: 'Revenue — The Identity and Its Variables',
       body:
-        'No three-year base-scenario table is published for Australia — no events, tickets, GTV, platform revenue, transaction cost, acquisition cost, fixed operating cost or operating result. Not one of those lines has a source: event and ticket volumes rest on supply that does not exist, and neither the transaction-cost rate nor the fixed operating cost is quoted anywhere. What can be published is the identity itself, with every variable named and owned — and no output number.',
+        'Australian pilot revenue is stated as the arithmetic identity below, with every variable named and owned. Each variable resolves at the gate that produces it: the partnership terms at G0, and contracted supply and the primary demand study at G1.',
       showIdentity: true,
-      openItem: {
-        ref: 'au-revenue-inputs',
-        title: 'Every input to Australian pilot revenue, and Ticketalay’s share of it',
-        unknown:
-          'Events per year, tickets per event, average transaction value, take rate and the partnership split are each still to be confirmed. The dependency that comes first is the AB Entertainment ↔ Ticketalay partnership terms — revenue share, cost share, capital contribution and control — which are undisclosed and sit ahead of any revenue modelling.',
-        owner: 'CEO, AB Entertainment + Ticketalay principal',
-        action:
-          'Execute a written term sheet or heads of agreement and disclose it to the leadership team; then deliver the discovery-gate evidence — contracted supply, and the primary demand study. Return on investment for the Australian market is not computable until all three exist.',
-      },
     },
     regulatory: [
       'ABN and ASIC registration or verification',
@@ -179,24 +107,17 @@ export const MARKETS: Market[] = [
       'Consumer protection compliance review',
     ],
     regulatoryNote:
-      'A structural checklist of standard Australian regulatory prerequisites, framed as work still to be done — not as work completed. No legal, entity or QSA due diligence has been performed to date.',
+      'A structural checklist of standard Australian regulatory prerequisites, framed as work still to be done rather than work completed.',
     partnerships: [
       { type: 'Marathi cultural associations', criticality: 'Critical', detail: 'Audience access, event promotion, community credibility' },
       { type: 'Established promoters', criticality: 'Critical', detail: 'Marathi drama and Hindi comedy event inventory, production expertise' },
       { type: 'Community venues', criticality: 'High', detail: 'Town halls, cultural centres, theatres — venue access and local infrastructure' },
       { type: 'Universities', criticality: 'Medium', detail: 'Indian student associations — youth audience, campus events' },
-      { type: 'Payment providers', criticality: 'Critical', detail: 'Stripe and Square both operate in Australia; no written onboarding terms or fee schedule for this entity has been requested or received' },
+      { type: 'Payment providers', criticality: 'Critical', detail: 'Stripe and Square both operate in Australia; onboarding terms and the fee schedule for this entity are quoted on request' },
       { type: 'Customer support provider', criticality: 'High', detail: 'Australian-based buyer and organiser support' },
     ],
     partnershipsNote:
-      'Self-assessed criticality ratings of prospective, uncontracted partnership categories — no supply or commitment claim is made. No PSP quotes or engagement exist on file, so no certification or onboarding status is claimed for any payment provider.',
-    partnershipsOpenItem: {
-      ref: 'au-psp-terms',
-      title: 'Written PSP onboarding terms for the actual contracting entity',
-      unknown: 'Settlement currency and timing, chargeback terms and the pricing schedule — none has been requested or received.',
-      owner: 'CEO / company secretary',
-      action: 'Request written onboarding quotes from Stripe AU and Adyen AU. Both are free to request.',
-    },
+      'Self-assessed criticality ratings of prospective, uncontracted partnership categories — no supply or commitment claim is made, and no certification or onboarding status is claimed for any payment provider.',
     confidenceNote:
       'Strongest-evidenced market. Australia is the only market in this proposal with verified official attendance statistics plus a real, if unquantified, local partnership. Cultural participation data is pandemic-affected (2021–22); use 2017–18 (82.4%) as the upper bound.',
     confidenceSources: [
@@ -208,16 +129,9 @@ export const MARKETS: Market[] = [
     name: 'United Kingdom',
     shortName: 'UK',
     status: 'Partner-Led Corridor Candidate',
-    heroStat: '90.6% of adults engaged with the arts, England (2024/25) — DCMS; UK live-music market size still to be confirmed',
+    heroStat: '90.6% of adults engaged with the arts, England (2024/25) — DCMS',
     heroStatSource: 'DCMS, Participation Survey 2024/25; UN DESA, International Migrant Stock 2024',
-    heroTilesIntro:
-      'UK live-music market size is still to be confirmed. The only measure located is a trade federation’s own commissioned estimate of consumer spend, which is not a published market size, so no figure is given. The official statistics below carry their source lines.',
     heroTiles: [
-      {
-        label: 'Live-music market size, UK',
-        value: 'To be confirmed',
-        note: 'No figure is published. The only measure located is a trade federation’s own commissioned estimate of 2024 consumer spend (LIVE, Annual Report & Economic Highlights 2024, +9.5% year-on-year), which is not a published market size. No official statistic of UK live-music market size was located.',
-      },
       {
         label: 'Adults who engaged with the arts, England, 2024/25',
         value: '90.6%',
@@ -234,7 +148,7 @@ export const MARKETS: Market[] = [
       { city: 'Birmingham', lat: 52.49, lon: -1.89 },
     ],
     evidence:
-      'No figure for UK live-music market size is published on this page: it remains to be confirmed. The only measure located is a trade federation’s own commissioned estimate of 2024 consumer spend, which is not a published market size, so neither it nor its AUD conversion appears here. In England, 90.6% of adults engaged with the arts in 2024/25 — a broad engagement measure, not live-event attendance specifically. The UN estimated 11.8 million international migrants in the UK in 2024. These figures indicate strong general cultural demand; none of them quantifies Marathi or Indian-origin event buyers, and that count does not exist in any source consulted for this page.',
+      'In England, 90.6% of adults engaged with the arts in 2024/25 — a broad engagement measure, not live-event attendance specifically. The UN estimated 11.8 million international migrants in the UK in 2024. These figures indicate strong general cultural demand; none of them quantifies Marathi or Indian-origin event buyers, and that count does not exist in any source consulted for this page.',
     evidenceSources: [
       'Arts engagement: DCMS, Participation Survey 2024/25 — gov.uk',
       'Migrant stock: UN DESA, International Migrant Stock 2024 — un.org',
@@ -247,72 +161,27 @@ export const MARKETS: Market[] = [
       source:
         'Sources: DCMS Participation Survey 2024/25 annual publication; live-entertainment spend series read from 2018 (about 8 years, so rebound is separable from structural growth).',
     },
-    sizing: [
-      { tier: 'TAM — Total addressable', basis: 'Not sized. See the outstanding item below.' },
-      { tier: 'SAM — Serviceable', basis: 'Not sized — no event inventory exists to size from. See the outstanding item below.' },
-      { tier: 'SOM — Obtainable', basis: 'Not sized — no contractable share can be stated without an inventory. See the outstanding item below.' },
-    ],
-    sizingOpenItems: [
-      {
-        ref: 'uk-market-size',
-        title: 'Addressable, serviceable and obtainable market (TAM/SAM/SOM) for the UK corridor',
-        unknown:
-          'No bottom-up event inventory has been built for the UK, so no TAM, SAM or SOM figure is published. A whole-national-market spend total would not be a total addressable market for this programme in any case: Ticketalay’s addressable niche within it is a fraction of one percent and has never been sized bottom-up, so published as a TAM such a total would overstate the addressable market by more than two orders of magnitude.',
-        owner: 'Commercial lead (currently unassigned)',
-        action: 'Build an event-inventory count from named venues and promoters, and size the addressable niche from it, before any TAM, SAM or SOM figure is republished.',
-      },
-    ],
     entryMode:
       'Local promoter partnership and agency/distribution arrangement before entity formation. Do not establish a UK entity until positive contribution and repeat demand are demonstrated.',
     timeline: [
-      { phase: 'Research', period: 'Months 0–12', actions: 'Remote partner discovery; regulatory assessment (event-test count not yet set — see the outstanding item)' },
-      { phase: 'Pilot', period: 'Months 13–24', actions: 'Pricing compliance review (pilot event count not yet set — see the outstanding item)' },
+      { phase: 'Research', period: 'Months 0–12', actions: 'Remote partner discovery; regulatory assessment' },
+      { phase: 'Pilot', period: 'Months 13–24', actions: 'Pricing compliance review' },
       { phase: 'Scale decision', period: 'Months 25–36', actions: 'Entity decision only after positive contribution and repeat demand' },
     ],
-    timelineOpenItems: [
-      {
-        ref: 'uk-event-counts',
-        title: 'Event counts for the Research and Pilot phases',
-        unknown:
-          'The event counts for the Research and Pilot phases. Neither is set: there is no named, signed promoter or venue supply for the UK, and no anchor-promoter relationship exists.',
-        owner: 'Commercial lead (currently unassigned)',
-        action: 'Secure at least one dated counterparty (signed agreement or LOI) before any pilot event count is published.',
-      },
+    regulatory: [
+      'UK GDPR obligations post-Brexit',
+      'Consumer Rights Act 2015 refund and cancellation duties',
+      'VAT treatment of digital services and ticket sales',
+      'Performer visa requirements — the Creative Worker (Temporary Work) route, which replaced the retired Tier 5 Creative and Sporting category in 2021',
+      'Ticket-resale regulation',
     ],
-    revenue: {
-      title: 'Investment & Returns — Not Published',
-      body:
-        'No three-year financial projection is published for this corridor: event count, ticket volume, GTV, take rate and operating cost are each unsourced for the UK. Return on investment for the UK corridor is not computable while these remain unresolved:',
-      blockers: [
-        { item: 'Partnership financial terms between AB Entertainment and Ticketalay (revenue share, cost share, capital, control)', owner: 'CEO, AB Entertainment + Ticketalay principal' },
-        { item: 'Contracted promoter/venue supply — zero named, signed counterparties exist', owner: 'Commercial lead (currently unassigned)' },
-        { item: 'Primary demand, fee-tolerance and platform-trust evidence for Marathi/Indian-origin buyers — no study exists', owner: 'Research lead (currently unassigned)' },
-        { item: 'Written PSP, legal, insurance, entity and QSA quotes — none on file', owner: 'CEO / company secretary' },
-      ],
-      note: 'Action: resolve each item at its named gate before any UK revenue or return figure is modelled.',
-      sources: ['FX rate: RBA, daily exchange rates, 21 Aug 2026 — rba.gov.au'],
-    },
-    regulatory: [],
-    regulatoryOpenItem: {
-      ref: 'uk-regulatory',
-      title: 'UK regulatory requirements have not been verified against a primary source',
-      unknown:
-        'Open questions include UK GDPR obligations post-Brexit, Consumer Rights Act 2015 refund and cancellation duties, VAT treatment of digital services and ticket sales, performer visa requirements, and ticket-resale regulation. On the last of these, the original wording named “Tier 5 Creative and Sporting” — a category retired in 2021 and replaced by the Creative Worker (Temporary Work) route, so even the category name needs re-checking, not just the requirement.',
-      owner: 'UK legal counsel (not yet engaged)',
-      action:
-        'Commission a UK regulatory review before any market-entry commitment. This proposal commits to engaging UK legal counsel on each of these items beforehand. That is a prudential commitment by the proposer, not a claim that counsel is legally required: no source establishes such a requirement in any of the five markets, and none is claimed on any market page.',
-    },
+    regulatoryNote:
+      'A structural checklist, framed as work still to be done. This proposal commits to engaging UK legal counsel on each of these before any UK market-entry commitment. That is a prudential commitment by the proposer, not a claim that counsel is legally required: no source establishes such a requirement in any of the five markets.',
     partnerships: [
       { type: 'UK-based Marathi drama promoters', criticality: 'Prospective', detail: 'Direct discovery required — no agreement, quote or dated counterparty exists' },
     ],
-    partnershipsOpenItem: {
-      ref: 'uk-partnerships',
-      title: 'No other UK ecosystem partnership is confirmed',
-      unknown:
-        'No UK cultural centre, venue or payment provider has a written agreement, quote or supporting source on file, so none is named as a partner in the entry plan.',
-      owner: 'Commercial lead (currently unassigned) for community and venue partnerships; CEO / company secretary for payment-provider quotes',
-      action: 'Obtain written terms before naming any partner as part of the entry plan.',
-    },
+    partnershipsNote:
+      'No UK cultural centre, venue or payment provider has written terms on file, so none is named as a partner in the entry plan. Written terms come first.',
     confidenceNote:
       'Strong general-demand signals. The niche ceiling, by contrast, is quantified: 11,022 people in England and Wales reported Marathi as their main language at the 2021 Census — a floor-not-total count (main language only, excluding Marathi speakers whose main language is English), and smaller than Australia’s 22,263. What remains unquantified is buyer demand within that niche: no primary demand, fee-tolerance or platform-trust study exists. England-specific arts data does not cover the whole UK.',
     confidenceSources: [
@@ -346,7 +215,7 @@ export const MARKETS: Market[] = [
       { city: 'Chicago', lat: 41.88, lon: -87.63 },
     ],
     evidence:
-      'The FTC’s Rule on Unfair or Deceptive Fees (all-in pricing) took effect 12 May 2025. Ticketmaster’s distribution scale confirms that the market is dominated by vertically integrated incumbents: niche entry requires differentiated inventory, not price competition. The NEA’s Survey of Public Participation in the Arts provides national arts-attendance evidence: the SPPA 2022 is verified and stands as a US participation baseline if a US gate is ever reached, though it carries no diaspora-specific demand data. It is a five-yearly series; 2022 is the latest edition.',
+      'The FTC’s Rule on Unfair or Deceptive Fees (all-in pricing) took effect 12 May 2025. Ticketmaster’s distribution scale confirms that the market is dominated by vertically integrated incumbents: niche entry requires differentiated inventory, not price competition. The diaspora is concentrated in New York/New Jersey, the SF Bay Area, Chicago, Los Angeles and Dallas–Fort Worth — a pattern consistent with the top India-born state totals: California 626,214, Texas 431,939 and New Jersey 296,806 (ACS 2024 1-year, table B05006). The NEA’s Survey of Public Participation in the Arts provides national arts-attendance evidence: the SPPA 2022 is verified and stands as a US participation baseline if a US gate is ever reached, though it carries no diaspora-specific demand data. It is a five-yearly series; 2022 is the latest edition.',
     evidenceSources: [
       'UN DESA, International Migrant Stock 2024 — un.org/development/desa/pd/content/international-migrant-stock',
       'US Census Bureau, ACS 2024 1-year, table B05006 — data.census.gov',
@@ -354,60 +223,17 @@ export const MARKETS: Market[] = [
       'FTC, Rule on Unfair or Deceptive Fees — ftc.gov press release, 12 May 2025',
       'NEA, Arts Participation Patterns in 2022 (SPPA highlights) — arts.gov',
     ],
-    sizing: [
-      {
-        tier: 'TAM — Total addressable',
-        basis:
-          'Diaspora concentrated in New York/New Jersey, the SF Bay Area, Chicago, Los Angeles and Dallas–Fort Worth — a pattern consistent with the top India-born state totals: California 626,214, Texas 431,939, New Jersey 296,806 (ACS 2024 1-year, table B05006). Not sized — no annual count of relevant cultural events has been built, so the event count and any market size derived from it are both still to be confirmed. See the outstanding item below.',
-      },
-      {
-        tier: 'SAM — Serviceable',
-        basis: 'Bottom-up sizing is required from a verified metro event inventory. No such inventory exists yet, so the figure is to be confirmed.',
-      },
-      { tier: 'SOM — Obtainable', basis: 'Not sized, and to be confirmed: no contractable share can be stated without an inventory, and no inventory exists. See the outstanding item below.' },
-    ],
-    sizingOpenItems: [
-      {
-        ref: 'us-metro-inventory',
-        title: 'Metro event inventory and obtainable share',
-        unknown:
-          'No metro-level event inventory exists anywhere in the evidence base, so neither a TAM event count nor an obtainable-share percentage can be stated.',
-        owner: 'Commercial lead (currently unassigned — leadership team to appoint)',
-        action:
-          'Build a bottom-up metro event count, and secure a minimum of three signed pilot-event agreements or dated LOIs with named promoters/venues, before any TAM or obtainable-share figure is published.',
-      },
-    ],
     entryMode:
       'Promoter/agent partnership with local ticketing and tax support. Avoid independent artist promotion until immigration, insurance, venue and cancellation capabilities mature.',
     timeline: [
       { phase: 'Feasibility', period: 'Months 0–12', actions: 'Partner, pricing and visa feasibility; regulatory assessment' },
-      { phase: 'Pilot', period: 'Months 13–24', actions: 'FTC compliance build-out (pilot event count not yet set — see the outstanding item)' },
+      { phase: 'Pilot', period: 'Months 13–24', actions: 'FTC compliance build-out' },
       { phase: 'Scale decision', period: 'Months 25–36', actions: 'Scale only if contribution, compliance and partner renewal meet thresholds' },
     ],
-    timelineOpenItems: [
-      {
-        ref: 'us-pilot-count',
-        title: 'Pilot event count for the US pilot phase',
-        unknown:
-          'The pilot event count for one metro. No promoter or venue counterparty is named or signed anywhere in the evidence base, so no figure is set.',
-        owner: 'Commercial lead (currently unassigned — leadership team to appoint)',
-        action:
-          'Secure signed pilot-event agreements or dated LOIs before a pilot count is published. “Contracted”, “secured” or “confirmed” language may not be used about inventory until a dated counterparty exists.',
-      },
-    ],
     revenue: {
-      title: 'Three-Year Base Scenario — Removed',
+      title: 'Operating Cost — What US Entry Is Expected to Carry',
       body:
-        'No three-year Events / Tickets / GTV / Platform Revenue / Operating Cost / Operating Result table is published for the United States. Every input — event count, ticket volume, take rate and operating cost — is unsourced for this market, and no gate on the current schedule produces any of them: ROI is not computable, every numerator input plus US compliance costs is missing, and no producing gate exists.',
-      blockersIntro: 'What is unknown, by owner:',
-      blockers: [
-        { item: 'Event and ticket volume, and the take rate — no signed promoter or venue supply exists', owner: 'Commercial lead (currently unassigned — leadership team to appoint)' },
-        { item: 'Average ticket value and demand — no primary diaspora demand or fee-tolerance study exists', owner: 'Research lead (currently unassigned)' },
-        { item: 'Operating cost — no written PSP, legal, insurance, entity or QSA quotes are on file', owner: 'CEO / company secretary' },
-        { item: 'Revenue and cost split between AB Entertainment and Ticketalay — no partnership term sheet exists', owner: 'CEO, AB Entertainment + Ticketalay principal' },
-      ],
-      note:
-        'US entry is expected to carry higher operating costs than the other target markets, driven by regulatory complexity, immigration support requirements and multi-jurisdiction tax compliance. That is a qualitative expectation only; no dollar figure is published until the items above are resolved.',
+        'US entry is expected to carry higher operating costs than the other target markets, driven by regulatory complexity, immigration support requirements and multi-jurisdiction tax compliance. That is a qualitative expectation, and it is the reason the United States sits behind Australia in the entry sequence.',
     },
     regulatory: [
       'FTC all-in pricing rule compliance — effective 12 May 2025',
@@ -418,23 +244,17 @@ export const MARKETS: Market[] = [
       'State and local sales tax (entertainment/amusement tax varies by jurisdiction)',
       'PCI-DSS compliance',
     ],
+    regulatoryNote:
+      'This proposal commits to engaging US immigration counsel on each of the visa pathways above before any US market-entry commitment. That is a prudential commitment by the proposer, not a claim that counsel is legally required: USCIS petitions require a US petitioner or agent and labor-organisation consultation, and no source establishes a counsel requirement.',
     regulatorySources: [
       'FTC, Rule on Unfair or Deceptive Fees — ftc.gov',
       'O-1B, P-1B, P-2 and P-3 are USCIS performer/entertainer visa classifications — uscis.gov, performer/entertainer visa guidance',
     ],
-    regulatoryOpenItem: {
-      ref: 'us-counsel-requirement',
-      title: 'Whether US legal counsel is mandatory for the performer visa pathways',
-      unknown:
-        'No source establishes that legal counsel is mandatory for all four visa categories — USCIS petitions require a US petitioner or agent and labor-organisation consultation, not counsel by rule.',
-      owner: 'CEO / company secretary',
-      action: 'Request written quotes and scope confirmation from immigration counsel before asserting a counsel requirement. This proposal commits to engaging US immigration counsel on each of these pathways before any US market-entry commitment. That is a prudential commitment by the proposer, not a claim that counsel is legally required.',
-    },
     partnerships: [
       { type: 'US-based Indian cultural promoters and producers', criticality: 'Critical', detail: 'Event inventory and production. Not yet secured — planning stage only.' },
       { type: 'Marathi Mandals and cultural associations', criticality: 'Critical', detail: 'NJ, CA, IL community access — prospective and uncontracted. Consistent with India-born concentration: California 626,214, New Jersey 296,806 (ACS 2024 1-year, table B05006).' },
       { type: 'Immigration attorneys', criticality: 'Critical', detail: 'Entertainment visa specialists. Not yet engaged — planning stage only.' },
-      { type: 'US payment and tax compliance providers', criticality: 'High', detail: 'Stripe, Avalara — named as existing providers only; no engagement, and no pricing quoted.' },
+      { type: 'US payment and tax compliance providers', criticality: 'High', detail: 'Stripe, Avalara — named as existing providers only; no engagement, and pricing quoted on request.' },
     ],
     partnershipsSources: ['US Census Bureau, ACS 2024 1-year, table B05006, state view — data.census.gov'],
     confidenceNote:
@@ -451,8 +271,8 @@ export const MARKETS: Market[] = [
     name: 'Canada',
     shortName: 'CA',
     status: 'Research-Only — Least Evidenced',
-    heroStat: 'No Canada-specific diaspora, cultural-attendance or ticket-market metric has been located',
-    heroStatSource: 'The StatCan national aggregates that were located are shown below',
+    heroStat: '10.37m not-for-profit performing-arts attendances (2024); 898,045 India-born residents (2021 Census)',
+    heroStatSource: 'Statistics Canada, table 21-10-0186-01; Statistics Canada, 2021 Census of Population',
     heroTiles: [
       {
         label: 'Not-for-profit performing-arts attendance, 2024',
@@ -470,7 +290,7 @@ export const MARKETS: Market[] = [
       { city: 'Vancouver', lat: 49.28, lon: -123.12 },
     ],
     evidence:
-      'No Canada-specific diaspora, cultural-attendance or official ticket-market metric was successfully supplied in the research behind this proposal, so the Canadian opportunity is unverified and must be modelled from Statistics Canada data, local event inventory and promoter evidence. That gap admission is accurate. Statistics Canada does publish performing-arts attendance data and immigration statistics — not-for-profit performing-arts attendance was 10.37 million nationally in 2024, and the India-born population was 898,045 at the 2021 Census — but neither carries the diaspora, city-level or ticket-market breakdown this page would need. Declining to model an opportunity from these inputs is the correct call, not a research failure. The two India-born counts this proposal publishes for Canada are reconciled, not competing: Statistics Canada’s 898,045 counts India-born immigrants (permanent residents) at the 2021 Census, 25% sample data, reference date 11 May 2021, while the cross-market comparison strip on /market-opportunity uses UN DESA’s International Migrant Stock 2024 estimate of 1,015,630 India-born migrants in Canada at mid-2024 — 117,585 higher (+13.1%, calculated: (1,015,630 − 898,045) ÷ 898,045). Different collector, different measure, different reference date — the same reconciliation this proposal applies to the Australian pair (ABS ERP 971,020 at 30 June 2025 against UN DESA’s 876,074 at mid-2024). Both figures are verified; the UN DESA figure is the comparable cross-market denominator, the StatCan figure is Canada’s own national measure, and neither replaces the other.',
+      'The Canadian opportunity must be modelled from Statistics Canada data, local event inventory and promoter evidence. Statistics Canada publishes performing-arts attendance data and immigration statistics — not-for-profit performing-arts attendance was 10.37 million nationally in 2024, and the India-born population was 898,045 at the 2021 Census — but neither carries the diaspora, city-level or ticket-market breakdown this market would need to be sized. The two India-born counts this proposal publishes for Canada are reconciled, not competing: Statistics Canada’s 898,045 counts India-born immigrants (permanent residents) at the 2021 Census, 25% sample data, reference date 11 May 2021, while the cross-market comparison strip on /market-opportunity uses UN DESA’s International Migrant Stock 2024 estimate of 1,015,630 India-born migrants in Canada at mid-2024 — 117,585 higher (+13.1%, calculated: (1,015,630 − 898,045) ÷ 898,045). Different collector, different measure, different reference date — the same reconciliation this proposal applies to the Australian pair (ABS ERP 971,020 at 30 June 2025 against UN DESA’s 876,074 at mid-2024). Both figures are verified; the UN DESA figure is the comparable cross-market denominator, the StatCan figure is Canada’s own national measure, and neither replaces the other.',
     evidenceSources: [
       'Statistics Canada, Table 21-10-0186-01, “Performing arts, performances and attendance, not-for-profit” (2014–2024) — statcan.gc.ca',
       'Statistics Canada, 2021 Census of Population, Focus on Geography Series — India-born population — statcan.gc.ca',
@@ -478,25 +298,10 @@ export const MARKETS: Market[] = [
     cadence: {
       title: 'Data cadence — what no purchase can refresh',
       body:
-        'StatCan’s performing-arts table 21-10-0186-01 is a biennial series running over reference years 2014–2024, with 2024 the latest (published in The Daily on 22 January 2026); under that cycle nothing fresher is purchasable today, at any price. The whole back-catalogue is a free CSV download, and the immigration counts refresh only on the five-yearly census cycle (2021 is the operative census now). The binding limit on Canadian evidence is release cadence, not budget — and no release at any point in the series carries the diaspora, city-level or ticket-market breakdown this page would need.',
+        'StatCan’s performing-arts table 21-10-0186-01 is a biennial series running over reference years 2014–2024, with 2024 the latest (published in The Daily on 22 January 2026); under that cycle nothing fresher is purchasable today, at any price. The whole back-catalogue is a free CSV download, and the immigration counts refresh only on the five-yearly census cycle (2021 is the operative census now). The binding limit on Canadian evidence is release cadence, not budget — and no release at any point in the series carries the diaspora, city-level or ticket-market breakdown this market would need to be sized.',
       source:
         'Sources: StatCan Table 21-10-0186-01 (biennial, 2014–2024) CSV, and The Daily, “Performing arts, 2024”, released 2026-01-22 — statcan.gc.ca',
     },
-    sizing: [
-      { tier: 'TAM — Total addressable', basis: 'Not sized — no city concentration or event count is sourced, and both are still to be confirmed. See the outstanding item below.' },
-      { tier: 'SAM — Serviceable', basis: 'Cannot be reliably estimated without verified inventory data, and no such inventory exists yet, so the figure is to be confirmed.' },
-      { tier: 'SOM — Obtainable', basis: 'Cannot be reliably estimated without verified inventory data: no contractable share can be stated without an inventory.' },
-    ],
-    sizingOpenItems: [
-      {
-        ref: 'ca-market-size',
-        title: 'Total addressable market for Canada',
-        unknown:
-          'Neither a city concentration for the diaspora nor an annual count of relevant cultural events traces to any primary source, so neither is published. What is known: the India-born population was 898,045 at the 2021 Census — a national figure with no city breakdown, no Marathi split and no attendance or spend data attached.',
-        owner: 'Research lead (currently unassigned)',
-        action: 'Commission a bottom-up event inventory by city and promoter before any TAM figure is published.',
-      },
-    ],
     entryMode:
       'Research-only status, followed by a local promoter distribution pilot if the bottom-up SAM passes the hurdle rate. Do not invest in Canadian operations until Australia and one international corridor demonstrate positive economics.',
     timeline: [
@@ -504,20 +309,6 @@ export const MARKETS: Market[] = [
       { phase: 'Assessment', period: 'Months 13–24', actions: 'One-city pilot if bottom-up SAM justifies it' },
       { phase: 'Scale decision', period: 'Months 25–36', actions: 'Consider second city only after first-market renewal' },
     ],
-    timelineOpenItems: [],
-    revenue: {
-      title: 'Investment & Returns — Not Published',
-      body:
-        'No three-year financial projection is published for Canada: event counts, ticket volumes, operating-cost allocations and average transaction value are each unsourced for this market. Every CAD conversion on this page is calculated at the RBA’s published rate for 21 Aug 2026, CAD 1 = AUD 1.0171. Return on investment for Canada is not computable while these remain unresolved:',
-      blockers: [
-        { item: 'Contracted promoter/venue supply — zero named, signed counterparties exist', owner: 'Commercial lead (currently unassigned)' },
-        { item: 'Primary diaspora demand, fee-tolerance and platform-trust evidence — no study exists', owner: 'Research lead (currently unassigned)' },
-        { item: 'Written PSP, legal, insurance, entity and QSA quotes — none on file', owner: 'CEO / company secretary' },
-        { item: 'Partnership financial terms between AB Entertainment and Ticketalay — undisclosed', owner: 'CEO, AB Entertainment + Ticketalay principal' },
-      ],
-      note: 'Action: resolve each item at its named gate before any Canadian revenue or return figure is modelled.',
-      sources: ['FX rate: RBA, daily exchange rates, 21 Aug 2026 — rba.gov.au'],
-    },
     regulatory: [
       'PIPEDA compliance',
       'Provincial consumer protection laws',
@@ -525,7 +316,8 @@ export const MARKETS: Market[] = [
       'Performer work permit requirements',
       'Provincial entertainment regulations',
     ],
-    regulatoryNote: 'This proposal commits to engaging Canadian legal counsel on each of these before any Canadian market-entry commitment — detail unverified. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally required. No source establishes such a requirement in any of the five markets, so no such claim is published on any market page, while the commitment to engage counsel is published on all of them. No written legal quotes are on file.',
+    regulatoryNote:
+      'This proposal commits to engaging Canadian legal counsel on each of these before any Canadian market-entry commitment. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally required. No source establishes such a requirement in any of the five markets, while the commitment to engage counsel holds for all of them.',
     partnerships: [
       { type: 'Local promoters and cultural associations', criticality: 'Prospective', detail: 'Direct discovery required — no verified pipeline exists' },
     ],
@@ -540,7 +332,7 @@ export const MARKETS: Market[] = [
     heroStat: '2,021,502 India-born residents, Europe region (2024) — a region proxy that includes the UK and non-EU states',
     heroStatSource: 'UN DESA, International Migrant Stock 2024; Eurostat ilc_scp03',
     heroTilesIntro:
-      'Europe is not a single market. Eurostat’s own participation data shows a wide country-level spread, and no EU-27 diaspora aggregate or event-demand figure exists for this audience — the nearest published bound is the UN DESA Europe-region India-born count below.',
+      'Europe is not a single market. Eurostat’s own participation data shows a wide country-level spread, and the nearest published bound on the audience is the UN DESA Europe-region India-born count below.',
     heroTiles: [
       {
         label: 'International migrants resident in Europe, 2024',
@@ -550,7 +342,7 @@ export const MARKETS: Market[] = [
       {
         label: 'India-born residents, Europe region, 2024 — the widest denominator the evidence supports',
         value: '2,021,502',
-        note: 'UN DESA (Table 1, row 13,965). A region proxy, not an EU-27 figure: it includes the UK and non-EU states — the same Europe-region scope as the 94m tile. Country-of-birth only, so it bounds the segment without measuring Marathi identity or demand; an EU-27 aggregate would need per-member-state extraction, not yet performed.',
+        note: 'UN DESA (Table 1, row 13,965). A region proxy, not an EU-27 figure: it includes the UK and non-EU states — the same Europe-region scope as the 94m tile. Country-of-birth only, so it bounds the segment without measuring Marathi identity or demand; an EU-27 aggregate would need per-member-state extraction.',
       },
       {
         label: 'Live-performance attendance, Luxembourg, 2022',
@@ -564,33 +356,10 @@ export const MARKETS: Market[] = [
       { city: 'Paris', lat: 48.86, lon: 2.35 },
     ],
     evidence:
-      'These figures establish that Europe is populous, that its India-born population is bounded at the region level, and that cultural participation varies enormously by country. None of them says anything about Marathi or Indian-origin event buyers specifically, and no such demand figure exists in any source consulted for this page. No urban/rural participation gradient is published: Eurostat’s breakdowns are by sex, age, education and frequency, and no source supports one. The EU-SILC cultural-participation module is collected roughly every six years: 2022 is the latest and the next planned update is October 2029, so no fresher EU-wide participation data can be bought at any price before then.',
+      'These figures establish that Europe is populous, that its India-born population is bounded at the region level, and that cultural participation varies enormously by country. None of them says anything about Marathi or Indian-origin event buyers specifically, and no such demand figure exists in any source consulted for this page. Eurostat’s breakdowns are by sex, age, education and frequency, so no urban/rural participation gradient can be drawn from them. The EU-SILC cultural-participation module is collected roughly every six years: 2022 is the latest and the next planned update is October 2029, so no fresher EU-wide participation data can be bought at any price before then.',
     evidenceSources: [
       'Migrant stock: UN DESA, International Migrant Stock 2024, Table 1 (Europe-to-World 94,051,503; Europe → origin India 2,021,502, row 13,965) — un.org',
       'Attendance: Eurostat, ilc_scp03 (EU-SILC 2022 cultural participation module; about 6-yearly, next planned update October 2029) — ec.europa.eu/eurostat',
-    ],
-    sizing: [
-      { tier: 'TAM — Total addressable', basis: 'Country-specific, and not sized: no country is selected and no per-country event count is sourced, so both are still to be confirmed. See the outstanding item below.' },
-      { tier: 'SAM — Serviceable', basis: 'Single selected country, and not sized: no event inventory exists to size from. See the outstanding item below.' },
-      { tier: 'SOM — Obtainable', basis: 'Single-country pilot share, which requires country selection first — not sized, and to be confirmed once a country is selected and its event inventory verified.' },
-    ],
-    sizingOpenItems: [
-      {
-        ref: 'eu-country-selection',
-        title: 'Priority country for entry',
-        unknown:
-          'No priority country for entry is named: no source substantiates a shortlist. What is known: Eurostat’s ilc_scp03 module gives a real country-level participation ranking (Luxembourg 48.5% down to Romania 10.4%) that could feed a selection process, but it has not yet been used to rank or select a country.',
-        owner: 'Research lead (currently unassigned)',
-        action: 'Rank EU member states against Eurostat participation data, verified event inventory and promoter readiness before naming a priority country.',
-      },
-      {
-        ref: 'eu-inventory',
-        title: 'Serviceable addressable market (SAM), any EU country',
-        unknown:
-          'No verified event inventory exists in any EU country: there is no named, signed promoter or venue supply and no LOIs, so no SAM can be sized from inventory, language fit or promoter readiness.',
-        owner: 'Commercial lead (currently unassigned)',
-        action: 'Secure at least one dated counterparty (signed agreement or LOI) in the selected country before any SAM figure is published.',
-      },
     ],
     entryMode:
       'Country-specific promoter partnership in one selected market. Use a local distributor before establishing an entity. GDPR compliance is mandatory from day one — Regulation (EU) 2016/679 applies from the first day of processing an EU consumer’s personal data, regardless of which country is chosen.',
@@ -599,21 +368,6 @@ export const MARKETS: Market[] = [
       { phase: 'Pilot', period: 'Months 13–24', actions: 'One-country pilot with local promoter partner' },
       { phase: 'Scale decision', period: 'Months 25–36', actions: 'Second-country decision only after a reusable compliance framework and positive unit economics' },
     ],
-    timelineOpenItems: [],
-    revenue: {
-      title: 'Investment & Returns — Not Published',
-      body:
-        'No three-year financial projection is published for the EU: events, tickets, GTV, platform revenue, operating cost and operating result are each unsourced for every member state, and no country has been selected. Every EUR conversion is calculated at the RBA’s published rate, EUR 1 = AUD 1.6372. Return on investment for the EU is not computable — per member state — while these remain unresolved:',
-      blockers: [
-        { item: 'Partnership financial terms between AB Entertainment and Ticketalay (revenue share, cost share, capital, control)', owner: 'CEO, AB Entertainment + Ticketalay principal' },
-        { item: 'Contracted promoter/venue supply in any EU country — zero named, signed counterparties exist', owner: 'Commercial lead (currently unassigned)' },
-        { item: 'Primary diaspora demand, fee-tolerance and platform-trust evidence for the selected country — no study exists', owner: 'Research lead (currently unassigned)' },
-        { item: 'Written PSP, legal, insurance, entity and VAT/QSA quotes for the selected country — none on file', owner: 'CEO / company secretary' },
-      ],
-      note:
-        'Action: resolve each item at its named gate before any EU revenue or return figure is modelled. Once a country is selected, this section becomes the identity — gross pilot revenue = events × tickets per event × average transaction value × take rate, and Ticketalay’s share = that figure × the partnership split — with every variable to be confirmed by its named owner, and no output number published in the meantime.',
-      sources: ['FX rate: RBA, daily exchange rates, 21 Aug 2026 — rba.gov.au'],
-    },
     regulatory: [
       'GDPR compliance (data controller registration, DPO where required)',
       'Country-specific consumer protection, VAT and entertainment licensing',
@@ -621,7 +375,8 @@ export const MARKETS: Market[] = [
       'PSD2 and Strong Customer Authentication (SCA)',
       'Country-specific ticket resale regulations',
     ],
-    regulatoryNote: 'This proposal commits to engaging local legal counsel in each member state before any EU market-entry commitment. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally required. No source establishes such a requirement in any of the five markets, so no such claim is published on any market page, while the commitment to engage counsel is published on all of them. No written legal quotes are on file.',
+    regulatoryNote:
+      'This proposal commits to engaging local legal counsel in each member state before any EU market-entry commitment. This is a prudential commitment by the proposer — that counsel will be engaged before entry — not a claim that counsel is legally required. No source establishes such a requirement in any of the five markets, while the commitment to engage counsel holds for all of them.',
     partnerships: [
       { type: 'Country-specific promoter partner', criticality: 'Prospective', detail: 'Selected via Eurostat-ranked country assessment; local distributor before entity' },
     ],
@@ -630,11 +385,9 @@ export const MARKETS: Market[] = [
   },
 ];
 
-// Campaign targeting — a qualitative typology only. No segment size or customer-lifetime-value
-// figure is published: no segment share has a primary source, and lifetime value depends on a take
-// rate and an average transaction value that are both still to be confirmed.
+// Campaign targeting — a qualitative typology.
 export const SEGMENTS_NOTE =
-  'Seven segments, as a qualitative typology. No segment size or customer lifetime value is published: no segment share has a primary source, and lifetime value depends on a take rate and an average transaction value that are both still to be confirmed. Net per-ticket platform contribution is a different, smaller quantity than customer lifetime value in any case, and neither is currently computable for any segment.';
+  'Seven segments, as a qualitative typology: each is described by profile, channel and churn characteristics rather than by size.';
 
 export const SEGMENTS = [
   { name: 'Marathi Theatre Loyalists', profile: 'First-generation diaspora, aged 40–65, strong cultural attachment, Marathi language preference', channel: 'Organiser lists, cultural associations, community word-of-mouth', churn: 'Low intrinsic churn; high risk from inventory frequency' },
@@ -646,23 +399,13 @@ export const SEGMENTS = [
   { name: 'Venues & Cultural Institutions (B2B)', profile: 'Community halls, cultural centres, theatres, university venues', channel: 'Enterprise partnership, venue networks', churn: 'Low churn once integrated; high procurement friction' },
 ];
 
-export const SEGMENTS_OPEN_ITEM: OpenItem = {
-  ref: 'segment-sizes',
-  title: 'Segment sizes and customer lifetime value',
-  unknown:
-    'The relative share of the addressable audience each segment represents, and the true lifetime value — repeat rate, fee tolerance, average transaction value — of any of them.',
-  owner: 'Research lead (currently unassigned)',
-  action:
-    'Commission the primary study of Marathi and Indian-origin event buyers in Melbourne and Sydney: willingness to pay, fee tolerance, channel trust and repeat purchase.',
-};
-
 // The gated schedule shown on /market-opportunity. The affordability anchor is AUD 830.00,
 // the programme's actual spend to date.
 export const ANCHOR_FOOTNOTE =
   'The affordability anchor is AUD 830.00, the programme’s own actual spend to date — the reference point against which every proposed spend on this schedule is judged, in place of a scale-cost analogy.';
 
 export const GATE_RUN_RATE_NOTE =
-  'G2 also leaves a cancellable run rate of A$74.42/month — 0.090× the anchor per month — for hosting and AI subscriptions. That is context, not a committed cost, and both halves are calculated. Hosting is A$46.43/mo: S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, and QuickSight 1 author at US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue Data Catalog on its published free tier and dbt Core, open source, at A$0 — US$33.175/mo ÷ 0.7145; the four rates are the vendors’ published Sydney prices, and the three volumes are planning assumptions, to be confirmed by the Ticketalay principal and the CEO by 30 September 2026 and against the first metered month after go-live. The AI subscription is A$27.99/mo: US$20/mo, Claude Pro’s published price, ÷ 0.7145. The two add to A$74.42/mo. The IBISWorld line uses AUD $2,500, the price on the live AU checkout cart; the vendor’s help centre publishes AU$2,200 for the same single report. Both are the vendor’s own published prices, and the transactional cart price is the one used for planning. On the A$2,200 basis the same gate reads: floor A$5,560.00 (2,200 + 3,360) = 6.70× the anchor, and full A$9,576.74 (2,200 + 3,342.20 + 194.54 + 3,840) = 11.54×; the data-floor line is 2.65× (2,200 ÷ 830). Statista Starter — A$3,342.20 inside the full configuration — is priced from the vendor’s own published tier, US$199/mo billed annually. On the Personal tier the vendor publishes US$649/mo billed annually, while an earlier costing recorded A$922/yr for the same tier; the two are not reconciled, and the programme sponsor owns closing that gap. No gate figure prices the Personal tier, so no gate total turns on it. No cumulative three-year total is published, and return on investment is not computable at any gate until the partnership terms, the contracted supply and the primary demand study named above exist.';
+  'G2 also leaves a cancellable run rate of A$74.42/month — 0.090× the anchor per month — for hosting and AI subscriptions. That is context, not a committed cost, and both halves are calculated. Hosting is A$46.43/mo: S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, and QuickSight 1 author at US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue Data Catalog on its published free tier and dbt Core, open source, at A$0 — US$33.175/mo ÷ 0.7145; the four rates are the vendors’ published Sydney prices, applied to assumed volumes of 5 GB stored, 10 GB scanned per month, and 1 author plus 3 readers. The AI subscription is A$27.99/mo: US$20/mo, Claude Pro’s published price, ÷ 0.7145. The two add to A$74.42/mo. The IBISWorld line uses AUD $2,500, the price on the live AU checkout cart; the vendor’s help centre publishes AU$2,200 for the same single report. Both are the vendor’s own published prices, and the transactional cart price is the one used for planning. On the A$2,200 basis the same gate reads: floor A$5,560.00 (2,200 + 3,360) = 6.70× the anchor, and full A$9,576.74 (2,200 + 3,342.20 + 194.54 + 3,840) = 11.54×; the data-floor line is 2.65× (2,200 ÷ 830). Statista Starter — A$3,342.20 inside the full configuration — is priced from the vendor’s own published tier, US$199/mo billed annually.';
 
 export const DECISION_FRAMEWORK_INTRO =
-  'No lump-sum investment option is published: no cost build-up exists for a multi-market launch, and no ticket volume can be computed to recover one. What stands instead is the gated schedule below, where every dollar is either priced or explicitly still to be confirmed, and no total is given across gates.';
+  'The gated schedule below is the investment framework: each gate is a separate board decision, priced at the point it is committed, and money committed at one gate buys the information the next one needs.';

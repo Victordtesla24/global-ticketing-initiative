@@ -1,28 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Ban, Flag, Gavel, AlertTriangle } from 'lucide-react';
+import { Ban, Flag, Gavel } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider } from '@/components/proposal/section';
 import { Timeline } from '@/components/proposal/timeline';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   RECS_LEDE, EXECUTION_INTRO, PRIORITY_RECOMMENDATIONS, EXECUTION_PROVENANCE,
-  NOT_YET, ROADMAP_90_DAYS, ROADMAP_RECONCILIATION, ROADMAP_NOTE, CEO_ACTIONS, CLOSING_STATEMENT, CLOSING_PROVENANCE,
+  NOT_YET, ROADMAP_90_DAYS, ROADMAP_RECONCILIATION, CEO_ACTIONS, CLOSING_STATEMENT, CLOSING_PROVENANCE,
 } from '@/lib/data/review';
-
-function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
-  );
-}
 
 export default function RecommendationsContent() {
   return (
@@ -43,11 +28,6 @@ export default function RecommendationsContent() {
                   <span className="rounded-full border border-border/60 px-3 py-1 text-muted-foreground">{r?.timelineNote}</span>
                 </div>
                 <p className="text-sm leading-relaxed text-foreground/85">{r?.detail ?? ''}</p>
-                {r?.openItem ? (
-                  <div className="mt-4">
-                    <OutstandingItem item={r.openItem} />
-                  </div>
-                ) : null}
               </GlassCard>
             </motion.div>
           ))}
@@ -89,7 +69,6 @@ export default function RecommendationsContent() {
           })}
         />
         <p className="mt-4 max-w-3xl text-sm text-muted-foreground">{ROADMAP_RECONCILIATION}</p>
-        <p className="mt-4 max-w-3xl text-sm text-muted-foreground">{ROADMAP_NOTE}</p>
       </Section>
 
       <OrnamentDivider />

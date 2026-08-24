@@ -1,12 +1,11 @@
 'use client';
 
-import { Database, TrendingUp, ShieldCheck, Timer, Globe, AlertTriangle } from 'lucide-react';
+import { Database, TrendingUp, ShieldCheck, Timer, Globe } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, DataTable, StatCard } from '@/components/proposal/section';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import ArchitectureGraph from '@/components/proposal/architecture-graph';
 import {
   ARCH_LEDE, ARCH_RECONCILIATION,
-  DATA_MARTS, SCALABILITY, SCALABILITY_OPEN_ITEM,
+  DATA_MARTS, SCALABILITY,
   TECH_COMPARISON, TECH_COMPARISON_NOTE, APPROVAL_GATES, APPROVAL_GATES_NOTE,
   RETENTION, TRANSFER_ROUTES, TRANSFER_ROUTES_NOTE,
 } from '@/lib/data/architecture';
@@ -47,8 +46,7 @@ export default function ArchitectureContent() {
           <ArchitectureGraph />
         </GlassCard>
         <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
-          Per the reconciliation above, this is the post-trigger target design, not the committed MVP build. No cost
-          line is published for any individual layer: none could cite a unit rate or a workload basis, so each node
+          Per the reconciliation above, this is the post-trigger target design, not the committed MVP build. Each node
           names the basis on which that layer is charged and points back to the one costed stack — the committed MVP
           bill of materials at the top of this page.
         </p>
@@ -77,15 +75,11 @@ export default function ArchitectureContent() {
       </Section>
 
       <Section eyebrow="Growth Path" title="Scalability Roadmap — Posture, Infrastructure and Team Shape">
-        <Alert className="mb-4 border-amber-500/40 bg-amber-500/5">
-          <AlertTriangle className="h-4 w-4 !text-amber-400" />
-          <AlertTitle className="text-amber-300">Outstanding before decision — {SCALABILITY_OPEN_ITEM.title}</AlertTitle>
-          <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-            <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {SCALABILITY_OPEN_ITEM.unknown}</p>
-            <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {SCALABILITY_OPEN_ITEM.owner}</p>
-            <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {SCALABILITY_OPEN_ITEM.action}</p>
-          </AlertDescription>
-        </Alert>
+        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+          Infrastructure and team shape for each stage stand as design intent. The A$46.43/mo in the reconciliation
+          above prices the day-1 MVP stack and nothing beyond it: it buys none of the Stage 1–3 infrastructure listed
+          here, and it is not a floor or a per-stage cost. Each stage is entered on its stated trigger.
+        </p>
         <div className="grid gap-4 lg:grid-cols-3">
           {(SCALABILITY ?? []).map((s: any, i: number) => (
             <GlassCard key={i} className="relative flex h-full flex-col overflow-hidden">
@@ -165,15 +159,12 @@ export default function ArchitectureContent() {
           value="A$46.43/mo"
           sub={
             <>
-              Calculated, and the only run cost published for this stack — the committed MVP bill of materials,
-              monthly-cancellable. The working: S3 storage 5 GB at US$0.025/GB-month = US$0.125, Athena 10 GB scanned at
-              US$5.00/TB = US$0.05, and QuickSight 1 author at US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue
-              Data Catalog on its published free tier and dbt Core, open source, at A$0 — US$33.175/mo, ÷ 0.7145 (RBA
-              rate, 21 August 2026) = A$46.43/mo. The four rates are the vendors’ own published Sydney prices; the three
-              volumes multiplied by them are planning assumptions — 5 GB stored, to be confirmed by the Ticketalay
-              principal, and 1 author plus 3 board readers, to be confirmed by the CEO, both by 30 September 2026, and
-              10 GB scanned per month, to be confirmed against the first metered month after go-live. Exceed a volume
-              and the line is recalculated.
+              Calculated — the committed MVP bill of materials, monthly-cancellable. The working: S3 storage 5 GB at
+              US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, and QuickSight 1 author at
+              US$24/mo plus 3 readers at US$3/mo = US$33.00, with Glue Data Catalog on its published free tier and dbt
+              Core, open source, at A$0 — US$33.175/mo, ÷ 0.7145 (RBA rate, 21 August 2026) = A$46.43/mo. The four rates
+              are the vendors’ own published Sydney prices, applied to assumed volumes of 5 GB stored, 10 GB scanned per
+              month, and 1 author plus 3 board readers. Exceed a volume and the line is recalculated.
             </>
           }
         />

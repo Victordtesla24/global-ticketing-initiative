@@ -24,7 +24,7 @@ export const INDEPENDENT_REVIEW = {
 export interface DeliverableRating {
   id: string;
   name: string;
-  rating: Rating | null; // null = no rating is published for this deliverable
+  rating: Rating | null; // null = the deliverable is not rated
   ratingLabel?: string;
   strength?: string;
   weakness: string;
@@ -44,7 +44,7 @@ export const DELIVERABLE_RATINGS: DeliverableRating[] = [
     recommendation:
       'Introduce a formal quality-rating rubric. Deprioritise thin entries. Add a “Tested/Sampled” column to track providers evaluated beyond desk research.',
     provenance:
-      'The catalogue ships exactly 60 entries across six categories (A:9, B:18, C:12, D:7, E:8, F:6). The weakness is borne out by the shipped data: 15 of 60 provider URLs are flagged unverified, and estimate-only pricing covered 31 of the 38 paid entries (81.6%). Every price this proposal publishes is either a vendor-published price or actual spend.',
+      'The catalogue ships exactly 60 entries across six categories (A:9, B:18, C:12, D:7, E:8, F:6). The weakness is borne out by the shipped data: 15 of 60 provider URLs are flagged unverified, and estimate-only pricing covered 31 of the 38 paid entries (81.6%). Every price carried forward here is either a vendor-published price or actual spend.',
   },
   {
     id: 'Deliverable 2',
@@ -69,7 +69,7 @@ export const DELIVERABLE_RATINGS: DeliverableRating[] = [
     recommendation:
       'Add parameter validation ranges. Include a data-confidence indicator on each interactive showing the evidential basis of displayed figures.',
     provenance:
-      'No rating is published for D3: the deliverable itself is not available for assessment. The self-critique stands and remains open — the slider concern is borne out, and is worse than stated.',
+      'D3 is not rated: the deliverable itself is not available for assessment. The self-critique stands and remains open — the slider concern is borne out, and is worse than stated.',
   },
   {
     id: 'Deliverable 4',
@@ -82,7 +82,7 @@ export const DELIVERABLE_RATINGS: DeliverableRating[] = [
     recommendation:
       'Rebrand as a “Market Entry Research Framework”. Add explicit gate conditions. Commission primary promoter research to validate inventory assumptions.',
     provenance:
-      'The “AUD 2.76m” is the independent review’s own figure, verbatim: the sum of the research package’s three-year operating-loss rows (AU 1,526,232 + UK 299,250 + USA 493,150 + Canada 203,140 + EU 239,000 = 2,760,772). It is reproduced here only as the review’s quoted critique of that package, and it is not a live figure of this proposal, which publishes no blended five-market aggregate. The AUD 12.62m total-cost headline it refers to failed to reconcile against its own table (12.091m) and is superseded: this proposal publishes no cumulative total cost. The RED rating and the unverified-inputs critique match the confirmed evidence gaps exactly.',
+      'The “AUD 2.76m” is the independent review’s own figure, verbatim: the sum of the research package’s three-year operating-loss rows (AU 1,526,232 + UK 299,250 + USA 493,150 + Canada 203,140 + EU 239,000 = 2,760,772). It is reproduced here only as the review’s quoted critique of that package, and is not a live figure of this proposal. The AUD 12.62m total-cost headline it refers to failed to reconcile against its own table (12.091m) and is superseded. The RED rating and the unverified-inputs critique match the confirmed evidence gaps exactly.',
   },
   {
     id: 'Deliverable 5',
@@ -98,18 +98,6 @@ export const DELIVERABLE_RATINGS: DeliverableRating[] = [
       'The 5m–25m span quoted in the weakness is the package’s own Lean and Accelerated scenario range, reproduced here as the independent review’s critique. No such range appears in this proposal, where unpriced ranges wider than ±30% are not permitted. Salary rows are marked unverified on the package’s own staffing table, and senior benchmarks remain unpublished behind gated sources. The 20% on-cost figure was never validated against state payroll tax.',
   },
 ];
-
-// Outstanding item rendered inside the Deliverable 4 card.
-export const D4_OPEN_ITEM = {
-  ref: 'interview-count',
-  title: 'Interview count unresolved',
-  unknown:
-    'No interview target is set for the primary promoter research, and no count is published anywhere in this proposal.',
-  owner:
-    'Research lead (currently unassigned — leadership team to appoint), with the Commercial lead owning counterparty outreach.',
-  action:
-    'Commission the primary promoter research with a single stated interview target, alongside the requirement of at least three signed pilot-event agreements or dated LOIs with named promoters/venues.',
-};
 
 export const OVERALL_ASSESSMENT =
   'It is a research framework built almost entirely on public evidence about an entity whose corporate status, financial history, event portfolio, customer base and data assets remain unverified. No responsible board should approve capital beyond a tightly capped discovery phase on the basis of this package alone. It should be treated as a structured hypothesis to be tested through verification, not as an investment memorandum.';
@@ -135,25 +123,15 @@ export const MISSING_ELEMENTS_PROVENANCE =
 
 // Assumption flagged by the review, and where it stands today.
 export const UNREALISTIC_ASSUMPTIONS = [
-  { assumption: 'Event inventory is contractable', status: 'No named, signed promoter or venue supply exists, and there are no letters of intent — see the outstanding item on contracted supply' },
-  { assumption: 'Take rate of 8–12%', status: 'To be confirmed — no verified take rate, and no primary study' },
-  { assumption: 'Customer acquisition cost of AUD 6–10', status: 'To be confirmed — never verified against first-party data' },
-  { assumption: 'Repeat purchase rate of 15–30%', status: 'To be confirmed — never verified against first-party data' },
-  { assumption: 'Average ticket value of AUD 65–80', status: 'To be confirmed — unverified, and the package’s own models drifted from it' },
+  { assumption: 'Event inventory is contractable', status: 'No named, signed promoter or venue supply exists, and there are no letters of intent' },
+  { assumption: 'Take rate of 8–12%', status: 'No verified take rate, and no primary study' },
+  { assumption: 'Customer acquisition cost of AUD 6–10', status: 'Never verified against first-party data' },
+  { assumption: 'Repeat purchase rate of 15–30%', status: 'Never verified against first-party data' },
+  { assumption: 'Average ticket value of AUD 65–80', status: 'Unverified, and the package’s own models drifted from it' },
   { assumption: 'AWS as optimal cloud platform', status: 'A default, not a justified selection — the review concedes as much in its Deliverable 2 weakness' },
   { assumption: 'Market entry Year 2', status: 'Phasing assumption, unvalidated' },
-  { assumption: '20% employment on-costs', status: 'To be confirmed — never validated against state payroll tax' },
+  { assumption: '20% employment on-costs', status: 'Never validated against state payroll tax' },
 ];
-
-export const ASSUMPTIONS_OPEN_ITEM = {
-  ref: 'demand',
-  title: 'Every demand-side parameter is unknown for the actual target audience',
-  unknown:
-    'Take rate, CAC, repeat rate and average ticket value are all unknown for the actual target audience: no primary diaspora demand, fee-tolerance or platform-trust study exists.',
-  owner: 'Research lead (currently unassigned — leadership team to appoint).',
-  action:
-    'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (willingness-to-pay, fee tolerance, channel trust). Contracted inventory is tracked separately, as its own outstanding item.',
-};
 
 export const ASSUMPTIONS_PROVENANCE =
   'All eight rows are accurate flags of unvalidated package assumptions — none is verified against first-party data. No contracted event inventory exists, so “Event inventory is contractable” stands as an assumption, not a fact.';
@@ -247,17 +225,17 @@ export const QG15_RESTRUCTURED =
   'QG-15 is restructured as a category error. The gate certified the AI cost ledger as an “invoice-ready document — PASS”. An invoice records actual amounts payable; the ledger’s own footnote calls it “an estimated cost framework… not a verified expenditure record”, and this page’s own Data Quality row calls it unauditable. Formatting an estimate as an invoice is not a quality achievement. The only actual programme spend is AUD 830.00 — AUD 350.00 of AI subscriptions and API credits, plus AUD 480.00 of consultation at 8.0 hours × AUD 60.00/hr.';
 
 export const QUALITY_GATES_PROVENANCE =
-  'The remaining gate rows are not published. Three certified passes whose costs are contradicted by their own claimed sources, one that certified universal citation against a site that does not meet it, and one in which the artefact under review approved its own critical review; three more rest on deliverables that are not available for assessment, so “complete”, “5 slides” and “5 specs” cannot be checked against anything.';
+  'The remaining gate rows: three certified passes whose costs are contradicted by their own claimed sources, one that certified universal citation against a site that does not meet it, and one in which the artefact under review approved its own critical review; three more rest on deliverables that are not available for assessment, so “complete”, “5 slides” and “5 specs” cannot be checked against anything.';
 
 // ————————————————————————————————————————————————————————————————
 // /recommendations — the execution sequence.
 // ————————————————————————————————————————————————————————————————
 
 export const RECS_LEDE =
-  'A staged, evidence-led programme: capital is released in capped tranches, each tranche gated on the preceding phase’s deliverable. Costs are shown only where actual spend, a vendor-published price, or a figure calculated from one of those exists — the same per-gate figures the Vision and Investment pages carry; professional and delivery fees are withheld until a written quote exists, and the page says so wherever that is the case.';
+  'A staged, evidence-led programme: capital is released in capped tranches, each tranche gated on the preceding phase’s deliverable. Costs are shown only where actual spend, a vendor-published price, or a figure calculated from one of those exists — the same per-gate figures the Vision and Investment pages carry. Professional and delivery fees are quoted on request.';
 
 export const EXECUTION_INTRO =
-  'Three sequential commitments, priced against the decision schedule (gates G0/G1/G2) — identical to the figures on the Vision and Investment & Returns pages. Professional and delivery fees remain withheld until a written quote exists; professional fees are never proxied from day rates. The priced components below are actual spend, vendor-published prices, or figures calculated from them. Timeframes below are internal planning windows, not sourced estimates.';
+  'Three sequential commitments, priced against the decision schedule (gates G0/G1/G2) — identical to the figures on the Vision and Investment & Returns pages. Professional and delivery fees are quoted on request; professional fees are never proxied from day rates. The priced components below are actual spend, vendor-published prices, or figures calculated from them. Timeframes below are internal planning windows, not sourced estimates.';
 
 export interface PriorityRecommendation {
   order: string;
@@ -265,7 +243,6 @@ export interface PriorityRecommendation {
   timeline: string;
   timelineNote: string;
   detail: string;
-  openItem: { ref: string; title: string; unknown: string; owner: string; action: string };
 }
 
 export const PRIORITY_RECOMMENDATIONS: PriorityRecommendation[] = [
@@ -275,16 +252,7 @@ export const PRIORITY_RECOMMENDATIONS: PriorityRecommendation[] = [
     timeline: '30 days',
     timelineNote: 'Planning window, not a vendor commitment',
     detail:
-      'Commission independent legal and commercial due diligence covering corporate structure, ownership, IP rights, domain and app-store account control, financial history and Australian operating credentials. This is the documentary foundation on which every subsequent investment decision rests. Priced components (gate G0): no vendor cash is committed, because the five quote requests are free to lodge; consultant labour of 4.0 days at A$60.00/hr — the rate actually paid — gives A$1,920.00, or 2.31× the A$830 anchor, conditional on written confirmation of the rate and day count by 2026-09-30. The professional fees themselves are to be confirmed when the quotes arrive; see the item below.',
-    openItem: {
-      ref: 'due-diligence-cost',
-      title: 'Cost of this due-diligence engagement',
-      unknown:
-        'The professional fees for this scope are unpriced: no supporting quote exists, and legal fees are never proxied from consultant day rates.',
-      owner: 'CEO / company secretary.',
-      action:
-        'Request written quotes from a law firm (AU entity, IP, domain, source-code and merchant-account due diligence), PSP, insurance broker and QSA.',
-    },
+      'Commission independent legal and commercial due diligence covering corporate structure, ownership, IP rights, domain and app-store account control, financial history and Australian operating credentials. This is the documentary foundation on which every subsequent investment decision rests. Priced components (gate G0): no vendor cash is committed, because the five quote requests are free to lodge; consultant labour of 4.0 days at A$60.00/hr — the rate actually paid — gives A$1,920.00, or 2.31× the A$830 anchor. The professional fees themselves are quoted on request.',
   },
   {
     order: 'SECOND',
@@ -292,17 +260,7 @@ export const PRIORITY_RECOMMENDATIONS: PriorityRecommendation[] = [
     timeline: '60 days',
     timelineNote: 'Begins once the foundation stage’s gate is passed',
     detail:
-      'Building on a confirmed foundation: a programme of promoter interviews (Australian Marathi drama and cultural event producers), first-party data audit, technology stack assessment, and baseline unit economics (actual GTV, take rate, refund rate, repeat purchase rate). Priced components (gate G1): consultant labour of 6.0 days = A$2,880.00, or 3.47× the anchor, conditional as above; outreach tooling A$0, Apollo.io’s published free tier. The demand-study fee is to be confirmed — it cannot be priced without a brief — and per-agreement legal review is to be confirmed against the G0 quote; see the item below.',
-    openItem: {
-      ref: 'discovery-cost',
-      title: 'Cost of this discovery phase, and the number of promoter interviews to be conducted',
-      unknown:
-        'The cost of this discovery phase, and the number of promoter interviews it should commission. No interview count is stated anywhere in this proposal.',
-      owner:
-        'Research lead (currently unassigned — leadership team to appoint) for the primary demand study; CEO / company secretary for the supporting professional-services quotes.',
-      action:
-        'Commission a primary study of Marathi and Indian-origin event buyers in Melbourne and Sydney — willingness to pay, fee tolerance, channel trust — and request written quotes.',
-    },
+      'Building on a confirmed foundation: a programme of promoter interviews (Australian Marathi drama and cultural event producers), first-party data audit, technology stack assessment, and baseline unit economics (actual GTV, take rate, refund rate, repeat purchase rate). Priced components (gate G1): consultant labour of 6.0 days = A$2,880.00, or 3.47× the anchor; outreach tooling A$0, Apollo.io’s published free tier. The demand-study fee and the per-agreement legal review are quoted on request.',
   },
   {
     order: 'THIRD',
@@ -310,16 +268,7 @@ export const PRIORITY_RECOMMENDATIONS: PriorityRecommendation[] = [
     timeline: '12 weeks',
     timelineNote: 'Begins once the discovery stage’s gate is passed',
     detail:
-      'With economics and inventory confirmed: a minimum viable data platform — three certified dashboards, a reconciled finance mart and basic consent management — and a 3–5 event Australian pilot. The pilot volume is a gate deliverable to be unlocked, not supply already in hand: there are zero named, signed promoter or venue counterparties today, and no event volume is evidenced anywhere in this proposal. G2 cannot be entered until at least three signed pilot-event agreements or dated letters of intent exist, and the volume actually pursued is whatever those agreements deliver. Priced components (gate G2, one-off — the same schedule the Vision and Investment pages carry): floor configuration A$5,860.00 (data floor A$2,500.00 + setup 7.0 days A$3,360.00) = 7.06× the anchor, or full configuration A$9,876.74 (data full A$6,036.74 + setup 8.0 days A$3,840.00) = 11.90× — alternatives, not a range. The setup-labour share holds only while the consultant rate and day count remain planning assumptions. Run rate, monthly-cancellable and not part of the authorised gate cost: 0.090× the anchor per month. The IBISWorld line uses AUD $2,500, the price on the live AU checkout cart; the vendor’s help centre publishes AU$2,200 for the same single report. Both are the vendor’s own published prices, and the transactional cart price is the one used for planning. On the A$2,200 basis the same gate reads: floor A$5,560.00 (2,200 + 3,360) = 6.70× the anchor, and full A$9,576.74 (2,200 + 3,342.20 + 194.54 + 3,840) = 11.54×; the data-floor line is 2.65× (2,200 ÷ 830). Statista Starter — A$3,342.20 inside the full configuration — is priced from the vendor’s own published tier, US$199/mo billed annually. On the Personal tier the vendor publishes US$649/mo billed annually, while an earlier costing recorded A$922/yr for the same tier; the two are not reconciled, and the programme sponsor owns closing that gap. No gate figure in this proposal prices the Personal tier, so no gate total turns on it.',
-    openItem: {
-      ref: 'mvp-build-cost',
-      title: 'Cost of the MVP product engineering beyond the data stack',
-      unknown:
-        'That scope does not exist until the discovery gate (G1) defines it. Publishing a delivery figure now would price an unscoped build, so it stands as to be confirmed — distinct from the priced data and setup components above, which are vendor-published prices or figures calculated from rates already paid.',
-      owner: 'Leadership team, at G1 exit.',
-      action:
-        'Define build scope after G1 passes, then request written delivery quotes before any delivery figure is published.',
-    },
+      'With economics and inventory confirmed: a minimum viable data platform — three certified dashboards, a reconciled finance mart and basic consent management — and a 3–5 event Australian pilot. The pilot volume is a gate deliverable to be unlocked rather than supply already in hand. G2 cannot be entered until at least three signed pilot-event agreements or dated letters of intent exist, and the volume actually pursued is whatever those agreements deliver. Priced components (gate G2, one-off — the same schedule the Vision and Investment pages carry): floor configuration A$5,860.00 (data floor A$2,500.00 + setup 7.0 days A$3,360.00) = 7.06× the anchor, or full configuration A$9,876.74 (data full A$6,036.74 + setup 8.0 days A$3,840.00) = 11.90× — alternatives, not a range. Run rate, monthly-cancellable and not part of the authorised gate cost: 0.090× the anchor per month. The IBISWorld line uses AUD $2,500, the price on the live AU checkout cart; the vendor’s help centre publishes AU$2,200 for the same single report. Both are the vendor’s own published prices, and the transactional cart price is the one used for planning. On the A$2,200 basis the same gate reads: floor A$5,560.00 (2,200 + 3,360) = 6.70× the anchor, and full A$9,576.74 (2,200 + 3,342.20 + 194.54 + 3,840) = 11.54×; the data-floor line is 2.65× (2,200 ÷ 830). Statista Starter — A$3,342.20 inside the full configuration — is priced from the vendor’s own published tier, US$199/mo billed annually. No gate figure prices the Personal tier.',
   },
 ];
 
@@ -346,10 +295,8 @@ export const ROADMAP_90_DAYS = [
 export const ROADMAP_RECONCILIATION =
   'Why these bands. Each stage above begins only when the previous stage’s gate is passed, so the durations in the execution sequence run end to end, not in parallel: 30 days to G0, then 60 days to G1, then 12 weeks (84 days) to G2 — earliest completion day 174. The bands reconcile with the Australia market page’s phase plan: Phase 0 — Verify at Months 0–3 covers M1 and M2 (days 1–90), and Phase 1 — Pilot at Months 4–6 covers M3 (days 91–174). Planning windows, not vendor commitments or sourced estimates.';
 
-export const ROADMAP_NOTE = 'The interview count for M2 is not yet set — see the outstanding item under Second, above.';
-
 export const CEO_ACTIONS = [
-  { n: 1, action: 'Authorise legal and commercial due diligence (cost pending written quotes — see the outstanding item under First, above)', decision: 'Immediate: appoint legal counsel and set a 30-day deadline' },
+  { n: 1, action: 'Authorise legal and commercial due diligence (fees quoted on request)', decision: 'Immediate: appoint legal counsel and set a 30-day deadline' },
   { n: 2, action: 'Appoint a Data/Technology Lead (contract or fractional) to conduct discovery', decision: 'Within 14 days: identify a candidate and define scope' },
   { n: 3, action: 'Set a staged investment gate — further capital released as the due-diligence & terms gate (G0) and the discovery gate (G1) are passed', decision: 'Board resolution: expenditure follows evidence through gated release' },
 ];

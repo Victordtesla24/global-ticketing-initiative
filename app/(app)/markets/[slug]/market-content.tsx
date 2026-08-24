@@ -1,25 +1,10 @@
 'use client';
 
-import { MapPin, Scale, Handshake, Gauge, AlertTriangle, CalendarClock, Calculator } from 'lucide-react';
+import { MapPin, Scale, Handshake, Gauge, CalendarClock, Calculator } from 'lucide-react';
 import { Section, GlassCard, StatCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Timeline } from '@/components/proposal/timeline';
 import { REVENUE_IDENTITY, IDENTITY_VARIABLES, DATA_CONFIDENCE_NOTE } from '@/lib/data/revenue-model';
-import type { Market, MarketPhase, OpenItem, HeroTile, SizingRow, Partnership, Blocker } from '@/lib/data/markets';
-
-function OutstandingItem({ item }: { item: OpenItem }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
-  );
-}
+import type { Market, MarketPhase, HeroTile, Partnership } from '@/lib/data/markets';
 
 function SourceLines({ sources, className }: { sources?: string[]; className?: string }) {
   if (!sources?.length) return null;
@@ -46,8 +31,7 @@ export default function MarketContent({ market }: { market: Market }) {
         </div>
 
         <p className="mb-8 max-w-4xl text-[13px] leading-relaxed text-muted-foreground/70">
-          No three-year projection is published for this market. Each figure below says where it came from, and the
-          official statistics carry their source lines.
+          Each figure below says where it came from, and the official statistics carry their source lines.
         </p>
 
         {market?.heroTilesIntro ? (
@@ -69,12 +53,6 @@ export default function MarketContent({ market }: { market: Market }) {
         <p className="mt-6 max-w-4xl leading-relaxed text-foreground/85">{market?.evidence ?? ''}</p>
         <SourceLines sources={market?.evidenceSources} />
 
-        {market?.evidenceOpenItem ? (
-          <div className="mt-6 max-w-4xl">
-            <OutstandingItem item={market.evidenceOpenItem} />
-          </div>
-        ) : null}
-
         {market?.cadence ? (
           <GlassCard className="mt-6 border-primary/25">
             <div className="mb-2 flex items-center gap-2">
@@ -87,28 +65,11 @@ export default function MarketContent({ market }: { market: Market }) {
         ) : null}
       </Section>
 
-      <Section eyebrow="Opportunity Sizing" title="TAM / SAM / SOM">
-        {market?.sizingIntro ? (
-          <p className="mb-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">{market.sizingIntro}</p>
-        ) : null}
-        <DataTable
-          headers={['Tier', 'Basis']}
-          rows={(market?.sizing ?? []).map((s: SizingRow) => [
-            <span key="t" className="whitespace-nowrap font-semibold text-foreground">{s?.tier}</span>,
-            s?.basis ?? '',
-          ])}
-        />
-        <SourceLines sources={market?.sizingSources} />
-        <div className="mt-4 space-y-4">
-          {(market?.sizingOpenItems ?? []).map((o: OpenItem, i: number) => (
-            <OutstandingItem key={i} item={o} />
-          ))}
-        </div>
-
-        <GlassCard className="mt-6">
+      <Section eyebrow="Approach" title="Entry Mode">
+        <GlassCard>
           <div className="mb-2 flex items-center gap-2">
             <Gauge className="h-4 w-4 text-primary" />
-            <p className="t-eyebrow">Entry Mode</p>
+            <p className="t-eyebrow">How This Market Is Entered</p>
           </div>
           <p className="text-sm leading-relaxed text-foreground/85">{market?.entryMode}</p>
           {market?.entryModeNote ? (
@@ -129,14 +90,10 @@ export default function MarketContent({ market }: { market: Market }) {
             gate: p?.gate,
           }))}
         />
-        <div className="mt-6 space-y-4">
-          {(market?.timelineOpenItems ?? []).map((o: OpenItem, i: number) => (
-            <OutstandingItem key={i} item={o} />
-          ))}
-        </div>
       </Section>
 
-      <Section eyebrow="Financials, Rebuilt" title={revenue?.title ?? ''}>
+      {revenue ? (
+      <Section eyebrow="Financials" title={revenue?.title ?? ''}>
         <GlassCard>
           <p className="max-w-4xl text-sm leading-relaxed text-foreground/85">{revenue?.body ?? ''}</p>
 
@@ -144,7 +101,7 @@ export default function MarketContent({ market }: { market: Market }) {
             <>
               <div className="mt-5 flex items-center gap-2">
                 <Calculator className="h-4 w-4 text-primary" />
-                <p className="t-eyebrow">The identity — no output number</p>
+                <p className="t-eyebrow">The identity</p>
               </div>
               <div className="mt-3 rounded-lg border border-primary/25 bg-secondary/40 p-4 font-mono text-sm text-foreground">
                 <p className="font-semibold text-primary">{REVENUE_IDENTITY?.formulaGross}</p>
@@ -152,11 +109,10 @@ export default function MarketContent({ market }: { market: Market }) {
               </div>
               <DataTable
                 className="mt-4"
-                headers={['Variable', 'Meaning', 'Status', 'Confirmer / Owner', 'By When']}
+                headers={['Variable', 'Meaning', 'Confirmer / Owner', 'By When']}
                 rows={(IDENTITY_VARIABLES ?? []).map((v: any) => [
                   <span key="s" className="font-bold text-primary">{v?.symbol}</span>,
                   v?.meaning ?? '',
-                  v?.status ?? '',
                   v?.confirms ?? '',
                   v?.when ?? '',
                 ])}
@@ -165,34 +121,13 @@ export default function MarketContent({ market }: { market: Market }) {
             </>
           ) : null}
 
-          {revenue?.blockers?.length ? (
-            <>
-              <p className="mt-5 t-eyebrow">{revenue?.blockersIntro ?? 'Unresolved before any figure is modelled'}</p>
-              <ul className="mt-3 space-y-2">
-                {revenue.blockers.map((b: Blocker, i: number) => (
-                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-foreground/85">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                    <span>
-                      {b?.item} — <span className="text-muted-foreground">owner: {b?.owner}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-
           {revenue?.note ? (
             <p className="mt-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">{revenue.note}</p>
           ) : null}
           <SourceLines sources={revenue?.sources} />
         </GlassCard>
-
-        {revenue?.openItem ? (
-          <div className="mt-4">
-            <OutstandingItem item={revenue.openItem} />
-          </div>
-        ) : null}
       </Section>
+      ) : null}
 
       <OrnamentDivider />
 
@@ -213,11 +148,6 @@ export default function MarketContent({ market }: { market: Market }) {
               ) : null}
               <SourceLines sources={market?.regulatorySources} />
             </GlassCard>
-          ) : null}
-          {market?.regulatoryOpenItem ? (
-            <div className={market?.regulatory?.length ? 'mt-4' : ''}>
-              <OutstandingItem item={market.regulatoryOpenItem} />
-            </div>
           ) : null}
         </Section>
 
@@ -246,11 +176,6 @@ export default function MarketContent({ market }: { market: Market }) {
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground/70">{market.partnershipsNote}</p>
           ) : null}
           <SourceLines sources={market?.partnershipsSources} />
-          {market?.partnershipsOpenItem ? (
-            <div className="mt-4">
-              <OutstandingItem item={market.partnershipsOpenItem} />
-            </div>
-          ) : null}
         </Section>
       </div>
 

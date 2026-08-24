@@ -2,29 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldAlert, Grid3X3, ListChecks, Target, AlertTriangle, Landmark } from 'lucide-react';
+import { ShieldAlert, Grid3X3, ListChecks, Target, Landmark } from 'lucide-react';
 import { Section, GlassCard, StatCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   RISKS, riskColour, Risk,
   RISK_LEDE, RISK_BASIS_NOTE, RISK_LANDSCAPE, RISK_REGISTER_PROVENANCE,
-  REGISTRY_CHECKS, TOP5_INTRO, TOP5_MITIGATIONS, RISK_OPEN_ITEM,
-  RISK_OUTSTANDING_ITEMS, FOUNDATION_STATEMENT, FOUNDATION_PROVENANCE,
+  REGISTRY_CHECKS, TOP5_INTRO, TOP5_MITIGATIONS,
+  FOUNDATION_STATEMENT, FOUNDATION_PROVENANCE,
 } from '@/lib/data/risks';
-
-function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
-  );
-}
 
 export default function RiskContent() {
   const [selectedId, setSelectedId] = useState<number | null>(1);
@@ -227,23 +212,6 @@ export default function RiskContent() {
           headers={['#', 'Risk', 'Mitigation']}
           rows={(TOP5_MITIGATIONS ?? []).map((m: any) => [String(m?.rank ?? ''), m?.risk ?? '', m?.mitigation ?? ''])}
         />
-        <div className="mt-4">
-          <OutstandingItem item={RISK_OPEN_ITEM} />
-        </div>
-      </Section>
-
-      <OrnamentDivider />
-
-      <Section eyebrow="Outstanding Items" title="What Must Be Obtained Before a Decision">
-        <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Every item below gates the programme, none is priced or resolved, and each names its owner. They are
-          carried on this page because they are the substance behind the register&apos;s highest scores.
-        </p>
-        <div className="space-y-4">
-          {(RISK_OUTSTANDING_ITEMS ?? []).map((u: any, i: number) => (
-            <OutstandingItem key={i} item={u} />
-          ))}
-        </div>
       </Section>
 
       <OrnamentDivider />

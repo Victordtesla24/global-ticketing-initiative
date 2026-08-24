@@ -1,38 +1,15 @@
 'use client';
 
-import { Wallet, Users, ReceiptText, AlertTriangle, Calculator, TrendingDown } from 'lucide-react';
+import { Wallet, Users, ReceiptText, Calculator } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, DataTable, StatCard } from '@/components/proposal/section';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   ACTUALS, GATE_SCHEDULE, GATE_SCHEDULE_NOTES, VENDOR_PRICES, VENDOR_PRICES_NOTE,
-  PEOPLE_CORRECTIONS, PEOPLE_INTRO, ROI_VERDICT, INVESTMENT_OPEN_ITEMS,
+  PEOPLE_CORRECTIONS, PEOPLE_INTRO,
 } from '@/lib/data/costs';
 import { REVENUE_IDENTITY, IDENTITY_VARIABLES, DATA_CONFIDENCE_NOTE } from '@/lib/data/revenue-model';
 import { REVENUE_STREAMS } from '@/lib/data/insights';
 
-function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
-  );
-}
-
-const outstanding = (ref: string) => (INVESTMENT_OPEN_ITEMS ?? []).find((i: any) => i?.ref === ref);
-
 export default function InvestmentContent() {
-  const quotes = outstanding('quotes');
-  const firstPartyData = outstanding('first-party-data');
-  const partnershipTerms = outstanding('partnership-terms');
-  const supply = outstanding('supply');
-  const demand = outstanding('demand');
-
   return (
     <div>
       <p className="t-eyebrow mb-3">Section 05</p>
@@ -40,21 +17,17 @@ export default function InvestmentContent() {
         Investment & <span className="text-primary">Returns</span>
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-        No three-year total cost of ownership, return on investment or break-even volume is published on this page:
-        none of them is computable from the evidence that exists. What stands instead is the actual spend to date, a
-        per-gate decision schedule in which every figure is expressed as a multiple of the affordability anchor,
-        vendor-published prices for the data tools the programme might actually buy, and the revenue identity — every
-        variable named, its confirmer stated, and no output number published.
+        This page sets out the actual spend to date, a per-gate decision schedule in which every figure is expressed
+        as a multiple of the affordability anchor, vendor-published prices for the data tools the programme might
+        actually buy, and the revenue identity, with every variable named and its confirmer stated.
       </p>
 
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-        All figures AUD; source-currency prices are shown with their conversion. Two figures sit outside the usual
-        pattern of actual spend, published price and calculation. A salary band compiled by an aggregator is not a
+        All figures AUD; source-currency prices are shown with their conversion. One figure sits outside the usual
+        pattern of actual spend, published price and calculation: a salary band compiled by an aggregator is not a
         published price, so it is labelled{' '}
         <span className="font-semibold text-foreground/80">Aggregator benchmark</span> — context only, feeding no
-        funded figure. And on the Statista Personal tier an earlier costing recorded A$922/yr against the vendor&apos;s
-        own published US$649/mo billed annually; the two are not reconciled, the programme sponsor owns closing that
-        gap, and no funded line depends on it. FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
+        funded figure. FX: RBA, 21 Aug 2026 — USD 0.7145 per A$1.
       </p>
 
       <Section eyebrow="Actual Spend to Date" title="The Affordability Anchor" className="mt-12">
@@ -96,10 +69,6 @@ export default function InvestmentContent() {
           ])}
         />
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">{GATE_SCHEDULE_NOTES?.noG3}</p>
-        <div className="mt-4 space-y-4">
-          {quotes ? <OutstandingItem item={quotes} /> : null}
-          {firstPartyData ? <OutstandingItem item={firstPartyData} /> : null}
-        </div>
       </Section>
 
       <OrnamentDivider />
@@ -110,7 +79,7 @@ export default function InvestmentContent() {
           <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
             What each vendor actually publishes, and this programme&apos;s disposition of each line. Only the
             IBISWorld report is a recommended near-term purchase; the free official-statistics sources — ABS, UN DESA,
-            ONS, US Census, Eurostat, StatCan and the statutory registers — are published free and come first.
+            ONS, US Census, Eurostat, StatCan and the statutory registers — cost nothing and come first.
           </p>
         </div>
         <DataTable
@@ -148,11 +117,11 @@ export default function InvestmentContent() {
 
       <OrnamentDivider />
 
-      <Section eyebrow="The Revenue Model" title="The Honest Identity — Publishing No Output Number">
+      <Section eyebrow="The Revenue Model" title="The Revenue Identity, Variable by Variable">
         <GlassCard className="border-primary/30">
           <div className="mb-3 flex items-center gap-2">
             <Calculator className="h-5 w-5 text-primary" />
-            <p className="font-marquee text-sm font-bold uppercase tracking-[0.16em] text-foreground">The Identity, Variable by Variable</p>
+            <p className="font-marquee text-sm font-bold uppercase tracking-[0.16em] text-foreground">The Identity</p>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">{REVENUE_IDENTITY?.intro}</p>
           <div className="mt-4 rounded-lg border border-primary/25 bg-secondary/40 p-4 font-mono text-sm text-foreground">
@@ -161,11 +130,10 @@ export default function InvestmentContent() {
           </div>
           <DataTable
             className="mt-4"
-            headers={['Variable', 'Meaning', 'Status', 'Who Confirms / What Produces It', 'By When']}
+            headers={['Variable', 'Meaning', 'Who Confirms / What Produces It', 'By When']}
             rows={(IDENTITY_VARIABLES ?? []).map((v: any) => [
               <span key="s" className="font-bold text-primary">{v?.symbol}</span>,
               v?.meaning ?? '',
-              v?.status ?? '',
               v?.confirms ?? '',
               v?.when ?? '',
             ])}
@@ -173,24 +141,9 @@ export default function InvestmentContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{REVENUE_IDENTITY?.outro}</p>
           <p className="mt-3 text-xs italic text-muted-foreground/70">{DATA_CONFIDENCE_NOTE}</p>
         </GlassCard>
-        <div className="mt-4 space-y-4">
-          {partnershipTerms ? <OutstandingItem item={partnershipTerms} /> : null}
-          {supply ? <OutstandingItem item={supply} /> : null}
-          {demand ? <OutstandingItem item={demand} /> : null}
-        </div>
       </Section>
 
       <OrnamentDivider />
-
-      <Section eyebrow="Returns" title="Return on Investment Is Not Yet Computable">
-        <GlassCard>
-          <div className="mb-3 flex items-center gap-2">
-            <TrendingDown className="h-5 w-5 text-primary" />
-            <p className="font-marquee text-sm font-bold uppercase tracking-[0.16em] text-foreground">Verdict, Per Market</p>
-          </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">{ROI_VERDICT}</p>
-        </GlassCard>
-      </Section>
 
       <Section eyebrow="Monetisation" title="Revenue Streams — In Priority Order">
         <DataTable

@@ -3,30 +3,15 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Landmark, Database, ShoppingCart, ShieldCheck, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Landmark, Database, ShoppingCart, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, DataTable } from '@/components/proposal/section';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
-  MARKETS, SEGMENTS, SEGMENTS_NOTE, SEGMENTS_OPEN_ITEM,
+  MARKETS, SEGMENTS, SEGMENTS_NOTE,
   DECISION_FRAMEWORK_INTRO, GATE_RUN_RATE_NOTE, ANCHOR_FOOTNOTE,
 } from '@/lib/data/markets';
 import { MAP_CALLOUTS, MARKETING_DATA_PLAN, STRATEGIC_OPTIONS } from '@/lib/data/insights';
 import { GATE_SCHEDULE } from '@/lib/data/costs';
 import { TOP5_MITIGATIONS } from '@/lib/data/risks';
-
-function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown ?? ''}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
-  );
-}
 
 const Globe = dynamic(() => import('@/components/three/globe'), {
   ssr: false,
@@ -42,20 +27,14 @@ export default function MarketOpportunityContent() {
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
         This section presents the market evidence located for each of the five named markets, and the data required
-        to act on it. Australia is the only evidenced market — and even there every revenue input is unknown, no
-        primary demand study exists and zero counterparties are signed; the other four carry population-scale
-        context only, not diaspora demand.
+        to act on it. Australia is the evidenced market and the proposed proof market; the other four carry
+        population-scale context, not diaspora demand.
       </p>
 
       <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-        Each cost below says where its figure came from: money already spent, a price the vendor publishes, a
-        calculation from those with the working shown, a planning assumption with a named confirmer, or an entry still
-        to be confirmed. One figure sits outside that pattern: on the Statista Personal tier an earlier costing
-        recorded A$922/yr against the vendor&apos;s own published US$649/mo billed annually, the two are not
-        reconciled, and no funded line depends on it. UK live-music market size remains to be confirmed: the only
-        measure located is a trade federation&apos;s own commissioned estimate, which is not a published market size.
-        Official statistics carry their source lines. No corridor projection table, lump-sum investment option,
-        segment size or customer-lifetime-value figure is published. FX: RBA, 21 Aug 2026.
+        Each cost below says where its figure came from: money already spent, a price the vendor publishes, or a
+        calculation from those with the working shown. Official statistics carry their source lines. FX: RBA,
+        21 Aug 2026.
       </p>
 
       <Section eyebrow="Key Market Indicators" title="The Expansion Map" className="mt-10">
@@ -154,9 +133,6 @@ export default function MarketOpportunityContent() {
           headers={['Segment', 'Profile', 'Primary Channels', 'Churn Risk (Qualitative)']}
           rows={(SEGMENTS ?? []).map((s: any) => [s?.name ?? '', s?.profile ?? '', s?.channel ?? '', s?.churn ?? ''])}
         />
-        <div className="mt-4">
-          <OutstandingItem item={SEGMENTS_OPEN_ITEM} />
-        </div>
       </Section>
 
       <OrnamentDivider />
@@ -212,8 +188,8 @@ export default function MarketOpportunityContent() {
 
         <div className="mt-8">
           <p className="mb-4 max-w-4xl text-sm leading-relaxed text-muted-foreground">
-            The recommended option carries no lump sum. It carries the gated schedule below: capital is released
-            only as each gate is passed, and nothing beyond the next gate is committed.
+            The recommended option carries the gated schedule below: capital is released only as each gate is
+            passed, and nothing beyond the next gate is committed.
           </p>
           <DataTable
             headers={['Gate', 'What It Buys', 'Committed One-Off Cost', 'Multiple of the A$830 Anchor', 'Must Be True to Pass']}

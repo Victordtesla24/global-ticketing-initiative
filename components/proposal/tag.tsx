@@ -9,9 +9,7 @@ import { cn } from '@/lib/utils';
  *   Published price                the price the vendor publishes
  *   Quoted                         a written quote held on file
  *   Calculated                     worked out from the figures beside it
- *   Planning assumption            a planning figure, with a named confirmer
  *   Official statistic             an official statistic or a statutory filed record
- *   To be confirmed                no figure yet; the note says what is needed
  *   Illustrative — from sample data  computed from the downloadable sample files
  *
  * In running text the sentence says this in words. The chip below is for the places
@@ -22,9 +20,7 @@ export type ProvenanceTag =
   | 'LIST'
   | 'QUOTE'
   | 'DERIVED'
-  | 'ASSUMPTION'
   | 'OFFICIAL'
-  | 'UNKNOWN'
   | 'ILLUSTRATIVE';
 
 const TAG_LABELS: Record<ProvenanceTag, string> = {
@@ -32,9 +28,7 @@ const TAG_LABELS: Record<ProvenanceTag, string> = {
   LIST: 'Published price',
   QUOTE: 'Quoted',
   DERIVED: 'Calculated',
-  ASSUMPTION: 'Planning assumption',
   OFFICIAL: 'Official statistic',
-  UNKNOWN: 'To be confirmed',
   ILLUSTRATIVE: 'Illustrative — from sample data',
 };
 
@@ -43,25 +37,23 @@ const TAG_STYLES: Record<ProvenanceTag, string> = {
   LIST: 'border-sky-500/40 bg-sky-500/10 text-sky-300',
   QUOTE: 'border-primary/40 bg-primary/10 text-primary',
   DERIVED: 'border-violet-500/40 bg-violet-500/10 text-violet-300',
-  ASSUMPTION: 'border-amber-500/40 bg-amber-500/10 text-amber-400',
   OFFICIAL: 'border-teal-500/40 bg-teal-500/10 text-teal-300',
-  UNKNOWN: 'border-red-500/40 bg-red-500/10 text-red-400',
   // Same amber the Synthetic sample badge uses, so a figure and the file it came
   // from read as one label rather than two competing ones.
   ILLUSTRATIVE: 'border-amber-500/40 bg-amber-500/10 text-amber-400',
 };
 
-/** Small plain-word chip, e.g. "Published price" or "To be confirmed". */
+/** Small plain-word chip, e.g. "Published price" or "Calculated". */
 export function Tag({ tag, className }: { tag: ProvenanceTag; className?: string }) {
   return (
     <span
       className={cn(
         'mx-0.5 inline-flex items-center whitespace-nowrap rounded border px-1.5 py-px align-middle text-[10px] font-semibold tracking-wide',
-        TAG_STYLES[tag] ?? TAG_STYLES.UNKNOWN,
+        TAG_STYLES[tag] ?? TAG_STYLES.LIST,
         className
       )}
     >
-      {TAG_LABELS[tag] ?? TAG_LABELS.UNKNOWN}
+      {TAG_LABELS[tag] ?? TAG_LABELS.LIST}
     </span>
   );
 }

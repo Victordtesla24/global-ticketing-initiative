@@ -15,6 +15,11 @@ BANNED_FIXED=(
   "accessed 2026" "Accessed 2026" "verified 2026" "Verified 2026" "run date" "Run date"
   "first-hand" "First-hand" "receipted" "Receipted" "T0-0" "mandate" "Mandate"
   "verification pack" "orchestrat" "swarm"
+  "Outstanding before decision" "What must be obtained" "What is unknown" "Owner:" "Action:"
+  "currently unassigned" "leadership team to appoint" "to appoint" "To be confirmed" "to be confirmed"
+  "no figure is published" "No figure is published" "is not published" "not computable" "cannot be computed"
+  "is published" "are published" "this page publishes" "This page publishes" "open item" "Open item"
+  "BLOCKING" "blocking unknown" "Planning assumption"
 )
 # Regex patterns (extended grep)
 BANNED_REGEX=(

@@ -279,7 +279,7 @@ export const WALKTHROUGH: WalkStep[] = [
           ['payments', 'Currency', 'INR confirmed via store listings; pricing sits behind login and is not publicly visible'],
         ],
         note:
-          'Seventeen such rows are in the file. There is no orders table, no seat map and no payment ledger, because none of it is externally accessible — obtaining it under NDA is outstanding, and a G2 entry condition.',
+          'Seventeen such rows are in the file. There is no orders table, no seat map and no payment ledger, because none of it is externally accessible — obtaining it under NDA is a G2 entry condition.',
       },
       {
         caption: 'All eight rows of audience-republic.csv — the stand-in inventory',

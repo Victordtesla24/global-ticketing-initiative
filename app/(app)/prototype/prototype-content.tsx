@@ -22,7 +22,6 @@ import {
   FileJson,
 } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { cn } from '@/lib/utils';
 import { CATEGORY_LABELS, type ProviderCategory, type ProviderCountry } from '@/lib/data/providers';
 import {
@@ -655,55 +654,28 @@ export default function PrototypeContent() {
         </div>
       </Section>
 
-      <Section eyebrow="What the Prototype Does Not Do" title="The Two Things This Prototype Cannot Settle">
+      <Section eyebrow="Scope" title="The Two Things This Prototype Cannot Settle">
         <div className="grid gap-4">
-          <Alert className="border-amber-500/40 bg-amber-500/5">
-            <AlertTriangle className="h-4 w-4 !text-amber-400" />
-            <AlertTitle className="text-amber-300">
-              Outstanding before decision — Ticketalay first-party data
-            </AlertTitle>
-            <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-              <p>
-                <span className="font-semibold text-foreground/80">What must be obtained:</span> The schema, ownership,
-                consent state and export rights of the first-party database have never been inspected. The real extract
-                in Step 02 contains entity, product and engagement facts recovered from public sources — it contains no
-                orders, no seats and no payments, because none of that is externally accessible.
-              </p>
-              <p className="mt-1">
-                <span className="font-semibold text-foreground/80">Owner:</span> Ticketalay principal
-              </p>
-              <p className="mt-1">
-                <span className="font-semibold text-foreground/80">Action:</span> Provide the database dictionary, a
-                consent-register sample and app-console exports under NDA. Cost to obtain: nil — internal disclosure.
-                Until then the synthetic campaign file in Step 02 is a build target and nothing more.
-              </p>
-            </AlertDescription>
-          </Alert>
+          <GlassCard className="border-amber-500/30">
+            <p className="t-eyebrow mb-2 text-amber-300">Ticketalay first-party data</p>
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
+              The real extract in Step 02 contains entity, product and engagement facts recovered from public sources.
+              It contains no orders, no seats and no payments, because none of that is externally accessible. The
+              first-party database — its schema, ownership, consent state and export rights — is disclosed by the
+              Ticketalay principal under NDA at gate G0, at nil cost, as an internal disclosure. Until then the
+              synthetic campaign file in Step 02 is a build target and nothing more.
+            </p>
+          </GlassCard>
 
-          <Alert className="border-amber-500/40 bg-amber-500/5">
-            <AlertTriangle className="h-4 w-4 !text-amber-400" />
-            <AlertTitle className="text-amber-300">
-              Outstanding before decision — Primary diaspora demand evidence
-            </AlertTitle>
-            <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-              <p>
-                <span className="font-semibold text-foreground/80">What must be obtained:</span> No primary study of the
-                target audience exists. Step 01 fixes the denominators — 22,263 Marathi speakers and 64% adult cultural
-                attendance, both official statistics — but a denominator is a population, not a buyer. No
-                willingness-to-pay, fee-tolerance or channel-trust figure can be stated, and none appears anywhere on
-                this page.
-              </p>
-              <p className="mt-1">
-                <span className="font-semibold text-foreground/80">Owner:</span> Research lead (role currently
-                unassigned — leadership team to appoint)
-              </p>
-              <p className="mt-1">
-                <span className="font-semibold text-foreground/80">Action:</span> Commission a primary study of
-                Marathi/Indian-origin event buyers in Melbourne and Sydney at gate G1; obtain quotes — not priceable
-                without a brief.
-              </p>
-            </AlertDescription>
-          </Alert>
+          <GlassCard className="border-amber-500/30">
+            <p className="t-eyebrow mb-2 text-amber-300">Primary diaspora demand evidence</p>
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
+              Step 01 fixes the denominators — 22,263 Marathi speakers and 64% adult cultural attendance, both official
+              statistics — but a denominator is a population, not a buyer. Willingness to pay, fee tolerance and channel
+              trust come from the primary study of Marathi and Indian-origin event buyers in Melbourne and Sydney,
+              commissioned by the Research lead at gate G1.
+            </p>
+          </GlassCard>
         </div>
 
         <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">

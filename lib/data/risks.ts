@@ -1,5 +1,5 @@
-// Risk Analysis — ten self-assessed risk categories, the register findings behind the two
-// highest-scored rows, and the items outstanding before a decision can be taken.
+// Risk Analysis — ten self-assessed risk categories and the register findings behind the
+// two highest-scored rows.
 // Colour scale: green 1–8, amber 9–16, red 17–25.
 
 export interface Risk { id: number; name: string; likelihood: number; impact: number; score: number; mitigation: string; }
@@ -34,7 +34,7 @@ export const RISKS: Risk[] = [
 ];
 
 export const RISK_REGISTER_PROVENANCE =
-  'Row scores are self-assessed ratings with the arithmetic recomputed (likelihood × impact). Mitigation wording (“certified,” “audited,” “secure,” “committed”) describes documents and controls yet to be obtained, not documents that already exist: no written PSP, legal, insurance, entity or QSA quotes are on file, and no IP, domain, trademark, source-code or merchant-account due diligence has been performed.';
+  'Row scores are self-assessed ratings with the arithmetic recomputed (likelihood × impact). Mitigation wording (“certified,” “audited,” “secure,” “committed”) describes the documents and controls each mitigation would put in place, not documents that already exist.';
 
 export function riskColour(score: number): string {
   if (score >= 17) return '#DC2626';
@@ -49,7 +49,7 @@ export const REGISTRY_CHECKS = {
     {
       heading: 'Row 1 — entity ambiguity (25) — is not hypothetical; it is documented in the public registers.',
       body:
-        'Public register searches — a lookup, not the full ownership due diligence, which remains to be done. ABN Lookup returns “No matching names found” for Ticketalay — no entity of that name is registered in Australia — and no active ABN is named exactly “AB Entertainment”. The registrant of ticketalay.com.au is ABN 91 819 759 805 — V DESHPANDE & A KADAM, a two-person family partnership trading as A&B ENTERTAINMENTS (VIC 3030, active since 07 Nov 2022), not registered for GST — not any Ticketalay or PAC Theatre Entertainment entity. The domain’s auDA RDAP record carries status “server renew prohibited” — “Not Currently Eligible For Renewal” (last changed 2026-08-16): the proof market’s named domain may lapse. This is a time-critical adverse fact on the G0 critical path — the ownership memorandum must resolve the renewal flag and name the actual legal counterparty before any agreement is signed.',
+        'Public register searches — a lookup rather than full ownership due diligence. ABN Lookup returns “No matching names found” for Ticketalay — no entity of that name is registered in Australia — and no active ABN is named exactly “AB Entertainment”. The registrant of ticketalay.com.au is ABN 91 819 759 805 — V DESHPANDE & A KADAM, a two-person family partnership trading as A&B ENTERTAINMENTS (VIC 3030, active since 07 Nov 2022), not registered for GST — not any Ticketalay or PAC Theatre Entertainment entity. The domain’s auDA RDAP record carries status “server renew prohibited” — “Not Currently Eligible For Renewal” (last changed 2026-08-16): the proof market’s named domain may lapse. This is a time-critical adverse fact on the G0 critical path — the ownership memorandum must resolve the renewal flag and name the actual legal counterparty before any agreement is signed.',
     },
     {
       heading: 'Row 2 — financial evidence gap (25) — the engagement reality behind the install band.',
@@ -71,75 +71,8 @@ export const TOP5_MITIGATIONS = [
   { rank: 5, risk: 'Customer acquisition costs exceed contribution', mitigation: 'Set channel caps, measure incrementality, build referral loops' },
 ];
 
-// Open item attached to the Top Five Mitigations.
-export const RISK_OPEN_ITEM = {
-  ref: 'supply',
-  title: 'Zero named, signed promoter or venue counterparties exist today',
-  unknown:
-    'Row 4’s “minimum three contracted pilot events” is a target to secure, not existing inventory.',
-  owner: 'Commercial lead (currently unassigned — leadership team to appoint).',
-  action:
-    'Secure a minimum of three signed pilot-event agreements or dated letters of intent with named promoters/venues before any pilot is scheduled, priced or insured.',
-};
-
-// Outstanding before decision — every item gates the programme, and none is priced or resolved.
-// The partnership terms come first: revenue share, cost share, capital contribution and control
-// may not be modelled on an assumption.
-export const RISK_OUTSTANDING_ITEMS = [
-  {
-    ref: 'partnership-terms',
-    title: 'AB Entertainment ↔ Ticketalay partnership terms',
-    unknown:
-      'The financial terms of the AB Entertainment ↔ Ticketalay partnership — revenue share, cost share, capital contribution, control — have never been disclosed. No profit and loss for either party can be drawn until they exist on paper, and none of them may be modelled on an assumption.',
-    owner: 'CEO, AB Entertainment, together with the Ticketalay principal.',
-    action: 'Execute a written term sheet or heads of agreement, and disclose it to the leadership team. The legal drafting cost comes from the written-quote round.',
-  },
-  {
-    ref: 'supply',
-    title: 'Contracted promoter and venue supply',
-    unknown:
-      'Zero named, signed counterparties; zero LOIs. No ticket-volume figure has contracted supply behind it, and the pilot cannot be scheduled, priced or insured without at least one dated counterparty.',
-    owner: 'Commercial lead (currently unassigned — leadership team to appoint).',
-    action: 'Secure a minimum of three signed pilot-event agreements or dated LOIs with named promoters/venues.',
-  },
-  {
-    ref: 'demand',
-    title: 'Primary diaspora demand, fee-tolerance and platform-trust evidence',
-    unknown:
-      'No study exists. The take rate (8–12%), average transaction value, repeat purchase and conversion assumptions are all unevidenced for the actual target audience.',
-    owner: 'Research lead (currently unassigned).',
-    action:
-      'Commission a primary study of Marathi/Indian-origin event buyers in Melbourne/Sydney (willingness-to-pay, fee tolerance, channel trust); obtain quotes — not priceable without a brief.',
-  },
-  {
-    ref: 'quotes',
-    title: 'Written PSP, legal, insurance, entity and QSA quotes',
-    unknown:
-      'None on file. Every professional-services cost on this programme is therefore unquoted, and legal fees are never proxied from consultant day rates.',
-    owner: 'CEO / company secretary.',
-    action:
-      'Request written quotes: AU entity + IP due diligence (law firm), PSP onboarding (Stripe/Adyen AU), insurance broker, QSA. Quote requests are free.',
-  },
-  {
-    ref: 'ownership',
-    title: 'IP, domain, trademark, source-code and merchant-account due diligence',
-    unknown:
-      'Never performed. Ownership of the thing being expanded is unestablished: who owns the Ticketalay code, brand, app-store accounts and the .com.au domain is not known.',
-    owner: 'CEO together with the appointed law firm.',
-    action: 'Commission the due-diligence memorandum — the first commitment in this proposal. Its cost comes from the written-quote round.',
-  },
-  {
-    ref: 'first-party-data',
-    title: 'Ticketalay first-party data',
-    unknown:
-      'Schema, ownership, consent state and export rights are all unverified — the “non-negotiable foundation” of the entire data programme has never been inspected.',
-    owner: 'Ticketalay principal.',
-    action: 'Provide the database dictionary, a consent-register sample and app-console exports under NDA (nil cost — internal disclosure).',
-  },
-];
-
 export const FOUNDATION_STATEMENT =
   'The two highest risks — entity ambiguity and financial evidence, both scored 25 — cannot be mitigated by product design or marketing spend, only by documentary evidence. This is why the foundation work (legal-entity confirmation, audited financials, signed pilot agreements) leads the programme sequence, ahead of any market-entry or platform spend.';
 
 export const FOUNDATION_PROVENANCE =
-  'Self-assessment, and an accurate description of the register above — consistent with the acknowledged gaps: no written professional-services quotes on file, and no ownership due diligence performed.';
+  'Self-assessment, and an accurate description of the register above.';

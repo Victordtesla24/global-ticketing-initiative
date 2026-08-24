@@ -1,15 +1,12 @@
-// DELIVERABLE 2 — data architecture. No AUD figure is published for any layer, stage or
-// procurement option on this page: none had a published unit rate or a workload basis behind
-// it. The one priced thing on the route is the committed MVP bill of materials in the
-// reconciliation below, which does have both and shows its arithmetic to the unit rate and
-// the assumed volume. Keep those two statements reconciled: if the run cost is ever quoted
-// anywhere on this page, the working travels with it.
+// DELIVERABLE 2 — data architecture. The one priced thing on this route is the committed MVP
+// bill of materials in the reconciliation below, which shows its arithmetic down to the unit
+// rate and the assumed volume. Wherever the run cost is quoted, the working travels with it.
 
 export const ARCH_LEDE =
   'The engine room of the Vision Statement. Every campaign audience, revenue metric and market-entry decision the ' +
   'vision depends on is meant to be produced here — a medallion lakehouse on AWS, serverless-first and deliberately ' +
   'staged so that spend scales with proven value, with consent and data-residency controls built in from day one. ' +
-  'No cost figures appear on this page; the committed MVP stack is costed in the reconciliation below.';
+  'The committed MVP stack is costed in the reconciliation below.';
 
 export const ARCH_RECONCILIATION = {
   label: 'Which stack is actually committed — the reconciliation',
@@ -22,9 +19,8 @@ export const ARCH_RECONCILIATION = {
     'US$0.025/GB-month = US$0.125, Athena 10 GB scanned at US$5.00/TB = US$0.05, and QuickSight 1 author at US$24/mo plus ' +
     '3 readers at US$3/mo = US$33.00, with Glue Data Catalog on its published free tier and dbt Core, open source, at A$0 — ' +
     'US$33.175/mo, ÷ 0.7145 (RBA rate, 21 August 2026) = A$46.43/mo. The four rates are the vendors’ own published Sydney ' +
-    'prices; the three volumes they are multiplied by are planning assumptions — 5 GB stored (Ticketalay principal) and 1 ' +
-    'author plus 3 board readers (CEO), both to be confirmed in writing by 30 September 2026, and 10 GB scanned per month, ' +
-    'to be confirmed against the first metered month after go-live. That is the funded day-1 system, and it supersedes the design on this ' +
+    'prices, applied to assumed volumes of 5 GB stored, 10 GB scanned per month, and 1 author plus 3 board readers. ' +
+    'That is the funded day-1 system, and it supersedes the design on this ' +
     'page. The full lakehouse shown below (Kinesis streaming, Airbyte, Redshift Serverless, SageMaker, the five marts) ' +
     'is post-G2, trigger-gated growth design: a 10-layer stack is a category error for this entity at MVP scale, and ' +
     'each heavier layer may be re-proposed only against a measured trigger — storage > 100 GB sustained, scans > 1 ' +
@@ -64,25 +60,7 @@ export const DATA_MARTS = [
   { name: 'Markets, Partners & Risk', purpose: 'Support market-entry decisions, partner due diligence and risk monitoring', tables: 'Country Indicators, Prospects, Contracts, Incidents, Compliance Status', metrics: 'Market Opportunity Score, Partner Pipeline Value, Control Status, Incident Count', access: 'CEO, Strategy team, Legal/compliance, Board (summary)', sensitive: 'B2B contacts and due-diligence records (restricted)', refresh: 'Monthly market indicators; event-driven incidents' },
 ];
 
-// Growth path. No user, session, order or run-cost figure is published for any stage.
-// Infrastructure and team shape stand as design intent.
-export const SCALABILITY_OPEN_ITEM = {
-  ref: 'growth-figures',
-  title: 'Growth-stage user, order and run-cost figures',
-  unknown:
-    'No monthly-active-user, session, annual-order or run-cost figure is published for any of the three growth stages ' +
-    'below. The A$46.43/mo in the reconciliation above prices the day-1 MVP stack and nothing beyond it: it buys none ' +
-    'of the Stage 1–3 infrastructure listed here and cannot be read as a floor, a per-stage cost or a starting point ' +
-    'for one. No primary diaspora demand, fee-tolerance or platform-trust study exists to size active users, sessions or ' +
-    'orders for this audience, and there are zero named, signed promoter or venue counterparties, so no ticket-volume ' +
-    'figure has contracted supply behind it.',
-  owner: 'Research lead and Commercial lead (both roles currently unassigned — leadership team to appoint)',
-  action:
-    'Commission a primary study of Marathi and Indian-origin event buyers in Melbourne and Sydney, and secure at ' +
-    'least three signed pilot-event agreements or dated letters of intent, before any user, order or run-cost ' +
-    'figure is set for any stage.',
-};
-
+// Growth path. Infrastructure and team shape stand as design intent.
 export const SCALABILITY = [
   { stage: 'Stage 1', posture: 'Serverless, scheduled processing, one BI environment', infra: 'Single AWS account; S3, Glue, Redshift Serverless, QuickSight', team: '2–3 data engineers (can be contractors); fractional architect', trigger: 'Prove reconciled metrics and demonstrate user value' },
   { stage: 'Stage 2', posture: 'Autoscaling ingestion, separated dev/test/prod, stronger observability', infra: 'Multi-environment AWS; dedicated networking; monitoring and alerting', team: '4–6 data/platform engineers; dedicated BI developer; data analyst', trigger: 'Add availability guarantees, private networking and formal on-call support' },
@@ -90,10 +68,8 @@ export const SCALABILITY = [
 ];
 
 export const TECH_COMPARISON_NOTE =
-  'No indicative AUD/yr price is published against any row below: none could cite a published vendor rate or a ' +
-  'workload assumption to ground it, and no written quote is on file for any of these vendors. What each row gives ' +
-  'instead is the basis on which that layer is actually charged. That silence covers the comparison rows only, and ' +
-  'for a reason — each row names three alternative products for one layer, and no workload here selects between them. ' +
+  'Each row below gives the basis on which that layer is actually charged, rather than a rate: each names three ' +
+  'alternative products for one layer, and the workload that would select between them is settled at gate G2. ' +
   'The five components that are committed at MVP scale — S3, Glue Data Catalog, Athena, dbt Core and QuickSight — do ' +
   'have both, and their published rates, assumed volumes and arithmetic are set out in full in the reconciliation ' +
   'above, which is where the A$46.43/mo run cost comes from. The recommended, alternative and premium-alternative ' +

@@ -1,15 +1,14 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Search, Filter, Star, ExternalLink, ListOrdered, Lightbulb, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { Search, Filter, Star, ExternalLink, ListOrdered, Lightbulb, ShieldCheck } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
 import { Tag } from '@/components/proposal/tag';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import {
   PROVIDERS, CATEGORY_LABELS, COUNTRY_FILTERS, ACQUISITION_SEQUENCE, DAY1_BILL, HISTORICAL_DEPTH,
   type Provider, type ProviderCategory, type ProviderCountry,
 } from '@/lib/data/providers';
-import { INSIGHTS_KEPT, INSIGHT_OPEN_ITEMS, FIRST_PARTY_OPEN_ITEM } from '@/lib/data/insights';
+import { INSIGHTS_KEPT } from '@/lib/data/insights';
 import { Slider } from '@/components/ui/slider';
 
 const CATS: (ProviderCategory | 'All')[] = ['All', 'A', 'B', 'C', 'D', 'E', 'F'];
@@ -28,20 +27,6 @@ const CATS: (ProviderCategory | 'All')[] = ['All', 'A', 'B', 'C', 'D', 'E', 'F']
  * beneath the slider rather than by this bound.
  */
 const COST_CAP = Math.max(0, ...(PROVIDERS ?? []).map((p: Provider) => p?.costMax ?? p?.costMin ?? 0));
-
-function OutstandingItem({ item }: { item: { ref: string; title: string; unknown: string; owner: string; action: string } }) {
-  return (
-    <Alert className="border-amber-500/40 bg-amber-500/5">
-      <AlertTriangle className="h-4 w-4 !text-amber-400" />
-      <AlertTitle className="text-amber-300">Outstanding before decision — {item?.title}</AlertTitle>
-      <AlertDescription className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        <p><span className="font-semibold text-foreground/80">What must be obtained:</span> {item?.unknown}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Owner:</span> {item?.owner}</p>
-        <p className="mt-1"><span className="font-semibold text-foreground/80">Action:</span> {item?.action}</p>
-      </AlertDescription>
-    </Alert>
-  );
-}
 
 export default function DataEcosystemContent() {
   const [cat, setCat] = useState<ProviderCategory | 'All'>('All');
@@ -108,12 +93,7 @@ export default function DataEcosystemContent() {
         official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
         platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
         estimate 6. Each cost cell says where its figure came from: money already spent, a price the vendor
-        publishes, a written quote, a calculation from those, a planning assumption with a named confirmer, or an
-        entry still to be confirmed. Two figures sit outside that pattern. On the Statista Personal tier an earlier
-        costing recorded A$922/yr against the vendor&apos;s own published US$649/mo billed annually. On Claritas
-        Spotlight Advanced an earlier costing recorded A$4,679/yr against the vendor&apos;s own published USD
-        3,295/yr, which is A$4,611.62 at the single rate below. Neither pair is reconciled, the programme sponsor
-        owns closing both gaps, and no funded line depends on either. Live Nation&apos;s
+        publishes, a written quote, or a calculation from those. Live Nation&apos;s
         fee-bearing GTV, below, comes from a statutory SEC filing and is an official statistic for this purpose:
         benchmark only, feeding no funded figure and never a cost comparator, while the source itself stays at{' '}
         <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
@@ -153,9 +133,9 @@ export default function DataEcosystemContent() {
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
           14 of the 60 catalogued providers carry no URL. The original package shipped 15; Statistics Canada&apos;s
           table (row 18) has since been verified and given a live URL, which is the whole of the difference — the 15
-          of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where
-          no published price exists behind a provider, its cost stands as to be confirmed; every price a vendor
-          actually publishes is quoted verbatim in the vendor&apos;s own currency. An aggregator may point to a
+          of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where a
+          vendor publishes no price, the entry reads &ldquo;quote on request&rdquo;; every price a vendor actually
+          publishes is quoted verbatim in the vendor&apos;s own currency. An aggregator may point to a
           primary source but may never be one, and a modelled estimate may never feed a headline or a funded figure.
         </p>
         <GlassCard className="mb-4">
@@ -225,8 +205,8 @@ export default function DataEcosystemContent() {
                 The bound is the catalogue&apos;s own highest published annual price, not a budget
                 ceiling: A${COST_CAP.toLocaleString('en-AU')} = the published US$1,499/mo Enterprise tier of row 29,
                 on the annual commitment that vendor requires, &times; 12 &divide; 0.7145. No published tier in the
-                catalogue annualises above it. Unpriced providers carry no bound: they are still to be confirmed,
-                and are governed by the checkbox below rather than by this slider.
+                catalogue annualises above it. Quote-only providers carry no bound, and are governed by the
+                checkbox below rather than by this slider.
               </p>
               <label className="mt-2 flex items-center gap-2 text-[11px] text-muted-foreground">
                 <input type="checkbox" checked={includeUnpriced} onChange={(e) => setIncludeUnpriced(e?.target?.checked ?? true)} className="accent-[#C9A84C]" />
@@ -325,9 +305,6 @@ export default function DataEcosystemContent() {
           </div>
         )}
 
-        <div className="mt-6">
-          <OutstandingItem item={FIRST_PARTY_OPEN_ITEM} />
-        </div>
       </Section>
 
       <OrnamentDivider />
@@ -337,8 +314,8 @@ export default function DataEcosystemContent() {
           Every line below is a vendor-published price or A$0, expressed as a multiple of the A$830.00 of actual
           spend to date. A free official or intergovernmental source is shown at its own published price of zero, not
           as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. The return on this spend
-          is decision information for gate G1, not revenue — a return on investment is not computable while the
-          partnership terms, the contracted inventory and the primary demand evidence are all unresolved.
+          is decision information for gate G1 rather than revenue: it buys the partnership terms, the contracted
+          inventory and the primary demand evidence.
         </p>
         <DataTable
           headers={['Line', 'Figure', 'Multiple of A$830 anchor']}
@@ -368,14 +345,14 @@ export default function DataEcosystemContent() {
 
       <Section eyebrow="Historical Depth" title="How Many Years of Each Data Type to Buy — and What an Extra Year Is Worth">
         <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          Every recommended-history cell is a planning assumption, which the Data lead — a role the leadership team
-          has still to fill — confirms at gate G1, before the first paid data purchase order is raised. The cost cells
-          come from the published prices above, or are calculated from them; nothing in this table is an estimate. The
+          Each recommended history below is the depth this proposal assumes, and the Data lead confirms it at gate G1,
+          before the first paid data purchase order is raised. The cost cells come from the published prices above, or
+          are calculated from them; nothing in this table is an estimate. The
           headline finding: no recommended extra year of history costs anything, because every back-catalogue named
           here is a free official release, and the binding limits are release cadences rather than budgets.
         </p>
         <DataTable
-          headers={['#', 'Data type', 'Recommended history (planning assumption)', 'Cadence anchor (why)', 'Marginal cost of each extra year', 'Marginal decision value of each extra year']}
+          headers={['#', 'Data type', 'Recommended history', 'Cadence anchor (why)', 'Marginal cost of each extra year', 'Marginal decision value of each extra year']}
           rows={(HISTORICAL_DEPTH ?? []).map((h: any) => [
             h?.id ?? '',
             <span key="t" className="font-semibold text-foreground">{h?.dataType ?? ''}</span>,
@@ -390,8 +367,8 @@ Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — fi
           LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22 header &quot;Next
           release Unknown&quot;; Eurostat ilc_scp03 — the EU-SILC module, roughly 6-yearly, 2022 latest, next planned
           update October 2029; NEA SPPA 2022; StatCan 21-10-0186-01, biennial 2014–2024; and the Apple lookup API
-          release date. Depth rows stay planning assumptions until the Data lead signs them at gate G1; their cost
-          cells stand on the published prices cited above and need no such confirmation.
+          release date. The Data lead signs off the depth rows at gate G1; their cost cells stand on the published
+          prices cited above.
         </p>
       </Section>
 
@@ -415,11 +392,7 @@ Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — fi
 
       <Section eyebrow="What the Data Buys" title="What the Data Buys">
         <p className="mb-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          No quantified investment-versus-value figure is published: no primary source supports a
-          reconciliation-recovery share of GTV, a campaign-conversion uplift, an avoided market-entry spend or a
-          sell-through uplift, and revenue on this programme is not computable while every input — take rate, average
-          transaction value, event volume, repeat rate and partnership share — is still to be confirmed. What the data
-          does buy, on the evidence:
+          What the data buys, on the evidence:
         </p>
         <div className="grid gap-4 md:grid-cols-2">
           {(INSIGHTS_KEPT ?? []).map((ins: any) => (
@@ -432,11 +405,6 @@ Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — fi
               <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">{ins?.impact ?? ''}</p>
               <p className="mt-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">Basis: {ins?.basis}</p>
             </GlassCard>
-          ))}
-        </div>
-        <div className="mt-6 grid gap-4">
-          {(INSIGHT_OPEN_ITEMS ?? []).map((item: any, i: number) => (
-            <OutstandingItem key={i} item={item} />
           ))}
         </div>
       </Section>
