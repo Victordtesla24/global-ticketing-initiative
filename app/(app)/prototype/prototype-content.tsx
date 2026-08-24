@@ -21,6 +21,8 @@ import {
   FileJson,
 } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
+import { AudienceDemo } from '@/components/proposal/audience-demo';
+import { Disclosure } from '@/components/proposal/disclosure';
 import { cn } from '@/lib/utils';
 import { CATEGORY_LABELS, type ProviderCategory, type ProviderCountry } from '@/lib/data/providers';
 import {
@@ -395,17 +397,27 @@ export default function PrototypeContent() {
         The <span className="text-primary">Prototype</span>
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-        A working prototype of the data programme on sample data — Australia first. Every dataset below is downloadable
-        for analyst validation.
+        The data programme run on sample data, Australia first — every file downloadable, every figure labelled real
+        or synthetic. All currency figures AUD.
       </p>
-      <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+      <Disclosure label="What the sample set holds" className="mt-4 max-w-3xl">
         Sixty datasets, one per catalogued provider, each shipped as a matched CSV and JSON pair — 120 files, 601 rows.
         Fifteen are real extracts taken from the named publisher, carrying a source URL and an access date on every
         row. The other forty-five are synthetic samples that mirror each provider&apos;s published field specification
         so the pipeline can be built and tested before a single licence is bought. The two are labelled on every
         table, tile and file, and they are never mixed. Nothing on this page is a forecast, and no figure here is
-        evidence of demand, supply or revenue in any market. All currency figures AUD.
-      </p>
+        evidence of demand, supply or revenue in any market.
+      </Disclosure>
+
+      <Section eyebrow="End to End, In Motion" title="One Audience File Through the Whole Pipeline" className="mt-12 mb-12">
+        <p className="mb-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+          Eighteen fictional contacts — name, email, phone, mobile, age, demography, state, county — landed, checked,
+          resolved, segmented and put on a board tile. Press play.
+        </p>
+        <AudienceDemo />
+      </Section>
+
+      <OrnamentDivider />
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <StatCard
@@ -460,12 +472,11 @@ export default function PrototypeContent() {
 
       <Section eyebrow="Downloadable Sample Set" title="All 60 Datasets" className="mt-12">
         <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          Search and filter the set, then download any dataset in either format. The catalogue entry behind each row —
-          cost, trust tier, refresh cadence and full assessment — lives on the{' '}
+          Filter, then download any dataset in either format. Each row&apos;s full catalogue entry lives on the{' '}
           <Link href="/data-ecosystem" className="text-primary hover:underline">
             Data Ecosystem
           </Link>{' '}
-          page; this page ships the files.
+          page.
         </p>
 
         <GlassCard className="mb-4">
@@ -600,12 +611,15 @@ export default function PrototypeContent() {
         title="From Census Row to Board Dashboard — on Files You Can Download"
         id="walkthrough"
       >
-        <p className="mb-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          Five steps, run on the actual rows of the files above. Each step names the datasets that feed it, shows the
-          rows themselves, states what it proves at gate G1 and at gate G2, and — just as importantly — where it stops.
-          Two of the five steps run on synthetic samples and are labelled illustrative throughout; they demonstrate the
-          mechanism, never a result.
+        <p className="mb-2 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+          Five steps on the actual rows of the files above — each names its datasets, shows its rows, and states where
+          it stops.
         </p>
+        <Disclosure label="How to read the five steps" className="mb-6 max-w-3xl">
+          Each step names the datasets that feed it, shows the rows themselves, states what it proves at gate G1 and at
+          gate G2, and — just as importantly — where it stops. Two of the five steps run on synthetic samples and are
+          labelled illustrative throughout; they demonstrate the mechanism, never a result.
+        </Disclosure>
 
         {/* The five steps read left-to-right along one rail; selecting a node
             opens that step's detail full-width beneath it, so the sequence stays
@@ -748,23 +762,20 @@ export default function PrototypeContent() {
         </div>
 
         <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          What the prototype does establish is narrower and more useful than a forecast: the pipeline runs, the labels
-          survive it end to end, the finance mart reconciles to zero variance on files anyone can re-add, and every
-          number a decision would rest on names the file it came from. The gate schedule and its priced components are
-          on the{' '}
-          <Link href="/investment" className="text-primary hover:underline">
-            Investment &amp; Returns
-          </Link>{' '}
-          page; the platform this pipeline would run on is on the{' '}
-          <Link href="/architecture" className="text-primary hover:underline">
-            Architecture
-          </Link>{' '}
-          page; the Australian market evidence behind Step 01 is on the{' '}
-          <Link href="/markets/australia" className="text-primary hover:underline">
-            Australia
-          </Link>{' '}
-          market page.
+          What it does establish: the pipeline runs, the labels survive end to end, and the mart reconciles to zero
+          variance on files anyone can re-add.
         </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link href="/investment" className="btn-gold-outline">
+            Gate Schedule <ArrowRight className="ml-2 inline h-4 w-4" />
+          </Link>
+          <Link href="/architecture" className="btn-gold-outline">
+            Architecture <ArrowRight className="ml-2 inline h-4 w-4" />
+          </Link>
+          <Link href="/markets/australia" className="btn-gold-outline">
+            Australia Evidence <ArrowRight className="ml-2 inline h-4 w-4" />
+          </Link>
+        </div>
       </Section>
     </div>
   );
