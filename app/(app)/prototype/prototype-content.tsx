@@ -388,6 +388,32 @@ export default function PrototypeContent() {
     }
   };
 
+  // `/prototype#walk-step-N` must open step N, not merely land on the page.
+  // /architecture publishes 22 such deep links; the horizontal rewrite of this
+  // walkthrough dropped both the per-step ids and the handler that read them,
+  // so every one of them silently degraded to the top of the page. The ids are
+  // back on the rail markers above; this reads the fragment and opens the step
+  // the link names, on first load and on any later in-page hash change.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const total = (WALKTHROUGH ?? []).length || 1;
+    const apply = () => {
+      const m = /^#walk-step-(\d+)$/.exec(window.location.hash);
+      if (!m) return;
+      const n = Math.min(Math.max(parseInt(m[1], 10), 1), total);
+      setActiveStep(n);
+      // The curtain latches on view; a deep link must never leave the section
+      // it targets sitting invisible behind an observer that has not fired.
+      setRevealed(true);
+      window.requestAnimationFrame(() => {
+        document.getElementById(`walk-step-${n}`)?.scrollIntoView({ block: 'start' });
+      });
+    };
+    apply();
+    window.addEventListener('hashchange', apply);
+    return () => window.removeEventListener('hashchange', apply);
+  }, []);
+
   return (
     <div>
       <p className="t-eyebrow mb-3">Working Prototype</p>
@@ -632,7 +658,8 @@ export default function PrototypeContent() {
                 return (
                   <motion.li
                     key={step?.id}
-                    className="min-w-0"
+                    id={`walk-step-${step?.n}`}
+                    className="min-w-0 scroll-mt-24"
                     variants={reduceMotion ? undefined : curtainDrop}
                   >
                     <button

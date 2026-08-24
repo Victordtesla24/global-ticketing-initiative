@@ -364,7 +364,7 @@ export const ARCH_NODES: ArchNode[] = [
     artefacts: [
       A.data('abr-abn-lookup', 'abr-abn-lookup.csv — registry lookups', 'REAL'),
       A.page('/risk', 'Risk analysis — the register behind these scores'),
-      A.page('/markets', 'Market opportunity — the country indicators'),
+      A.page('/market-opportunity', 'Market opportunity — the country indicators'),
     ],
     cost: `No mart carries its own cost line. ${MVP_BILL}`,
     risk:
