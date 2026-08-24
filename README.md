@@ -24,11 +24,12 @@ It is presented in the **AB Entertainment design system**: a deep black canvas (
 primary (`#C9A84C`), the self-hosted AB Marquee and AB Sans typefaces, glass-card surfaces and
 gold ornament dividers.
 
-**Production — the only deployed URL:**
+**Production:**
 
 | Environment | URL |
 | :--- | :--- |
-| Production | <https://ticketalay.abacusai.cloud> |
+| Production (GitHub-tracked) | <https://ticketalay.abacusai.cloud> |
+| Production (VPS instance) | <https://ticketalay.srv1356245.hstgr.cloud> |
 
 <p align="center" style="color:#C9A84C">◆ ─────────────────────────────────────────────────────── ◆</p>
 
@@ -96,6 +97,7 @@ All page content is typed TypeScript in `lib/data/`. There is no database and no
 | `costs.ts` | Investment page: actual spend to date, the per-gate decision schedule, vendor published prices, the people/salary basis, the returns verdict and outstanding items. |
 | `insights.ts` | What the data buys, market indicator callouts, the marketing data plan, strategic options and revenue streams. |
 | `markets.ts` | The `Market` type and the five market records behind `/markets/[slug]`, plus campaign segments and the decision framework shown on `/market-opportunity`. |
+| `audience-demo.ts` | The eighteen-record person-level demonstration file (first name, last name, email, phone, mobile, age, demography, state, county) behind the `/prototype` end-to-end demo, with `runPipeline()` — validation, quarantine, identity resolution, segmentation and KPI arithmetic computed from the array at render time. |
 | `prototype.ts` | Index of the 60 sample datasets, their control totals, CSV/JSON link helpers and the Australia end-to-end walkthrough. |
 | `providers.ts` | The 60-provider catalogue — category, trust tier, country tags and cost metadata — with the acquisition sequence, day-one bill and history-depth table. |
 | `revenue-model.ts` | The revenue identity and its variables. |
@@ -140,6 +142,16 @@ Two modes, never mixed:
 
 The files are served as static assets and linked for download from `/prototype`.
 
+One further pair sits deliberately **outside** the catalogue and its control totals:
+[`audience-sample.csv`](public/sample-data/audience-sample.csv) /
+[`audience-sample.json`](public/sample-data/audience-sample.json) — eighteen fictional
+person-level records (first name, last name, email, phone, mobile, age, demography, state,
+county) that `/prototype` runs end to end in five animated stages: **the file → validate →
+resolve → segment → decide**. Two rows carry deliberate defects and one person appears twice, so
+validation, quarantine and identity resolution all visibly run; every count, bar and KPI is
+computed from the file at render time. Emails use the reserved `example.com` domain and both
+numbers sit in the ranges the Australian regulator sets aside for fiction.
+
 <p align="center" style="color:#C9A84C">◆ ─────────────────────────────────────────────────────── ◆</p>
 
 ## Local development
@@ -160,8 +172,12 @@ No environment variables are required: the app reads none at runtime.
 **CI** — [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every push and pull
 request to `main`: install on Node 22, then the production-language gate, then `yarn build`.
 
-**Deployment** — the production host tracks `main` and redeploys automatically when it advances,
-serving <https://ticketalay.abacusai.cloud>. There is no second deployment target.
+**Deployment** — two hosts serve the site:
+
+| Instance | URL | How it updates |
+| :--- | :--- | :--- |
+| GitHub-tracked production | <https://ticketalay.abacusai.cloud> | Tracks `main` and redeploys automatically when it advances. |
+| VPS instance (`ticketalay.service`, Next.js on port 3400 behind Traefik TLS) | <https://ticketalay.srv1356245.hstgr.cloud> | Pulled, built and restarted on the host from `main`. |
 
 ### Production-language gate
 
@@ -185,8 +201,9 @@ app/
   layout.tsx        root layout — metadata, providers, chunk-load error handler
   providers.tsx     react-hot-toast Toaster
 components/
-  proposal/         app shell, sidebar, footer, section, tag, timeline, architecture graph
-  three/            globe and particle background (three.js, client-only)
+  proposal/         app shell, sidebar, footer, section, tag, timeline, architecture graph,
+                    disclosure (fold for supporting prose), audience-demo (end-to-end pipeline demo)
+  three/            globe and particle background (three.js, client-only; degrade gracefully without WebGL)
   ui/               Radix-based primitives
   layouts/          generic container, section, page-header, app-shell, auth-layout
 hooks/              use-toast

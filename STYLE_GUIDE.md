@@ -164,6 +164,8 @@ These are the building blocks the pages are actually made of.
 | `OrnamentDivider` | `className?` | The `◆` divider between major blocks. |
 | `Tag` | `tag: ProvenanceTag` | Provenance chip — see below. |
 | `Timeline` | `items` | Vertical phase timeline. |
+| `Disclosure` | `label?`, `className?`, `defaultOpen?` | Collapsible fold for supporting prose. The visible layer of a page leads with the visual and a short line; the full working, provenance and caveats sit verbatim inside a `Disclosure`, one tap away. |
+| `AudienceDemo` | — | The `/prototype` end-to-end pipeline demo over `lib/data/audience-demo.ts` — stage rail, records table, validation chips, merge visual, bar blocks and KPI tiles, all computed from the record array at render time. |
 | `ArchitectureGraph` | — | The interactive architecture graph. |
 | `AppShell`, `Sidebar`, `SiteFooter` | — | Page frame; mounted by `app/(app)/layout.tsx`. |
 
@@ -229,3 +231,9 @@ The rendered surface — `app/`, `lib/`, `components/` — is gated by
 [`scripts/no-chrome-gate.sh`](scripts/no-chrome-gate.sh), which fails the build on review-process
 and working-notes vocabulary. Write page copy as prose addressed to the reader of the proposal.
 Spelling and figures are Australian English (`en-AU`, set on `<html lang>`).
+
+**Content pattern — visual first.** Every section leads with its visual: stat cards, tables,
+badges, timelines, bar blocks, the graph. Visible supporting text is one or two short sentences.
+The full working, provenance and caveats are kept word for word inside a `Disclosure` fold —
+nothing is deleted to make a page shorter; it is folded. Figures never move into a fold: a number
+visible before stays visible.

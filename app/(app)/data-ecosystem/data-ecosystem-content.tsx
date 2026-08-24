@@ -1,12 +1,14 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Search, Filter, Star, ExternalLink, ListOrdered, Lightbulb, ShieldCheck } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Search, Filter, Star, ExternalLink, ListOrdered, Lightbulb, ShieldCheck, ChevronRight } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
 import { Tag } from '@/components/proposal/tag';
+import { Disclosure } from '@/components/proposal/disclosure';
 import {
   PROVIDERS, CATEGORY_LABELS, COUNTRY_FILTERS, ACQUISITION_SEQUENCE, DAY1_BILL, HISTORICAL_DEPTH,
-  type Provider, type ProviderCategory, type ProviderCountry,
+  type Provider, type ProviderCategory, type ProviderCountry, type TrustTier,
 } from '@/lib/data/providers';
 import { INSIGHTS_KEPT } from '@/lib/data/insights';
 import { Slider } from '@/components/ui/slider';
@@ -27,6 +29,62 @@ const CATS: (ProviderCategory | 'All')[] = ['All', 'A', 'B', 'C', 'D', 'E', 'F']
  * beneath the slider rather than by this bound.
  */
 const COST_CAP = Math.max(0, ...(PROVIDERS ?? []).map((p: Provider) => p?.costMax ?? p?.costMin ?? 0));
+
+/* The five ranked rungs of the trust ladder, highest first. */
+const TRUST_LADDER_RUNGS = ['Official statistic', 'Audited filing', 'Licensed panel', 'Aggregator', 'Modelled estimate'];
+
+/* The ten trust tiers of the sixty catalogue rows, in ladder order. The counts are computed
+   from the catalogue itself rather than typed in, so the bars can never disagree with the
+   rows they summarise. */
+const TIER_ROWS: { tier: TrustTier; note?: string }[] = [
+  { tier: 'Official statistic' },
+  { tier: 'Audited filing' },
+  { tier: 'Public filing — not captured', note: 'row 32, StubHub/viagogo — investor site returned 403' },
+  { tier: 'Primary record — conditional' },
+  { tier: 'Platform record' },
+  { tier: 'Licensed panel' },
+  { tier: 'Aggregator' },
+  { tier: 'Aggregator (channel)' },
+  { tier: 'Aggregator (tool)' },
+  { tier: 'Modelled estimate' },
+];
+
+const TIER_COUNTS = TIER_ROWS.map((t) => ({
+  ...t,
+  count: (PROVIDERS ?? []).filter((p: Provider) => p?.trustTier === t.tier).length,
+}));
+
+function TierBars() {
+  const reduceMotion = useReducedMotion();
+  const max = Math.max(1, ...TIER_COUNTS.map((t) => t.count));
+  return (
+    <div className="rounded-xl border border-border/60 bg-secondary/20 p-4">
+      <p className="t-eyebrow mb-3">Rows per tier — ten tiers across the sixty rows</p>
+      <div className="space-y-2.5">
+        {TIER_COUNTS.map((t, i) => (
+          <div key={t.tier}>
+            <div className="mb-1 flex items-baseline justify-between gap-2">
+              <span className="min-w-0 text-[12.5px] leading-snug text-foreground/85">
+                {t.tier}
+                {t.note ? <span className="text-muted-foreground/70"> — {t.note}</span> : null}
+              </span>
+              <span className="font-marquee text-[15px] font-bold text-primary">{t.count}</span>
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-border/20">
+              <motion.div
+                className="h-full rounded-full bg-gradient-to-r from-[var(--color-gold-dark)] to-[var(--color-gold)]"
+                initial={reduceMotion ? false : { width: 0 }}
+                whileInView={{ width: `${(t.count / max) * 100}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function DataEcosystemContent() {
   const [cat, setCat] = useState<ProviderCategory | 'All'>('All');
@@ -70,46 +128,13 @@ export default function DataEcosystemContent() {
         Data <span className="text-primary">Ecosystem</span>
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-        Sixty data providers catalogued across six categories — from Ticketalay's own first-party database (the
+        Sixty data providers catalogued across six categories — from Ticketalay&apos;s own first-party database (the
         non-negotiable foundation) to premium market intelligence — the raw material for audience intelligence,
         campaign targeting and revenue measurement. The catalogue is an inventory of candidate sources, not evidence
-        of demand. Every provider carries its trust tier and its cost cell. The trust ladder&apos;s five
-        ranked rungs are official statistic &gt; audited filing &gt; licensed panel &gt; aggregator &gt; modelled
-        estimate; five further tiers appear in the catalogue below, because the sixty sources do not all fall on those
-        rungs, and each is ranked against them explicitly:{' '}
-        <span className="font-semibold text-foreground/80">Public filing — not captured</span> (a public filing exists
-        but was never retrieved — row 32, StubHub/viagogo, whose investor site returned 403; ranks below audited
-        filing and may never be cited as audited content),{' '}
-        <span className="font-semibold text-foreground/80">Primary record — conditional</span> (Ticketalay&apos;s own
-        first-party transaction data: primary if and only if ownership, access rights and reconciliation are
-        demonstrated),{' '}
-        <span className="font-semibold text-foreground/80">Platform record</span> (a platform&apos;s own operational
-        record of its own activity — primary for that platform and evidence of nothing beyond it; ranks between
-        licensed panel and aggregator), and two sub-classes that rank with aggregator,{' '}
-        <span className="font-semibold text-foreground/80">Aggregator (channel)</span> (a distribution channel whose
-        trust tier inherits from each listing&apos;s original source and which confers none of its own) and{' '}
-        <span className="font-semibold text-foreground/80">Aggregator (tool)</span> (an operational utility over
-        compiled or open data — fit for a task, never a source of demand evidence). Ten tiers across the sixty rows:
-        official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
-        platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
-        estimate 6. Each cost cell says where its figure came from: money already spent, a price the vendor
-        publishes, a written quote, or a calculation from those. Two figures on this page sit outside that
-        list and carry a fifth label,{' '}
-        <span className="font-semibold text-foreground/80">Ground-truth baseline</span> — an earlier costing
-        carried forward from the commissioning brief: A$922/yr for the Statista Personal tier and A$4,679/yr
-        for Claritas Spotlight Advanced. Neither is a price a vendor publishes and neither is A$0. The label
-        names where the figure came from and asserts nothing further about it: it is not a vendor
-        publication, it is not a verification and it is not a grade, and it feeds no funded figure and no
-        gate multiple. Both stand in the Year-1 Data Budget notes below, each beside the vendor&apos;s own
-        published price for the same product, and neither pair is reconciled. Live Nation&apos;s
-        fee-bearing GTV, below, comes from a statutory SEC filing and is an official statistic for this purpose:
-        benchmark only, feeding no funded figure and never a cost comparator, while the source itself stays at{' '}
-        <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
-        official statistic. No unpublished price bracket appears anywhere below. Filter by category, country coverage,
-        payment model, published annual cost and recommendation strength.
+        of demand.
       </p>
 
-      <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+      <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
         Vendor prices are quoted in the currency the vendor publishes; one FX rate everywhere: RBA, 21 Aug 2026 — USD
         0.7145 per A$1.
       </p>
@@ -137,15 +162,109 @@ export default function DataEcosystemContent() {
         </GlassCard>
       </div>
 
-      <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue" className="mt-12">
+      <Section eyebrow="Trust Ladder" title="Ten Tiers Across the Sixty Rows" className="mt-12">
         <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          14 of the 60 catalogued providers carry no URL. The original package shipped 15; Statistics Canada&apos;s
-          table (row 18) has since been verified and given a live URL, which is the whole of the difference — the 15
-          of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where a
-          vendor publishes no price, the entry reads &ldquo;quote on request&rdquo;; every price a vendor actually
-          publishes is quoted verbatim in the vendor&apos;s own currency. An aggregator may point to a
-          primary source but may never be one, and a modelled estimate may never feed a headline or a funded figure.
+          Every provider carries its trust tier and its cost cell. Each cost cell says where its figure came from:
+          money already spent, a price the vendor publishes, a written quote, or a calculation from those.
         </p>
+        <GlassCard className="mb-4 !p-4">
+          <p className="t-eyebrow mb-3">The Five Ranked Rungs</p>
+          <div className="flex flex-wrap items-center gap-y-2">
+            {TRUST_LADDER_RUNGS.map((r, i) => (
+              <span key={r} className="flex items-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[12px] font-semibold uppercase tracking-wider text-primary">
+                  {r}
+                </span>
+                {i < TRUST_LADDER_RUNGS.length - 1 ? (
+                  <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-primary/60" aria-hidden />
+                ) : null}
+              </span>
+            ))}
+          </div>
+        </GlassCard>
+        <TierBars />
+        <Disclosure label="The trust ladder in full" className="mt-4 max-w-3xl">
+          <p>
+            Sixty data providers catalogued across six categories — from Ticketalay&apos;s own first-party database (the
+            non-negotiable foundation) to premium market intelligence — the raw material for audience intelligence,
+            campaign targeting and revenue measurement. The catalogue is an inventory of candidate sources, not evidence
+            of demand. Every provider carries its trust tier and its cost cell. The trust ladder&apos;s five
+            ranked rungs are official statistic &gt; audited filing &gt; licensed panel &gt; aggregator &gt; modelled
+            estimate; five further tiers appear in the catalogue below, because the sixty sources do not all fall on those
+            rungs, and each is ranked against them explicitly:{' '}
+            <span className="font-semibold text-foreground/80">Public filing — not captured</span> (a public filing exists
+            but was never retrieved — row 32, StubHub/viagogo, whose investor site returned 403; ranks below audited
+            filing and may never be cited as audited content),{' '}
+            <span className="font-semibold text-foreground/80">Primary record — conditional</span> (Ticketalay&apos;s own
+            first-party transaction data: primary if and only if ownership, access rights and reconciliation are
+            demonstrated),{' '}
+            <span className="font-semibold text-foreground/80">Platform record</span> (a platform&apos;s own operational
+            record of its own activity — primary for that platform and evidence of nothing beyond it; ranks between
+            licensed panel and aggregator), and two sub-classes that rank with aggregator,{' '}
+            <span className="font-semibold text-foreground/80">Aggregator (channel)</span> (a distribution channel whose
+            trust tier inherits from each listing&apos;s original source and which confers none of its own) and{' '}
+            <span className="font-semibold text-foreground/80">Aggregator (tool)</span> (an operational utility over
+            compiled or open data — fit for a task, never a source of demand evidence). Ten tiers across the sixty rows:
+            official statistic 17, audited filing 1, public filing — not captured 1, primary record — conditional 1,
+            platform record 2, licensed panel 5, aggregator 18, aggregator (channel) 2, aggregator (tool) 7, modelled
+            estimate 6. Each cost cell says where its figure came from: money already spent, a price the vendor
+            publishes, a written quote, or a calculation from those. Two figures on this page sit outside that
+            list and carry a fifth label,{' '}
+            <span className="font-semibold text-foreground/80">Ground-truth baseline</span> — an earlier costing
+            carried forward from the commissioning brief: A$922/yr for the Statista Personal tier and A$4,679/yr
+            for Claritas Spotlight Advanced. Neither is a price a vendor publishes and neither is A$0. The label
+            names where the figure came from and asserts nothing further about it: it is not a vendor
+            publication, it is not a verification and it is not a grade, and it feeds no funded figure and no
+            gate multiple. Both stand in the Year-1 Data Budget notes below, each beside the vendor&apos;s own
+            published price for the same product, and neither pair is reconciled. Live Nation&apos;s
+            fee-bearing GTV, below, comes from a statutory SEC filing and is an official statistic for this purpose:
+            benchmark only, feeding no funded figure and never a cost comparator, while the source itself stays at{' '}
+            <span className="font-semibold text-foreground/80">audited filing</span> on the ladder above, one rung below an
+            official statistic. No unpublished price bracket appears anywhere below. Filter by category, country coverage,
+            payment model, published annual cost and recommendation strength.
+          </p>
+        </Disclosure>
+      </Section>
+
+      <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue" className="mt-12">
+        <div className="mb-4 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-xl border border-border/60 bg-secondary/20 p-4">
+            <p className="font-marquee text-2xl font-bold leading-tight text-primary">
+              14 <span className="text-sm font-semibold text-muted-foreground">of 60</span>
+            </p>
+            <p className="mt-1 text-[12px] leading-snug text-muted-foreground">Catalogued providers carry no URL.</p>
+          </div>
+          <div className="rounded-xl border border-border/60 bg-secondary/20 p-4">
+            <p className="font-marquee text-2xl font-bold leading-tight text-primary">
+              15 <span className="text-sm font-semibold text-muted-foreground">of 60</span>
+            </p>
+            <p className="mt-1 text-[12px] leading-snug text-muted-foreground">
+              As shipped in the original package — the count recorded on the Adversarial Review page, correct as stated
+              there.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border/60 bg-secondary/20 p-4">
+            <p className="font-marquee text-2xl font-bold leading-tight text-primary">Row 18</p>
+            <p className="mt-1 text-[12px] leading-snug text-muted-foreground">
+              Statistics Canada&apos;s table — since verified and given a live URL; the whole of the difference.
+            </p>
+          </div>
+        </div>
+        <p className="mb-2 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+          Where a vendor publishes no price, the entry reads &ldquo;quote on request&rdquo;; every price a vendor
+          actually publishes is quoted verbatim in the vendor&apos;s own currency. Filter by category, country coverage,
+          payment model, published annual cost and recommendation strength.
+        </p>
+        <Disclosure label="Provenance" className="mb-4 max-w-3xl">
+          <p>
+            14 of the 60 catalogued providers carry no URL. The original package shipped 15; Statistics Canada&apos;s
+            table (row 18) has since been verified and given a live URL, which is the whole of the difference — the 15
+            of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where a
+            vendor publishes no price, the entry reads &ldquo;quote on request&rdquo;; every price a vendor actually
+            publishes is quoted verbatim in the vendor&apos;s own currency. An aggregator may point to a
+            primary source but may never be one, and a modelled estimate may never feed a headline or a funded figure.
+          </p>
+        </Disclosure>
         <GlassCard className="mb-4">
           <div className="flex flex-wrap items-center gap-2">
             <Filter className="h-4 w-4 text-primary" />
@@ -321,13 +440,7 @@ export default function DataEcosystemContent() {
       <Section eyebrow="Data Budget" title="Year-1 Data Budget — the Day-1 Bill of Materials">
         <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Every line in the table below is a vendor-published price or A$0, expressed as a multiple of the
-          A$830.00 of actual spend to date. A free official or intergovernmental source is shown at its own published
-          price of zero, not as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. Two
-          figures in the notes under the table are neither a vendor-published price nor A$0 — A$922/yr for the
-          Statista Personal tier and A$4,679/yr for Claritas Spotlight Advanced — and each carries the{' '}
-          <span className="font-semibold text-foreground/80">Ground-truth baseline</span> label the page lede
-          above sets out. The return on this spend is decision information for gate G1 rather than revenue: it
-          buys the partnership terms, the contracted inventory and the primary demand evidence.
+          A$830.00 of actual spend to date.
         </p>
         <DataTable
           headers={['Line', 'Figure', 'Multiple of A$830 anchor']}
@@ -337,36 +450,123 @@ export default function DataEcosystemContent() {
             b?.multiple ?? '',
           ])}
         />
-        <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          Premium contracts — Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the rows above that carry
-          no price — are not deferred on price. They are unpriced: no published price exists and no written quote is
-          on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
-          excluded outright as unfit for the Australian proof market at any price. On Claritas the catalogue row
-          above prices Spotlight Advanced at the vendor&apos;s published USD 3,295/yr, which is A$4,611.62 at the
-          single rate above (calculated: 3,295 ÷ 0.7145). An earlier costing of A$4,679/yr for that same product — a{' '}
-          <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
-          the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
-          cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
-          on it: no gate line buys Claritas at any tier.
-        </p>
-        <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          P2 is priced from Statista&apos;s own published tier, US$199/mo billed annually (= US$2,388/yr, calculated:
-          199 × 12 — the annual figure is an annualisation, not a price the vendor publishes). The catalogue row
-          above prices the Personal tier at the vendor&apos;s published US$649/mo billed annually. An earlier costing
-          of A$922/yr for that same tier — a{' '}
-          <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
-          the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
-          cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
-          on it: P2 buys Starter, not Personal.
-        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <StatCard
+            label="Actual Spend to Date"
+            value="A$830.00"
+            sub="The whole of the actual spend: A$350.00 + A$480.00 = A$830.00 — the anchor of every multiple in the table."
+          />
+          <GlassCard className="flex h-full flex-col gap-2">
+            <p className="t-eyebrow">Unpriced Premium Contracts</p>
+            <div className="flex flex-wrap gap-1.5">
+              {['Nielsen', 'Kantar', 'Euromonitor', 'GWI', 'Bloomberg'].map((n) => (
+                <span key={n} className="inline-flex items-center rounded border border-border bg-secondary/40 px-2 py-0.5 text-[12px] font-semibold text-foreground/80">
+                  {n}
+                </span>
+              ))}
+            </div>
+            <p className="text-[13px] leading-snug text-muted-foreground">
+              Not deferred on price: no published price exists and no written quote is on file. Any future line item
+              citing one must first obtain a written quote.
+            </p>
+          </GlassCard>
+          <GlassCard className="flex h-full flex-col gap-2">
+            <p className="t-eyebrow">Excluded Outright</p>
+            <div className="flex flex-wrap gap-1.5">
+              {['Claritas', 'Geocodio'].map((n) => (
+                <span key={n} className="inline-flex items-center rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[12px] font-semibold text-red-400">
+                  {n}
+                </span>
+              ))}
+            </div>
+            <p className="text-[13px] leading-snug text-muted-foreground">
+              Excluded outright as unfit for the Australian proof market at any price.
+            </p>
+          </GlassCard>
+        </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <GlassCard className="flex h-full flex-col gap-3">
+            <p className="t-eyebrow">Statista Personal — Unreconciled Pair</p>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-lg border border-border/60 bg-secondary/20 p-3">
+                <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Vendor&apos;s published price</p>
+                <p className="mt-1 font-marquee text-lg font-bold leading-tight text-primary">US$649/mo</p>
+                <p className="mt-1 text-[12px] leading-snug text-muted-foreground">billed annually</p>
+              </div>
+              <div className="rounded-lg border border-amber-500/30 bg-amber-500/[0.05] p-3">
+                <p className="text-[11px] uppercase tracking-wider text-amber-300">Ground-truth baseline</p>
+                <p className="mt-1 font-marquee text-lg font-bold leading-tight text-amber-400">A$922/yr</p>
+                <p className="mt-1 text-[12px] leading-snug text-muted-foreground">carried forward from the commissioning brief</p>
+              </div>
+            </div>
+            <p className="text-[13px] leading-snug text-muted-foreground">
+              The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
+              on it: P2 buys Starter, not Personal.
+            </p>
+          </GlassCard>
+          <GlassCard className="flex h-full flex-col gap-3">
+            <p className="t-eyebrow">Claritas Spotlight Advanced — Unreconciled Pair</p>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-lg border border-border/60 bg-secondary/20 p-3">
+                <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Vendor&apos;s published price</p>
+                <p className="mt-1 font-marquee text-lg font-bold leading-tight text-primary">USD 3,295/yr</p>
+                <p className="mt-1 text-[12px] leading-snug text-muted-foreground">= A$4,611.62 — calculated: 3,295 ÷ 0.7145</p>
+              </div>
+              <div className="rounded-lg border border-amber-500/30 bg-amber-500/[0.05] p-3">
+                <p className="text-[11px] uppercase tracking-wider text-amber-300">Ground-truth baseline</p>
+                <p className="mt-1 font-marquee text-lg font-bold leading-tight text-amber-400">A$4,679/yr</p>
+                <p className="mt-1 text-[12px] leading-snug text-muted-foreground">carried forward from the commissioning brief</p>
+              </div>
+            </div>
+            <p className="text-[13px] leading-snug text-muted-foreground">
+              The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
+              on it: no gate line buys Claritas at any tier.
+            </p>
+          </GlassCard>
+        </div>
+        <Disclosure label="How this table is built" className="mt-5 max-w-3xl">
+          <p>
+            Every line in the table below is a vendor-published price or A$0, expressed as a multiple of the
+            A$830.00 of actual spend to date. A free official or intergovernmental source is shown at its own published
+            price of zero, not as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. Two
+            figures in the notes under the table are neither a vendor-published price nor A$0 — A$922/yr for the
+            Statista Personal tier and A$4,679/yr for Claritas Spotlight Advanced — and each carries the{' '}
+            <span className="font-semibold text-foreground/80">Ground-truth baseline</span> label the page lede
+            above sets out. The return on this spend is decision information for gate G1 rather than revenue: it
+            buys the partnership terms, the contracted inventory and the primary demand evidence.
+          </p>
+        </Disclosure>
+        <Disclosure label="Claritas — the note in full" className="mt-2 max-w-3xl">
+          <p>
+            Premium contracts — Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the rows above that carry
+            no price — are not deferred on price. They are unpriced: no published price exists and no written quote is
+            on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
+            excluded outright as unfit for the Australian proof market at any price. On Claritas the catalogue row
+            above prices Spotlight Advanced at the vendor&apos;s published USD 3,295/yr, which is A$4,611.62 at the
+            single rate above (calculated: 3,295 ÷ 0.7145). An earlier costing of A$4,679/yr for that same product — a{' '}
+            <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
+            the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
+            cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
+            on it: no gate line buys Claritas at any tier.
+          </p>
+        </Disclosure>
+        <Disclosure label="Statista P2 — the note in full" className="mt-2 max-w-3xl">
+          <p>
+            P2 is priced from Statista&apos;s own published tier, US$199/mo billed annually (= US$2,388/yr, calculated:
+            199 × 12 — the annual figure is an annualisation, not a price the vendor publishes). The catalogue row
+            above prices the Personal tier at the vendor&apos;s published US$649/mo billed annually. An earlier costing
+            of A$922/yr for that same tier — a{' '}
+            <span className="font-semibold text-foreground/80">Ground-truth baseline</span>, carried forward from
+            the commissioning brief — stands beside that price here, in this note, and not in the catalogue cost
+            cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
+            on it: P2 buys Starter, not Personal.
+          </p>
+        </Disclosure>
       </Section>
 
       <Section eyebrow="Historical Depth" title="How Many Years of Each Data Type to Buy — and What an Extra Year Is Worth">
         <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          Each recommended history below is the depth this proposal assumes, and the Data lead confirms it at gate G1,
-          before the first paid data purchase order is raised. The cost cells come from the published prices above, or
-          are calculated from them; nothing in this table is an estimate. The
-          headline finding: no recommended extra year of history costs anything, because every back-catalogue named
+          The headline finding: no recommended extra year of history costs anything, because every back-catalogue named
           here is a free official release, and the binding limits are release cadences rather than budgets.
         </p>
         <DataTable
@@ -380,14 +580,25 @@ export default function DataEcosystemContent() {
             h?.marginalValue ?? '',
           ])}
         />
-        <p className="mt-3 max-w-4xl text-[12px] leading-relaxed text-muted-foreground/60">
-Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — first release June 2027, with
-          LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22 header &quot;Next
-          release Unknown&quot;; Eurostat ilc_scp03 — the EU-SILC module, roughly 6-yearly, 2022 latest, next planned
-          update October 2029; NEA SPPA 2022; StatCan 21-10-0186-01, biennial 2014–2024; and the Apple lookup API
-          release date. The Data lead signs off the depth rows at gate G1; their cost cells stand on the published
-          prices cited above.
-        </p>
+        <Disclosure label="How these depths are set" className="mt-4 max-w-3xl">
+          <p>
+            Each recommended history below is the depth this proposal assumes, and the Data lead confirms it at gate G1,
+            before the first paid data purchase order is raised. The cost cells come from the published prices above, or
+            are calculated from them; nothing in this table is an estimate. The
+            headline finding: no recommended extra year of history costs anything, because every back-catalogue named
+            here is a free official release, and the binding limits are release cadences rather than budgets.
+          </p>
+        </Disclosure>
+        <Disclosure label="Cadence sources" className="mt-2 max-w-3xl">
+          <p>
+            Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — first release June 2027, with
+            LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22 header &quot;Next
+            release Unknown&quot;; Eurostat ilc_scp03 — the EU-SILC module, roughly 6-yearly, 2022 latest, next planned
+            update October 2029; NEA SPPA 2022; StatCan 21-10-0186-01, biennial 2014–2024; and the Apple lookup API
+            release date. The Data lead signs off the depth rows at gate G1; their cost cells stand on the published
+            prices cited above.
+          </p>
+        </Disclosure>
       </Section>
 
       <OrnamentDivider />
