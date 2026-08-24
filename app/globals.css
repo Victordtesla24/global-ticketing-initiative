@@ -84,7 +84,7 @@
 
   .t-eyebrow {
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -155,7 +155,7 @@
     background: linear-gradient(135deg, #C9A84C 0%, #D4B65C 50%, #C9A84C 100%);
     color: #000;
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -178,7 +178,7 @@
     color: #C9A84C;
     background: transparent;
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -214,7 +214,95 @@
   outline-offset: 2px;
 }
 
+/* A WebGL renderer sets its canvas size in pixels, which can land wider than
+   the box it sits in — on a phone that widens the document and the whole site
+   gains a horizontal scrollbar. Cap every canvas to its container instead. */
+canvas {
+  max-width: 100%;
+}
+
+/* Grid and flex items default to min-width:auto, so they refuse to shrink below
+   their content. A wide table or chart inside one therefore widens the whole
+   document on a phone rather than scrolling within its own box. Letting them
+   shrink is what lets the inner overflow-x-auto actually do its job. */
+main .grid > *,
+main .flex > * {
+  min-width: 0;
+}
+
+main .overflow-x-auto {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* The page itself never scrolls sideways: the content column fits the viewport
+   and every wide table manages its own overflow. `clip` rather than `hidden`,
+   which would turn the root into a scroll container and break position: sticky. */
+html,
+body {
+  overflow-x: clip;
+}
+
 @media print {
+  /* The PDF is the page, not a paper reduction of it: same black ground, same
+     gold, same cards and same type scale. Colour adjustment is forced so the
+     palette is not stripped to white on the way to the printer. */
+  @page { margin: 12mm; }
+
+  html,
+  body {
+    background: #0A0A0A !important;
+    color: rgba(255, 255, 255, 1) !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Interactive chrome only. The fixed nav and the WebGL backdrop cannot
+     paginate, so they stay out; everything carrying content prints. */
   .no-print { display: none !important; }
-  body { background: #fff !important; color: #000 !important; }
+
+  /* With the fixed sidebar gone, the content reclaims the full page width. */
+  main {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+  main > div { max-width: none !important; }
+
+  /* backdrop-filter does not rasterise — give the cards a solid equivalent so
+     they read as cards on the page rather than as flat blocks. */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: rgba(201, 168, 76, 0.22) !important;
+  }
+
+  /* Nothing may hide behind a scroll container that has no scrollbar on paper. */
+  .overflow-x-auto,
+  .overflow-hidden,
+  .overflow-y-auto {
+    overflow: visible !important;
+  }
+
+  /* Do not split a card, a table or a heading away from what it introduces. */
+  .glass-card,
+  table,
+  figure,
+  img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  h1, h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Links keep the on-screen treatment; no printed URL furniture. */
+  a { text-decoration: none !important; }
+  a[href]::after { content: none !important; }
 }

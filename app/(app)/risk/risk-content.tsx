@@ -27,7 +27,7 @@ export default function RiskContent() {
       <Section eyebrow="Section 06 — Risk Analysis" title="The Risk Heat Map">
         <p className="max-w-3xl text-muted-foreground leading-relaxed mb-6">{RISK_LEDE}</p>
 
-        <p className="mb-8 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">
+        <p className="mb-8 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">
           {RISK_BASIS_NOTE}
         </p>
 
@@ -36,7 +36,7 @@ export default function RiskContent() {
             <StatCard key={i} label={s?.label ?? ''} value={s?.value ?? ''} sub={s?.note} />
           ))}
         </div>
-        <p className="mb-10 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{RISK_LANDSCAPE?.provenance}</p>
+        <p className="mb-10 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{RISK_LANDSCAPE?.provenance}</p>
 
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           {/* Heat map */}
@@ -45,12 +45,14 @@ export default function RiskContent() {
               <Grid3X3 className="h-4 w-4 text-primary" />
               <h3 className="font-marquee text-sm font-bold uppercase tracking-wider text-foreground">Likelihood × Impact (10 risks)</h3>
             </div>
-            <div className="flex">
+            {/* The five-by-five grid has an intrinsic minimum width: on a phone it
+                scrolls inside this card rather than widening the whole page. */}
+            <div className="flex overflow-x-auto">
               {/* Y axis label */}
               <div className="flex items-center pr-2">
                 <span className="t-eyebrow rotate-180 [writing-mode:vertical-rl]">Impact →</span>
               </div>
-              <div className="flex-1">
+              <div className="min-w-[280px] flex-1">
                 <div className="grid grid-cols-[auto_repeat(5,1fr)] gap-1.5">
                   {impacts.map((imp: number) => (
                     <div key={`row-${imp}`} className="contents">
@@ -71,7 +73,7 @@ export default function RiskContent() {
                                 key={r?.id}
                                 onClick={() => setSelectedId(r?.id ?? null)}
                                 aria-label={`Risk ${r?.id}: ${r?.name}`}
-                                className="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold text-black shadow-lg transition-all hover:scale-110"
+                                className="flex h-7 w-7 items-center justify-center rounded-full text-[12px] font-bold text-black shadow-lg transition-all hover:scale-110"
                                 style={{
                                   backgroundColor: colour,
                                   outline: selectedId === r?.id ? '2px solid #C9A84C' : 'none',
@@ -168,7 +170,7 @@ export default function RiskContent() {
                     <p className="font-marquee text-sm font-bold uppercase tracking-wide text-foreground">{r?.id}. {r?.name}</p>
                   </div>
                   <span
-                    className="rounded-full px-2.5 py-0.5 text-[11px] font-bold text-black"
+                    className="rounded-full px-2.5 py-0.5 text-[12px] font-bold text-black"
                     style={{ backgroundColor: riskColour(r?.score ?? 0) }}
                   >
                     {r?.score}
@@ -181,7 +183,7 @@ export default function RiskContent() {
             </motion.div>
           ))}
         </div>
-        <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{RISK_REGISTER_PROVENANCE}</p>
+        <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{RISK_REGISTER_PROVENANCE}</p>
       </Section>
 
       <OrnamentDivider />
@@ -198,7 +200,7 @@ export default function RiskContent() {
             </GlassCard>
           ))}
         </div>
-        <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{REGISTRY_CHECKS?.provenance}</p>
+        <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{REGISTRY_CHECKS?.provenance}</p>
       </Section>
 
       <OrnamentDivider />
@@ -219,7 +221,7 @@ export default function RiskContent() {
       <Section eyebrow="Sequencing" title="Why Foundation Work Leads the Sequence">
         <GlassCard>
           <p className="text-sm leading-relaxed text-foreground/85">{FOUNDATION_STATEMENT}</p>
-          <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{FOUNDATION_PROVENANCE}</p>
+          <p className="mt-3 border-t border-border/40 pt-2 text-[12px] leading-relaxed text-muted-foreground/60">{FOUNDATION_PROVENANCE}</p>
         </GlassCard>
       </Section>
     </div>

@@ -28,7 +28,7 @@ import {
 
 function SourceNote({ text }: { text: string }) {
   return (
-    <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{text}</p>
+    <p className="mt-3 border-t border-border/40 pt-2 text-[12px] leading-relaxed text-muted-foreground/60">{text}</p>
   );
 }
 
@@ -42,7 +42,7 @@ export default function AdversarialReviewContent() {
           <StatCard label={INDEPENDENT_REVIEW?.confidence?.label ?? ''} value={INDEPENDENT_REVIEW?.confidence?.value ?? ''} sub={INDEPENDENT_REVIEW?.confidence?.note} />
           <StatCard label={INDEPENDENT_REVIEW?.verdict?.label ?? ''} value={INDEPENDENT_REVIEW?.verdict?.value ?? ''} sub={INDEPENDENT_REVIEW?.verdict?.note} />
         </div>
-        <p className="mb-10 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{INDEPENDENT_REVIEW?.provenance}</p>
+        <p className="mb-10 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{INDEPENDENT_REVIEW?.provenance}</p>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 mb-8">
           {(DELIVERABLE_RATINGS ?? []).map((d: any, i: number) => (
@@ -53,7 +53,7 @@ export default function AdversarialReviewContent() {
                   {d?.rating ? (
                     <StatusBadge status={d.rating} />
                   ) : (
-                    <span className="inline-flex items-center rounded-full border border-border/60 bg-secondary/40 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    <span className="inline-flex items-center rounded-full border border-border/60 bg-secondary/40 px-3 py-0.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                       {d?.ratingLabel ?? 'NOT RATED'}
                     </span>
                   )}
@@ -129,7 +129,7 @@ export default function AdversarialReviewContent() {
                       transition={{ duration: 0.8, delay: i * 0.05 }}
                     />
                   </div>
-                  <p className="mt-1 text-[11px] text-muted-foreground">{d?.why}</p>
+                  <p className="mt-1 text-[12px] text-muted-foreground">{d?.why}</p>
                 </div>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function AdversarialReviewContent() {
                 </GlassCard>
               ))}
             </div>
-            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{MISSING_ELEMENTS_PROVENANCE}</p>
+            <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{MISSING_ELEMENTS_PROVENANCE}</p>
           </TabsContent>
 
           <TabsContent value="assumptions">
@@ -179,7 +179,7 @@ export default function AdversarialReviewContent() {
                 m?.status ?? '',
               ])}
             />
-            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{ASSUMPTIONS_PROVENANCE}</p>
+            <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{ASSUMPTIONS_PROVENANCE}</p>
           </TabsContent>
 
           <TabsContent value="regulatory">
@@ -195,7 +195,7 @@ export default function AdversarialReviewContent() {
                 </GlassCard>
               ))}
             </div>
-            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{REGULATORY_GAPS_PROVENANCE}</p>
+            <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{REGULATORY_GAPS_PROVENANCE}</p>
           </TabsContent>
 
           <TabsContent value="quality">
@@ -211,7 +211,7 @@ export default function AdversarialReviewContent() {
                 </GlassCard>
               ))}
             </div>
-            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{DATA_QUALITY_PROVENANCE}</p>
+            <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{DATA_QUALITY_PROVENANCE}</p>
           </TabsContent>
         </Tabs>
       </Section>
@@ -227,7 +227,7 @@ export default function AdversarialReviewContent() {
             g?.condition ?? '',
             <span key={g?.id} className="inline-flex items-center gap-1.5 whitespace-nowrap">
               <StatusBadge status={g?.status ?? ''} />
-              {g?.selfAssessed ? <span className="text-[10px] text-muted-foreground">(self-assessed)</span> : null}
+              {g?.selfAssessed ? <span className="text-[11px] text-muted-foreground">(self-assessed)</span> : null}
             </span>,
             g?.crossCheck ?? '',
           ])}
@@ -235,7 +235,7 @@ export default function AdversarialReviewContent() {
         <GlassCard className="mt-6 border-amber-500/30">
           <p className="text-sm leading-relaxed text-foreground/85">{QG15_RESTRUCTURED}</p>
         </GlassCard>
-        <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{QUALITY_GATES_PROVENANCE}</p>
+        <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{QUALITY_GATES_PROVENANCE}</p>
       </Section>
     </div>
   );

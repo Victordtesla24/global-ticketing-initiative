@@ -31,7 +31,7 @@ export default function MarketOpportunityContent() {
         population-scale context, not diaspora demand.
       </p>
 
-      <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+      <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
         Each cost below says where its figure came from: money already spent, a price the vendor publishes, or a
         calculation from those with the working shown. Official statistics carry their source lines. FX: RBA,
         21 Aug 2026.
@@ -48,8 +48,8 @@ export default function MarketOpportunityContent() {
                 <Landmark className="h-4 w-4 text-primary" />
                 <p className="font-marquee text-xs font-bold uppercase tracking-[0.16em] text-foreground">{c?.title}</p>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground">{c?.body ?? ''}</p>
-              <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-primary/80">Source: {c?.source}</p>
+              <p className="text-[15px] leading-relaxed text-muted-foreground">{c?.body ?? ''}</p>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-primary/80">Source: {c?.source}</p>
             </GlassCard>
           ))}
         </div>
@@ -79,21 +79,21 @@ export default function MarketOpportunityContent() {
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10">
                     <Database className="h-4 w-4 text-primary" />
                   </span>
-                  <p className="font-marquee text-[13px] font-bold uppercase leading-tight tracking-[0.1em] text-foreground">{p?.pillar}</p>
+                  <p className="font-marquee text-[15px] font-bold uppercase leading-tight tracking-[0.1em] text-foreground">{p?.pillar}</p>
                 </div>
                 <div className="space-y-3 text-[12.5px] leading-relaxed">
                   <div>
-                    <p className="mb-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/70">What is required</p>
+                    <p className="mb-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/70">What is required</p>
                     <p className="text-muted-foreground">{p?.required}</p>
                   </div>
                   <div>
-                    <p className="mb-0.5 flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/70">
+                    <p className="mb-0.5 flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/70">
                       <ShoppingCart className="h-3 w-3" /> How to acquire it
                     </p>
                     <p className="text-muted-foreground">{p?.acquire ?? ''}</p>
                   </div>
                   <div className="rounded-lg border border-primary/25 bg-primary/5 p-2.5">
-                    <p className="mb-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/80">Business outcome</p>
+                    <p className="mb-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary/80">Business outcome</p>
                     <p className="text-foreground/85">{p?.outcome ?? ''}</p>
                   </div>
                 </div>
@@ -111,12 +111,12 @@ export default function MarketOpportunityContent() {
             <GlassCard key={m?.slug} className="flex h-full flex-col">
               <div className="flex items-center justify-between">
                 <p className="font-marquee text-lg font-bold uppercase tracking-wide text-foreground">{m?.name}</p>
-                <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">{m?.shortName}</span>
+                <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">{m?.shortName}</span>
               </div>
               <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{m?.status}</p>
               <p className="mt-3 text-sm font-semibold text-primary">{m?.heroStat ?? ''}</p>
-              <p className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">Source: {m?.heroStatSource}</p>
-              <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground line-clamp-4">{m?.evidence ?? ''}</p>
+              <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Source: {m?.heroStatSource}</p>
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted-foreground line-clamp-4">{m?.evidence ?? ''}</p>
               <Link href={`/markets/${m?.slug}`} className="mt-4 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary hover:underline">
                 Full Market Deep-Dive <ArrowRight className="ml-1 h-3 w-3" />
               </Link>
@@ -148,10 +148,10 @@ export default function MarketOpportunityContent() {
             <div className="space-y-3">
               {(TOP5_MITIGATIONS ?? []).map((r: any) => (
                 <div key={r?.rank} className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10 font-marquee text-[11px] font-bold text-primary">{r?.rank}</span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10 font-marquee text-[12px] font-bold text-primary">{r?.rank}</span>
                   <div>
-                    <p className="text-[13px] font-semibold text-foreground">{r?.risk}</p>
-                    <p className="text-[12px] leading-snug text-muted-foreground">{r?.mitigation}</p>
+                    <p className="text-[15px] font-semibold text-foreground">{r?.risk}</p>
+                    <p className="text-[13px] leading-snug text-muted-foreground">{r?.mitigation}</p>
                   </div>
                 </div>
               ))}
@@ -162,7 +162,7 @@ export default function MarketOpportunityContent() {
           </GlassCard>
 
           <div className="flex flex-col gap-4 lg:col-span-3">
-            <p className="text-[13px] leading-relaxed text-muted-foreground">{DECISION_FRAMEWORK_INTRO}</p>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">{DECISION_FRAMEWORK_INTRO}</p>
             {(STRATEGIC_OPTIONS ?? []).map((o: any) => (
               <GlassCard
                 key={o?.key}
@@ -173,13 +173,13 @@ export default function MarketOpportunityContent() {
                     Option {o?.key} — {o?.name}
                   </p>
                   {o?.recommended ? (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/50 bg-primary/15 px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-primary/50 bg-primary/15 px-3 py-0.5 text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
                       <CheckCircle2 className="h-3 w-3" /> Recommended
                     </span>
                   ) : null}
                 </div>
                 <p className="mt-1 text-xs font-semibold text-primary/90">{o?.investment ?? ''}</p>
-                <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{o?.detail}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{o?.detail}</p>
                 <p className="mt-2 text-[12.5px] leading-relaxed text-foreground/75">{o?.assessment ?? ''}</p>
               </GlassCard>
             ))}

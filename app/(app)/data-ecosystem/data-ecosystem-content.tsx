@@ -109,7 +109,7 @@ export default function DataEcosystemContent() {
         payment model, published annual cost and recommendation strength.
       </p>
 
-      <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+      <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
         Vendor prices are quoted in the currency the vendor publishes; one FX rate everywhere: RBA, 21 Aug 2026 — USD
         0.7145 per A$1.
       </p>
@@ -138,7 +138,7 @@ export default function DataEcosystemContent() {
       </div>
 
       <Section eyebrow="Interactive Matrix" title="The 60-Provider Catalogue" className="mt-12">
-        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           14 of the 60 catalogued providers carry no URL. The original package shipped 15; Statistics Canada&apos;s
           table (row 18) has since been verified and given a live URL, which is the whole of the difference — the 15
           of 60 recorded on the Adversarial Review page is the count as shipped, and is correct as stated there. Where a
@@ -154,7 +154,7 @@ export default function DataEcosystemContent() {
                 key={c}
                 type="button"
                 onClick={() => setCat(c)}
-                className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors ${
+                className={`rounded-full border px-3 py-1 text-[12px] font-semibold uppercase tracking-wider transition-colors ${
                   cat === c ? 'border-primary/60 bg-primary/20 text-primary' : 'border-border text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -163,8 +163,8 @@ export default function DataEcosystemContent() {
             ))}
           </div>
           <div className="mt-4">
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Country Coverage
+            <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Coverage Includes
             </p>
             <div className="flex flex-wrap gap-2">
               {(['All', ...COUNTRY_FILTERS] as const).map((c) => (
@@ -172,29 +172,29 @@ export default function DataEcosystemContent() {
                   key={c}
                   type="button"
                   onClick={() => setCountry(c)}
-                  className={`rounded-md border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider ${
+                  className={`rounded-md border px-3 py-1 text-[12px] font-semibold uppercase tracking-wider ${
                     country === c ? 'border-primary/60 bg-primary/20 text-primary' : 'border-border text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {c === 'All' ? 'All Countries' : c}
+                  {c === 'All' ? 'Any' : c}
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
+            <p className="mt-2 text-[12px] leading-snug text-muted-foreground/70">
               A country tag records where a source has coverage — not that it evidences demand in that market.
               &quot;Global&quot; is its own tag: a global source is not thereby an AU, UK, US, CA or EU source.
             </p>
           </div>
           <div className="mt-4 grid gap-5 md:grid-cols-3">
             <div>
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Payment Model</p>
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">Payment Model</p>
               <div className="flex flex-wrap gap-2">
                 {(['All', 'Paid', 'Free', 'Other'] as const).map((p) => (
                   <button
                     key={p}
                     type="button"
                     onClick={() => setPayment(p)}
-                    className={`rounded-md border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider ${
+                    className={`rounded-md border px-3 py-1 text-[12px] font-semibold uppercase tracking-wider ${
                       payment === p ? 'border-primary/60 bg-primary/20 text-primary' : 'border-border text-muted-foreground hover:text-foreground'
                     }`}
                   >
@@ -204,25 +204,25 @@ export default function DataEcosystemContent() {
               </div>
             </div>
             <div>
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
                 Published Annual Cost: AUD {(costRange?.[0] ?? 0).toLocaleString('en-AU')} – {(costRange?.[1] ?? COST_CAP).toLocaleString('en-AU')}
                 <Tag tag="DERIVED" />
               </p>
               <Slider value={costRange} min={0} max={COST_CAP} step={100} onValueChange={(v: number[]) => setCostRange(v ?? [0, COST_CAP])} />
-              <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
+              <p className="mt-2 text-[12px] leading-snug text-muted-foreground/70">
                 The bound is the catalogue&apos;s own highest published annual price, not a budget
                 ceiling: A${COST_CAP.toLocaleString('en-AU')} = the published US$1,499/mo Enterprise tier of row 29,
                 on the annual commitment that vendor requires, &times; 12 &divide; 0.7145. No published tier in the
                 catalogue annualises above it. Quote-only providers carry no bound, and are governed by the
                 checkbox below rather than by this slider.
               </p>
-              <label className="mt-2 flex items-center gap-2 text-[11px] text-muted-foreground">
+              <label className="mt-2 flex items-center gap-2 text-[12px] text-muted-foreground">
                 <input type="checkbox" checked={includeUnpriced} onChange={(e) => setIncludeUnpriced(e?.target?.checked ?? true)} className="accent-[#C9A84C]" />
                 Include quote-only, internal and unpriced sources
               </label>
             </div>
             <div>
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Minimum Recommendation: {minRec}★</p>
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">Minimum Recommendation: {minRec}★</p>
               <Slider value={[minRec]} min={1} max={5} step={1} onValueChange={(v: number[]) => setMinRec(v?.[0] ?? 1)} />
               <div className="relative mt-3">
                 <Search className="absolute left-2.5 top-2 h-3.5 w-3.5 text-muted-foreground" />
@@ -240,6 +240,7 @@ export default function DataEcosystemContent() {
 
         <p className="mb-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
           Showing <span className="text-primary font-semibold">{filtered?.length ?? 0}</span> of 60 providers
+          {country !== 'All' ? ` — coverage includes ${country}` : ''}
         </p>
 
         {(filtered?.length ?? 0) === 0 ? (
@@ -257,17 +258,17 @@ export default function DataEcosystemContent() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-sm font-bold text-foreground">{p?.id}. {p?.name}</p>
-                    <p className="mt-0.5 text-[11px] uppercase tracking-wider text-muted-foreground">
+                    <p className="mt-0.5 text-[12px] uppercase tracking-wider text-muted-foreground">
                       {p?.category} · {CATEGORY_LABELS?.[p?.category] ?? ''} · {p?.paid}
                     </p>
                     <p className="mt-1 flex flex-wrap items-center gap-1">
-                      <span className="inline-flex items-center rounded border border-border bg-secondary/40 px-1.5 py-px font-mono text-[10px] font-semibold uppercase tracking-wider text-foreground/70">
+                      <span className="inline-flex items-center rounded border border-border bg-secondary/40 px-1.5 py-px font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/70">
                         {p?.trustTier}
                       </span>
                       {(p?.countries ?? []).map((c) => (
                         <span
                           key={c}
-                          className="inline-flex items-center rounded border border-primary/30 bg-primary/10 px-1.5 py-px font-mono text-[10px] font-semibold uppercase tracking-wider text-primary/80"
+                          className="inline-flex items-center rounded border border-primary/30 bg-primary/10 px-1.5 py-px font-mono text-[11px] font-semibold uppercase tracking-wider text-primary/80"
                         >
                           {c}
                         </span>
@@ -280,10 +281,10 @@ export default function DataEcosystemContent() {
                     ))}
                   </div>
                 </div>
-                <p className="mt-2 text-[12px] leading-snug text-muted-foreground">{p?.coverage ?? ''}</p>
-                <p className="mt-1.5 text-[12px] font-semibold text-primary">Cost: {p?.costLabel ?? '—'}</p>
+                <p className="mt-2 text-[13px] leading-snug text-muted-foreground">{p?.coverage ?? ''}</p>
+                <p className="mt-1.5 text-[13px] font-semibold text-primary">Cost: {p?.costLabel ?? '—'}</p>
                 {expanded === p?.id ? (
-                  <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 border-t border-border/50 pt-3 text-[11px] text-muted-foreground">
+                  <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 border-t border-border/50 pt-3 text-[12px] text-muted-foreground">
                     <p><span className="text-foreground/70 font-semibold">Quality:</span> {p?.quality ?? '—'}</p>
                     <p><span className="text-foreground/70 font-semibold">Refresh:</span> {p?.refresh || '—'}</p>
                     <p><span className="text-foreground/70 font-semibold">GDPR:</span> {p?.gdpr ?? '—'}</p>
@@ -306,7 +307,7 @@ export default function DataEcosystemContent() {
                     ) : null}
                   </div>
                 ) : (
-                  <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-muted-foreground/60">Click for full assessment</p>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground/60">Click for full assessment</p>
                 )}
               </GlassCard>
             ))}
@@ -318,7 +319,7 @@ export default function DataEcosystemContent() {
       <OrnamentDivider />
 
       <Section eyebrow="Data Budget" title="Year-1 Data Budget — the Day-1 Bill of Materials">
-        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Every line in the table below is a vendor-published price or A$0, expressed as a multiple of the
           A$830.00 of actual spend to date. A free official or intergovernmental source is shown at its own published
           price of zero, not as a spend line: the whole of the actual spend is A$350.00 + A$480.00 = A$830.00. Two
@@ -336,7 +337,7 @@ export default function DataEcosystemContent() {
             b?.multiple ?? '',
           ])}
         />
-        <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Premium contracts — Nielsen, Kantar, Euromonitor, GWI, Bloomberg and the rest of the rows above that carry
           no price — are not deferred on price. They are unpriced: no published price exists and no written quote is
           on file. Any future line item citing one must first obtain a written quote. Claritas and Geocodio are
@@ -348,7 +349,7 @@ export default function DataEcosystemContent() {
           cell. The two are not reconciled, and the programme sponsor owns closing that gap. Nothing funded rests
           on it: no gate line buys Claritas at any tier.
         </p>
-        <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           P2 is priced from Statista&apos;s own published tier, US$199/mo billed annually (= US$2,388/yr, calculated:
           199 × 12 — the annual figure is an annualisation, not a price the vendor publishes). The catalogue row
           above prices the Personal tier at the vendor&apos;s published US$649/mo billed annually. An earlier costing
@@ -361,7 +362,7 @@ export default function DataEcosystemContent() {
       </Section>
 
       <Section eyebrow="Historical Depth" title="How Many Years of Each Data Type to Buy — and What an Extra Year Is Worth">
-        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Each recommended history below is the depth this proposal assumes, and the Data lead confirms it at gate G1,
           before the first paid data purchase order is raised. The cost cells come from the published prices above, or
           are calculated from them; nothing in this table is an estimate. The
@@ -379,7 +380,7 @@ export default function DataEcosystemContent() {
             h?.marginalValue ?? '',
           ])}
         />
-        <p className="mt-3 max-w-4xl text-[11px] leading-relaxed text-muted-foreground/60">
+        <p className="mt-3 max-w-4xl text-[12px] leading-relaxed text-muted-foreground/60">
 Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — first release June 2027, with
           LANP/BPLP/ANCP as first-release items); ABS Cultural and creative activities 2021-22 header &quot;Next
           release Unknown&quot;; Eurostat ilc_scp03 — the EU-SILC module, roughly 6-yearly, 2022 latest, next planned
@@ -400,15 +401,15 @@ Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — fi
                 <ListOrdered className="h-4 w-4 text-primary/70" />
                 <p className="t-eyebrow">{s?.timing}</p>
               </div>
-              <p className="text-[13px] leading-relaxed text-muted-foreground">{s?.action ?? ''}</p>
-              <p className="mt-2 text-[11px] leading-snug text-amber-300/80"><span className="font-semibold uppercase tracking-wider">Gate:</span> {s?.rule}</p>
+              <p className="text-[15px] leading-relaxed text-muted-foreground">{s?.action ?? ''}</p>
+              <p className="mt-2 text-[12px] leading-snug text-amber-300/80"><span className="font-semibold uppercase tracking-wider">Gate:</span> {s?.rule}</p>
             </GlassCard>
           ))}
         </div>
       </Section>
 
       <Section eyebrow="What the Data Buys" title="What the Data Buys">
-        <p className="mb-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mb-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           What the data buys, on the evidence:
         </p>
         <div className="grid gap-4 md:grid-cols-2">
@@ -419,8 +420,8 @@ Cadence sources: ABS 2026 Census topics and data release plan (abs.gov.au — fi
                 <p className="t-eyebrow">{ins?.category}</p>
               </div>
               <p className="text-sm font-semibold text-foreground">{ins?.insight}</p>
-              <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">{ins?.impact ?? ''}</p>
-              <p className="mt-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">Basis: {ins?.basis}</p>
+              <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted-foreground">{ins?.impact ?? ''}</p>
+              <p className="mt-3 text-[11px] uppercase tracking-wider text-muted-foreground/70">Basis: {ins?.basis}</p>
             </GlassCard>
           ))}
         </div>

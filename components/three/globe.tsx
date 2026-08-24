@@ -316,11 +316,13 @@ export default function Globe() {
           <p className="font-marquee text-xs font-bold uppercase tracking-[0.14em] text-primary">
             {hover.market} — {hover.city}
           </p>
-          <p className="mt-1 text-[12px] leading-snug text-foreground/85">{hover.stat}</p>
-          <p className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">Source: {hover.source}</p>
+          <p className="mt-1 text-[13px] leading-snug text-foreground/85">{hover.stat}</p>
+          <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Source: {hover.source}</p>
         </div>
       ) : null}
-      <p className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
+      {/* Held on one line where there is room; on a phone it wraps instead of
+          running 499px wide and dragging the whole document sideways. */}
+      <p className="absolute bottom-2 left-1/2 w-[92%] -translate-x-1/2 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground/70 sm:w-auto sm:whitespace-nowrap">
         Drag to rotate — hover gold markers for market evidence
       </p>
     </div>

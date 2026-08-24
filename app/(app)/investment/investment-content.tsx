@@ -22,7 +22,7 @@ export default function InvestmentContent() {
         actually buy, and the revenue identity, with every variable named and its confirmer stated.
       </p>
 
-      <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+      <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
         All figures AUD; source-currency prices are shown with their conversion. One figure sits outside the usual
         pattern of actual spend, published price and calculation: a salary band compiled by an aggregator is not a
         published price, so it is labelled{' '}
@@ -160,7 +160,7 @@ export default function InvestmentContent() {
         </p>
       </Section>
 
-      <p className="mt-10 border-t border-border/40 pt-6 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60">
+      <p className="mt-10 border-t border-border/40 pt-6 text-center text-[12px] uppercase tracking-[0.2em] text-muted-foreground/60">
         AB Entertainment · Section 05 · All figures AUD · Australian English · Confidential
       </p>
     </div>

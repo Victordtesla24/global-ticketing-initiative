@@ -31,7 +31,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
             <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center">
               <span className="absolute inline-flex h-12 w-12 rounded-full border border-primary/25" aria-hidden />
               <span className="absolute inline-flex h-12 w-12 animate-ping rounded-full bg-primary/10 [animation-duration:3s]" aria-hidden />
-              <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-primary/70 bg-background font-marquee text-[12px] font-black text-primary shadow-[0_0_18px_rgba(201,168,76,0.25)]">
+              <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-primary/70 bg-background font-marquee text-[13px] font-black text-primary shadow-[0_0_18px_rgba(201,168,76,0.25)]">
                 {m?.marker}
               </span>
             </div>
@@ -39,7 +39,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
             <div className="glass-card rounded-xl border border-border/60 p-5 transition-colors hover:border-primary/40">
               <div className="mb-2 flex flex-wrap items-center gap-3">
                 <p className="font-marquee text-base font-bold uppercase tracking-wide text-primary">{m?.title}</p>
-                <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-primary">
                   {m?.period}
                 </span>
               </div>

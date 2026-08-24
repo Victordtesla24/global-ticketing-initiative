@@ -32,7 +32,7 @@ export default function RecommendationsContent() {
             </motion.div>
           ))}
         </div>
-        <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-muted-foreground/60">{EXECUTION_PROVENANCE}</p>
+        <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground/60">{EXECUTION_PROVENANCE}</p>
       </Section>
 
       <OrnamentDivider />
@@ -92,7 +92,7 @@ export default function RecommendationsContent() {
           <Flag className="mx-auto mb-3 h-6 w-6 text-primary" />
           <p className="font-marquee text-xl font-bold uppercase tracking-wide text-primary">Disciplined Capital, Staged Growth</p>
           <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{CLOSING_STATEMENT}</p>
-          <p className="mx-auto mt-3 max-w-2xl border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{CLOSING_PROVENANCE}</p>
+          <p className="mx-auto mt-3 max-w-2xl border-t border-border/40 pt-2 text-[12px] leading-relaxed text-muted-foreground/60">{CLOSING_PROVENANCE}</p>
         </GlassCard>
       </Section>
     </div>

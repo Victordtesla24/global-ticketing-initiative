@@ -116,7 +116,7 @@ export default function ExecutiveSummaryContent() {
         </div>
       </motion.div>
 
-      <p className="mb-14 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+      <p className="mb-14 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
         All figures AUD. Costs are shown as actual spend, a vendor-published price, or a figure calculated from one of
         those, with the working given.
       </p>
@@ -159,8 +159,8 @@ export default function ExecutiveSummaryContent() {
                     <span className="font-marquee text-2xl font-black text-primary/40">{o.n}</span>
                   </div>
                   <p className="font-marquee text-base font-bold uppercase tracking-wide text-foreground">{o.title}</p>
-                  <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{o.detail}</p>
-                  <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">{o.provenance}</p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{o.detail}</p>
+                  <p className="mt-3 border-t border-border/40 pt-2 text-[12px] leading-relaxed text-muted-foreground/60">{o.provenance}</p>
                 </GlassCard>
               </motion.div>
             );
@@ -183,8 +183,8 @@ export default function ExecutiveSummaryContent() {
               <p className="t-eyebrow">{r.order}</p>
               <p className="mt-1 font-marquee text-lg font-bold uppercase tracking-wide text-foreground">{r.title}</p>
               <p className="mt-2 text-sm font-semibold text-primary">{r.gate}</p>
-              <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted-foreground">{r.detail}</p>
-              <p className="mt-3 border-t border-border/40 pt-2 text-[11px] leading-relaxed text-muted-foreground/60">
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted-foreground">{r.detail}</p>
+              <p className="mt-3 border-t border-border/40 pt-2 text-[12px] leading-relaxed text-muted-foreground/60">
                 {r.provenance}
               </p>
             </GlassCard>
@@ -226,7 +226,7 @@ export default function ExecutiveSummaryContent() {
         </p>
       </Section>
 
-      <p className="mt-10 border-t border-border/40 pt-6 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60">
+      <p className="mt-10 border-t border-border/40 pt-6 text-center text-[12px] uppercase tracking-[0.2em] text-muted-foreground/60">
         AB Entertainment · Prepared for C-Suite Review · All figures AUD · Australian English · Confidential
       </p>
     </div>

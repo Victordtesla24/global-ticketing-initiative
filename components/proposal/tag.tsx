@@ -48,7 +48,7 @@ export function Tag({ tag, className }: { tag: ProvenanceTag; className?: string
   return (
     <span
       className={cn(
-        'mx-0.5 inline-flex items-center whitespace-nowrap rounded border px-1.5 py-px align-middle text-[10px] font-semibold tracking-wide',
+        'mx-0.5 inline-flex items-center whitespace-nowrap rounded border px-1.5 py-px align-middle text-[11px] font-semibold tracking-wide',
         TAG_STYLES[tag] ?? TAG_STYLES.LIST,
         className
       )}

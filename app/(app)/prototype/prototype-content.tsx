@@ -1,8 +1,8 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
 import {
   Search,
   Filter,
@@ -14,7 +14,6 @@ import {
   Workflow,
   Coins,
   Gauge,
-  ChevronDown,
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
@@ -43,6 +42,31 @@ const MODES: (DatasetMode | 'All')[] = ['All', 'REAL', 'SYNTHETIC'];
 
 const STEP_ICONS = [Users, Ticket, Workflow, Coins, Gauge];
 
+/* ------------------------------------------------------- curtain reveal */
+
+/* Each part of the walkthrough is unveiled top-to-bottom behind a clip edge
+   that travels down over it, carried on a short descent and a decelerating
+   ease — a curtain dropping rather than a fade-in. The rail draws itself from
+   the left first, then the five markers fall one after another, then the panel
+   beneath them. Every element animates on its own timing, so the section
+   assembles rather than appearing all at once. */
+const CURTAIN_EASE = [0.22, 1, 0.36, 1] as const;
+
+const curtainStage = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.12 } },
+};
+
+const curtainDrop = {
+  hidden: { opacity: 0, y: -24, clipPath: 'inset(0% 0% 100% 0%)' },
+  show: {
+    opacity: 1,
+    y: 0,
+    clipPath: 'inset(0% 0% 0% 0%)',
+    transition: { duration: 0.62, ease: CURTAIN_EASE },
+  },
+};
+
 /* ---------------------------------------------------------------- badges */
 
 function ModeBadge({ mode, className }: { mode: DatasetMode; className?: string }) {
@@ -51,7 +75,7 @@ function ModeBadge({ mode, className }: { mode: DatasetMode; className?: string 
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[10px] font-semibold tracking-wide',
+        'inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[11px] font-semibold tracking-wide',
         real
           ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
           : 'border-amber-500/40 bg-amber-500/10 text-amber-400',
@@ -70,7 +94,7 @@ function CountryTags({ countries }: { countries: ProviderCountry[] }) {
       {(countries ?? []).map((c) => (
         <span
           key={c}
-          className="inline-flex items-center rounded border border-primary/30 bg-primary/10 px-1.5 py-px font-mono text-[10px] font-semibold uppercase tracking-wider text-primary/80"
+          className="inline-flex items-center rounded border border-primary/30 bg-primary/10 px-1.5 py-px font-mono text-[11px] font-semibold uppercase tracking-wider text-primary/80"
         >
           {c}
         </span>
@@ -81,7 +105,7 @@ function CountryTags({ countries }: { countries: ProviderCountry[] }) {
 
 function DownloadPair({ slug }: { slug: string }) {
   const cls =
-    'inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-foreground/80 transition-colors hover:border-primary/60 hover:bg-primary/10 hover:text-primary';
+    'inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80 transition-colors hover:border-primary/60 hover:bg-primary/10 hover:text-primary';
   return (
     <span className="flex gap-1.5">
       <a href={csvHref(slug)} download className={cls}>
@@ -104,7 +128,7 @@ function StepDataTable({ table }: { table: StepTable }) {
     <div className="mt-4">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <ModeBadge mode={table?.mode ?? 'SYNTHETIC'} />
-        <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{table?.caption}</p>
+        <p className="text-[12px] uppercase tracking-[0.14em] text-muted-foreground">{table?.caption}</p>
       </div>
       <div className="overflow-x-auto rounded-xl border border-border/60">
         <table className="w-full text-sm">
@@ -113,7 +137,7 @@ function StepDataTable({ table }: { table: StepTable }) {
               {(table?.headers ?? []).map((h: string, i: number) => (
                 <th
                   key={i}
-                  className="whitespace-nowrap px-3 py-2.5 text-left font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary"
+                  className="whitespace-nowrap px-3 py-2.5 text-left font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary"
                 >
                   {h}
                 </th>
@@ -149,7 +173,7 @@ function StepDataTable({ table }: { table: StepTable }) {
         </table>
       </div>
       {table?.note ? (
-        <p className="mt-2 text-[11.5px] leading-relaxed text-muted-foreground/80">{table.note}</p>
+        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground/80">{table.note}</p>
       ) : null}
     </div>
   );
@@ -160,11 +184,11 @@ function SourceChip({ slug, label, mode, role }: { slug: string; label: string; 
   return (
     <div className="rounded-lg border border-border/60 bg-secondary/20 p-3">
       <div className="flex flex-wrap items-center gap-2">
-        <p className="text-[13px] font-bold text-foreground">{label}</p>
+        <p className="text-[15px] font-bold text-foreground">{label}</p>
         {/* The manifest is the file index, not a publisher extract — it carries neither label. */}
         {downloadable ? <ModeBadge mode={mode} /> : null}
       </div>
-      <p className="mt-1.5 text-[12px] leading-snug text-muted-foreground">{role}</p>
+      <p className="mt-1.5 text-[13px] leading-snug text-muted-foreground">{role}</p>
       <div className="mt-2.5">
         {downloadable ? (
           <DownloadPair slug={slug} />
@@ -172,7 +196,7 @@ function SourceChip({ slug, label, mode, role }: { slug: string; label: string; 
           <a
             href="/sample-data/manifest.json"
             download
-            className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-foreground/80 transition-colors hover:border-primary/60 hover:bg-primary/10 hover:text-primary"
+            className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80 transition-colors hover:border-primary/60 hover:bg-primary/10 hover:text-primary"
           >
             <FileJson className="h-3 w-3 shrink-0" />
             manifest.json
@@ -187,8 +211,8 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
   const next = WALKTHROUGH.find((s) => s?.n === (step?.n ?? 0) + 1);
   return (
     <div className="border-t border-border/40 pt-5">
-      <p className="max-w-3xl text-[14px] font-semibold leading-relaxed text-foreground/90">{step?.question}</p>
-      <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">{step?.what}</p>
+      <p className="max-w-3xl text-[16px] font-semibold leading-relaxed text-foreground/90">{step?.question}</p>
+      <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">{step?.what}</p>
 
       <p className="t-eyebrow mt-6 mb-2">Datasets feeding this step</p>
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -206,13 +230,13 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
           <p className="t-eyebrow mb-2">Reconciliation controls — every line re-addable from the two files above</p>
           {step?.checksHeader ? (
             <div className="mb-1.5 flex flex-col gap-1 px-3 sm:flex-row sm:items-center sm:gap-4">
-              <span className="shrink-0 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:w-48">
+              <span className="shrink-0 font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary sm:w-48">
                 {step.checksHeader.label}
               </span>
-              <span className="min-w-0 flex-1 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
+              <span className="min-w-0 flex-1 font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary">
                 {step.checksHeader.result}
               </span>
-              <span className="shrink-0 font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:w-36 sm:text-right">
+              <span className="shrink-0 font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary sm:w-36 sm:text-right">
                 {step.checksHeader.variance}
               </span>
             </div>
@@ -225,14 +249,14 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
               >
                 <span className="flex shrink-0 items-start gap-1.5 sm:w-48">
                   <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-400" />
-                  <span className="text-[12px] font-semibold uppercase tracking-wider text-emerald-300/90">
+                  <span className="text-[13px] font-semibold uppercase tracking-wider text-emerald-300/90">
                     {c?.label}
                   </span>
                 </span>
-                <span className="min-w-0 flex-1 break-words font-mono text-[12px] leading-snug text-foreground/85">
+                <span className="min-w-0 flex-1 break-words font-mono text-[13px] leading-snug text-foreground/85">
                   {c?.result}
                 </span>
-                <span className="shrink-0 font-mono text-[11px] uppercase tracking-wider text-emerald-400/80 sm:w-36 sm:text-right">
+                <span className="shrink-0 font-mono text-[12px] uppercase tracking-wider text-emerald-400/80 sm:w-36 sm:text-right">
                   {c?.variance}
                 </span>
               </div>
@@ -248,19 +272,19 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
             {step.dashboards.map((d) => (
               <div key={d?.name} className="flex h-full flex-col rounded-xl border border-border/60 bg-secondary/20 p-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-marquee text-[13px] font-bold uppercase tracking-wide text-primary">{d?.name}</p>
+                  <p className="font-marquee text-[15px] font-bold uppercase tracking-wide text-primary">{d?.name}</p>
                   <ModeBadge mode={d?.mode ?? 'SYNTHETIC'} />
                 </div>
                 <div className="mt-3 flex-1 space-y-2">
                   {(d?.kpis ?? []).map((k) => (
                     <div key={k?.metric} className="border-b border-border/30 pb-2 last:border-0 last:pb-0">
-                      <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{k?.metric}</p>
+                      <p className="text-[12px] uppercase tracking-wider text-muted-foreground">{k?.metric}</p>
                       <p className="font-marquee text-lg font-bold leading-tight text-foreground">{k?.value ?? ''}</p>
-                      <p className="text-[11px] leading-snug text-muted-foreground/70">{k?.basis}</p>
+                      <p className="text-[12px] leading-snug text-muted-foreground/70">{k?.basis}</p>
                     </div>
                   ))}
                 </div>
-                <p className="mt-3 border-t border-border/40 pt-2.5 text-[11px] leading-snug text-muted-foreground">
+                <p className="mt-3 border-t border-border/40 pt-2.5 text-[12px] leading-snug text-muted-foreground">
                   <span className="font-semibold uppercase tracking-wider text-foreground/70">Certified by: </span>
                   {d?.certifies}
                 </p>
@@ -287,7 +311,7 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
       </div>
 
       <div className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/[0.05] p-3.5">
-        <p className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-300">
+        <p className="mb-1 flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-amber-300">
           <AlertTriangle className="h-3.5 w-3.5" />
           The limit of this step
         </p>
@@ -298,7 +322,7 @@ function StepPanel({ step, onNext }: { step: WalkStep; onNext?: () => void }) {
         <button
           type="button"
           onClick={onNext}
-          className="mt-5 inline-flex items-center gap-2 rounded-lg border border-primary/50 bg-primary/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary/20"
+          className="mt-5 inline-flex items-center gap-2 rounded-lg border border-primary/50 bg-primary/10 px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary/20"
         >
           Step {String(next.n).padStart(2, '0')} — {next.title}
           <ArrowRight className="h-3.5 w-3.5" />
@@ -316,6 +340,25 @@ export default function PrototypeContent() {
   const [country, setCountry] = useState<ProviderCountry | 'All'>('All');
   const [cat, setCat] = useState<ProviderCategory | 'All'>('All');
   const [activeStep, setActiveStep] = useState<number>(1);
+  const reduceMotion = useReducedMotion();
+
+  // The curtain plays when the walkthrough comes into view. `revealed` latches
+  // on and never returns to false, and a timer arms it regardless — an observer
+  // that never fires (a jump-scroll straight past the section, a restored
+  // scroll position, a browser without IntersectionObserver) must never be able
+  // to leave the section sitting there invisible.
+  const walkRef = useRef<HTMLDivElement>(null);
+  const walkInView = useInView(walkRef, { once: true, amount: 0.15 });
+  const [revealed, setRevealed] = useState(false);
+  useEffect(() => {
+    if (walkInView) {
+      setRevealed(true);
+      return;
+    }
+    const t = setTimeout(() => setRevealed(true), 4000);
+    return () => clearTimeout(t);
+  }, [walkInView]);
+  const shown = reduceMotion || revealed;
 
   const filtered = useMemo(() => {
     return (PROTOTYPE_DATASETS ?? []).filter((d: PrototypeDataset) => {
@@ -337,9 +380,11 @@ export default function PrototypeContent() {
   );
 
   const goto = (n: number) => {
-    setActiveStep(n);
+    // Clamp so the last step's "next" cannot select a step that does not exist.
+    const total = (WALKTHROUGH ?? []).length || 1;
+    setActiveStep(Math.min(Math.max(n, 1), total));
     if (typeof document !== 'undefined') {
-      document.getElementById(`walk-step-${n}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('walk-viz')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -353,7 +398,7 @@ export default function PrototypeContent() {
         A working prototype of the data programme on sample data — Australia first. Every dataset below is downloadable
         for analyst validation.
       </p>
-      <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+      <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
         Sixty datasets, one per catalogued provider, each shipped as a matched CSV and JSON pair — 120 files, 601 rows.
         Fifteen are real extracts taken from the named publisher, carrying a source URL and an access date on every
         row. The other forty-five are synthetic samples that mirror each provider&apos;s published field specification
@@ -395,7 +440,7 @@ export default function PrototypeContent() {
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <ModeBadge mode="REAL" />
-            <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
               Real extract. Taken from the publisher named in the file, on the access date recorded in the file. Every
               row carries <span className="font-mono text-foreground/80">source_url</span> and{' '}
               <span className="font-mono text-foreground/80">access_date</span>, so any figure can be traced back to its
@@ -404,7 +449,7 @@ export default function PrototypeContent() {
           </div>
           <div>
             <ModeBadge mode="SYNTHETIC" />
-            <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
               Synthetic sample — mirrors provider spec. Field names follow the provider&apos;s own published data
               specification; every value is an illustrative mock figure. Not licensed vendor data, not a Ticketalay
               record, and never evidence of demand, supply or revenue in any market.
@@ -414,7 +459,7 @@ export default function PrototypeContent() {
       </GlassCard>
 
       <Section eyebrow="Downloadable Sample Set" title="All 60 Datasets" className="mt-12">
-        <p className="mb-4 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Search and filter the set, then download any dataset in either format. The catalogue entry behind each row —
           cost, trust tier, refresh cadence and full assessment — lives on the{' '}
           <Link href="/data-ecosystem" className="text-primary hover:underline">
@@ -431,7 +476,7 @@ export default function PrototypeContent() {
                 key={m}
                 type="button"
                 onClick={() => setMode(m)}
-                className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors ${
+                className={`rounded-full border px-3 py-1 text-[12px] font-semibold uppercase tracking-wider transition-colors ${
                   mode === m
                     ? 'border-primary/60 bg-primary/20 text-primary'
                     : 'border-border text-muted-foreground hover:text-foreground'
@@ -443,7 +488,7 @@ export default function PrototypeContent() {
           </div>
 
           <div className="mt-4">
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
               Country Coverage
             </p>
             <div className="flex flex-wrap gap-2">
@@ -452,7 +497,7 @@ export default function PrototypeContent() {
                   key={c}
                   type="button"
                   onClick={() => setCountry(c)}
-                  className={`rounded-md border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors ${
+                  className={`rounded-md border px-3 py-1 text-[12px] font-semibold uppercase tracking-wider transition-colors ${
                     country === c
                       ? 'border-primary/60 bg-primary/20 text-primary'
                       : 'border-border text-muted-foreground hover:text-foreground'
@@ -462,7 +507,7 @@ export default function PrototypeContent() {
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-[11px] leading-snug text-muted-foreground/70">
+            <p className="mt-2 text-[12px] leading-snug text-muted-foreground/70">
               A country tag records where a source has coverage — not that it evidences demand in that market.
               &quot;Global&quot; is its own tag: a global source is not thereby an AU, UK, US, CA or EU source.
             </p>
@@ -470,14 +515,14 @@ export default function PrototypeContent() {
 
           <div className="mt-4 grid gap-5 md:grid-cols-[2fr_1fr]">
             <div>
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Category</p>
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">Category</p>
               <div className="flex flex-wrap gap-2">
                 {CATS.map((c) => (
                   <button
                     key={c}
                     type="button"
                     onClick={() => setCat(c)}
-                    className={`rounded-md border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors ${
+                    className={`rounded-md border px-3 py-1 text-[12px] font-semibold uppercase tracking-wider transition-colors ${
                       cat === c
                         ? 'border-primary/60 bg-primary/20 text-primary'
                         : 'border-border text-muted-foreground hover:text-foreground'
@@ -489,7 +534,7 @@ export default function PrototypeContent() {
               </div>
             </div>
             <div>
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Search</p>
+              <p className="mb-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">Search</p>
               <div className="relative">
                 <Search className="absolute left-2.5 top-2 h-3.5 w-3.5 text-muted-foreground" />
                 <input
@@ -518,18 +563,18 @@ export default function PrototypeContent() {
             headers={['Dataset', 'Category', 'Countries', 'Mode', 'Rows', 'Download']}
             rows={(filtered ?? []).map((d: PrototypeDataset) => [
               <span key="n" className="block">
-                <span className="text-[13px] font-semibold text-foreground">
+                <span className="text-[15px] font-semibold text-foreground">
                   {d?.id}. {d?.name}
                 </span>
                 <span className="mt-0.5 block font-mono text-[10.5px] text-muted-foreground/70">{d?.slug}</span>
               </span>,
-              <span key="c" className="block text-[12px] leading-snug text-muted-foreground">
+              <span key="c" className="block text-[13px] leading-snug text-muted-foreground">
                 <span className="font-semibold text-foreground/80">{d?.category}</span> ·{' '}
                 {CATEGORY_LABELS?.[d?.category] ?? ''}
               </span>,
               <CountryTags key="co" countries={d?.countries ?? []} />,
               <ModeBadge key="m" mode={d?.mode ?? 'SYNTHETIC'} />,
-              <span key="r" className="font-mono text-[12px] text-foreground/80">
+              <span key="r" className="font-mono text-[13px] text-foreground/80">
                 {d?.rows}
               </span>,
               <DownloadPair key="d" slug={d?.slug ?? ''} />,
@@ -537,7 +582,7 @@ export default function PrototypeContent() {
           />
         )}
 
-        <p className="mt-3 flex items-center gap-2 text-[12px] text-muted-foreground">
+        <p className="mt-3 flex items-center gap-2 text-[13px] text-muted-foreground">
           <Download className="h-3.5 w-3.5 shrink-0 text-primary" />
           CSV opens directly in Excel. The JSON carries the same rows plus the provider description and the
           specification note behind the sample. The index that generated this table is downloadable too —{' '}
@@ -555,102 +600,126 @@ export default function PrototypeContent() {
         title="From Census Row to Board Dashboard — on Files You Can Download"
         id="walkthrough"
       >
-        <p className="mb-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mb-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           Five steps, run on the actual rows of the files above. Each step names the datasets that feed it, shows the
           rows themselves, states what it proves at gate G1 and at gate G2, and — just as importantly — where it stops.
           Two of the five steps run on synthetic samples and are labelled illustrative throughout; they demonstrate the
           mechanism, never a result.
         </p>
 
-        <div className="relative">
-          <div
-            className="absolute bottom-6 left-[23px] top-3 w-px bg-gradient-to-b from-primary/80 via-primary/35 to-primary/10"
-            aria-hidden
-          />
-          <div className="space-y-4">
-            {(WALKTHROUGH ?? []).map((step: WalkStep, i: number) => {
-              const Icon = STEP_ICONS[i] ?? Users;
-              const open = activeStep === step?.n;
-              return (
-                <motion.div
-                  key={step?.id}
-                  id={`walk-step-${step?.n}`}
-                  className="relative pl-16 scroll-mt-24"
-                  initial={{ opacity: 0, x: -14 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.06 }}
-                >
-                  <div className="absolute left-0 top-2 flex h-12 w-12 items-center justify-center">
-                    <span className="absolute inline-flex h-12 w-12 rounded-full border border-primary/25" aria-hidden />
-                    {open ? (
-                      <span
-                        className="absolute inline-flex h-12 w-12 animate-ping rounded-full bg-primary/10 [animation-duration:3s]"
-                        aria-hidden
-                      />
-                    ) : null}
-                    <span
-                      className={cn(
-                        'relative flex h-9 w-9 items-center justify-center rounded-full border font-marquee text-[12px] font-black transition-colors',
-                        open
-                          ? 'border-primary/70 bg-primary/20 text-primary shadow-[0_0_18px_rgba(201,168,76,0.25)]'
-                          : 'border-border bg-background text-muted-foreground'
-                      )}
-                    >
-                      {String(step?.n).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  <div
-                    className={cn(
-                      'glass-card rounded-xl border p-5 transition-colors',
-                      open ? 'border-primary/40' : 'border-border/60 hover:border-primary/30'
-                    )}
+        {/* The five steps read left-to-right along one rail; selecting a node
+            opens that step's detail full-width beneath it, so the sequence stays
+            visible as a whole instead of scrolling past as a vertical stack. */}
+        <div id="walk-viz" ref={walkRef} className="scroll-mt-24">
+          <div className="relative">
+            <motion.div
+              className="absolute left-[10%] right-[10%] top-6 h-px origin-left bg-gradient-to-r from-primary/10 via-primary/45 to-primary/10"
+              initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+              animate={shown ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+              transition={{ duration: 0.8, ease: CURTAIN_EASE }}
+              aria-hidden
+            />
+            <motion.ol
+              className="relative grid grid-cols-5 gap-1 sm:gap-3"
+              variants={reduceMotion ? undefined : curtainStage}
+              initial={reduceMotion ? false : 'hidden'}
+              animate={shown ? 'show' : 'hidden'}
+            >
+              {(WALKTHROUGH ?? []).map((step: WalkStep, i: number) => {
+                const Icon = STEP_ICONS[i] ?? Users;
+                const active = activeStep === step?.n;
+                const passed = activeStep > (step?.n ?? 0);
+                return (
+                  <motion.li
+                    key={step?.id}
+                    className="min-w-0"
+                    variants={reduceMotion ? undefined : curtainDrop}
                   >
                     <button
                       type="button"
-                      onClick={() => setActiveStep(open ? 0 : (step?.n ?? 1))}
-                      aria-expanded={open}
-                      className="flex w-full items-start justify-between gap-4 text-left"
+                      onClick={() => goto(step?.n ?? 1)}
+                      aria-current={active ? 'step' : undefined}
+                      className="flex w-full flex-col items-center gap-2 text-center"
                     >
-                      <span>
-                        <span className="t-eyebrow flex items-center gap-2">
-                          <Icon className="h-3.5 w-3.5 text-primary" />
-                          {step?.eyebrow}
-                        </span>
-                        <span className="mt-1.5 block font-marquee text-base font-bold uppercase tracking-wide text-foreground md:text-lg">
-                          {step?.title}
+                      <span className="relative flex h-12 w-12 shrink-0 items-center justify-center">
+                        <span
+                          className="absolute inline-flex h-12 w-12 rounded-full border border-primary/25 bg-background"
+                          aria-hidden
+                        />
+                        {active ? (
+                          <span
+                            className="absolute inline-flex h-12 w-12 animate-ping rounded-full bg-primary/10 [animation-duration:3s]"
+                            aria-hidden
+                          />
+                        ) : null}
+                        <span
+                          className={cn(
+                            'relative flex h-9 w-9 items-center justify-center rounded-full border font-marquee text-[15px] font-black transition-colors',
+                            active
+                              ? 'border-primary/70 bg-primary/20 text-primary shadow-[0_0_18px_rgba(201,168,76,0.25)]'
+                              : passed
+                                ? 'border-primary/40 bg-primary/10 text-primary/70'
+                                : 'border-border bg-background text-muted-foreground'
+                          )}
+                        >
+                          {String(step?.n).padStart(2, '0')}
                         </span>
                       </span>
-                      <ChevronDown
+                      <span
                         className={cn(
-                          'mt-1 h-4 w-4 shrink-0 text-primary transition-transform',
-                          open ? 'rotate-180' : ''
+                          't-eyebrow hidden items-center gap-1.5 sm:flex',
+                          active ? '' : 'opacity-70'
                         )}
-                      />
+                      >
+                        <Icon className="h-3.5 w-3.5 shrink-0 text-primary" />
+                      </span>
+                      <span
+                        className={cn(
+                          'hidden font-marquee text-[15px] font-bold uppercase leading-snug tracking-wide transition-colors sm:block',
+                          active ? 'text-foreground' : 'text-muted-foreground'
+                        )}
+                      >
+                        {step?.title}
+                      </span>
                     </button>
+                  </motion.li>
+                );
+              })}
+            </motion.ol>
+          </div>
 
-                    <AnimatePresence initial={false}>
-                      {open ? (
-                        <motion.div
-                          key="body"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: 'easeOut' }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-4">
-                            <StepPanel step={step} onNext={() => goto((step?.n ?? 0) + 1)} />
-                          </div>
-                        </motion.div>
-                      ) : null}
-                    </AnimatePresence>
-                  </div>
+          <AnimatePresence mode="wait">
+            {(() => {
+              const step =
+                (WALKTHROUGH ?? []).find((s: WalkStep) => s?.n === activeStep) ?? (WALKTHROUGH ?? [])[0];
+              if (!step) return null;
+              const idx = (WALKTHROUGH ?? []).findIndex((s: WalkStep) => s?.n === step?.n);
+              const Icon = STEP_ICONS[idx] ?? Users;
+              return (
+                <motion.div
+                  key={step?.id}
+                  className="glass-card mt-6 rounded-xl border border-primary/40 p-5"
+                  initial={reduceMotion ? false : { opacity: 0, y: -16, clipPath: 'inset(0% 0% 100% 0%)' }}
+                  animate={
+                    reduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)' }
+                  }
+                  exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 10, clipPath: 'inset(0% 0% 100% 0%)' }}
+                  transition={{ duration: reduceMotion ? 0.15 : 0.52, ease: CURTAIN_EASE }}
+                >
+                  <span className="t-eyebrow flex items-center gap-2">
+                    <Icon className="h-3.5 w-3.5 text-primary" />
+                    {step?.eyebrow}
+                  </span>
+                  <p className="mt-1.5 font-marquee text-lg font-bold uppercase tracking-wide text-foreground md:text-xl">
+                    {String(step?.n).padStart(2, '0')} — {step?.title}
+                  </p>
+                  <StepPanel step={step} onNext={() => goto((step?.n ?? 0) + 1)} />
                 </motion.div>
               );
-            })}
-          </div>
+            })()}
+          </AnimatePresence>
         </div>
       </Section>
 
@@ -658,7 +727,7 @@ export default function PrototypeContent() {
         <div className="grid gap-4">
           <GlassCard className="border-amber-500/30">
             <p className="t-eyebrow mb-2 text-amber-300">Ticketalay first-party data</p>
-            <p className="text-[13px] leading-relaxed text-muted-foreground">
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
               The real extract in Step 02 contains entity, product and engagement facts recovered from public sources.
               It contains no orders, no seats and no payments, because none of that is externally accessible. The
               first-party database — its schema, ownership, consent state and export rights — is disclosed by the
@@ -669,7 +738,7 @@ export default function PrototypeContent() {
 
           <GlassCard className="border-amber-500/30">
             <p className="t-eyebrow mb-2 text-amber-300">Primary diaspora demand evidence</p>
-            <p className="text-[13px] leading-relaxed text-muted-foreground">
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
               Step 01 fixes the denominators — 22,263 Marathi speakers and 64% adult cultural attendance, both official
               statistics — but a denominator is a population, not a buyer. Willingness to pay, fee tolerance and channel
               trust come from the primary study of Marathi and Indian-origin event buyers in Melbourne and Sydney,
@@ -678,7 +747,7 @@ export default function PrototypeContent() {
           </GlassCard>
         </div>
 
-        <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
           What the prototype does establish is narrower and more useful than a forecast: the pipeline runs, the labels
           survive it end to end, the finance mart reconciles to zero variance on files anyone can re-add, and every
           number a decision would rest on names the file it came from. The gate schedule and its priced components are

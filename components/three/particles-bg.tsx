@@ -10,13 +10,25 @@ export default function ParticlesBg() {
     const el = ref.current;
     if (!el) return;
 
+    // Size from the container, not window.innerWidth: innerWidth includes the
+    // scrollbar and does not track the layout viewport on mobile, so a canvas
+    // sized from it lands wider than the page and drags the document with it.
+    // Measure the layout viewport, never this element: a fixed inset-0 box grows
+    // with the document once anything overflows, so sizing the canvas from it
+    // feeds the overflow straight back into itself and the page never settles.
+    const measure = () => ({
+      w: document.documentElement.clientWidth || window.innerWidth,
+      h: document.documentElement.clientHeight || window.innerHeight,
+    });
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+    const { w: w0, h: h0 } = measure();
+    const camera = new THREE.PerspectiveCamera(60, w0 / h0, 0.1, 100);
     camera.position.z = 12;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio ?? 1, 1.5));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(w0, h0);
     el.appendChild(renderer.domElement);
 
     const count = 260;
@@ -56,9 +68,10 @@ export default function ParticlesBg() {
     animate();
 
     const onResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const { w, h } = measure();
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(w, h);
     };
     window.addEventListener('resize', onResize);
 
@@ -72,5 +85,14 @@ export default function ParticlesBg() {
     };
   }, []);
 
-  return <div ref={ref} className="no-print pointer-events-none fixed inset-0 z-0 opacity-60" aria-hidden="true" />;
+  // overflow-hidden matters: the renderer sizes its canvas in pixels from
+  // window.innerWidth, so without clipping an oversized canvas widens the
+  // document itself and every page gains a horizontal scrollbar.
+  return (
+    <div
+      ref={ref}
+      className="no-print pointer-events-none fixed inset-0 z-0 overflow-hidden opacity-60"
+      aria-hidden="true"
+    />
+  );
 }

@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       <section className="space-y-3 text-sm leading-6 text-foreground/90">
         <p>
           This website is an interactive strategy proposal published by Global Initiative - Ticketing
-          Platform, a product of V2 Group Pty. Ltd. It presents research and planning material only.
+          Platform, a product of V<sup>2</sup> Group Pty. Ltd. It presents research and planning material only.
         </p>
         <h2 className="pt-2 text-lg font-medium text-primary">Information we collect</h2>
         <p>

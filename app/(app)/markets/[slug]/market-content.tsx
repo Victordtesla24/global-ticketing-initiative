@@ -30,7 +30,7 @@ export default function MarketContent({ market }: { market: Market }) {
           </span>
         </div>
 
-        <p className="mb-8 max-w-4xl text-[13px] leading-relaxed text-muted-foreground/70">
+        <p className="mb-8 max-w-4xl text-[15px] leading-relaxed text-muted-foreground/70">
           Each figure below says where it came from, and the official statistics carry their source lines.
         </p>
 
@@ -161,7 +161,7 @@ export default function MarketContent({ market }: { market: Market }) {
                     <p className="text-sm font-semibold text-foreground">
                       {p?.type}
                       {p?.criticality ? (
-                        <span className="ml-2 rounded-full border border-primary/40 bg-primary/10 px-2 py-px text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                        <span className="ml-2 rounded-full border border-primary/40 bg-primary/10 px-2 py-px text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
                           {p.criticality}
                         </span>
                       ) : null}

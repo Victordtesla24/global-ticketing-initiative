@@ -14,6 +14,20 @@ const config: Config = {
         display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
+      // Type scale lifted one notch above the Tailwind defaults: this is a
+      // board-read document, so body copy sits at 15px rather than 14px and
+      // every step above it grows with it.
+      fontSize: {
+        xs: ['0.8125rem', { lineHeight: '1.125rem' }],
+        sm: ['0.9375rem', { lineHeight: '1.4rem' }],
+        base: ['1.0625rem', { lineHeight: '1.6875rem' }],
+        lg: ['1.1875rem', { lineHeight: '1.8125rem' }],
+        xl: ['1.375rem', { lineHeight: '1.875rem' }],
+        '2xl': ['1.625rem', { lineHeight: '2.125rem' }],
+        '3xl': ['2rem', { lineHeight: '2.375rem' }],
+        '4xl': ['2.5rem', { lineHeight: '2.75rem' }],
+        '5xl': ['3.25rem', { lineHeight: '1.05' }],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

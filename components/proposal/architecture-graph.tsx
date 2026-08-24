@@ -85,7 +85,7 @@ function ArtefactLink({ artefact }: { artefact: ArchArtefact }) {
   const isDownload = artefact?.download === true;
   const Icon = isDownload ? Download : ExternalLink;
   const cls =
-    'group flex items-start gap-1.5 rounded-md border border-border/70 bg-secondary/30 px-2 py-1.5 text-[11px] leading-snug text-foreground/80 transition-colors hover:border-primary/60 hover:bg-primary/10 hover:text-primary';
+    'group flex items-start gap-1.5 rounded-md border border-border/70 bg-secondary/30 px-2 py-1.5 text-[12px] leading-snug text-foreground/80 transition-colors hover:border-primary/60 hover:bg-primary/10 hover:text-primary';
   const body = (
     <>
       <Icon className="mt-0.5 h-3 w-3 shrink-0 text-primary/70 group-hover:text-primary" />
@@ -94,7 +94,7 @@ function ArtefactLink({ artefact }: { artefact: ArchArtefact }) {
         {artefact?.mode ? (
           <span
             className={cn(
-              'ml-1.5 whitespace-nowrap rounded border px-1 py-px font-mono text-[9px] font-semibold uppercase tracking-wider',
+              'ml-1.5 whitespace-nowrap rounded border px-1 py-px font-mono text-[10px] font-semibold uppercase tracking-wider',
               artefact.mode === 'REAL'
                 ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
                 : 'border-amber-500/40 bg-amber-500/10 text-amber-400'
@@ -123,8 +123,8 @@ function ArtefactLink({ artefact }: { artefact: ArchArtefact }) {
 function PanelRow({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
-      <p className="mb-1 font-marquee text-[10px] font-bold uppercase tracking-[0.16em] text-primary/80">{label}</p>
-      <div className="text-[12px] leading-relaxed text-muted-foreground">{children}</div>
+      <p className="mb-1 font-marquee text-[11px] font-bold uppercase tracking-[0.16em] text-primary/80">{label}</p>
+      <div className="text-[13px] leading-relaxed text-muted-foreground">{children}</div>
     </div>
   );
 }
@@ -139,7 +139,7 @@ function NodePanel({ node, onClose }: { node: ArchNode; onClose?: () => void }) 
           <Icon className={cn('h-4 w-4', TINT_ICON[node?.tint ?? ''] ?? 'text-primary')} />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="font-marquee text-[13px] font-bold uppercase leading-tight tracking-[0.08em] text-foreground">
+          <p className="font-marquee text-[15px] font-bold uppercase leading-tight tracking-[0.08em] text-foreground">
             {node?.name}
           </p>
           {node?.sub ? <p className="text-[10.5px] leading-tight text-muted-foreground">{node.sub}</p> : null}
@@ -179,11 +179,11 @@ function NodePanel({ node, onClose }: { node: ArchNode; onClose?: () => void }) 
       </PanelRow>
 
       <div className="rounded-md border border-amber-500/30 bg-amber-500/[0.06] p-2.5">
-        <p className="mb-1 flex items-center gap-1.5 font-marquee text-[10px] font-bold uppercase tracking-[0.16em] text-amber-400">
+        <p className="mb-1 flex items-center gap-1.5 font-marquee text-[11px] font-bold uppercase tracking-[0.16em] text-amber-400">
           <AlertTriangle className="h-3 w-3" />
           What can go wrong here
         </p>
-        <p className="text-[12px] leading-relaxed text-muted-foreground">{node?.risk}</p>
+        <p className="text-[13px] leading-relaxed text-muted-foreground">{node?.risk}</p>
       </div>
     </div>
   );
@@ -247,7 +247,7 @@ function NodeCard({
         className="z-50 w-[21rem] max-w-[calc(100vw-2rem)] rounded-xl border-primary/25 bg-popover/95 p-4 shadow-2xl backdrop-blur-xl"
       >
         <NodePanel node={node} />
-        <p className="mt-3 border-t border-border/60 pt-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+        <p className="mt-3 border-t border-border/60 pt-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
           Click the node to pin this panel
         </p>
       </HoverCardContent>
@@ -372,7 +372,7 @@ export default function ArchitectureGraph() {
           className="pointer-events-none fixed inset-x-0 bottom-0 z-40 px-3 pb-3 lg:pl-[17rem]"
         >
           <div className="mx-auto mb-1.5 flex w-full max-w-5xl justify-end">
-            <span className="pointer-events-auto rounded-full border border-primary/30 bg-popover/95 px-2.5 py-1 text-[10px] uppercase tracking-[0.14em] text-muted-foreground backdrop-blur-xl">
+            <span className="pointer-events-auto rounded-full border border-primary/30 bg-popover/95 px-2.5 py-1 text-[11px] uppercase tracking-[0.14em] text-muted-foreground backdrop-blur-xl">
               Pinned {pinnedNodes.length} of {MAX_PINS} — click a node to pin, dismiss to clear
             </span>
           </div>
@@ -417,7 +417,7 @@ export default function ArchitectureGraph() {
     <div>
       {/* ------------------------------------------------------- toolbar */}
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-[12px] leading-relaxed text-muted-foreground">
+        <p className="text-[13px] leading-relaxed text-muted-foreground">
           Hover any node for a plain-language explainer. Click to pin it — pin two to compare them side by side.
         </p>
         <div className="flex shrink-0 items-center gap-2">
@@ -425,7 +425,7 @@ export default function ArchitectureGraph() {
             <button
               type="button"
               onClick={() => setPins([])}
-              className="rounded-md border border-border/70 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+              className="rounded-md border border-border/70 px-2.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
             >
               Clear pins
             </button>
@@ -435,7 +435,7 @@ export default function ArchitectureGraph() {
             onClick={() => (follow ? setFollow(false) : startFollow())}
             aria-pressed={follow}
             className={cn(
-              'inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors',
+              'inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.12em] transition-colors',
               follow
                 ? 'border-primary bg-primary/20 text-primary'
                 : 'border-primary/40 bg-primary/5 text-primary/90 hover:bg-primary/15'
@@ -528,15 +528,15 @@ export default function ArchitectureGraph() {
           >
             <div className="mt-4 rounded-xl border border-primary/30 bg-primary/[0.05] p-4">
               <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-amber-400">
+                <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-amber-400">
                   <FlaskConical className="h-3 w-3" />
                   {TICKET_LABEL}
                 </span>
-                <p className="text-[11px] leading-relaxed text-muted-foreground">{TICKET_INTRO}</p>
+                <p className="text-[12px] leading-relaxed text-muted-foreground">{TICKET_INTRO}</p>
               </div>
 
               {/* The badge above labels the file; the line below says what the figures are. */}
-              <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground">
+              <p className="mb-3 text-[12px] leading-relaxed text-muted-foreground">
                 {TICKET_MARKER_RULE}
               </p>
 
@@ -583,10 +583,10 @@ export default function ArchitectureGraph() {
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.28, ease: 'easeOut' }}
                     >
-                      <p className="font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
+                      <p className="font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary">
                         Step {step + 1} of {TICKET_PATH.length} — {stepNode?.name}
                       </p>
-                      <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/90">
+                      <p className="mt-1.5 text-[15px] leading-relaxed text-foreground/90">
                         {TICKET_PATH[step]?.caption ?? ''}
                       </p>
                     </motion.div>
@@ -613,7 +613,7 @@ export default function ArchitectureGraph() {
                 </div>
               </div>
 
-              <p className="mt-3 border-t border-primary/20 pt-2.5 text-[11.5px] leading-relaxed text-muted-foreground">
+              <p className="mt-3 border-t border-primary/20 pt-2.5 text-[13px] leading-relaxed text-muted-foreground">
                 {TICKET_CLOSE}
               </p>
             </div>

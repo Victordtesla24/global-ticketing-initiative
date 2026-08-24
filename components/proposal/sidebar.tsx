@@ -52,7 +52,7 @@ export function Sidebar() {
 
   const linkCls = (active: boolean) =>
     cn(
-      'flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors',
+      'flex items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors',
       active
         ? 'bg-primary/15 text-primary border border-primary/30'
         : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground border border-transparent'
@@ -120,12 +120,12 @@ export function Sidebar() {
       <button
         type="button"
         onClick={() => window?.print?.()}
-        className="flex items-center gap-3 rounded-lg px-3 py-2 text-[13px] font-medium text-muted-foreground hover:bg-secondary/60 hover:text-foreground transition-colors"
+        className="flex items-center gap-3 rounded-lg px-3 py-2 text-[15px] font-medium text-muted-foreground hover:bg-secondary/60 hover:text-foreground transition-colors"
       >
         <Printer className="h-4 w-4" />
         Print This Page
       </button>
-      <p className="px-3 pt-2 text-[10px] uppercase tracking-[0.18em] text-muted-foreground/60">
+      <p className="px-3 pt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
         AB Entertainment — Confidential
       </p>
     </div>
@@ -138,7 +138,7 @@ export function Sidebar() {
       </div>
       <div>
         <p className="font-marquee text-sm font-bold uppercase tracking-[0.16em] text-foreground leading-tight">Ticketalay</p>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-primary">Global Expansion Proposal</p>
+        <p className="text-[11px] uppercase tracking-[0.2em] text-primary">Global Expansion Proposal</p>
       </div>
     </div>
   );

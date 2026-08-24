@@ -102,7 +102,7 @@ export function StatusBadge({ status, className }: { status: string; className?:
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full border px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em]',
+        'inline-flex items-center rounded-full border px-3 py-0.5 text-[12px] font-semibold uppercase tracking-[0.14em]',
         style,
         className
       )}
@@ -127,7 +127,7 @@ export function DataTable({
         <thead>
           <tr className="border-b border-border/60 bg-secondary/40">
             {(headers ?? []).map((h: string, i: number) => (
-              <th key={i} className="px-4 py-3 text-left font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary whitespace-nowrap">
+              <th key={i} className="px-4 py-3 text-left font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary whitespace-nowrap">
                 {h}
               </th>
             ))}
