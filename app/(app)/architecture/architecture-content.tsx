@@ -159,16 +159,15 @@ export default function ArchitectureContent() {
         </div>
       </Section>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      {/* A "Reviewer Rating" tile stood here. It asserted an external reviewer that this page never
+          named, which makes it a self-assigned verdict — the one thing no page on this site may
+          publish. Do not reinstate a posture indicator here unless it either names the reviewer or
+          carries the same self-assessment disclosure /risk publishes. */}
+      <div className="grid gap-4">
         <StatCard
           label="Committed MVP Run Cost"
           value="A$46.43/mo [DERIVED]"
           sub="The only run cost published for this stack — the committed MVP bill of materials, monthly-cancellable"
-        />
-        <StatCard
-          label="Reviewer Rating"
-          value="AMBER"
-          sub="Sound in principle; validate against actual stack before finalising"
         />
       </div>
     </div>
