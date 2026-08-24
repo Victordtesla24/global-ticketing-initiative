@@ -186,9 +186,9 @@ export default function ExecutiveSummaryContent() {
             sub="Across six categories: first-party transactions, demographics, competitive intelligence, enrichment, compliance and geospatial. The Data Ecosystem page's section headings carry the same A–F mapping."
           />
           <StatCard
-            label="Programme Spend to Date — the Affordability Anchor"
+            label="Actual Spend to Date — the Affordability Anchor"
             value="A$830.00"
-            sub="A$350.00 of AI subscriptions and API credits, plus A$480.00 of consultation (8.0 hours at A$60.00/hr). Every forward figure on this page is expressed as a multiple of this anchor. No cumulative three-year programme figure is published."
+            sub="Actual spend: A$350.00 of AI subscriptions and API credits, plus A$480.00 of consultation (8.0 hours at A$60.00/hr). Every forward figure on this page is expressed as a multiple of this anchor. No cumulative three-year programme figure is published."
           />
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
