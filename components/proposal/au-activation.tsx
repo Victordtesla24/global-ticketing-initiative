@@ -10,6 +10,7 @@ import { Tag } from '@/components/proposal/tag';
 import { InfoTip } from '@/components/proposal/info-tip';
 import { Legend } from '@/components/proposal/legend';
 import { FoldGroup, FoldPanel } from '@/components/proposal/fold-panel';
+import { ComplianceLink } from '@/components/proposal/compliance-link';
 import { Tile, Bars, SourceCode } from '@/components/proposal/au-shared';
 import { buildActivation } from '@/lib/data/audience-activation';
 import { OrnamentDivider, Section } from '@/components/proposal/section';
@@ -117,6 +118,7 @@ export function AuActivation() {
               </FoldPanel>
             ))}
           </FoldGroup>
+          <ComplianceLink section="segments" />
         </div>
 
         {/* Marketing materials */}
@@ -172,6 +174,7 @@ export function AuActivation() {
               );
             })}
           </FoldGroup>
+          <ComplianceLink section="materials" />
         </div>
 
         {/* Social */}
@@ -226,6 +229,7 @@ export function AuActivation() {
               </FoldPanel>
             ))}
           </FoldGroup>
+          <ComplianceLink section="social" />
         </div>
 
         {/* Leadership Team reports */}
@@ -319,6 +323,7 @@ export function AuActivation() {
               </FoldPanel>
             ))}
           </FoldGroup>
+          <ComplianceLink section="reports" />
         </div>
       </Section>
     </div>

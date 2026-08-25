@@ -1,6 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { Section, OrnamentDivider } from '@/components/proposal/section';
+import { ComplianceLink } from '@/components/proposal/compliance-link';
 import {
   AuAudienceDemo,
   AuColumnSpec,
@@ -22,30 +24,43 @@ export default function PrototypeContent() {
         every source opens to the page that proves it. Campaign segments, marketing materials, social uploads and
         Leadership Team reports are built from the same file. All currency figures AUD.
       </p>
+      <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
+        Each section below links to the duty it has to satisfy on the{' '}
+        <Link href="/compliance" className="text-primary hover:underline">
+          marketing compliance page
+        </Link>
+        , where the Spam Act, the Privacy Principles and the complaint response steps are set against the columns that
+        evidence them.
+      </p>
 
       <Section
+        id="audience-run"
         eyebrow="End to End, In Motion"
         title="An Australian Consented Audience, Run End to End"
         className="mt-10 mb-12"
       >
         <AuAudienceDemo />
+        <ComplianceLink section="audienceRun" />
       </Section>
 
       <OrnamentDivider />
 
-      <Section eyebrow="Reference Geography" title="Where These People Sit">
+      <Section id="geography" eyebrow="Reference Geography" title="Where These People Sit">
         <AuGeographyStrip />
         <div className="mt-3">
           <AuMapNote />
         </div>
+        <ComplianceLink section="geography" />
       </Section>
 
-      <Section eyebrow="The Columns" title="Every Field, and What Stands Behind It">
+      <Section id="columns" eyebrow="The Columns" title="Every Field, and What Stands Behind It">
         <AuColumnSpec />
+        <ComplianceLink section="columns" />
       </Section>
 
-      <Section eyebrow="Warehouse" title="Data Mart Tables and Their Joins">
+      <Section id="warehouse" eyebrow="Warehouse" title="Data Mart Tables and Their Joins">
         <AuDataMart />
+        <ComplianceLink section="warehouse" />
       </Section>
 
       <AuActivation />

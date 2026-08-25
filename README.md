@@ -79,6 +79,7 @@ Every route lives under `app/(app)/`, which is wrapped by
 | `/market-opportunity` | `app/(app)/market-opportunity/` | Market Opportunity |
 | `/data-ecosystem` | `app/(app)/data-ecosystem/` | Data Ecosystem |
 | `/prototype` | `app/(app)/prototype/` | Prototype |
+| `/compliance` | `app/(app)/compliance/` | Marketing Compliance |
 | `/architecture` | `app/(app)/architecture/` | Architecture |
 | `/investment` | `app/(app)/investment/` | Investment &amp; Returns |
 | `/risk` | `app/(app)/risk/` | Risk Analysis |
@@ -108,6 +109,7 @@ All page content is typed TypeScript in `lib/data/`. There is no database and no
 | `insights.ts` | What the data buys, market indicator callouts, the marketing data plan, strategic options and revenue streams. |
 | `markets.ts` | The `Market` type and the five market records behind `/markets/[slug]`, plus campaign segments and the decision framework shown on `/market-opportunity`. |
 | `audience-au.ts` | The Australian consented event-marketing dataset behind the `/prototype` demonstration: the column specification with its legal labels, the validation rules, `runAuPipeline()` (validate → quarantine → identity resolution → consent gate → segmentation), the provider reference list, and the data-mart tables, joins and dbt tests the page draws. |
+| `compliance.ts` | The consent evidence file behind `/compliance`: the instruments that reach an Australian marketing send, each duty mapped to the column, table or template artefact that evidences it, the seven complaint-response steps and their clocks, and the Spam Act s 25 penalty table computed from the Commonwealth penalty unit. `COMPLIANCE_LINKS` keys each prototype section to the anchor that answers it. |
 | `audience-au.generated.ts` | Generated — the dataset rows themselves. Written by the same generator that writes the CSV, Excel and JSON downloads, so the page and the files cannot drift. Do not hand-edit. |
 | `prototype.ts` | Index of the 60 sample datasets, their control totals, CSV/JSON link helpers and the Australia end-to-end walkthrough. |
 | `providers.ts` | The 60-provider catalogue — category, trust tier, country tags and cost metadata — with the acquisition sequence, day-one bill and history-depth table. |
