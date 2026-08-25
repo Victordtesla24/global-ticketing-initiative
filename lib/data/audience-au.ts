@@ -106,6 +106,7 @@ export function checkRow(r: AudienceRow): string[] {
   if (!(r.age >= 15 && r.age <= 110)) f.push('Age range');
   const ranges = STATE_POSTCODES[r.state];
   if (!ranges) f.push('State code');
+  if (!MOBILE_RE.test(r.mobile)) f.push('Mobile format');
   if (!POSTCODE_RE.test(r.postcode)) f.push('Postcode format');
   // A well-formed postcode in the wrong state is the defect a format check
   // waves through, so it is tested separately and only where both parts parse.
