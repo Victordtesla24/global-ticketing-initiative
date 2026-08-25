@@ -305,4 +305,12 @@ body {
   /* Links keep the on-screen treatment; no printed URL furniture. */
   a { text-decoration: none !important; }
   a[href]::after { content: none !important; }
+
+  /* Fold panels stay expanded on paper — forceMount keeps the body in the DOM;
+     print must not leave it at height zero. */
+  .fold-panel-body {
+    height: auto !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
 }

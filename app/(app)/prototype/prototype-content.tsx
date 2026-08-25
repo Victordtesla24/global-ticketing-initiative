@@ -7,6 +7,7 @@ import {
   AuDataMart,
   AuGeographyStrip,
   AuMapNote,
+  AuActivation,
 } from '@/components/proposal/au-audience-demo';
 
 export default function PrototypeContent() {
@@ -18,7 +19,8 @@ export default function PrototypeContent() {
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
         One Australian audience file, named at source and run end to end. Every figure is computed from the file, and
-        every source opens to the page that proves it. All currency figures AUD.
+        every source opens to the page that proves it. Campaign segments, marketing materials, social uploads and
+        Leadership Team reports are built from the same file. All currency figures AUD.
       </p>
 
       <Section
@@ -45,6 +47,8 @@ export default function PrototypeContent() {
       <Section eyebrow="Warehouse" title="Data Mart Tables and Their Joins">
         <AuDataMart />
       </Section>
+
+      <AuActivation />
     </div>
   );
 }

@@ -145,6 +145,7 @@ Defined in `globals.css` and used across the proposal pages:
 | `.btn-gold` / `.btn-gold-outline` | Uppercase gold gradient button and its outline counterpart. |
 | `.font-marquee` / `.font-absans` | Apply the display and body families directly. |
 | `.no-print` | Hidden in the print stylesheet, which also forces a white background. |
+| `.fold-panel-body` | Body of a `FoldPanel`. On screen it collapses with height/opacity; in `@media print` it is forced open so folded content still prints. |
 
 Focus is a 2px gold outline at 2px offset, site-wide. Selection and scrollbars are gold-tinted.
 
@@ -165,7 +166,10 @@ These are the building blocks the pages are actually made of.
 | `Tag` | `tag: ProvenanceTag` | Provenance chip — see below. |
 | `Timeline` | `items` | Vertical phase timeline. |
 | `Disclosure` | `label?`, `className?`, `defaultOpen?` | Collapsible fold for supporting prose. The visible layer of a page leads with the visual and a short line; the full working, provenance and caveats sit verbatim inside a `Disclosure`, one tap away. |
-| `AuAudienceDemo` and friends | — | The `/prototype` surface over `lib/data/audience-au.ts`: `AuAudienceDemo` (six-stage rail — sources, file, validate, resolve, consent, activate — with source cards, rows table, validation chips, merge visual, bar blocks and KPI tiles), `AuColumnSpec`, `AuDataMart` and `AuGeographyStrip`. Every figure is computed from the dataset at render time; every source carries a trust rung, an authentication note, a cost and a verifiable link, and its short code marks the columns it stands behind. |
+| `InfoTip` | `content`, `label?`, `side?` | Short explanation that opens on hover, keyboard focus and click (touch-safe). Mounted under `TooltipProvider` in `app/providers.tsx`. |
+| `Legend` | `items: { term, meaning, swatch, mark? }[]`, `title?` | Compact key for colour-coded chips — pass the same class map the UI already uses (`SOURCE_COLOUR`, `TRUST_STYLE`, `KIND_STYLE`). |
+| `FoldPanel` / `FoldGroup` | `title`, `subtitle?`, `count?`, `badge?`, `defaultOpen?` | Collapsible panel whose header stays visible and whose body starts collapsed. `FoldGroup` supplies Expand all / Collapse all. `forceMount` keeps the body in the DOM; print CSS expands `.fold-panel-body`. Figures that were visible before a fold stay outside it. |
+| `AuAudienceDemo` and friends | — | The `/prototype` surface over `lib/data/audience-au.ts` and `lib/data/audience-activation.ts`, split across `au-shared.tsx` (Tile, Bars, SourceCode, colour maps), `au-audience-demo.tsx` (six-stage rail with collapsed stage bodies and collapsed source cards), `au-reference.tsx` (`AuColumnSpec`, `AuDataMart`, `AuGeographyStrip`) and `au-activation.tsx` (campaign segments, marketing materials, social destinations, Leadership Team reports). Every figure is computed from the dataset at render time. |
 | `ArchitectureGraph` | — | The interactive architecture graph. |
 | `AppShell`, `Sidebar`, `SiteFooter` | — | Page frame; mounted by `app/(app)/layout.tsx`. |
 

@@ -222,12 +222,13 @@ Traefik TLS, at <https://ticketalay.srv1356245.hstgr.cloud>. It is updated in pl
 
 ```bash
 cd /opt/global-ticketing-initiative
-git fetch <working-clone> main && git merge --ff-only FETCH_HEAD
-bash scripts/no-chrome-gate.sh
-yarn build
-systemctl restart ticketalay
+git fetch origin main && git merge --ff-only origin/main
+bash scripts/deploy.sh
 ```
 
+[`scripts/deploy.sh`](scripts/deploy.sh) runs the production-language gate, `yarn build`,
+`systemctl restart ticketalay`, then curls `http://127.0.0.1:3400/prototype` and asserts a 200.
+CI builds but does not deploy — publishing is this script on the host.
 ### Production-language gate
 
 [`scripts/no-chrome-gate.sh`](scripts/no-chrome-gate.sh) is a build gate over the production
