@@ -160,7 +160,7 @@ These are the building blocks the pages are actually made of.
 | `Section` | `eyebrow?`, `title?`, `id?`, `className?` | Standard page section: eyebrow, uppercase heading, scroll-reveal. |
 | `GlassCard` | `className?`, `onClick?` | `.glass-card` surface at `rounded-xl p-6`. Passing `onClick` adds button semantics and keyboard handling. |
 | `StatCard` | `label`, `value`, `sub?` | Headline figure in a glass card — eyebrow label, large gold value, optional note. |
-| `DataTable` | `headers`, `rows` | Horizontally scrollable table with gold uppercase headers and hover rows. |
+| `DataTable` | `headers`, `rows`, `caption?`, `stickyFirst?`, `compact?`, `columnClassNames?` | Horizontally scrollable table with gold uppercase headers and hover rows. `headers` may be nodes (for an `InfoTip` on a column). `stickyFirst` pins the first column while the rest scroll. `compact` tightens cell padding. `columnClassNames` apply to matching header and body cells. A `caption` is visually hidden and names the table for assistive tech. |
 | `StatusBadge` | `status` | Pill for `GREEN`/`AMBER`/`RED`, `PASS`/`PARTIAL`/`FAIL`; anything else renders gold. |
 | `OrnamentDivider` | `className?` | The `◆` divider between major blocks. |
 | `Tag` | `tag: ProvenanceTag` | Provenance chip — see below. |

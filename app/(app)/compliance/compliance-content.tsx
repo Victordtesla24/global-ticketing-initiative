@@ -7,24 +7,20 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import {
-  Scale,
-  ShieldCheck,
-  Gavel,
-  Timer,
-  Share2,
   Database,
   MessageSquareWarning,
   ExternalLink,
   ArrowUpRight,
   CircleAlert,
+  Share2,
 } from 'lucide-react';
 import { Section, OrnamentDivider, DataTable } from '@/components/proposal/section';
-import { FoldGroup, FoldPanel } from '@/components/proposal/fold-panel';
 import { InfoTip } from '@/components/proposal/info-tip';
 import { Legend } from '@/components/proposal/legend';
 import { Tag } from '@/components/proposal/tag';
-import { Tile } from '@/components/proposal/au-shared';
+import { Tile, KIND_STYLE } from '@/components/proposal/au-shared';
 import { buildCompliance, formatAud, PENALTY_UNIT_AUD } from '@/lib/data/compliance';
+import { cn } from '@/lib/utils';
 
 /** One swatch per instrument, used by both the chips and the legend below. */
 export const INSTRUMENT_STYLE: Record<string, string> = {
@@ -40,9 +36,11 @@ export const INSTRUMENT_STYLE: Record<string, string> = {
 function InstrumentChip({ code, className }: { code: string; className?: string }) {
   return (
     <span
-      className={`inline-flex items-center rounded border px-1.5 py-px font-mono text-[9.5px] font-bold leading-none tracking-wider ${
-        INSTRUMENT_STYLE[code] ?? 'border-border/60 text-muted-foreground'
-      } ${className ?? ''}`}
+      className={cn(
+        'inline-flex items-center rounded border px-1.5 py-px font-mono text-[9.5px] font-bold leading-none tracking-wider',
+        INSTRUMENT_STYLE[code] ?? 'border-border/60 text-muted-foreground',
+        className
+      )}
     >
       {code}
     </span>
@@ -51,7 +49,7 @@ function InstrumentChip({ code, className }: { code: string; className?: string 
 
 function Evidence({ items }: { items: string[] }) {
   return (
-    <div className="mt-2 flex flex-wrap gap-1">
+    <div className="flex flex-wrap gap-1">
       {items.map((e) => (
         <span
           key={e}
@@ -91,6 +89,36 @@ function SeeOnPrototype({ anchor, children }: { anchor: string; children: React.
   );
 }
 
+function ColHead({ label, tip }: { label: string; tip: string }) {
+  return (
+    <span className="inline-flex items-center gap-1">
+      {label}
+      <InfoTip content={tip} />
+    </span>
+  );
+}
+
+function ClockChip({ clock }: { clock: string }) {
+  const swatch =
+    clock === 'Same day' || clock === 'Immediate'
+      ? 'border-red-500/40 bg-red-500/10 text-red-400'
+      : clock === '5 business days' || clock === 'Within days'
+        ? 'border-amber-500/40 bg-amber-500/10 text-amber-400'
+        : clock === '30 days'
+          ? 'border-primary/40 bg-primary/10 text-primary'
+          : 'border-sky-500/40 bg-sky-500/10 text-sky-300';
+  return (
+    <span
+      className={cn(
+        'inline-flex whitespace-nowrap rounded border px-1.5 py-px font-mono text-[10px] font-bold leading-none tracking-wide',
+        swatch
+      )}
+    >
+      {clock}
+    </span>
+  );
+}
+
 const PROTOTYPE_ANCHOR: Record<string, string> = {
   'consent-before-send': 'audience-run',
   'prove-consent': 'audience-run',
@@ -110,9 +138,16 @@ const PROTOTYPE_ANCHOR: Record<string, string> = {
   'platform-warranty': 'social-activation',
 };
 
+const CREATIVE_DUTY_IDS = ['sender-identity', 'unsubscribe', 'simple-opt-out', 'branded-sender'] as const;
+
 export default function ComplianceContent() {
   const c = useMemo(() => buildCompliance(), []);
   const instrumentById = useMemo(() => new Map(c.instruments.map((i) => [i.id, i])), [c.instruments]);
+  const instrumentLegend = c.instruments.map((i) => ({
+    term: i.code,
+    meaning: i.name,
+    swatch: INSTRUMENT_STYLE[i.code] ?? 'border-border/60 text-muted-foreground',
+  }));
 
   return (
     <div>
@@ -178,45 +213,48 @@ export default function ComplianceContent() {
           governs the data behind it. The rest bind narrower surfaces — the phone, the sender ID, the claim in the
           creative, and the contract with each ad platform.
         </p>
-        <Legend
-          title="Instrument"
-          items={c.instruments.map((i) => ({
-            term: i.code,
-            meaning: i.name,
-            swatch: INSTRUMENT_STYLE[i.code] ?? 'border-border/60 text-muted-foreground',
-          }))}
-          className="mb-3"
+        <Legend title="Instrument" items={instrumentLegend} className="mb-3" />
+        <DataTable
+          caption="Statutes, registers and contract terms that reach an Australian marketing send"
+          stickyFirst
+          compact
+          className="min-w-0"
+          headers={[
+            'Instrument',
+            'Regulator',
+            <ColHead
+              key="reaches"
+              label="What it reaches"
+              tip="The surface this instrument actually binds — the message, the data, the phone, the sender ID, the claim or the upload."
+            />,
+            <ColHead
+              key="duties"
+              label="Core duties"
+              tip="The obligations that follow from the instrument. Each is mapped to a column or artefact in the duty table below."
+            />,
+            'Guidance',
+          ]}
+          columnClassNames={['min-w-[13rem]', 'min-w-[11rem]', 'min-w-[16rem]', 'min-w-[22rem]', 'min-w-[8rem]']}
+          rows={c.instruments.map((i) => [
+            <span key={`${i.id}-name`} className="flex flex-col gap-1.5">
+              <InstrumentChip code={i.code} className="w-fit" />
+              <span className="text-[12.5px] font-semibold leading-snug text-foreground">{i.name}</span>
+            </span>,
+            i.regulator,
+            <span key={`${i.id}-reach`} className="block">
+              <span className="block text-[12.5px] leading-snug">{i.reaches}</span>
+              <span className="mt-1.5 block text-[11.5px] leading-snug text-amber-400/90">{i.note}</span>
+            </span>,
+            <ul key={`${i.id}-duties`} className="list-disc space-y-1 pl-3.5 text-[12.5px] leading-snug">
+              {i.duties.map((d) => (
+                <li key={d}>{d}</li>
+              ))}
+            </ul>,
+            <Outbound key={`${i.id}-href`} href={i.href}>
+              Open source
+            </Outbound>,
+          ])}
         />
-        <FoldGroup>
-          {c.instruments.map((i) => (
-            <FoldPanel
-              key={i.id}
-              title={i.name}
-              subtitle={i.reaches}
-              badge={<InstrumentChip code={i.code} />}
-              count={i.duties.length}
-              defaultOpen={false}
-            >
-              <p className="text-[12px] text-muted-foreground">
-                <span className="font-semibold text-foreground/80">Regulator: </span>
-                {i.regulator}
-              </p>
-              <p className="t-eyebrow mb-1.5 mt-3 text-[10px]">Core duties</p>
-              <ul className="space-y-1">
-                {i.duties.map((d) => (
-                  <li key={d} className="flex items-start gap-1.5 text-[12.5px] leading-snug text-foreground/85">
-                    <ShieldCheck className="mt-0.5 h-3 w-3 shrink-0 text-primary" aria-hidden />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-3 text-[12px] leading-snug text-amber-400/90">{i.note}</p>
-              <p className="mt-3">
-                <Outbound href={i.href}>Regulator guidance and the text of the law</Outbound>
-              </p>
-            </FoldPanel>
-          ))}
-        </FoldGroup>
       </Section>
 
       {/* --------------------------------------------------------- duty map */}
@@ -226,9 +264,9 @@ export default function ComplianceContent() {
         title="Every Duty, and the Column That Answers It"
       >
         <p className="mb-4 max-w-3xl text-[13.5px] leading-relaxed text-muted-foreground">
-          A duty with no evidence behind it is a hope. Each row below names the clause, what it requires, and the
-          column, table or template artefact that would be produced if a regulator asked. Where a warehouse test
-          holds the duty in place, the test is named too — {c.consentTests.length} of them touch consent directly.
+          A duty with no evidence behind it is a hope. Each row names the clause, what it requires, and the column,
+          table or template artefact that would be produced if a regulator asked. Where a warehouse test holds the
+          duty in place, the test is named too — {c.consentTests.length} of them touch consent directly.
         </p>
         <Legend
           title="Instrument"
@@ -239,48 +277,74 @@ export default function ComplianceContent() {
           }))}
           className="mb-3"
         />
-        <FoldGroup>
-          {c.duties.map((d) => {
+        <DataTable
+          caption="Every marketing duty mapped to the column, table or template that evidences it"
+          stickyFirst
+          compact
+          headers={[
+            'Law',
+            'Clause',
+            <ColHead
+              key="duty"
+              label="Duty"
+              tip="What the instrument requires, and how the audience file answers it."
+            />,
+            <ColHead
+              key="evidence"
+              label="Evidence held"
+              tip="Columns and tables from the audience file and the warehouse, plus template artefacts where the duty lives in the creative."
+            />,
+            <ColHead
+              key="test"
+              label="Test"
+              tip="The warehouse test that holds the duty in place. A failing test stops the send rather than reporting on it afterwards."
+            />,
+            'On the prototype',
+          ]}
+          columnClassNames={[
+            'min-w-[5.5rem]',
+            'min-w-[9rem]',
+            'min-w-[22rem]',
+            'min-w-[14rem]',
+            'min-w-[12rem]',
+            'min-w-[11rem]',
+          ]}
+          rows={c.duties.map((d) => {
             const inst = instrumentById.get(d.instrumentId);
-            return (
-              <FoldPanel
-                key={d.id}
-                title={d.duty}
-                subtitle={`${inst?.name.split(' — ')[0] ?? ''} · ${d.clause}`}
-                badge={
-                  <span className="inline-flex items-center gap-1">
-                    <InstrumentChip code={inst?.code ?? '—'} />
-                    <InfoTip content={`${inst?.name} · ${d.clause}`} />
-                  </span>
-                }
-                count={d.evidence.length}
-                defaultOpen={false}
-              >
-                <p className="text-[12.5px] leading-relaxed text-foreground/85">{d.how}</p>
-                <p className="t-eyebrow mb-0 mt-3 text-[10px]">
-                  Evidence held
-                  <InfoTip
-                    content="Columns and tables from the audience file and the warehouse, plus template artefacts where the duty lives in the creative."
-                    className="ml-1"
-                  />
-                </p>
-                <Evidence items={d.evidence} />
-                {d.test ? (
-                  <p className="mt-3 text-[12px] leading-snug text-emerald-400/90">
-                    <span className="font-semibold">Test that holds it: </span>
-                    <code className="font-mono text-[11px]">{d.test}</code>
-                  </p>
-                ) : null}
-                {d.seeOn ? (
-                  <p className="mt-3 text-[12px] text-muted-foreground">
-                    <span className="font-semibold text-foreground/80">Visible on the prototype: </span>
-                    <SeeOnPrototype anchor={PROTOTYPE_ANCHOR[d.id] ?? 'audience-run'}>{d.seeOn}</SeeOnPrototype>
-                  </p>
-                ) : null}
-              </FoldPanel>
-            );
+            return [
+              <span key={`${d.id}-law`} className="flex flex-col gap-1">
+                <InstrumentChip code={inst?.code ?? '—'} className="w-fit" />
+                <InfoTip content={`${inst?.name ?? ''} · ${d.clause}`} />
+              </span>,
+              <span key={`${d.id}-clause`} className="whitespace-nowrap font-mono text-[11px] text-muted-foreground">
+                {d.clause}
+              </span>,
+              <span key={`${d.id}-duty`} className="block">
+                <span className="block text-[12.5px] font-semibold leading-snug text-foreground">{d.duty}</span>
+                <span className="mt-1.5 block text-[12px] leading-snug text-muted-foreground">{d.how}</span>
+              </span>,
+              <Evidence key={`${d.id}-ev`} items={d.evidence} />,
+              d.test ? (
+                <code key={`${d.id}-test`} className="block font-mono text-[11px] leading-snug text-emerald-400/90">
+                  {d.test}
+                </code>
+              ) : (
+                <span key={`${d.id}-notest`} className="text-muted-foreground">
+                  —
+                </span>
+              ),
+              d.seeOn ? (
+                <SeeOnPrototype key={`${d.id}-see`} anchor={PROTOTYPE_ANCHOR[d.id] ?? 'audience-run'}>
+                  {d.seeOn}
+                </SeeOnPrototype>
+              ) : (
+                <span key={`${d.id}-nosee`} className="text-muted-foreground">
+                  —
+                </span>
+              ),
+            ];
           })}
-        </FoldGroup>
+        />
       </Section>
 
       {/* -------------------------------------------------------- sensitive */}
@@ -315,20 +379,28 @@ export default function ComplianceContent() {
           impracticability escape and no allowance for an existing customer relationship. An ancestry-led campaign
           therefore stands or falls on consent alone.
         </p>
-        <div className="space-y-2">
-          {c.legalColumns.map((col) => (
-            <div key={col.column} className="rounded-xl border border-amber-500/25 bg-amber-500/[0.04] px-3.5 py-3">
-              <p className="flex flex-wrap items-center gap-2">
-                <code className="font-mono text-[12px] font-bold text-amber-400">{col.column}</code>
-                <span className="text-[12px] text-muted-foreground">{col.meaning}</span>
-              </p>
-              <p className="mt-1.5 flex items-start gap-1.5 text-[12.5px] leading-snug text-foreground/85">
-                <Scale className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-400" aria-hidden />
-                {col.legal}
-              </p>
-            </div>
-          ))}
-        </div>
+        <DataTable
+          caption="Audience-file columns that carry a named legal duty"
+          headers={[
+            'Column',
+            'What it holds',
+            <ColHead
+              key="legal"
+              label="Legal duty"
+              tip="The instrument and clause that constrain this column. Ancestry and language are sensitive information; the consent flag and the channel preference carry the send rules."
+            />,
+          ]}
+          columnClassNames={['min-w-[12rem]', 'min-w-[14rem]', 'min-w-[20rem]']}
+          rows={c.legalColumns.map((col) => [
+            <code key={col.column} className="font-mono text-[12px] font-bold text-amber-400">
+              {col.column}
+            </code>,
+            col.meaning,
+            <span key={`${col.column}-legal`} className="text-[12.5px] leading-snug">
+              {col.legal}
+            </span>,
+          ])}
+        />
         <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">
           The practical consequence is a collection rule: ancestry and language are self-declared by the person at
           opt-in, on ABS Census categories. A bought-in ancestry append cannot be used for marketing however it was
@@ -348,25 +420,29 @@ export default function ComplianceContent() {
           ACMA can establish without any argument about consent, because a message either carries them or it does
           not.
         </p>
-        <div className="space-y-2">
-          {c.duties
-            .filter((d) => ['sender-identity', 'unsubscribe', 'simple-opt-out', 'branded-sender'].includes(d.id))
+        <DataTable
+          caption="Duties that live in the creative rather than in the audience file"
+          headers={['Law', 'Clause', 'Duty', 'How it is met', 'Evidence']}
+          columnClassNames={['min-w-[5.5rem]', 'min-w-[8rem]', 'min-w-[14rem]', 'min-w-[22rem]', 'min-w-[12rem]']}
+          rows={c.duties
+            .filter((d) => (CREATIVE_DUTY_IDS as readonly string[]).includes(d.id))
             .map((d) => {
               const inst = instrumentById.get(d.instrumentId);
-              return (
-                <div key={d.id} className="rounded-xl border border-border/60 bg-secondary/15 px-3.5 py-3">
-                  <p className="flex flex-wrap items-center gap-2">
-                    <InstrumentChip code={inst?.code ?? '—'} />
-                    <span className="font-marquee text-[13px] font-bold uppercase tracking-wide text-foreground">
-                      {d.duty}
-                    </span>
-                    <span className="ml-auto font-mono text-[10.5px] text-muted-foreground">{d.clause}</span>
-                  </p>
-                  <p className="mt-1.5 text-[12.5px] leading-snug text-foreground/85">{d.how}</p>
-                </div>
-              );
+              return [
+                <InstrumentChip key={`${d.id}-chip`} code={inst?.code ?? '—'} />,
+                <span key={`${d.id}-cl`} className="whitespace-nowrap font-mono text-[11px] text-muted-foreground">
+                  {d.clause}
+                </span>,
+                <span key={`${d.id}-du`} className="text-[12.5px] font-semibold leading-snug">
+                  {d.duty}
+                </span>,
+                <span key={`${d.id}-how`} className="text-[12.5px] leading-snug">
+                  {d.how}
+                </span>,
+                <Evidence key={`${d.id}-ev`} items={d.evidence} />,
+              ];
             })}
-        </div>
+        />
         <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">
           <MessageSquareWarning className="mr-1.5 inline h-3.5 w-3.5 align-[-2px] text-amber-400" aria-hidden />
           One opt-out path serves both regimes: the link that satisfies the Spam Act unsubscribe writes the
@@ -392,24 +468,33 @@ export default function ComplianceContent() {
             tone="amber"
           />
         </div>
-        <div className="grid gap-3 md:grid-cols-2">
-          <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/[0.04] px-3.5 py-3">
-            <p className="t-eyebrow mb-2 text-[10px] text-emerald-400">Goes up</p>
-            <ul className="space-y-1.5 text-[12.5px] leading-snug text-foreground/85">
-              <li>Hashed email and hashed mobile, drawn from the serving view</li>
-              <li>Only records whose latest consent event grants permission</li>
-              <li>A fresh upload per campaign, so a withdrawal drops out of the next one</li>
-            </ul>
-          </div>
-          <div className="rounded-xl border border-amber-500/25 bg-amber-500/[0.04] px-3.5 py-3">
-            <p className="t-eyebrow mb-2 text-[10px] text-amber-400">Stays behind</p>
-            <ul className="space-y-1.5 text-[12.5px] leading-snug text-foreground/85">
-              <li>Ancestry and the language flag — sensitive information under s 6</li>
-              <li>Any lookalike or expansion built on a sensitive attribute</li>
-              <li>Suppressed people, in every upload and every segment</li>
-            </ul>
-          </div>
-        </div>
+        <DataTable
+          caption="What may be uploaded to an ad platform and what must stay in the warehouse"
+          headers={['', 'Goes up', 'Stays behind']}
+          columnClassNames={['min-w-[9rem] font-semibold text-foreground', 'min-w-[16rem]', 'min-w-[16rem]']}
+          rows={[
+            [
+              'Contact points',
+              'Hashed email and hashed mobile, drawn from the serving view',
+              'Readable addresses, and the landline column',
+            ],
+            [
+              'Consent state',
+              'Only records whose latest consent event grants permission',
+              'Withdrawals, and every suppressed person',
+            ],
+            [
+              'Attributes',
+              'None — the match file is contact points only',
+              'Ancestry, the language flag, and any lookalike built on either',
+            ],
+            [
+              'Cadence',
+              'A fresh upload per campaign, so a withdrawal drops out of the next one',
+              'A list that is uploaded once and left to go stale',
+            ],
+          ]}
+        />
         <p className="mt-4 max-w-3xl text-[12.5px] leading-relaxed text-muted-foreground">
           <Share2 className="mr-1.5 inline h-3.5 w-3.5 align-[-2px] text-primary" aria-hidden />
           The custom-audience terms at Meta, Google and TikTok each require the uploader to warrant that it holds the
@@ -427,45 +512,59 @@ export default function ComplianceContent() {
           which is what lets a single person be traced back to the moment and the form they opted in through — and
           what makes a withdrawal a fact in the record rather than a manual deletion someone has to remember.
         </p>
-        {c.consentTable ? (
-          <div className="mb-3 rounded-xl border border-primary/25 bg-primary/[0.04] px-3.5 py-3">
-            <p className="flex flex-wrap items-center gap-2">
+        <DataTable
+          caption="Warehouse objects that hold the consent record a regulator would ask for"
+          headers={[
+            'Object',
+            'Kind',
+            <ColHead key="grain" label="Grain" tip="What one row represents. The consent event is one grant or withdrawal; the serving view is one contactable person per chosen channel." />,
+            'Columns',
+          ]}
+          columnClassNames={['min-w-[12rem]', 'min-w-[5rem]', 'min-w-[16rem]', 'min-w-[16rem]']}
+          rows={[c.consentTable, c.servingView].filter((t): t is NonNullable<typeof t> => Boolean(t)).map((t) => [
+            <span key={`${t.id}-name`} className="inline-flex items-center gap-1.5">
               <Database className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
-              <code className="font-mono text-[12.5px] font-bold text-primary">{c.consentTable.name}</code>
-              <InfoTip content={c.consentTable.grain} />
-            </p>
-            <p className="mt-1.5 text-[12px] text-muted-foreground">{c.consentTable.grain}</p>
-            <Evidence items={c.consentTable.columns.map((col) => col.name)} />
-          </div>
-        ) : null}
-        {c.servingView ? (
-          <div className="mb-3 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.04] px-3.5 py-3">
-            <p className="flex flex-wrap items-center gap-2">
-              <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-400" aria-hidden />
-              <code className="font-mono text-[12.5px] font-bold text-emerald-400">{c.servingView.name}</code>
-              <InfoTip content="The only object a campaign may send from. Every segment is a filter over this view." />
-            </p>
-            <p className="mt-1.5 text-[12px] text-muted-foreground">{c.servingView.grain}</p>
-          </div>
-        ) : null}
-        <p className="t-eyebrow mb-2 mt-4 text-[10px]">
+              <code className="font-mono text-[12.5px] font-bold text-primary">{t.name}</code>
+            </span>,
+            <span
+              key={`${t.id}-kind`}
+              className={cn(
+                'inline-flex rounded border px-1.5 py-px font-mono text-[9.5px] font-bold uppercase tracking-wider',
+                KIND_STYLE[t.kind] ?? 'border-border/60 text-muted-foreground'
+              )}
+            >
+              {t.kind}
+            </span>,
+            t.grain,
+            <Evidence key={`${t.id}-cols`} items={t.columns.map((col) => col.name)} />,
+          ])}
+        />
+        <p className="t-eyebrow mb-2 mt-6 text-[10px]">
           Tests that hold consent in place
           <InfoTip
             content="Warehouse tests run on every build. A failing test stops the send rather than reporting on it afterwards."
             className="ml-1"
           />
         </p>
-        <ul className="space-y-1.5">
-          {c.consentTests.map((t) => (
-            <li key={`${t.test}-${t.on}`} className="rounded-lg border border-border/50 bg-secondary/15 px-3 py-2">
-              <p className="flex flex-wrap items-baseline gap-2">
-                <code className="font-mono text-[11px] font-bold text-primary">{t.test}</code>
-                <span className="text-[12px] text-foreground/85">{t.on}</span>
-              </p>
-              <p className="mt-0.5 text-[11.5px] leading-snug text-muted-foreground">{t.why}</p>
-            </li>
-          ))}
-        </ul>
+        <DataTable
+          caption="Warehouse tests that hold the consent record in place"
+          compact
+          headers={[
+            'Test',
+            'On',
+            <ColHead key="why" label="Why it is there" tip="What a failing test would mean for a send. Consent tests fail closed." />,
+          ]}
+          columnClassNames={['min-w-[10rem]', 'min-w-[16rem]', 'min-w-[16rem]']}
+          rows={c.consentTests.map((t) => [
+            <code key={`${t.test}-${t.on}-name`} className="font-mono text-[11px] font-bold text-primary">
+              {t.test}
+            </code>,
+            <span key={`${t.test}-${t.on}-on`} className="font-mono text-[11.5px] leading-snug">
+              {t.on}
+            </span>,
+            t.why,
+          ])}
+        />
         <p className="mt-4 text-[12.5px] text-muted-foreground">
           Records that fail one of the {c.validationRuleCount} validation rules are quarantined rather than mailed —
           {' '}{c.totals.quarantined} of them on the sample file. <Tag tag="ILLUSTRATIVE" />{' '}
@@ -497,28 +596,34 @@ export default function ComplianceContent() {
           ]}
           className="mb-3"
         />
-        <FoldGroup>
-          {c.steps.map((s) => (
-            <FoldPanel
-              key={s.id}
-              title={`${s.order}. ${s.step}`}
-              subtitle={s.record}
-              badge={
-                <span className="inline-flex items-center gap-1">
-                  <Timer className="h-3 w-3 shrink-0 text-primary" aria-hidden />
-                  <span className="font-mono text-[10px] font-bold text-primary">{s.clock}</span>
-                </span>
-              }
-              defaultOpen={false}
-            >
-              <p className="text-[12.5px] leading-relaxed text-foreground/85">{s.what}</p>
-              <p className="mt-2 text-[12px] text-muted-foreground">
-                <span className="font-semibold text-foreground/80">What it puts on the file: </span>
-                {s.record}
-              </p>
-            </FoldPanel>
-          ))}
-        </FoldGroup>
+        <DataTable
+          caption="Complaint response steps and the clock on each"
+          stickyFirst
+          compact
+          headers={[
+            '#',
+            'Clock',
+            'Step',
+            <ColHead key="what" label="What happens" tip="The action taken in this window, and why the order is this order." />,
+            <ColHead key="record" label="On the file" tip="What this step writes, so the defence is a record rather than a recollection." />,
+          ]}
+          columnClassNames={['w-10 min-w-[2.5rem]', 'min-w-[8rem]', 'min-w-[14rem]', 'min-w-[22rem]', 'min-w-[14rem]']}
+          rows={c.steps.map((s) => [
+            <span key={`${s.id}-n`} className="font-marquee text-[13px] font-bold text-primary">
+              {s.order}
+            </span>,
+            <ClockChip key={`${s.id}-clock`} clock={s.clock} />,
+            <span key={`${s.id}-step`} className="text-[12.5px] font-semibold leading-snug">
+              {s.step}
+            </span>,
+            <span key={`${s.id}-what`} className="text-[12.5px] leading-snug">
+              {s.what}
+            </span>,
+            <span key={`${s.id}-rec`} className="text-[12px] leading-snug text-muted-foreground">
+              {s.record}
+            </span>,
+          ])}
+        />
         <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[12px]">
           <Outbound href="https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/more-guidance/handling-privacy-complaints">
             OAIC — handling privacy complaints
@@ -533,7 +638,9 @@ export default function ComplianceContent() {
       {/* ------------------------------------------------------------ clocks */}
       <Section id="clocks" eyebrow="The Timers" title="Every Clock in One Place">
         <DataTable
+          caption="Statutory and guidance clocks that govern a marketing send and a complaint"
           headers={['Duration', 'What it governs', 'Where it comes from']}
+          columnClassNames={['min-w-[10rem]', 'min-w-[22rem]', 'min-w-[14rem]']}
           rows={c.clocks.map((k) => [
             <span key={k.id} className="font-marquee text-[13px] font-bold text-primary">
               {k.duration}
@@ -562,6 +669,7 @@ export default function ComplianceContent() {
           {formatAud(PENALTY_UNIT_AUD)}, which has applied since 1 July 2026.
         </p>
         <DataTable
+          caption="Spam Act section 25 maximum civil penalties, in Australian dollars"
           headers={['Sender', 'Prior record', 'Rule broken', 'Per contravention', 'Same-day maximum']}
           rows={c.penalties.map((b) => [
             b.party,
@@ -578,18 +686,20 @@ export default function ComplianceContent() {
         <p className="mt-2 text-[11.5px] text-muted-foreground">
           Derived from Spam Act s 25 penalty units <Tag tag="DERIVED" />
         </p>
-        <FoldGroup className="mt-4">
-          {c.exposureNotes.map((n) => (
-            <FoldPanel
-              key={n.id}
-              title={n.heading}
-              badge={<Gavel className="h-3.5 w-3.5 text-amber-400" aria-hidden />}
-              defaultOpen={false}
-            >
-              <p className="text-[12.5px] leading-relaxed text-foreground/85">{n.detail}</p>
-            </FoldPanel>
-          ))}
-        </FoldGroup>
+        <p className="t-eyebrow mb-2 mt-6 text-[10px]">How the other regimes sit beside this table</p>
+        <DataTable
+          caption="Privacy Act, individual claims and enforcement notes that sit beside the Spam Act table"
+          headers={['Point', 'What it means']}
+          columnClassNames={['min-w-[14rem]', 'min-w-[28rem]']}
+          rows={c.exposureNotes.map((n) => [
+            <span key={`${n.id}-h`} className="text-[12.5px] font-semibold leading-snug">
+              {n.heading}
+            </span>,
+            <span key={`${n.id}-d`} className="text-[12.5px] leading-snug">
+              {n.detail}
+            </span>,
+          ])}
+        />
         <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">
           This is why consent health is a standing Leadership Team report rather than an operational detail: the
           downside is measured in penalty units and the evidence is a query.{' '}
@@ -603,37 +713,39 @@ export default function ComplianceContent() {
           The data side of this is built. What remains is the operating side — the entity details in the footer, the
           sender ID registration, and the opt-in wording that has to carry consent for two sensitive fields.
         </p>
-        <ol className="space-y-2">
-          {c.beforeFirstSend.map((b, idx) => (
-            <li key={b.id} className="rounded-xl border border-border/60 bg-secondary/15 px-3.5 py-3">
-              <p className="flex flex-wrap items-baseline gap-2">
-                <span className="font-marquee text-[13px] font-bold text-primary">{idx + 1}</span>
-                <span className="font-marquee text-[13px] font-bold uppercase tracking-wide text-foreground">
-                  {b.item}
-                </span>
-              </p>
-              <p className="mt-1 text-[12.5px] leading-snug text-muted-foreground">{b.why}</p>
-            </li>
-          ))}
-        </ol>
+        <DataTable
+          caption="Operating items the pilot needs before its first send"
+          headers={['#', 'Before the first send', 'Why']}
+          columnClassNames={['w-10 min-w-[2.5rem]', 'min-w-[18rem]', 'min-w-[22rem]']}
+          rows={c.beforeFirstSend.map((b, idx) => [
+            <span key={`${b.id}-n`} className="font-marquee text-[13px] font-bold text-primary">
+              {idx + 1}
+            </span>,
+            <span key={`${b.id}-item`} className="text-[12.5px] font-semibold leading-snug">
+              {b.item}
+            </span>,
+            <span key={`${b.id}-why`} className="text-[12.5px] leading-snug text-muted-foreground">
+              {b.why}
+            </span>,
+          ])}
+        />
       </Section>
 
       <OrnamentDivider />
 
       <Section eyebrow="Sources" title="Where Each Statement Comes From">
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {c.instruments.map((i) => (
-            <li key={i.id} className="rounded-lg border border-border/50 bg-secondary/15 px-3 py-2">
-              <p className="flex items-center gap-2">
-                <InstrumentChip code={i.code} />
-                <span className="text-[12px] font-semibold text-foreground/85">{i.regulator}</span>
-              </p>
-              <p className="mt-1">
-                <Outbound href={i.href}>{i.name}</Outbound>
-              </p>
-            </li>
-          ))}
-        </ul>
+        <DataTable
+          caption="Primary sources for each instrument on this page"
+          headers={['Instrument', 'Regulator', 'Source']}
+          columnClassNames={['min-w-[6rem]', 'min-w-[16rem]', 'min-w-[22rem]']}
+          rows={c.instruments.map((i) => [
+            <InstrumentChip key={`${i.id}-code`} code={i.code} />,
+            i.regulator,
+            <Outbound key={`${i.id}-src`} href={i.href}>
+              {i.name}
+            </Outbound>,
+          ])}
+        />
         <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted-foreground">
           Statutory text is linked to the regulator that enforces it or to the consolidated legislation. Figures
           drawn from the audience file carry the sample-data label, and figures worked out from penalty units carry

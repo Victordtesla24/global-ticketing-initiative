@@ -116,28 +116,63 @@ export function DataTable({
   headers,
   rows,
   className,
+  caption,
+  stickyFirst = false,
+  compact = false,
+  columnClassNames,
 }: {
-  headers: string[];
+  headers: (string | ReactNode)[];
   rows: (string | ReactNode)[][];
   className?: string;
+  /** Accessible name for the table; visually hidden. */
+  caption?: string;
+  /** Pin the first column while the rest scroll on a narrow viewport. */
+  stickyFirst?: boolean;
+  compact?: boolean;
+  /** Optional per-column classes, applied to both header and body cells. */
+  columnClassNames?: string[];
 }) {
+  const pad = compact ? 'px-3 py-2.5' : 'px-4 py-3';
   return (
     <div className={cn('overflow-x-auto rounded-xl border border-border/60', className)}>
       <table className="w-full text-sm">
+        {caption ? <caption className="sr-only">{caption}</caption> : null}
         <thead>
           <tr className="border-b border-border/60 bg-secondary/40">
-            {(headers ?? []).map((h: string, i: number) => (
-              <th key={i} className="px-4 py-3 text-left font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary whitespace-nowrap">
+            {headers.map((h, i) => (
+              <th
+                key={i}
+                scope="col"
+                className={cn(
+                  pad,
+                  'text-left font-marquee text-[12px] font-bold uppercase tracking-[0.14em] text-primary whitespace-nowrap',
+                  stickyFirst && i === 0 && 'sticky left-0 z-20 bg-[#1A1A1A] shadow-[1px_0_0_0_rgba(201,168,76,0.18)]',
+                  columnClassNames?.[i]
+                )}
+              >
                 {h}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {(rows ?? []).map((r: (string | ReactNode)[], i: number) => (
-            <tr key={i} className="border-b border-border/30 last:border-0 hover:bg-secondary/30 transition-colors">
-              {(r ?? []).map((c: any, j: number) => (
-                <td key={j} className="px-4 py-3 align-top text-foreground/85">
+          {rows.map((r, i) => (
+            <tr
+              key={i}
+              className="group border-b border-border/30 last:border-0 transition-colors hover:bg-secondary/30"
+            >
+              {r.map((c, j) => (
+                <td
+                  key={j}
+                  className={cn(
+                    pad,
+                    'align-top text-foreground/85',
+                    stickyFirst &&
+                      j === 0 &&
+                      'sticky left-0 z-10 bg-background shadow-[1px_0_0_0_rgba(201,168,76,0.12)] group-hover:bg-[#161616]',
+                    columnClassNames?.[j]
+                  )}
+                >
                   {c}
                 </td>
               ))}
