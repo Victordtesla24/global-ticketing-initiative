@@ -86,10 +86,10 @@ function ScoreBar({ score }: { score: number }) {
       <motion.div
         className="h-full rounded-full"
         style={{ backgroundColor: riskColour(score) }}
-        initial={reduceMotion ? false : { width: 0 }}
+        initial={{ width: 0 }}
         whileInView={{ width: `${(score / 25) * 100}%` }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: EASE }}
+        transition={{ duration: reduceMotion ? 0 : 0.7, ease: EASE }}
       />
     </div>
   );
@@ -112,10 +112,10 @@ function StarMeter({ store, ratings, stars }: { store: string; ratings: string; 
       <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-[var(--color-gold-dark)] to-[var(--color-gold)]"
-          initial={reduceMotion ? false : { width: 0 }}
+          initial={{ width: 0 }}
           whileInView={{ width: `${(stars / 5) * 100}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: EASE }}
+          transition={{ duration: reduceMotion ? 0 : 0.7, ease: EASE }}
         />
       </div>
     </div>
@@ -305,10 +305,10 @@ export default function RiskContent() {
                   <motion.div
                     className="h-full rounded-full"
                     style={{ backgroundColor: b.colour }}
-                    initial={reduceMotion ? false : { width: 0 }}
+                    initial={{ width: 0 }}
                     whileInView={{ width: `${(n / Math.max(1, totalRisks)) * 100}%` }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7, ease: EASE }}
+                    transition={{ duration: reduceMotion ? 0 : 0.7, ease: EASE }}
                   />
                 </div>
                 <p className="mt-2 text-[11.5px] leading-snug text-muted-foreground">

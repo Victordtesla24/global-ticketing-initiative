@@ -21,7 +21,14 @@ import {
   FileJson,
 } from 'lucide-react';
 import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/components/proposal/section';
-import { AudienceDemo } from '@/components/proposal/audience-demo';
+import {
+  AuAudienceDemo,
+  AuColumnSpec,
+  AuProviderRefs,
+  AuDataMart,
+  AuGeographyStrip,
+  AuMapNote,
+} from '@/components/proposal/au-audience-demo';
 import { Disclosure } from '@/components/proposal/disclosure';
 import { cn } from '@/lib/utils';
 import { CATEGORY_LABELS, type ProviderCategory, type ProviderCountry } from '@/lib/data/providers';
@@ -410,12 +417,36 @@ export default function PrototypeContent() {
         evidence of demand, supply or revenue in any market.
       </Disclosure>
 
-      <Section eyebrow="End to End, In Motion" title="One Audience File Through the Whole Pipeline" className="mt-12 mb-12">
-        <p className="mb-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          Eighteen fictional contacts — name, email, phone, mobile, age, demography, state, county — landed, checked,
-          resolved, segmented and put on a board tile. Press play.
+      <Section eyebrow="End to End, In Motion" title="An Australian Consented Audience, Run End to End" className="mt-12 mb-12">
+        <p className="mb-5 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+          Landed, checked, resolved, consent-gated, activated. Every figure below is computed from the file itself.
         </p>
-        <AudienceDemo />
+        <AuAudienceDemo />
+      </Section>
+
+      <OrnamentDivider />
+
+      <Section eyebrow="Reference Geography" title="Where These People Sit">
+        <AuGeographyStrip />
+        <div className="mt-3">
+          <AuMapNote />
+        </div>
+      </Section>
+
+      <Section eyebrow="The Columns" title="Every Field, and What Stands Behind It">
+        <AuColumnSpec />
+      </Section>
+
+      <Section eyebrow="Sources" title="The Providers Behind Each Column">
+        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+          Only a promoter&apos;s own opted-in list yields person-level contact details lawfully. The classification
+          products are area-level, and the panels size a segment rather than supply a list.
+        </p>
+        <AuProviderRefs />
+      </Section>
+
+      <Section eyebrow="Warehouse" title="Data Mart Tables and Their Joins">
+        <AuDataMart />
       </Section>
 
       <OrnamentDivider />

@@ -105,7 +105,8 @@ All page content is typed TypeScript in `lib/data/`. There is no database and no
 | `costs.ts` | Investment page: actual spend to date, the per-gate decision schedule, vendor published prices, the people/salary basis, the returns verdict and outstanding items. |
 | `insights.ts` | What the data buys, market indicator callouts, the marketing data plan, strategic options and revenue streams. |
 | `markets.ts` | The `Market` type and the five market records behind `/markets/[slug]`, plus campaign segments and the decision framework shown on `/market-opportunity`. |
-| `audience-demo.ts` | The eighteen-record person-level demonstration file (first name, last name, email, phone, mobile, age, demography, state, county) behind the `/prototype` end-to-end demo, with `runPipeline()` — validation, quarantine, identity resolution, segmentation and KPI arithmetic computed from the array at render time. |
+| `audience-au.ts` | The Australian consented event-marketing dataset behind the `/prototype` demonstration: the column specification with its legal labels, the validation rules, `runAuPipeline()` (validate → quarantine → identity resolution → consent gate → segmentation), the provider reference list, and the data-mart tables, joins and dbt tests the page draws. |
+| `audience-au.generated.ts` | Generated — the dataset rows themselves. Written by the same generator that writes the CSV, Excel and JSON downloads, so the page and the files cannot drift. Do not hand-edit. |
 | `prototype.ts` | Index of the 60 sample datasets, their control totals, CSV/JSON link helpers and the Australia end-to-end walkthrough. |
 | `providers.ts` | The 60-provider catalogue — category, trust tier, country tags and cost metadata — with the acquisition sequence, day-one bill and history-depth table. |
 | `revenue-model.ts` | The revenue identity and its variables. |
@@ -150,15 +151,38 @@ Two modes, never mixed:
 
 The files are served as static assets and linked for download from `/prototype`.
 
-One further pair sits deliberately **outside** the catalogue and its control totals:
-[`audience-sample.csv`](public/sample-data/audience-sample.csv) /
-[`audience-sample.json`](public/sample-data/audience-sample.json) — eighteen fictional
-person-level records (first name, last name, email, phone, mobile, age, demography, state,
-county) that `/prototype` runs end to end in five animated stages: **the file → validate →
-resolve → segment → decide**. Two rows carry deliberate defects and one person appears twice, so
-validation, quarantine and identity resolution all visibly run; every count, bar and KPI is
-computed from the file at render time. Emails use the reserved `example.com` domain and both
-numbers sit in the ranges the Australian regulator sets aside for fiction.
+### The Australian consented-audience demonstration file
+
+One further set sits deliberately **outside** the catalogue and its control totals, in three
+formats of the same rows:
+
+| Format | File |
+| :--- | :--- |
+| CSV | [`au-audience-consented.csv`](public/sample-data/au-audience-consented.csv) |
+| Excel | [`au-audience-consented.xlsx`](public/sample-data/au-audience-consented.xlsx) — data sheet plus a notice sheet |
+| JSON | [`au-audience-consented.json`](public/sample-data/au-audience-consented.json) — rows plus the anchors and legal labels |
+
+It carries 241 person-level records across 20 columns: name, email, phone, mobile, age, state,
+suburb, postcode, ABS SA2, ancestry, whether Marathi is used at home, the marketing-consent flag,
+the chosen channel, and the consent timestamp, source and purpose. `/prototype` runs it end to end
+in five stages — **the file → validate → resolve → consent → activate** — and draws the column
+specification, the provider references and the data-mart joins from it.
+
+**What is real and what is not.** Every person is fictional: emails use the reserved `example.com`
+domain (RFC 2606) and both numbers sit in the ranges the Australian regulator sets aside for
+fiction. The geography is real — 48 localities with their Australia Post postcodes and the ABS
+ASGS 2021 SA2 codes those postcodes resolve to. The state mix follows the ABS Census 2021 counts
+of Marathi used at home (22,263 nationally; 9,753 New South Wales; 7,170 Victoria). Six rows carry
+deliberate defects and one person appears twice, so validation, quarantine and identity resolution
+all visibly run.
+
+**Why it is not a real person file.** Racial or ethnic origin is *sensitive information* under
+s 6 of the Privacy Act 1988 (Cth), and APP 7.4 permits its use for direct marketing only with the
+individual's consent. No lawful public download of identified Australians with contact details and
+an ethnicity attribute therefore exists. In production the person-level layer comes from a
+promoter's own opted-in list; the commercial classification products (Experian Mosaic, Roy Morgan
+Helix Personas) are household or area segments, and the panels (Roy Morgan Single Source) size a
+segment rather than supply a list. The `/prototype` provider cards carry each source and its link.
 
 <p align="center" style="color:#C9A84C">◆ ─────────────────────────────────────────────────────── ◆</p>
 
@@ -210,7 +234,8 @@ app/
   providers.tsx     react-hot-toast Toaster
 components/
   proposal/         app shell, sidebar, footer, section, tag, timeline, architecture graph,
-                    disclosure (fold for supporting prose), audience-demo (end-to-end pipeline demo)
+                    disclosure (fold for supporting prose), au-audience-demo (the end-to-end
+                    pipeline demo, column spec, provider cards and data-mart joins)
   three/            globe and particle background (three.js, client-only; degrade gracefully without WebGL)
   ui/               Radix-based primitives
   layouts/          generic container, section, page-header, app-shell, auth-layout
