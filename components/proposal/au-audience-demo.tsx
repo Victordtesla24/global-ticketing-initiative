@@ -380,7 +380,11 @@ export function AuAudienceDemo() {
         <Tile value={String(p.landed.length)} label="Records" sub={`${COLUMN_SPEC.length} columns`} />
         <Tile value={String(p.marketable.length)} label="May be sent to" sub={`${consentRate}% of resolved people`} tone="emerald" />
         <Tile value={String(p.marathiSpeakers)} label="Marathi at home" sub="of the contactable audience" />
-        <Tile value={String(p.byState.length)} label="States covered" sub={`${new Set(AU_AUDIENCE.map((r) => r.postcode)).size} postcodes`} />
+        <Tile
+          value={String(new Set(p.golden.map((r) => r.state)).size)}
+          label="States covered"
+          sub={`${new Set(p.golden.map((r) => r.postcode)).size} postcodes`}
+        />
       </div>
 
       {/* stage rail */}
@@ -739,16 +743,23 @@ export function AuDataMart() {
 /* -------------------------------------------------------- geography strip */
 
 export function AuGeographyStrip() {
-  const p = useMemo(() => runAuPipeline(), []);
-  const postcodes = useMemo(() => new Set(AU_AUDIENCE.map((r) => r.postcode)).size, []);
-  const sa2s = useMemo(() => new Set(AU_AUDIENCE.map((r) => r.sa2_code_2021)).size, []);
-  const suburbs = useMemo(() => new Set(AU_AUDIENCE.map((r) => r.suburb)).size, []);
+  // All four counts come from the same set — the resolved people — so the
+  // figures sit on one denominator rather than three.
+  const g = useMemo(() => {
+    const golden = runAuPipeline().golden;
+    return {
+      suburbs: new Set(golden.map((r) => r.suburb)).size,
+      postcodes: new Set(golden.map((r) => r.postcode)).size,
+      sa2s: new Set(golden.map((r) => r.sa2_code_2021)).size,
+      states: new Set(golden.map((r) => r.state)).size,
+    };
+  }, []);
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      <Tile value={String(suburbs)} label="Suburbs" sub="real localities" />
-      <Tile value={String(postcodes)} label="Postcodes" sub="Australia Post reference" />
-      <Tile value={String(sa2s)} label="ABS SA2 areas" sub="ASGS 2021 codes" />
-      <Tile value={String(p.byState.length)} label="States and territories" sub="of the contactable audience" />
+      <Tile value={String(g.suburbs)} label="Suburbs" sub="real localities" />
+      <Tile value={String(g.postcodes)} label="Postcodes" sub="Australia Post reference" />
+      <Tile value={String(g.sa2s)} label="ABS SA2 areas" sub="ASGS 2021 codes" />
+      <Tile value={String(g.states)} label="States and territories" sub="all eight are in scope" />
     </div>
   );
 }
