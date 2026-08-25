@@ -128,7 +128,7 @@ export function FoldPanel({
       <Collapsible.Content
         forceMount
         className={cn(
-          'fold-panel-body overflow-hidden data-[state=closed]:h-0 data-[state=closed]:opacity-0 data-[state=open]:h-auto data-[state=open]:opacity-100'
+          'fold-panel-body overflow-hidden data-[state=closed]:pointer-events-none data-[state=closed]:h-0 data-[state=closed]:opacity-0 data-[state=open]:h-auto data-[state=open]:opacity-100'
         )}
       >
         <div className="border-t border-border/40 px-3.5 py-3">{children}</div>

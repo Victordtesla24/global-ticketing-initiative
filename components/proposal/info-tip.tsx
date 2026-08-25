@@ -27,7 +27,6 @@ export function InfoTip({
         <button
           type="button"
           aria-label={label}
-          aria-expanded={open}
           onPointerDown={(e) => {
             // Keep the tip available on touch: toggle on press without waiting for hover.
             e.stopPropagation();

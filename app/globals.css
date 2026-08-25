@@ -312,5 +312,6 @@ body {
     height: auto !important;
     opacity: 1 !important;
     overflow: visible !important;
+    pointer-events: auto !important;
   }
 }
