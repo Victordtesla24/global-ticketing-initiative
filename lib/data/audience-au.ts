@@ -75,26 +75,44 @@ export const COLUMN_SPEC: ColumnSpec[] = [
 
 /* ------------------------------------------------------------------- rules */
 
-const AU_STATES = new Set(['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']);
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MOBILE_RE = /^04\d{2} \d{3} \d{3}$/;
-const POSTCODE_RE = /^(0[289]\d{2}|[1-9]\d{3})$/;
+const POSTCODE_RE = /^\d{4}$/;
+
+/** The postcode ranges each state and territory actually holds. */
+const STATE_POSTCODES: Record<string, [number, number][]> = {
+  NSW: [[1000, 2599], [2619, 2899], [2921, 2999]],
+  ACT: [[200, 299], [2600, 2618], [2900, 2920]],
+  VIC: [[3000, 3999], [8000, 8999]],
+  QLD: [[4000, 4999], [9000, 9999]],
+  SA: [[5000, 5999]],
+  WA: [[6000, 6999]],
+  TAS: [[7000, 7999]],
+  NT: [[800, 999]],
+};
 
 export const VALIDATION_RULES = [
   { rule: 'Email format', what: 'email must parse as name@domain.tld' },
   { rule: 'Age range', what: 'age must sit between 15 and 110' },
   { rule: 'State code', what: 'state must be one of the eight states and territories' },
   { rule: 'Mobile format', what: 'mobile must match 04xx xxx xxx' },
-  { rule: 'Postcode range', what: 'postcode must be a valid four-digit Australian postcode' },
+  { rule: 'Postcode format', what: 'postcode must be four digits' },
+  { rule: 'Postcode in state', what: 'the postcode must fall in a range that state actually holds' },
 ] as const;
 
 export function checkRow(r: AudienceRow): string[] {
   const f: string[] = [];
   if (!EMAIL_RE.test(r.email)) f.push('Email format');
   if (!(r.age >= 15 && r.age <= 110)) f.push('Age range');
-  if (!AU_STATES.has(r.state)) f.push('State code');
-  if (!MOBILE_RE.test(r.mobile)) f.push('Mobile format');
-  if (!POSTCODE_RE.test(r.postcode)) f.push('Postcode range');
+  const ranges = STATE_POSTCODES[r.state];
+  if (!ranges) f.push('State code');
+  if (!POSTCODE_RE.test(r.postcode)) f.push('Postcode format');
+  // A well-formed postcode in the wrong state is the defect a format check
+  // waves through, so it is tested separately and only where both parts parse.
+  else if (ranges) {
+    const n = Number(r.postcode);
+    if (!ranges.some(([lo, hi]) => n >= lo && n <= hi)) f.push('Postcode in state');
+  }
   return f;
 }
 
