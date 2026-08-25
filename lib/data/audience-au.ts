@@ -49,10 +49,17 @@ export const COLUMN_SPEC: ColumnSpec[] = [
     column: 'ethnicity_nationality',
     type: 'text',
     meaning: 'Ancestry, on ABS categories',
-    basis: 'ABS Census ancestry categories — Indian, Other Indian subcontinent, Australian, Other',
-    legal: 'Sensitive information — s 6, Privacy Act 1988 (Cth)',
+    basis:
+      'Self-declared by the person at opt-in, on ABS Census ancestry categories. A bought-in ethnicity append cannot be used for marketing however it was collected',
+    legal: 'Sensitive information — s 6, Privacy Act 1988 (Cth). APP 7.4 needs the person’s consent',
   },
-  { column: 'marathi_speaking', type: 'flag', meaning: 'Marathi used at home', basis: 'Mirrors the ABS Census variable Language used at home (LANP)' },
+  {
+    column: 'marathi_speaking',
+    type: 'flag',
+    meaning: 'Marathi used at home',
+    basis: 'Self-declared at opt-in, on the ABS Census variable Language used at home (LANP)',
+    legal: 'Travels with the same consent as the ancestry column',
+  },
   {
     column: 'consented_for_marketing',
     type: 'flag',
@@ -516,6 +523,15 @@ export const PROVIDER_REFS: ProviderRef[] = [
     grain: 'Regulator',
     columns: ['ethnicity_nationality', 'consented_for_marketing'],
     url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-7-app-7-direct-marketing',
+  },
+  {
+    provider: 'Australian Electoral Commission',
+    product: 'Commonwealth electoral roll',
+    supplies:
+      'The one identified national file of Australians — and s 91B of the Commonwealth Electoral Act 1918 shuts commercial use of it, which is a large part of why no lawful public person-level list exists',
+    grain: 'Regulator',
+    columns: ['first_name', 'last_name', 'suburb', 'postcode'],
+    url: 'https://www.aec.gov.au/enrolling_to_vote/about_electoral_roll/',
   },
   {
     provider: 'Australian Communications and Media Authority',
