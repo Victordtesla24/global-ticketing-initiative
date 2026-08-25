@@ -32,12 +32,14 @@ caveats behind each figure are kept **word for word** inside a
 page shorter, and a figure that was visible stays visible. The rule is written up in
 [`STYLE_GUIDE.md`](STYLE_GUIDE.md#copy).
 
-**Production:**
+**Production — the deployment target:**
 
 | Environment | URL |
 | :--- | :--- |
-| Production (GitHub-tracked) | <https://ticketalay.abacusai.cloud> |
-| Production (VPS instance) | <https://ticketalay.srv1356245.hstgr.cloud> |
+| Production | <https://ticketalay.srv1356245.hstgr.cloud> |
+
+This is the only URL to deploy to. Deployment is a pull, build and restart on the host itself; the
+site is not shipped anywhere else.
 
 <p align="center" style="color:#C9A84C">◆ ─────────────────────────────────────────────────────── ◆</p>
 
@@ -149,7 +151,8 @@ Two modes, never mixed:
 | **Real extract** | 15 | 209 | A real extract from the named publisher; every row carries `source_url` and `access_date`. |
 | **Synthetic sample** | 45 | 392 | A synthetic sample mirroring the provider's published field specification — illustrative values only, not vendor data and not a Ticketalay record. |
 
-The files are served as static assets and linked for download from `/prototype`.
+The files are served as static assets. The 60-dataset catalogue and its Australia walkthrough are data
+assets of the proposal; `/prototype` itself now presents a single Australian audience file end to end.
 
 ### The Australian consented-audience demonstration file
 
@@ -214,12 +217,16 @@ No environment variables are required: the app reads none at runtime.
 **CI** — [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every push and pull
 request to `main`: install on Node 22, then the production-language gate, then `yarn build`.
 
-**Deployment** — two hosts serve the site:
+**Deployment** — one host serves the site: `ticketalay.service`, Next.js on port 3400 behind
+Traefik TLS, at <https://ticketalay.srv1356245.hstgr.cloud>. It is updated in place:
 
-| Instance | URL | How it updates |
-| :--- | :--- | :--- |
-| GitHub-tracked production | <https://ticketalay.abacusai.cloud> | Tracks `main` and redeploys automatically when it advances. |
-| VPS instance (`ticketalay.service`, Next.js on port 3400 behind Traefik TLS) | <https://ticketalay.srv1356245.hstgr.cloud> | Pulled, built and restarted on the host from `main`. |
+```bash
+cd /opt/global-ticketing-initiative
+git fetch <working-clone> main && git merge --ff-only FETCH_HEAD
+bash scripts/no-chrome-gate.sh
+yarn build
+systemctl restart ticketalay
+```
 
 ### Production-language gate
 
