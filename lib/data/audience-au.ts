@@ -488,10 +488,10 @@ export const PROVIDER_REFS: ProviderRef[] = [
     grain: 'Official statistics',
     trust: 'Official statistic',
     authenticity:
-      'A national census, not a sample: enumerated August 2021 under the Census and Statistics Act 1905. Open the LANP variable page and the counts sit in the Census tables behind it',
-    cost: 'Free — the ABS publishes Census data at no charge',
+      'A national census, not a sample: enumerated August 2021 under the Census and Statistics Act 1905. The standard Community Profiles fold Marathi into “Other Indo-Aryan”, so these counts come from TableBuilder: cross-tabulate Language used at home against State and the three figures reproduce exactly',
+    cost: 'Free — TableBuilder Basic costs nothing; it asks for a registration',
     columns: ['state', 'marathi_speaking'],
-    url: 'https://www.abs.gov.au/census/guide-census-data/census-dictionary/2021/variables-topic/cultural-diversity/language-used-home-lanp',
+    url: 'https://www.abs.gov.au/statistics/microdata-tablebuilder/tablebuilder',
   },
   {
     id: 'sal',
@@ -519,10 +519,12 @@ export const PROVIDER_REFS: ProviderRef[] = [
     grain: 'Reference data',
     trust: 'Reference standard',
     authenticity:
-      'Australia Post sets Australian postcodes, so its own search is the authority. Type any suburb in this file and the postcode should match',
-    cost: 'Free to search — Australia Post publishes the lookup at no charge',
+      'Australia Post sets Australian postcodes, so its own file is the authority. The Standard Postcode File is the CSV every suburb and postcode here was matched against',
+    cost:
+      'Quote on request — Australia Post publishes no price for the CSV files, and the free PDF booklet is licensed for non-commercial use only, so a commercial audience file needs the licensed product',
+    costUrl: 'https://postcode.auspost.com.au/free_display.html?id=1',
     columns: ['suburb', 'postcode'],
-    url: 'https://auspost.com.au/postcode',
+    url: 'https://auspost.com.au/business/marketing-and-communications/access-data-and-insights/address-data/postcode-data',
   },
   {
     id: 'asgs',
@@ -534,10 +536,10 @@ export const PROVIDER_REFS: ProviderRef[] = [
     grain: 'Reference data',
     trust: 'Reference standard',
     authenticity:
-      'The ASGS is the standard geography every Australian statistical agency reports on. The edition page carries the SA2 boundaries and the correspondence files',
-    cost: 'Free — the ABS publishes the standard and its correspondences at no charge',
+      'The correspondence files themselves, under Creative Commons: CG_POSTCODE_2021_SA2_2021.xlsx is the postcode-to-SA2 table this file joins on, and it carries the ratio that makes the join many-to-many',
+    cost: 'Free — Creative Commons Attribution 4.0',
     columns: ['sa2_code_2021', 'sa2_name_2021'],
-    url: 'https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026',
+    url: 'https://data.gov.au/data/dataset/asgs-edition-3-2021-correspondences',
   },
   {
     id: 'firstparty',
@@ -581,10 +583,10 @@ export const PROVIDER_REFS: ProviderRef[] = [
     supplies: 'Consent, sender identification and a working unsubscribe on every commercial email or SMS',
     grain: 'Regulator',
     trust: 'Regulator',
-    authenticity: 'The Act itself on the Federal Register of Legislation — the primary text, not a summary of it',
+    authenticity: 'The consolidated text of the Act on the Federal Register of Legislation — the primary source, not a summary of it',
     cost: 'Free — legislation, not a data purchase',
     columns: ['contact_preference', 'consent_source'],
-    url: 'https://www.legislation.gov.au/C2004A01214/latest',
+    url: 'https://www.legislation.gov.au/C2004A01214/latest/text',
   },
   {
     id: 'egentic',
@@ -685,10 +687,10 @@ export const PROVIDER_REFS: ProviderRef[] = [
       'The one identified national file of Australians — and s 91B of the Commonwealth Electoral Act 1918 shuts commercial use of it, which is a large part of why no lawful public person-level list exists',
     grain: 'Regulator',
     trust: 'Official statistic',
-    authenticity: 'A statutory register maintained by the AEC; its accuracy is a legal obligation, and its use is a legal restriction',
-    cost: 'Not for sale — commercial use prohibited by statute',
+    authenticity: 'The AEC’s own electoral-roll access page sets out who may receive roll data and for what. A marketing organisation is not on that list',
+    cost: 'Not for sale — there is no commercial access path, at any price',
     columns: ['first_name', 'last_name', 'suburb', 'postcode'],
-    url: 'https://www.aec.gov.au/enrolling_to_vote/about_electoral_roll/',
+    url: 'https://www.aec.gov.au/Parties_and_Representatives/era/',
   },
 ];
 
