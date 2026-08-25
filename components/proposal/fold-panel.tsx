@@ -3,7 +3,7 @@
 /* A fold whose header stays visible and whose body starts collapsed.
  * forceMount keeps the body in the DOM so print still carries the content. */
 
-import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { cn } from '@/lib/utils';
@@ -25,30 +25,23 @@ export function FoldGroup({
   className?: string;
   controls?: boolean;
 }) {
-  const [setters, setSetters] = useState<Map<string, (v: boolean) => void>>(new Map());
+  // Ref map so registration never re-renders the provider or thrash child effects.
+  const settersRef = useRef(new Map<string, (v: boolean) => void>());
 
   const register = useCallback((id: string, setOpen: (v: boolean) => void) => {
-    setSetters((prev) => {
-      const next = new Map(prev);
-      next.set(id, setOpen);
-      return next;
-    });
+    settersRef.current.set(id, setOpen);
     return () => {
-      setSetters((prev) => {
-        const next = new Map(prev);
-        next.delete(id);
-        return next;
-      });
+      settersRef.current.delete(id);
     };
   }, []);
 
   const expandAll = useCallback(() => {
-    setters.forEach((set) => set(true));
-  }, [setters]);
+    settersRef.current.forEach((set) => set(true));
+  }, []);
 
   const collapseAll = useCallback(() => {
-    setters.forEach((set) => set(false));
-  }, [setters]);
+    settersRef.current.forEach((set) => set(false));
+  }, []);
 
   const value = useMemo(() => ({ register, expandAll, collapseAll }), [register, expandAll, collapseAll]);
 
@@ -82,8 +75,6 @@ export function FoldGroup({
   );
 }
 
-let foldSeq = 0;
-
 export function FoldPanel({
   title,
   subtitle,
@@ -105,7 +96,8 @@ export function FoldPanel({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const group = useContext(FoldGroupContext);
-  const [foldId] = useState(() => id ?? `fold-${++foldSeq}`);
+  const reactId = useId();
+  const foldId = id ?? reactId;
 
   useEffect(() => {
     if (!group) return;
@@ -138,7 +130,6 @@ export function FoldPanel({
         className={cn(
           'fold-panel-body overflow-hidden data-[state=closed]:h-0 data-[state=closed]:opacity-0 data-[state=open]:h-auto data-[state=open]:opacity-100'
         )}
-        data-state={open ? 'open' : 'closed'}
       >
         <div className="border-t border-border/40 px-3.5 py-3">{children}</div>
       </Collapsible.Content>

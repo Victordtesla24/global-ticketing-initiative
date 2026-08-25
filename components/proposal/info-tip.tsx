@@ -22,11 +22,16 @@ export function InfoTip({
   const [open, setOpen] = useState(false);
 
   return (
-    <Tooltip open={open} onOpenChange={setOpen} delayDuration={200}>
+    <Tooltip open={open} onOpenChange={setOpen} delayDuration={150}>
       <TooltipTrigger asChild>
         <button
           type="button"
           aria-label={label}
+          aria-expanded={open}
+          onPointerDown={(e) => {
+            // Keep the tip available on touch: toggle on press without waiting for hover.
+            e.stopPropagation();
+          }}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -42,7 +47,8 @@ export function InfoTip({
       </TooltipTrigger>
       <TooltipContent
         side={side}
-        className="max-w-xs border-primary/30 bg-[#1A1A1A] px-3 py-2 text-[12px] leading-snug text-foreground/90 shadow-lg"
+        className="z-[100] max-w-xs border-primary/30 bg-[#1A1A1A] px-3 py-2 text-[12px] leading-snug text-foreground/90 shadow-lg"
+        onPointerDownOutside={() => setOpen(false)}
       >
         {content}
       </TooltipContent>
