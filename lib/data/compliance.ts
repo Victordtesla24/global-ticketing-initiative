@@ -376,7 +376,7 @@ export const RESPONSE_STEPS: ResponseStep[] = [
     order: 7,
     step: 'Retain the whole file',
     clock: 'Through the limitation window',
-    what: 'The OAIC will generally decline a complaint raised more than 12 months after the person became aware of the issue. The statutory tort runs one year from awareness or three years from the event, whichever comes first, and a court may extend that to no later than six years.',
+    what: 'The longest window sets the retention period, and that window belongs to the Spam Act: ACMA may start a penalty proceeding up to six years after the contravention. The privacy windows are shorter — the OAIC will generally decline a complaint raised more than 12 months after the person became aware, and the statutory tort runs one year from awareness or three years from the invasion, whichever comes first.',
     record: 'Complaint, consent extract, response and suppression proof held together',
   },
 ];
@@ -399,6 +399,7 @@ export const CLOCKS: Clock[] = [
   { id: 'dnc-wash', duration: '30 days', what: 'A Do Not Call Register wash stays current', source: 'Do Not Call Register Act 2006' },
   { id: 'oaic-window', duration: '12 months', what: 'The window in which the OAIC will generally accept a complaint', source: 'Privacy Act s 41 practice' },
   { id: 'tort-limit', duration: '1 year, or 3 years', what: 'Limitation on the statutory tort — from awareness, or from the invasion, whichever is earlier', source: 'Privacy Act Schedule 2' },
+  { id: 'acma-recovery', duration: '6 years', what: 'The window in which ACMA may start a penalty proceeding after a contravention', source: 'Spam Act s 26(2)' },
 ];
 
 /* ----------------------------------------------------------------- exposure */
@@ -420,12 +421,22 @@ interface PenaltyBandSpec {
   sameDayUnits: number;
 }
 
-/** Spam Act s 25 — maximum civil penalties, in penalty units. */
+/**
+ * Spam Act s 25 — maximum civil penalties, in penalty units. Subsections (3)
+ * and (5) set the body-corporate bands; (4) and (6) set the bands for a person
+ * who is not a body corporate, which is how an individual involved in the send
+ * is reached. The same-day figure is the cap where the Federal Court finds two
+ * or more contraventions of the provision on one day.
+ */
 const PENALTY_BANDS: PenaltyBandSpec[] = [
   { id: 'bc-first-consent', party: 'Body corporate', priorRecord: false, rule: 'Consent rule', perContraventionUnits: 100, sameDayUnits: 2000 },
   { id: 'bc-first-other', party: 'Body corporate', priorRecord: false, rule: 'Sender identity or unsubscribe', perContraventionUnits: 50, sameDayUnits: 1000 },
   { id: 'bc-prior-consent', party: 'Body corporate', priorRecord: true, rule: 'Consent rule', perContraventionUnits: 500, sameDayUnits: 10000 },
   { id: 'bc-prior-other', party: 'Body corporate', priorRecord: true, rule: 'Sender identity or unsubscribe', perContraventionUnits: 250, sameDayUnits: 5000 },
+  { id: 'ind-first-consent', party: 'Individual', priorRecord: false, rule: 'Consent rule', perContraventionUnits: 20, sameDayUnits: 400 },
+  { id: 'ind-first-other', party: 'Individual', priorRecord: false, rule: 'Sender identity or unsubscribe', perContraventionUnits: 10, sameDayUnits: 200 },
+  { id: 'ind-prior-consent', party: 'Individual', priorRecord: true, rule: 'Consent rule', perContraventionUnits: 100, sameDayUnits: 2000 },
+  { id: 'ind-prior-other', party: 'Individual', priorRecord: true, rule: 'Sender identity or unsubscribe', perContraventionUnits: 50, sameDayUnits: 1000 },
 ];
 
 export interface PenaltyBand extends PenaltyBandSpec {
@@ -460,7 +471,7 @@ export const EXPOSURE_NOTES: ExposureNote[] = [
     id: 'privacy-tiers',
     heading: 'Privacy Act penalties now run in three tiers',
     detail:
-      'Since 11 December 2024 there is a penalty for serious interference with privacy, a middle tier for interference below that threshold, and a lower tier carrying infringement notices for administrative breaches of the principles. For a serious interference the maximum is the greater of $50 million, three times the benefit obtained, or 30 per cent of adjusted turnover for the relevant period.',
+      'The top tier has applied since 13 December 2022: for a serious interference with privacy the maximum is the greater of $50 million, three times the benefit obtained, or 30 per cent of adjusted turnover for the relevant period. From 11 December 2024 two tiers sit beneath it — a middle tier for an interference that falls short of serious, and a lower tier carrying infringement notices for administrative breaches of the principles.',
   },
   {
     id: 'first-judgment',

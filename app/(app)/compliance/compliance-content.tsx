@@ -547,8 +547,9 @@ export default function ComplianceContent() {
         <p className="mt-3 text-[12.5px] leading-relaxed text-muted-foreground">
           Two of these are easy to miss. A withdrawal of consent takes effect at the end of five business days, so a
           send queued on day four is still a send to a person who has withdrawn. And the retention window is set by
-          the limitation periods, not by the marketing calendar: the statutory tort runs one year from the day the
-          person became aware or three years from the invasion, whichever comes first.
+          the longest limitation period rather than by the marketing calendar: the privacy windows close in one to
+          three years, but ACMA may start a Spam Act proceeding up to six years after the contravention, so six years
+          is what the consent record and the send log have to survive.
         </p>
       </Section>
 
