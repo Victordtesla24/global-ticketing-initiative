@@ -24,7 +24,6 @@ import { Section, GlassCard, OrnamentDivider, StatCard, DataTable } from '@/comp
 import {
   AuAudienceDemo,
   AuColumnSpec,
-  AuProviderRefs,
   AuDataMart,
   AuGeographyStrip,
   AuMapNote,
@@ -435,15 +434,6 @@ export default function PrototypeContent() {
 
       <Section eyebrow="The Columns" title="Every Field, and What Stands Behind It">
         <AuColumnSpec />
-      </Section>
-
-      <Section eyebrow="Sources" title="The Providers Behind Each Column">
-        <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          The commercial person-level lists carry the contact columns but no ancestry or language field; the
-          classification products are area-level and the panels size a segment. Ancestry and language reach a record
-          one way only — the person declaring them at opt-in.
-        </p>
-        <AuProviderRefs />
       </Section>
 
       <Section eyebrow="Warehouse" title="Data Mart Tables and Their Joins">

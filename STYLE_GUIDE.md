@@ -165,7 +165,7 @@ These are the building blocks the pages are actually made of.
 | `Tag` | `tag: ProvenanceTag` | Provenance chip — see below. |
 | `Timeline` | `items` | Vertical phase timeline. |
 | `Disclosure` | `label?`, `className?`, `defaultOpen?` | Collapsible fold for supporting prose. The visible layer of a page leads with the visual and a short line; the full working, provenance and caveats sit verbatim inside a `Disclosure`, one tap away. |
-| `AuAudienceDemo` and friends | — | The `/prototype` surface over `lib/data/audience-au.ts`: `AuAudienceDemo` (stage rail, rows table, validation chips, merge visual, bar blocks, KPI tiles), `AuColumnSpec`, `AuProviderRefs`, `AuDataMart` and `AuGeographyStrip`. Every figure is computed from the dataset at render time. |
+| `AuAudienceDemo` and friends | — | The `/prototype` surface over `lib/data/audience-au.ts`: `AuAudienceDemo` (six-stage rail — sources, file, validate, resolve, consent, activate — with source cards, rows table, validation chips, merge visual, bar blocks and KPI tiles), `AuColumnSpec`, `AuDataMart` and `AuGeographyStrip`. Every figure is computed from the dataset at render time; every source carries a trust rung, an authentication note, a cost and a verifiable link, and its short code marks the columns it stands behind. |
 | `ArchitectureGraph` | — | The interactive architecture graph. |
 | `AppShell`, `Sidebar`, `SiteFooter` | — | Page frame; mounted by `app/(app)/layout.tsx`. |
 

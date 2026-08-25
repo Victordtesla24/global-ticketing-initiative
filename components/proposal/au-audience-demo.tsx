@@ -28,6 +28,8 @@ import {
   KeyRound,
   Link2,
   ExternalLink,
+  Library,
+  Coins,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tag } from '@/components/proposal/tag';
@@ -36,6 +38,10 @@ import {
   COLUMN_SPEC,
   VALIDATION_RULES,
   PROVIDER_REFS,
+  BUILD_SOURCES,
+  LEGAL_SOURCES,
+  BENCHMARK_SOURCES,
+  COLUMN_SOURCES,
   MART_TABLES,
   MART_JOINS,
   MART_TESTS,
@@ -138,6 +144,31 @@ const PREVIEW_COLUMNS: { key: keyof AudienceRow; label: string; mono?: boolean }
   { key: 'state', label: 'State' },
 ];
 
+/** Colour per source code, so a column header and its source card read as one thing. */
+const SOURCE_COLOUR: Record<string, string> = {
+  LANP: 'bg-teal-500/20 text-teal-300 border-teal-500/40',
+  SAL: 'bg-teal-500/20 text-teal-300 border-teal-500/40',
+  AP: 'bg-violet-500/20 text-violet-300 border-violet-500/40',
+  ASGS: 'bg-violet-500/20 text-violet-300 border-violet-500/40',
+  '1P': 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+  APP7: 'bg-primary/20 text-primary border-primary/40',
+  SPAM: 'bg-primary/20 text-primary border-primary/40',
+};
+
+function SourceCode({ code, className }: { code: string; className?: string }) {
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center rounded border px-1 py-px font-mono text-[9px] font-bold leading-none tracking-wider',
+        SOURCE_COLOUR[code] ?? 'border-border/60 text-muted-foreground',
+        className
+      )}
+    >
+      {code}
+    </span>
+  );
+}
+
 function RowsTable({ rows, showChecks, highlight }: { rows: AudienceRow[]; showChecks?: boolean; highlight?: Set<string> }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-border/60">
@@ -151,6 +182,12 @@ function RowsTable({ rows, showChecks, highlight }: { rows: AudienceRow[]; showC
                   className="whitespace-nowrap px-2.5 py-2 text-left font-marquee text-[10.5px] font-bold uppercase tracking-[0.14em] text-primary"
                 >
                   {c.label}
+                  {/* Every column carries the code of the source it came from. */}
+                  <span className="mt-1 flex gap-0.5">
+                    {(COLUMN_SOURCES[String(c.key)] ?? []).map((code) => (
+                      <SourceCode key={code} code={code} />
+                    ))}
+                  </span>
                 </th>
               ))}
               {showChecks ? (
@@ -301,9 +338,128 @@ function MartTableCard({ t }: { t: (typeof MART_TABLES)[number] }) {
   );
 }
 
+/* ------------------------------------------------------- source provenance */
+
+const TRUST_STYLE: Record<string, string> = {
+  'Official statistic': 'border-teal-500/40 bg-teal-500/10 text-teal-300',
+  'Reference standard': 'border-violet-500/40 bg-violet-500/10 text-violet-300',
+  'Primary record — first party': 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400',
+  Regulator: 'border-primary/40 bg-primary/10 text-primary',
+  'Licensed panel': 'border-sky-500/40 bg-sky-500/10 text-sky-300',
+  Aggregator: 'border-amber-500/40 bg-amber-500/10 text-amber-400',
+};
+
+/** One source, with the four things a reader needs to trust or reject it. */
+function SourceCard({ s }: { s: (typeof PROVIDER_REFS)[number] }) {
+  const usable = s.role !== 'Benchmark — cannot supply the file';
+  return (
+    <div
+      className={cn(
+        'flex h-full flex-col rounded-xl border p-4 transition-colors',
+        usable ? 'border-border/60 bg-secondary/20' : 'border-border/40 bg-secondary/10'
+      )}
+    >
+      <div className="flex flex-wrap items-center gap-1.5">
+        <SourceCode code={s.code} className="px-1.5 py-0.5 text-[10px]" />
+        <span className="font-marquee text-[13px] font-bold uppercase tracking-wide text-foreground">{s.provider}</span>
+      </div>
+      <p className="mt-1 font-mono text-[11.5px] text-primary/90">{s.product}</p>
+      <p className="mt-2 text-[12px] leading-snug text-muted-foreground">{s.supplies}</p>
+
+      <dl className="mt-3 space-y-2 border-t border-border/40 pt-2.5">
+        <div>
+          <dt className="t-eyebrow text-[10px]">Validity</dt>
+          <dd className="mt-0.5">
+            <span
+              className={cn(
+                'inline-flex items-center rounded-full border px-2 py-0.5 text-[10.5px] font-semibold tracking-wide',
+                TRUST_STYLE[s.trust] ?? 'border-border/60 text-muted-foreground'
+              )}
+            >
+              {s.trust}
+            </span>
+          </dd>
+        </div>
+        <div>
+          <dt className="t-eyebrow text-[10px]">How to authenticate it</dt>
+          <dd className="mt-0.5 text-[11.5px] leading-snug text-muted-foreground">{s.authenticity}</dd>
+        </div>
+        <div>
+          <dt className="t-eyebrow text-[10px]">Cost</dt>
+          <dd className="mt-0.5 flex items-start gap-1.5 text-[11.5px] leading-snug text-foreground/85">
+            <Coins className="mt-0.5 h-3 w-3 shrink-0 text-primary" />
+            <span>
+              {s.cost}
+              {s.costUrl && s.costUrl !== s.url ? (
+                <a
+                  href={s.costUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-1 inline-flex items-center gap-0.5 whitespace-nowrap text-primary hover:underline"
+                >
+                  price page
+                  <ExternalLink className="h-2.5 w-2.5 shrink-0" />
+                </a>
+              ) : null}
+            </span>
+          </dd>
+        </div>
+      </dl>
+
+      <div className="mt-3 flex flex-wrap gap-1">
+        {s.columns.map((c) => (
+          <span key={c} className="rounded border border-border/50 px-1.5 py-px font-mono text-[9.5px] text-foreground/70">
+            {c}
+          </span>
+        ))}
+      </div>
+
+      <a
+        href={s.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-md border border-primary/50 bg-primary/10 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-primary transition-colors hover:bg-primary/20"
+      >
+        Verify at the source
+        <ExternalLink className="h-3 w-3 shrink-0" />
+      </a>
+    </div>
+  );
+}
+
+function SourcesPanel() {
+  const groups = [
+    { title: 'Builds the file', list: BUILD_SOURCES, note: 'Every value in the file traces to one of these.' },
+    { title: 'Sets the rules it must obey', list: LEGAL_SOURCES, note: 'The law the consent and ancestry columns answer to.' },
+    {
+      title: 'Measured and set aside',
+      list: BENCHMARK_SOURCES,
+      note: 'Commercial sources checked against the requirement. None can supply a person-level ancestry or language field.',
+    },
+  ];
+  return (
+    <div className="space-y-6">
+      {groups.map((g) => (
+        <div key={g.title}>
+          <div className="mb-2.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p className="t-eyebrow">{g.title}</p>
+            <p className="text-[12px] text-muted-foreground">{g.note}</p>
+            <span className="ml-auto font-marquee text-[15px] font-bold text-primary">{g.list.length}</span>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {g.list.map((s) => (
+              <SourceCard key={s.id} s={s} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------- the demo */
 
-const STAGE_ICONS = [FileSpreadsheet, ShieldCheck, Fingerprint, Scale, Send];
+const STAGE_ICONS = [Library, FileSpreadsheet, ShieldCheck, Fingerprint, Scale, Send];
 
 export function AuAudienceDemo() {
   const reduceMotion = useReducedMotion();
@@ -314,6 +470,7 @@ export function AuAudienceDemo() {
 
   const STAGES = useMemo(
     () => [
+      { id: 'sources', label: 'Sources', count: `${BUILD_SOURCES.length} build · ${BENCHMARK_SOURCES.length} set aside` },
       { id: 'file', label: 'The File', count: `${p.landed.length} rows` },
       { id: 'validate', label: 'Validate', count: `${p.valid.length} pass · ${p.quarantined.length} held` },
       { id: 'resolve', label: 'Resolve', count: `${p.golden.length} people` },
@@ -398,7 +555,7 @@ export function AuAudienceDemo() {
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: EASE }}
           aria-hidden
         />
-        <ol className="relative grid grid-cols-5 gap-1 sm:gap-3">
+        <ol className="relative grid grid-cols-6 gap-1 sm:gap-2">
           {STAGES.map((s, i) => {
             const Icon = STAGE_ICONS[i] ?? FileSpreadsheet;
             const active = stage === i;
@@ -469,9 +626,11 @@ export function AuAudienceDemo() {
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8, clipPath: 'inset(0% 0% 100% 0%)' }}
           transition={{ duration: reduceMotion ? 0.15 : 0.5, ease: EASE }}
         >
-          {stage === 0 ? <RowsTable rows={preview} /> : null}
+          {stage === 0 ? <SourcesPanel /> : null}
 
-          {stage === 1 ? (
+          {stage === 1 ? <RowsTable rows={preview} /> : null}
+
+          {stage === 2 ? (
             <div>
               <div className="mb-3 flex flex-wrap gap-2">
                 {VALIDATION_RULES.map((v) => {
@@ -497,7 +656,7 @@ export function AuAudienceDemo() {
             </div>
           ) : null}
 
-          {stage === 2 ? (
+          {stage === 3 ? (
             <div>
               <div className="grid items-center gap-3 md:grid-cols-[1fr_auto_1fr]">
                 <div className="grid gap-3">
@@ -528,7 +687,7 @@ export function AuAudienceDemo() {
             </div>
           ) : null}
 
-          {stage === 3 ? (
+          {stage === 4 ? (
             <div>
               <div className="mb-4 grid gap-3 sm:grid-cols-3">
                 <Tile value={String(p.golden.length)} label="Resolved people" />
@@ -544,7 +703,7 @@ export function AuAudienceDemo() {
             </div>
           ) : null}
 
-          {stage === 4 ? (
+          {stage === 5 ? (
             <div>
               <div className="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <Tile value={String(p.reachableEmail)} label="Email reachable" sub="preference E" />
@@ -580,7 +739,7 @@ export function AuColumnSpec() {
       <table className="w-full text-[12.5px]">
         <thead>
           <tr className="border-b border-border/60 bg-secondary/40">
-            {['Column', 'Type', 'What it is', 'Where it comes from'].map((h) => (
+            {['Column', 'Type', 'Source', 'What it is', 'Where it comes from'].map((h) => (
               <th key={h} className="whitespace-nowrap px-3 py-2.5 text-left font-marquee text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
                 {h}
               </th>
@@ -594,6 +753,13 @@ export function AuColumnSpec() {
               <td className="whitespace-nowrap px-3 py-2 align-top">
                 <span className="rounded border border-border/60 px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                   {c.type}
+                </span>
+              </td>
+              <td className="whitespace-nowrap px-3 py-2 align-top">
+                <span className="flex flex-wrap gap-0.5">
+                  {(COLUMN_SOURCES[c.column] ?? []).map((code) => (
+                    <SourceCode key={code} code={code} className="px-1.5 py-0.5 text-[9.5px]" />
+                  ))}
                 </span>
               </td>
               <td className="px-3 py-2 align-top leading-snug text-foreground/85">{c.meaning}</td>
@@ -610,50 +776,6 @@ export function AuColumnSpec() {
           ))}
         </tbody>
       </table>
-    </div>
-  );
-}
-
-/* ---------------------------------------------------------- provider refs */
-
-const GRAIN_STYLE: Record<string, string> = {
-  'Person-level': 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400',
-  'Household / area': 'border-amber-500/40 bg-amber-500/10 text-amber-400',
-  'Survey panel': 'border-sky-500/40 bg-sky-500/10 text-sky-300',
-  'Official statistics': 'border-teal-500/40 bg-teal-500/10 text-teal-300',
-  'Reference data': 'border-violet-500/40 bg-violet-500/10 text-violet-300',
-  Regulator: 'border-primary/40 bg-primary/10 text-primary',
-};
-
-export function AuProviderRefs() {
-  return (
-    <div className="grid gap-3 md:grid-cols-2">
-      {PROVIDER_REFS.map((r) => (
-        <a
-          key={`${r.provider}-${r.product}`}
-          href={r.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex flex-col rounded-xl border border-border/60 bg-secondary/20 p-4 transition-colors hover:border-primary/50 hover:bg-primary/[0.05]"
-        >
-          <div className="flex flex-wrap items-center gap-2">
-            <span className={cn('rounded-full border px-2 py-0.5 text-[10.5px] font-semibold tracking-wide', GRAIN_STYLE[r.grain])}>
-              {r.grain}
-            </span>
-            <span className="font-marquee text-[13.5px] font-bold uppercase tracking-wide text-foreground">{r.provider}</span>
-          </div>
-          <p className="mt-1.5 font-mono text-[12px] text-primary/90">{r.product}</p>
-          <p className="mt-1.5 flex-1 text-[12px] leading-snug text-muted-foreground">{r.supplies}</p>
-          <div className="mt-2.5 flex flex-wrap items-center gap-1">
-            {r.columns.map((c) => (
-              <span key={c} className="rounded border border-border/50 px-1.5 py-px font-mono text-[10px] text-foreground/70">
-                {c}
-              </span>
-            ))}
-            <ExternalLink className="ml-auto h-3.5 w-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
-          </div>
-        </a>
-      ))}
     </div>
   );
 }

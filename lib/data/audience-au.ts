@@ -431,135 +431,287 @@ export const MART_JOINS: MartJoin[] = [
 
 /* --------------------------------------------------------- provider refs */
 
+/**
+ * The trust ladder the provider catalogue uses, most dependable first. An
+ * aggregator may point at a primary source but is never one; a modelled
+ * estimate may never carry a headline figure.
+ */
+export type SourceTrust =
+  | 'Official statistic'
+  | 'Reference standard'
+  | 'Regulator'
+  | 'Primary record — first party'
+  | 'Platform record'
+  | 'Licensed panel'
+  | 'Aggregator'
+  | 'Modelled estimate';
+
 export interface ProviderRef {
+  /** Short key used to mark the columns this source stands behind. */
+  id: string;
+  /** Two to four letters shown against a column in the file table. */
+  code: string;
+  /**
+   * Whether this source actually builds the file, sets the law it must obey,
+   * or was measured against it and found unable to supply it.
+   */
+  role: 'Builds the file' | 'Legal basis' | 'Benchmark — cannot supply the file';
   provider: string;
   product: string;
   /** What it actually supplies. */
   supplies: string;
   /** Person-level and contactable, or an area/household classification, or a survey panel. */
   grain: 'Person-level' | 'Household / area' | 'Survey panel' | 'Official statistics' | 'Reference data' | 'Regulator';
+  /** Where it sits on the trust ladder. */
+  trust: SourceTrust;
+  /** How a reader confirms for themselves that the figure is genuine. */
+  authenticity: string;
+  /** The vendor's own published price, or that no price is on offer. */
+  cost: string;
+  /** Set when the price sits on a different page from the data. */
+  costUrl?: string;
   /** Which columns of this dataset it stands behind. */
   columns: string[];
+  /** The link a reader opens to check the source themselves. */
   url: string;
 }
 
 export const PROVIDER_REFS: ProviderRef[] = [
   {
+    id: 'lanp',
+    code: 'LANP',
+    role: 'Builds the file',
     provider: 'Australian Bureau of Statistics',
     product: 'Census 2021 — Language used at home (LANP)',
-    supplies: 'Marathi used at home: 22,263 nationally, 9,753 New South Wales, 7,170 Victoria — the counts the state mix follows',
+    supplies:
+      'Marathi used at home: 22,263 nationally, 9,753 New South Wales, 7,170 Victoria — the counts the state mix follows',
     grain: 'Official statistics',
+    trust: 'Official statistic',
+    authenticity:
+      'A national census, not a sample: enumerated August 2021 under the Census and Statistics Act 1905. Open the LANP variable page and the counts sit in the Census tables behind it',
+    cost: 'Free — the ABS publishes Census data at no charge',
     columns: ['state', 'marathi_speaking'],
     url: 'https://www.abs.gov.au/census/guide-census-data/census-dictionary/2021/variables-topic/cultural-diversity/language-used-home-lanp',
   },
   {
+    id: 'sal',
+    code: 'SAL',
+    role: 'Builds the file',
     provider: 'Australian Bureau of Statistics',
     product: 'Census 2021 QuickStats — suburb (SAL)',
-    supplies: 'Suburb-level ancestry and country of birth. Tarneit, for one: 56,370 people, Indian ancestry 15,199 (27.0%), India-born 16,231 (28.8%)',
+    supplies:
+      'Suburb-level ancestry and country of birth. Tarneit, for one: 56,370 people, Indian ancestry 15,199 (27.0%), India-born 16,231 (28.8%)',
     grain: 'Official statistics',
+    trust: 'Official statistic',
+    authenticity:
+      'Each suburb has its own QuickStats page keyed by its SAL code, so any figure here can be re-read at the source in a few seconds',
+    cost: 'Free — the ABS publishes QuickStats at no charge',
     columns: ['suburb', 'ethnicity_nationality'],
     url: 'https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL22451',
   },
   {
+    id: 'auspost',
+    code: 'AP',
+    role: 'Builds the file',
     provider: 'Australia Post',
     product: 'Postcode reference',
-    supplies: 'The authoritative locality-to-postcode list every suburb and postcode in this file was resolved against',
+    supplies: 'The locality-to-postcode list every suburb and postcode in this file was resolved against',
     grain: 'Reference data',
+    trust: 'Reference standard',
+    authenticity:
+      'Australia Post sets Australian postcodes, so its own search is the authority. Type any suburb in this file and the postcode should match',
+    cost: 'Free to search — Australia Post publishes the lookup at no charge',
     columns: ['suburb', 'postcode'],
     url: 'https://auspost.com.au/postcode',
   },
   {
+    id: 'asgs',
+    code: 'ASGS',
+    role: 'Builds the file',
     provider: 'Australian Bureau of Statistics',
     product: 'ASGS 2021 — statistical areas and correspondences',
     supplies: 'The SA2 code each postcode resolves to, and the correspondence that makes postcode-to-SA2 many-to-many',
     grain: 'Reference data',
+    trust: 'Reference standard',
+    authenticity:
+      'The ASGS is the standard geography every Australian statistical agency reports on. The edition page carries the SA2 boundaries and the correspondence files',
+    cost: 'Free — the ABS publishes the standard and its correspondences at no charge',
     columns: ['sa2_code_2021', 'sa2_name_2021'],
     url: 'https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026',
   },
   {
-    provider: 'Experian Australia',
-    product: 'Mosaic',
-    supplies: 'Consumer classification into 14 Groups and 52 Types, covering 99% of Australian households — a segment on the household, not an ethnicity on a named person',
-    grain: 'Household / area',
-    columns: ['ethnicity_nationality'],
-    url: 'https://www.experian.com.au/business/solutions/marketing-services/mosaic',
-  },
-  {
-    provider: 'Experian',
-    product: 'ConsumerView',
-    supplies: 'Over 5,000 behavioural, demographic, geographic and lifestyle attributes used to enrich an existing customer record',
-    grain: 'Household / area',
-    columns: ['age', 'ethnicity_nationality'],
-    url: 'https://www.experian.com/marketing/consumer-view',
-  },
-  {
-    provider: 'Roy Morgan',
-    product: 'Single Source Australia',
-    supplies: 'Over 60,000 interviews a year, carrying language used at home among its variables — a survey panel that sizes a segment, never a list to send to',
-    grain: 'Survey panel',
-    columns: ['marathi_speaking', 'age'],
-    url: 'https://www.roymorgan.com/products-and-tools/single-source',
-  },
-  {
-    provider: 'Roy Morgan',
-    product: 'Helix Personas',
-    supplies: '54 Personas in 6 Communities, geo-projected down to mesh block — again an area classification, not a person attribute',
-    grain: 'Household / area',
-    columns: ['suburb', 'postcode'],
-    url: 'https://www.roymorgan.com/products-and-tools/helix-personas',
-  },
-  {
-    provider: 'Audience Republic',
-    product: 'Event audience and campaign attribution',
-    supplies: 'The field shape a promoter’s own opted-in list takes — the only lawful route to person-level contact details with a marketing consent',
+    id: 'firstparty',
+    code: '1P',
+    role: 'Builds the file',
+    provider: 'Ticketalay — own opted-in list',
+    product: 'Checkout, waitlist, newsletter and box-office opt-in',
+    supplies:
+      'Name, email, phone, mobile, age, the self-declared ancestry and language, the consent flag and the chosen channel — the only lawful route to person-level contact detail',
     grain: 'Person-level',
-    columns: ['email', 'mobile', 'consented_for_marketing', 'contact_preference'],
-    url: 'https://audiencerepublic.com',
+    trust: 'Primary record — first party',
+    authenticity:
+      'Each record carries the consent timestamp, the form it came from and the purpose consented to, so any single person can be traced back to the moment they opted in',
+    cost:
+      'No fee for the data — the operator collects it. The platform that holds it publishes its price: Audience Republic Basic USD 98/mo billed annually at USD 1,028, Plus USD 163/mo billed annually at USD 1,713, entry tiers to 10,000 contacts; Enterprise on application',
+    costUrl: 'https://www.audiencerepublic.com/pricing',
+    columns: ['first_name', 'last_name', 'email', 'phone', 'mobile', 'age', 'consented_for_marketing', 'contact_preference', 'consent_timestamp', 'consent_source'],
+    url: 'https://www.audiencerepublic.com/pricing',
   },
   {
+    id: 'app7',
+    code: 'APP7',
+    role: 'Legal basis',
     provider: 'Office of the Australian Information Commissioner',
     product: 'APP 7 — Direct marketing',
-    supplies: 'Sensitive information, which includes racial or ethnic origin, may be used for direct marketing only with the individual’s consent',
+    supplies:
+      'Sensitive information, which includes racial or ethnic origin, may be used for direct marketing only with the individual’s consent',
     grain: 'Regulator',
+    trust: 'Regulator',
+    authenticity: 'The regulator’s own guidelines on the Australian Privacy Principles — the text a court would be pointed at',
+    cost: 'Free — guidance, not a data purchase',
     columns: ['ethnicity_nationality', 'consented_for_marketing'],
     url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-7-app-7-direct-marketing',
   },
   {
+    id: 'spamact',
+    code: 'SPAM',
+    role: 'Legal basis',
+    provider: 'Federal Register of Legislation',
+    product: 'Spam Act 2003 (Cth), No. 129, 2003',
+    supplies: 'Consent, sender identification and a working unsubscribe on every commercial email or SMS',
+    grain: 'Regulator',
+    trust: 'Regulator',
+    authenticity: 'The Act itself on the Federal Register of Legislation — the primary text, not a summary of it',
+    cost: 'Free — legislation, not a data purchase',
+    columns: ['contact_preference', 'consent_source'],
+    url: 'https://www.legislation.gov.au/C2004A01214/latest',
+  },
+  {
+    id: 'egentic',
+    code: 'EGEN',
+    role: 'Benchmark — cannot supply the file',
     provider: 'eGENTIC',
     product: 'Australia consumer data — AWS Marketplace',
     supplies:
       'Five million opted-in Australian profiles carrying name, email, phone, gender, date of birth and state — and no ethnicity, ancestry or language field at all',
     grain: 'Person-level',
+    trust: 'Licensed panel',
+    authenticity: 'A marketplace listing that states its own attribute set, so the absence of an ancestry field can be read off the page',
+    cost: 'Free sample on the listing, which carries no per-unit charge; the full data sets are quote on request',
     columns: ['first_name', 'last_name', 'email', 'phone', 'age', 'state'],
     url: 'https://aws.amazon.com/marketplace/pp/prodview-vfjsymjx5jgrs',
   },
   {
+    id: 'quester',
+    code: 'QSTR',
+    role: 'Benchmark — cannot supply the file',
     provider: 'Global Data',
     product: 'Quester',
     supplies:
-      'Over 20 million opted-in Australian consumers at about A$0.43 a record, filterable to postcode, suburb and state — with no ethnicity, language or country-of-birth filter offered',
+      'Over 20 million opted-in Australian consumers, filterable to postcode, suburb and state — with no ethnicity, language or country-of-birth filter offered',
     grain: 'Person-level',
+    trust: 'Licensed panel',
+    authenticity: 'The platform page lists its own filter set, which is where the missing ancestry dimension shows',
+    cost: 'A$0.43 a record plus GST, the vendor’s own published breakdown: base record 25.0c, phone 8.0c, email 10.0c',
     columns: ['suburb', 'postcode', 'state', 'age'],
     url: 'https://www.globaldata.net.au/platforms/quester/',
   },
   {
+    id: 'mosaic',
+    code: 'MOS',
+    role: 'Benchmark — cannot supply the file',
+    provider: 'Experian Australia',
+    product: 'Mosaic',
+    supplies:
+      'Consumer classification into 14 Groups and 52 Types, covering 99% of Australian households — a segment on the household, not an ethnicity on a named person',
+    grain: 'Household / area',
+    trust: 'Modelled estimate',
+    authenticity: 'The vendor describes its own build and coverage; the classification is modelled, so it sits below an official statistic',
+    cost: 'Quote on request — no price, rate card or fee appears on the product page',
+    columns: ['ethnicity_nationality'],
+    url: 'https://www.experian.com.au/business/solutions/marketing-services/mosaic',
+  },
+  {
+    id: 'consumerview',
+    code: 'CV',
+    role: 'Benchmark — cannot supply the file',
+    provider: 'Experian',
+    product: 'ConsumerView',
+    supplies: 'Over 5,000 behavioural, demographic, geographic and lifestyle attributes used to enrich an existing customer record',
+    grain: 'Household / area',
+    trust: 'Modelled estimate',
+    authenticity: 'An enrichment product: it appends to a record the buyer already holds, and the appended values are modelled',
+    cost: 'Quote on request — the enrichment page carries an enquiry form in place of a price',
+    columns: ['age', 'ethnicity_nationality'],
+    url: 'https://www.experian.com.au/business/solutions/marketing-services/enrichment',
+  },
+  {
+    id: 'rmss',
+    code: 'RMSS',
+    role: 'Benchmark — cannot supply the file',
+    provider: 'Roy Morgan',
+    product: 'Single Source Australia',
+    supplies:
+      'Over 60,000 interviews a year, carrying language used at home among its variables — a survey panel that sizes a segment, never a list to send to',
+    grain: 'Survey panel',
+    trust: 'Licensed panel',
+    authenticity: 'A continuous survey with a published sample size and method; it measures a population, and carries no contactable record',
+    cost:
+      'A subscription is quote on request, but the online store publishes off-the-shelf profiles built from it: A$1,529 including GST standard, A$4,950 including GST premium',
+    columns: ['marathi_speaking', 'age'],
+    url: 'https://www.roymorgan.com/products-and-tools/single-source',
+  },
+  {
+    id: 'helix',
+    code: 'HLX',
+    role: 'Benchmark — cannot supply the file',
+    provider: 'Roy Morgan',
+    product: 'Helix Personas',
+    supplies: '54 Personas in 6 Communities, geo-projected down to mesh block — again an area classification, not a person attribute',
+    grain: 'Household / area',
+    trust: 'Modelled estimate',
+    authenticity: 'Personas are assigned to areas by model, so a person inherits an area’s label rather than declaring their own',
+    cost: 'Quote on request — the product page routes to an enquiry rather than a rate card',
+    columns: ['suburb', 'postcode'],
+    url: 'https://www.roymorgan.com/products-and-tools/helix-personas',
+  },
+  {
+    id: 'aec',
+    code: 'AEC',
+    role: 'Benchmark — cannot supply the file',
     provider: 'Australian Electoral Commission',
     product: 'Commonwealth electoral roll',
     supplies:
       'The one identified national file of Australians — and s 91B of the Commonwealth Electoral Act 1918 shuts commercial use of it, which is a large part of why no lawful public person-level list exists',
     grain: 'Regulator',
+    trust: 'Official statistic',
+    authenticity: 'A statutory register maintained by the AEC; its accuracy is a legal obligation, and its use is a legal restriction',
+    cost: 'Not for sale — commercial use prohibited by statute',
     columns: ['first_name', 'last_name', 'suburb', 'postcode'],
     url: 'https://www.aec.gov.au/enrolling_to_vote/about_electoral_roll/',
   },
-  {
-    provider: 'Australian Communications and Media Authority',
-    product: 'Spam Act 2003 — commercial electronic messages',
-    supplies: 'Consent, sender identification and a working unsubscribe on every commercial email or SMS',
-    grain: 'Regulator',
-    columns: ['contact_preference', 'consent_source'],
-    url: 'https://www.acma.gov.au/rules-sending-marketing-emails-sms-and-faxes',
-  },
 ];
+
+/** The sources that actually construct the file, in the order the page shows them. */
+export const BUILD_SOURCES = PROVIDER_REFS.filter((s) => s.role === 'Builds the file');
+export const LEGAL_SOURCES = PROVIDER_REFS.filter((s) => s.role === 'Legal basis');
+export const BENCHMARK_SOURCES = PROVIDER_REFS.filter((s) => s.role === 'Benchmark — cannot supply the file');
+
+/**
+ * Column to source-code map, derived from the source registry rather than
+ * written twice: a column carries the code of every source standing behind it,
+ * and the file table marks each column with the codes it inherits.
+ */
+export const COLUMN_SOURCES: Record<string, string[]> = (() => {
+  const m: Record<string, string[]> = {};
+  for (const s of PROVIDER_REFS) {
+    if (s.role === 'Benchmark — cannot supply the file') continue;
+    for (const c of s.columns) {
+      (m[c] ||= []).push(s.code);
+    }
+  }
+  return m;
+})();
 
 /** The tests a dbt project puts on this mart. */
 export const MART_TESTS = [

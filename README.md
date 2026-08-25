@@ -165,8 +165,18 @@ formats of the same rows:
 It carries 241 person-level records across 20 columns: name, email, phone, mobile, age, state,
 suburb, postcode, ABS SA2, ancestry, whether Marathi is used at home, the marketing-consent flag,
 the chosen channel, and the consent timestamp, source and purpose. `/prototype` runs it end to end
-in five stages — **the file → validate → resolve → consent → activate** — and draws the column
-specification, the provider references and the data-mart joins from it.
+in six stages — **sources → the file → validate → resolve → consent → activate** — and draws the
+column specification and the data-mart joins from it.
+
+The **sources** stage opens the page. It names every source the file is built from before a single
+row is shown, and gives each one the four things a reader needs in order to trust it or reject it:
+where it sits on the trust ladder, how to authenticate it, what it costs, and a link straight to
+the source so they can check it themselves. Sources are grouped by what they actually do — those
+that **build the file**, those that **set the rules it must obey**, and the commercial products
+**measured and set aside** because none can supply a person-level ancestry or language field. Each
+source carries a short code (`LANP`, `SAL`, `AP`, `ASGS`, `1P`, `APP7`, `SPAM`), and those codes
+appear against the columns they stand behind in both the file table and the column specification —
+so any column on screen can be traced back to its origin without leaving the page.
 
 **What is real and what is not.** Every person is fictional: emails use the reserved `example.com`
 domain (RFC 2606) and both numbers sit in the ranges the Australian regulator sets aside for
