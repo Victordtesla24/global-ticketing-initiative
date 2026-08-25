@@ -525,6 +525,24 @@ export const PROVIDER_REFS: ProviderRef[] = [
     url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-7-app-7-direct-marketing',
   },
   {
+    provider: 'eGENTIC',
+    product: 'Australia consumer data — AWS Marketplace',
+    supplies:
+      'Five million opted-in Australian profiles carrying name, email, phone, gender, date of birth and state — and no ethnicity, ancestry or language field at all',
+    grain: 'Person-level',
+    columns: ['first_name', 'last_name', 'email', 'phone', 'age', 'state'],
+    url: 'https://aws.amazon.com/marketplace/pp/prodview-vfjsymjx5jgrs',
+  },
+  {
+    provider: 'Global Data',
+    product: 'Quester',
+    supplies:
+      'Over 20 million opted-in Australian consumers at about A$0.43 a record, filterable to postcode, suburb and state — with no ethnicity, language or country-of-birth filter offered',
+    grain: 'Person-level',
+    columns: ['suburb', 'postcode', 'state', 'age'],
+    url: 'https://www.globaldata.net.au/platforms/quester/',
+  },
+  {
     provider: 'Australian Electoral Commission',
     product: 'Commonwealth electoral roll',
     supplies:

@@ -439,8 +439,9 @@ export default function PrototypeContent() {
 
       <Section eyebrow="Sources" title="The Providers Behind Each Column">
         <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
-          Only a promoter&apos;s own opted-in list yields person-level contact details lawfully. The classification
-          products are area-level, and the panels size a segment rather than supply a list.
+          The commercial person-level lists carry the contact columns but no ancestry or language field; the
+          classification products are area-level and the panels size a segment. Ancestry and language reach a record
+          one way only — the person declaring them at opt-in.
         </p>
         <AuProviderRefs />
       </Section>
